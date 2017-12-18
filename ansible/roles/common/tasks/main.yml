@@ -1,0 +1,53 @@
+---
+- name: install python
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
+  register: python
+  become: true
+
+- name: install packages
+  apt: 
+    name: zsh,git,tcpdump,iperf,nload,tmux
+    update_cache: yes
+  when: python|success
+  register: installation
+  become: true
+
+- name: Set zsh as default shell
+  user: name=ubuntu shell=/usr/bin/zsh
+  become: true
+  when: installation
+
+- name: Cloning oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh
+    dest=~/.oh-my-zsh
+  when: installation|success
+  register: cloning
+
+- name: Creating new ~/.zshrc
+  copy:
+      src=~/.oh-my-zsh/templates/zshrc.zsh-template
+      dest=~/.zshrc
+      force=no
+  when: cloning|success
+  register: zshrc
+
+- name: Change zsh theme
+  replace: 
+    path: ~/.zshrc
+    regexp: '"robbyrussell"'
+    replace: '"agnoster"'
+  when: zshrc
+
+- name: Create directories
+  file: path=~/{{item}} state=directory
+  with_items: ['Downloads', 'Workspace']
+
+#- name: ssh dir
+#  file: path=.ssh state=directory
+
+- name: copy rsa files
+  copy:
+    src: "{{ role_path }}/files/.ssh"
+    dest: ~/
+    force: no

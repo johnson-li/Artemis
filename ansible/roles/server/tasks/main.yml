@@ -1,0 +1,27 @@
+---
+- name: install packages
+  apt:
+    name: libgconf2-dev,libnss3-dev
+    update_cache: yes
+  register: installation
+  become: true
+
+- name: Create chromium directory
+  file: path=~/{{item}} state=directory
+  with_items: ['Workspace/chromium']
+
+- name: copy key files
+  copy:
+    src: "{{ item }}"
+    dest: ~/Workspace/chromium
+    force: no
+  with_fileglob: "{{ role_path }}/files/leaf_cert*"
+
+- name: copy scripts
+  copy:
+    src: "{{ item }}"
+    dest: ~/Workspace/chromium
+    force: no
+    mode: 0755
+  with_fileglob: ["{{ role_path }}/../../../scripts/sync.sh","{{ role_path }}/../../../scripts/start_server.sh","{{ role_path }}/../../../scripts/start_client.sh"]
+

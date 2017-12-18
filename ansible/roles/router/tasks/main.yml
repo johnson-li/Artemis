@@ -1,0 +1,46 @@
+---
+- name: install packages
+  apt:
+    name: python-pip,make,gcc
+    update_cache: yes
+  register: installation
+  become: true
+
+- name: install python six
+  pip:
+    name: six
+  when: installation
+
+- name: download OVS
+  get_url:
+    url: http://openvswitch.org/releases/openvswitch-2.8.1.tar.gz
+    dest: ~/Downloads/openvswitch.tar.gz
+  register: ovsdist
+
+- name: unarchive OVS
+  unarchive:
+    src: ~/Downloads/openvswitch.tar.gz
+    dest: ~/Workspace
+    copy: false
+  when: ovsdist
+  register: ovsunarchive
+
+- name: configure OVS
+  command: '"{{ item }}" chdir=~/Workspace/openvswitch-2.8.1'
+  with_items:
+    - ./configure
+  when: ovsdist|success
+  register: configureovs
+
+- name: make OVS
+  make:
+    chdir: ~/Workspace/openvswitch-2.8.1
+  when: configureovs|success
+  register: make
+
+- name: make install OVS
+  make:
+    chdir: /home/ubuntu/Workspace/openvswitch-2.8.1
+    target: install
+  become: true
+  when: make|success
