@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sqlite3
+import os
 
 from hestia import RESOURCE_PATH, ANSIBLE_PATH
 from hestia.aws.regions import REGIONS
@@ -38,7 +39,8 @@ def generate_ansible_hosts():
 def generate_ssh_hosts():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
-    open(CONFIG_FILE, 'w').close()
+    if os.path.exists(CONFIG_FILE):
+        open(CONFIG_FILE, 'w').close()
     f = open(CONFIG_FILE, 'a')
     c.execute("SELECT * FROM instances")
     for record in c.fetchall():
@@ -51,5 +53,5 @@ def generate_ssh_hosts():
 
 
 if __name__ == '__main__':
-    # generate_ansible_hosts()
+    generate_ansible_hosts()
     generate_ssh_hosts()
