@@ -3,6 +3,7 @@
   strategy: free
   remote_user: ubuntu
   gather_facts: False
+  serial: 8
   roles:
       - common
       - router
@@ -11,6 +12,7 @@
   strategy: free
   remote_user: ubuntu
   gather_facts: False
+  serial: 8
   roles:
       - common
       - router
