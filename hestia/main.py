@@ -1,21 +1,8 @@
 import sys
 
-import boto3
 import botocore.exceptions
 
-
-class Sessions:
-    def __init__(self) -> None:
-        self.us_east_1 = boto3.session.Session(region_name='us-east-1')
-        self.us_east_2 = boto3.session.Session(region_name='us-east-2')
-        self.us_west_1 = boto3.session.Session(region_name='us-west-1')
-
-    def all(self):
-        return [
-            self.us_east_1,
-            self.us_east_2,
-            self.us_west_1,
-        ]
+from hestia.aws.sessions import Sessions
 
 
 def get_sessions():
@@ -119,7 +106,7 @@ def clear_instances(session):
         instance.terminate()
 
 
-def create_instances(session, vpc, subnet, security_group, interfaces):
+def create_instances(session, vpc):
     ec2 = session.resource('ec2')
     instance = ec2.create_instances(
         BlockDeviceMappings=[
@@ -136,7 +123,7 @@ def create_instances(session, vpc, subnet, security_group, interfaces):
         ],
         ImageId='ami-aa2ea6d0',
         InstanceType='t2.micro',
-        # Ipv6AddressCount=123,
+        Ipv6AddressCount=1,
         # Ipv6Addresses=[
         #     {
         #         'Ipv6Address': 'string'
@@ -255,13 +242,19 @@ def clear_all(session):
     clear_interfaces(session)
 
 
+def enable_subnet_with_ipv6(session):
+    vpc = session.resource('vpc')
+
+
+
+
 def main():
     sessions = get_sessions()
     # parameters = create_interfaces(sessions.us_east_1)
-    # create_instances(sessions.us_east_1, *parameters)
+    # create_instances(sessions.us_west_2)
     # clear_all(sessions.us_east_1)
     for zone in sessions.all():
-        stop(zone)
+        enable_subnet_with_ipv6(zone)
 
 
 if __name__ == '__main__':

@@ -25,3 +25,7 @@
     mode: 0755
   with_fileglob: ["{{ role_path }}/../../../scripts/sync.sh","{{ role_path }}/../../../scripts/start_server.sh","{{ role_path }}/../../../scripts/start_client.sh"]
 
+- name: sync the quic code
+  command: sh sync.sh
+  args:
+    chdir: Workspace/chromium
