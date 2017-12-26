@@ -2,6 +2,8 @@ import os
 
 from fabric.api import run, env, sudo, parallel
 
+env.warn_only = True
+env.skip_bad_hosts = True
 env.use_ssh_config = True
 env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config'
 
@@ -14,5 +16,7 @@ def host_type():
     run('uname -a')
 
 
+@parallel(pool_size=4)
 def setup_bridge():
-    sudo('whoami')
+    sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
+    sudo('ovs-vsctl show')
