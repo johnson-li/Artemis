@@ -13,11 +13,12 @@ INITIATED_INSTANCES = []
 
 
 def start_machines():
-    sessions = Sessions()
+    # sessions = Sessions().all()
+    sessions = [Sessions().ap_northeast_1]
     pending_instances = []
     pending_interfaces = []
 
-    for session in sessions.all():
+    for session in sessions:
         print('Detach interfaces in region: ' + session.region_name)
         resource = session.resource('ec2')
         for interface in resource.network_interfaces.all():
@@ -32,12 +33,14 @@ def start_machines():
         if interface.attachment:
             pending_interfaces.append(interface)
 
-    for session in sessions.all():
+    for session in sessions:
         print('Start instances in region: ' + session.region_name)
         resource = session.resource('ec2')
         for instance in resource.instances.all():
-            instance.start()
-            pending_instances.append((instance, resource, session.region_name))
+            name = utils.get_instance_name(instance)
+            if name in ['router', 'server']:
+                instance.start()
+                pending_instances.append((instance, resource, session.region_name))
 
     print('Wait for instances')
     while pending_instances:
