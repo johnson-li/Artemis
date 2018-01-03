@@ -3,3 +3,6 @@
 *.out
 cmake-build-debug
 
+client
+dns_server
+serviceid_server
