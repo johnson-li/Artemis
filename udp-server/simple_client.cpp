@@ -10,6 +10,8 @@
 #include <arpa/inet.h>
 #include <chrono>
 #include <iostream>
+#include <netinet/in.h>
+
 
 #define BUFSIZE 1024000
 #define PORT 8080
@@ -34,7 +36,15 @@ int main(int argc, char **argv) {
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
-    inet_pton(AF_INET, server_ip, &(server_addr.sin_addr));
+    if (server_ip[0] > '9' || server_ip[0] < '0') {
+        struct hostent *he;
+        he = gethostbyname(server_ip);
+        struct in_addr **addr_list;
+        addr_list = (struct in_addr **) he->h_addr_list;
+        server_addr.sin_addr = *addr_list[0];
+    } else {
+        inet_pton(AF_INET, server_ip, &(server_addr.sin_addr));
+    }
 
     server_fd = socket(AF_INET, SOCK_DGRAM, 0);
     if (server_fd < 0)

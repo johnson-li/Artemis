@@ -28,6 +28,30 @@ def host_type():
 
 
 @parallel(pool_size=4)
+def start_servers():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("select * from instances where primaryIpv4Pub = '{}'".format(env.host))
+    self_host = dict(zip([d[0] for d in c.description], c.fetchone()))
+    if self_host['name'] == 'server':
+        run('tmux new-session -d -s server')
+        run('tmux new-window -t server:1')
+        run('tmux send-keys -t server:0 "sudo /home/ubuntu/Workspace/server/dns_server" ENTER')
+        run('tmux send-keys -t server:1 "sudo /home/ubuntu/Workspace/server/serviceid_server" ENTER')
+
+
+@parallel(pool_size=4)
+def stop_servers():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("select * from instances where primaryIpv4Pub = '{}'".format(env.host))
+    self_host = dict(zip([d[0] for d in c.description], c.fetchone()))
+    if self_host['name'] == 'server':
+        sudo('killall dns_server')
+        sudo('killall serviceid_server')
+
+
+@parallel(pool_size=4)
 def init():
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
 
