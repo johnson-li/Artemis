@@ -4,5 +4,6 @@
 cmake-build-debug
 
 client
+simple_client
 dns_server
 serviceid_server
