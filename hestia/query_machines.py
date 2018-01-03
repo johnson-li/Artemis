@@ -2,8 +2,8 @@ from hestia.aws.sessions import Sessions
 
 
 def main():
-    sessions = Sessions()
-    for session in sessions.all():
+    sessions = Sessions().all()
+    for session in sessions:
         pass
 
 

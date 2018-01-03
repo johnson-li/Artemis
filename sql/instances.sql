@@ -7,6 +7,7 @@ create table instances (
     primaryIpv4Pub varchar(255),
     primaryIpv6 varchar(255),
     secondaryIpv4 varchar(255),
+    secondaryIpv4Pub varchar(255),
     secondaryIpv6 varchar(255),
     constraint chk_name check (name in ('server', 'router', 'None'))
 );

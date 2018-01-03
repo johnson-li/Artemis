@@ -1,0 +1,30 @@
+Host tokyo-router
+  HostName 13.115.107.25
+  User ubuntu
+  IdentityFile ~/keys/tokyo.pem
+
+Host tokyo-server
+  HostName 13.230.224.30
+  User ubuntu
+  IdentityFile ~/keys/tokyo.pem
+
+Host sydney-router
+  HostName 13.54.87.186
+  User ubuntu
+  IdentityFile ~/keys/sydney.pem
+
+Host sydney-server
+  HostName 52.63.48.83
+  User ubuntu
+  IdentityFile ~/keys/sydney.pem
+
+Host singapore-router
+  HostName 13.228.231.81
+  User ubuntu
+  IdentityFile ~/keys/singapore.pem
+
+Host singapore-server
+  HostName 13.228.245.15
+  User ubuntu
+  IdentityFile ~/keys/singapore.pem
+

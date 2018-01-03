@@ -1,7 +1,12 @@
 import os
+import sqlite3
 
 from fabric.api import *
 from fabric.io import CommandTimeout
+
+from hestia.aws.regions import REGIONS
+
+DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/instances.db'
 
 env.warn_only = True
 env.skip_bad_hosts = True
@@ -14,12 +19,67 @@ env.hosts = ['virginia-router', 'virginia-server', 'ohio-server', 'ohio-router',
              'seoul-router', 'seoul-server', 'central-router', 'central-server', 'frankfurt-router', 'frankfurt-server',
              'ireland-router', 'ireland-server', 'london-server', 'london-router',
              'paris-server', 'paris-router', 'saopaulo-server', 'saopaulo-router']
-env.hosts = ['tokyo-router', 'tokyo-server']
+env.hosts = ['tokyo-router', 'tokyo-server', 'sydney-router', 'sydney-server', 'singapore-router', 'singapore-server']
 
 
 @parallel(pool_size=4)
 def host_type():
     run('uname -a')
+
+
+@parallel(pool_size=4)
+def init():
+    sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
+
+
+@parallel(pool_size=4)
+def clear_gre():
+    sudo("for port in `sudo ovs-vsctl show|grep 'Port \"*gre_'| grep -o 'gre_[0-9a-z_-]*'`; "
+         "do sudo ovs-vsctl del-port br1 $port; done")
+
+
+@parallel(pool_size=4)
+def clear_flows():
+    sudo("ovs-ofctl del-flows br1")
+
+
+@parallel(pool_size=4)
+def show_ovs():
+    sudo("ovs-vsctl show")
+
+
+@parallel(pool_size=1)
+def setup_gre():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("select * from instances where primaryIpv4Pub = '{}'".format(env.host))
+    self_host = dict(zip([d[0] for d in c.description], c.fetchone()))
+    if self_host['name'] == 'server':
+        # connect to the router
+        c.execute("select * from instances where region = '{}' and name = '{}'".format(self_host['region'], 'router'))
+        router_host = dict(zip([d[0] for d in c.description], c.fetchone()))
+        sudo('ovs-vsctl add-port br1 gre_router -- set interface gre_router type=gre, options:remote_ip={}'.format(
+            router_host['primaryIpv4']))
+        sudo('ifconfig br1 10.10.10.10/24 up')
+        sudo('ip route add default dev br1 tab 2')
+        sudo('ip rule add from 10.10.10.10/24 tab 2 priority 600')
+    elif self_host['name'] == 'router':
+        # connect to the server
+        c.execute("select * from instances where region = '{}' and name = '{}'".format(self_host['region'], 'server'))
+        server_host = dict(zip([d[0] for d in c.description], c.fetchone()))
+        sudo('ovs-vsctl add-port br1 gre_server -- set interface gre_server type=gre, options:remote_ip={}'.format(
+            server_host['primaryIpv4']))
+        for region in REGIONS:
+            if region == self_host['region']:
+                continue
+            region_name = REGIONS[region].lower()
+            # connect to other routers
+            if region_name + '-router' in env.hosts:
+                c.execute("SELECT * FROM instances WHERE region = '{}' and name = '{}'".format(region, 'router'))
+                record = dict(zip([d[0] for d in c.description], c.fetchone()))
+                remote_ip = record['primaryIpv4Pub']
+                sudo('ovs-vsctl add-port br1 gre_{} -- set interface gre_{} type=gre, options:remote_ip={}'.format(
+                    region_name, region_name, remote_ip))
 
 
 @parallel(pool_size=4)
