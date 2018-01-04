@@ -10,6 +10,7 @@
 #include <arpa/inet.h>
 #include <chrono>
 #include <iostream>
+#include <fcntl.h>
 
 #define BUFSIZE 1024000
 #define PORT 80
@@ -47,6 +48,7 @@ int main(int argc, char **argv) {
     router_fd = socket(AF_INET, SOCK_DGRAM, 0);
     if (server_fd < 0 || router_fd < 0)
         perror("ERROR opening socket");
+    fcntl(server_fd, F_SETFL, O_NONBLOCK);
 
     result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0, (sockaddr *) &server_addr,
                     sizeof(server_addr));
@@ -58,7 +60,12 @@ int main(int argc, char **argv) {
     printf("sent %ld bytes to the router\n", result);
 
     socklen_t addrlen;
-    recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
+    for (;;) {
+        recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
+        if (recv != -1) {
+            break;
+        }
+    }
     printf("got %ld bytes from the server\n", recv);
     auto end = std::chrono::high_resolution_clock::now();
 
