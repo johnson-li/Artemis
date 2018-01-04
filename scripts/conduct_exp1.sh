@@ -31,7 +31,7 @@ direct_server=`sudo ping cdn.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egre
 #direct_server=127.0.0.1
 for i in `seq ${repeat}`
 do
-    output=`${TIMEOUT_CMD} 2 ./server/simple_client ${direct_server}| grep cost| egrep -o '[0-9]+'`
+    output=`./server/simple_client ${direct_server}| grep cost| egrep -o '[0-9]+'`
     if [ -z "$output" ]
     then
         output=0
@@ -44,7 +44,7 @@ echo direct_data: ${direct_data}
 for i in `seq ${repeat}`
 do
 #    dns_server=127.0.0.1
-    output=`${TIMEOUT_CMD} 2 ./server/simple_client cdn${i}.xuebing.name| grep cost| egrep -o '[0-9]+'`
+    output=`./server/simple_client cdn${i}.xuebing.name| grep cost| egrep -o '[0-9]+'`
     # dns_server=`dig +short cdn${i}.xuebing.name`
     dns_server=`sudo ping cdn${i}.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
     dns_servers=${dns_servers},${dns_server}
@@ -61,7 +61,7 @@ echo dns_data: ${dns_data}
 sid_router=`sudo ping sid.xuebing.name -w2|grep PING| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
 for i in `seq ${repeat}`
 do
-    output=`${TIMEOUT_CMD} 2 ./server/client ${sid_router} ${sid_server}| grep cost| egrep -o '[0-9]+'`
+    output=`./server/client ${sid_router} ${sid_server}| grep cost| egrep -o '[0-9]+'`
     if [ -z "$output" ]
     then
         output=0

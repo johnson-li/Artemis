@@ -62,7 +62,9 @@ int main(int argc, char **argv) {
     socklen_t addrlen;
     for (;;) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
-        if (recv != -1) {
+        auto end = std::chrono::high_resolution_clock::now();
+        long long diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
+        if (recv != -1 || diff > 2000000000) {
             break;
         }
     }
