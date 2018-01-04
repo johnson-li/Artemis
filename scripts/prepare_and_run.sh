@@ -11,5 +11,7 @@ then
     cd scripts
 fi
 
+cp ../udp-server/client server
+cp ../udp-server/simple_client server
 ./sync_planetlab.sh ${host}
 ./run_remote.sh ${ip}
