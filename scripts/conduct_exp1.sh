@@ -16,7 +16,8 @@ cd ${BASE_DIR}
 #direct_server=''
 #dns_servers=''
 #sid_router=''
-sid_server=$1
+self_ip=$1
+sid_server=`sqlite3 ../resources/db/sip.db "select server from sip where host = '${self_ip}'"`
 direct_data=''
 dns_data=''
 sid_data=''
