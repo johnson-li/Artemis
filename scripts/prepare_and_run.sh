@@ -12,4 +12,4 @@ then
 fi
 
 ./sync_planetlab.sh ${host}
-./run_remote.sh ${ip}
+./run_remote.sh ${sid_server}
