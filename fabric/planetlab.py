@@ -210,3 +210,8 @@ env.hosts = ['ple2.planet-lab.eu', 'dschinni.planetlab.extranet.uni-passau.de', 
 @parallel(pool_size=6)
 def host_type():
     run('uname -a')
+
+
+@parallel(pool_size=6)
+def init():
+    sudo('yum install -y gcc-c++')
