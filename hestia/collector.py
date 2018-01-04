@@ -7,10 +7,14 @@ db = client.main_database
 collection = db.experiment_collection
 
 
-def store(hostname, ip, direct_data, dns_data, sid_data, time):
+def store(hostname, host_ip, direct_server, dns_servers, sid_server, sid_router, direct_data, dns_data, sid_data, time):
     data = {
         'hostname': hostname,
-        'ip': ip,
+        'host_ip': host_ip,
+        'direct_server': direct_server,
+        'dns_servers': dns_servers,
+        'sid_server': sid_server,
+        'sid_router': sid_router,
         'direct_data': direct_data,
         'dns_data': dns_data,
         'sid_data': sid_data,
