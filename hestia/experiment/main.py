@@ -1,14 +1,47 @@
 import json
+import os
 import re
+import sqlite3
+import sys
 
 import httplib
 import paramiko
 
-from hestia import RESOURCE_PATH
+from hestia import RESOURCE_PATH, SQL_PATH
 from hestia.info.dpid import DPID
 from hestia.info.mac import MAC
 
+DB_PATH = RESOURCE_PATH + '/db'
+DB_FILE = DB_PATH + '/sip.db'
+SQL_FILE = SQL_PATH + '/sip.sql'
 ssh_clients = {}
+host_mapping = {}
+
+
+def init_db():
+    if not os.path.exists(DB_PATH):
+        os.mkdir(DB_PATH)
+    if not os.path.exists(DB_FILE):
+        print('Init DB')
+        conn = sqlite3.connect(DB_FILE)
+        c = conn.cursor()
+        init_sql = ''.join(open(SQL_FILE).readlines())
+        c.execute(init_sql)
+        c.close()
+        conn.close()
+
+
+def store_result(host, server):
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("select * from sip where host = '{}'".format(host))
+    if c.fetchone():
+        c.execute("UPDATE sip set server = '' where host = ''".format(server, host))
+    else:
+        c.execute("insert into sip (host, server) VALUES ('{}', '{}')".format(host, server))
+    conn.commit()
+    c.close()
+    conn.close()
 
 
 def get_ssh(host):
@@ -21,6 +54,7 @@ def get_ssh(host):
         ssh_config.parse(f)
     cfg = ssh_config.lookup(host)
     ssh.connect(cfg['hostname'], username=cfg['user'], key_filename=cfg['identityfile'])
+    host_mapping[host] = cfg['hostname']
     ssh_clients[host] = ssh
     return ssh
 
@@ -155,12 +189,16 @@ def add_flows(target, other_regions, peer_ip):
 peer = '35.193.107.149'
 
 if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        peer = sys.argv[1]
+    init_db()
     regions = ['tokyo', 'sydney', 'singapore']
     add_default_flows(regions)
     results = []
-    # for region in regions:
-    #     results.append((region, get_latency(region + "-server", peer)))
-    # results.sort(key=lambda pair: pair[1])
-    results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
+    for region in regions:
+        results.append((region, get_latency(region + "-server", peer)))
+    results.sort(key=lambda pair: pair[1])
+    # results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
     print(results)
+    store_result(peer, host_mapping[results[0][0] + '-server'])
     add_flows(results[0][0], [i[0] for i in results[1:]], peer)
