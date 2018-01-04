@@ -24,6 +24,7 @@ sid_server=$1
 direct_data=''
 dns_data=''
 sid_data=''
+dns_delay=''
 
 # Direct query
 # direct_server=`dig +short cdn.xuebing.name`
@@ -44,17 +45,20 @@ echo direct_data: ${direct_data}
 for i in `seq ${repeat}`
 do
 #    dns_server=127.0.0.1
-    output=`./server/simple_client cdn${i}.xuebing.name| grep cost| egrep -o '[0-9]+'`
-    # dns_server=`dig +short cdn${i}.xuebing.name`
+    output=`./server/simple_client cdn${i}.xuebing.name`
+    cost=`echo ${output}| grep cost| egrep -o '[0-9]+'`
+    dns_cost=`echo ${output}| grep 'DNS delay'| egrep -o '[0-9]+'`
+    dns_delay=${dns_delay},${dns_cost}
     dns_server=`sudo ping cdn${i}.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
     dns_servers=${dns_servers},${dns_server}
-    if [ -z "$output" ]
+    if [ -z "$cost" ]
     then
-        output=0
+        cost=0
     fi
-    dns_data=${dns_data},${output}
+    dns_data=${dns_data},${cost}
 done
 echo dns_data: ${dns_data}
+echo dns_delay: ${dns_delay}
 
 # SID query
 # sid_router=`dig +short sid.xuebing.name`
@@ -70,7 +74,6 @@ do
 done
 echo sid_data: ${sid_data}
 
-
 # print server IPs
 echo direct_server: ${direct_server}
 echo dns_servers: ${dns_servers}
@@ -78,4 +81,3 @@ echo sid_router: ${sid_router}
 echo sid_server: ${sid_server}
 
 cd ${USER_DIR}
-
