@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
         he = gethostbyname(server_ip);
         auto dns_end = std::chrono::high_resolution_clock::now();
         std::cout << "DNS delay " << std::fixed
-                  << std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count() << "ns" << std::endl;
+                  << std::chrono::duration_cast<std::chrono::nanoseconds>(dns_end - dns_begin).count() << "ns" << std::endl;
         struct in_addr **addr_list;
         addr_list = (struct in_addr **) he->h_addr_list;
         server_addr.sin_addr = *addr_list[0];
