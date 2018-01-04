@@ -50,6 +50,8 @@ int main(int argc, char **argv) {
         perror("ERROR opening socket");
     fcntl(server_fd, F_SETFL, O_NONBLOCK);
 
+    socklen_t addrlen;
+    recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
     result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0, (sockaddr *) &server_addr,
                     sizeof(server_addr));
     printf("sent %ld bytes to the server\n", result);
@@ -59,7 +61,6 @@ int main(int argc, char **argv) {
                     sizeof(router_addr));
     printf("sent %ld bytes to the router\n", result);
 
-    socklen_t addrlen;
     for (;;) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
         auto end = std::chrono::high_resolution_clock::now();
