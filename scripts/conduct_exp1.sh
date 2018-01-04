@@ -46,8 +46,8 @@ for i in `seq ${repeat}`
 do
 #    dns_server=127.0.0.1
     output=`./server/simple_client cdn${i}.xuebing.name`
-    cost=`echo ${output}| grep cost| egrep -o '[0-9]+'`
-    dns_cost=`echo ${output}| grep 'DNS delay'| egrep -o '[0-9]+'`
+    cost=`echo "${output}"| grep cost| egrep -o '[0-9]+'`
+    dns_cost=`echo "${output}"| grep 'DNS delay'| egrep -o '[0-9]+'`
     dns_delay=${dns_delay},${dns_cost}
     dns_server=`sudo ping cdn${i}.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
     dns_servers=${dns_servers},${dns_server}
