@@ -44,10 +44,10 @@ echo direct_data: ${direct_data}
 # Dns query
 for i in `seq ${repeat}`
 do
-    dns_server=`dig +short cdn${i}.xuebing.name`
 #    dns_server=127.0.0.1
+    output=`${TIMEOUT_CMD} 2 ./server/simple_client cdn${i}.xuebing.name| grep cost| egrep -o '[0-9]+'`
+    dns_server=`dig +short cdn${i}.xuebing.name`
     dns_servers=${dns_servers},${dns_server}
-    output=`${TIMEOUT_CMD} 2 ./server/simple_client ${dns_server}| grep cost| egrep -o '[0-9]+'`
     if [ -z "$output" ]
     then
         output=0
