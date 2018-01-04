@@ -1,9 +1,6 @@
 import os
-import sqlite3
 
 from fabric.api import *
-
-DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/hosts.db'
 
 env.warn_only = True
 env.skip_bad_hosts = True
@@ -209,20 +206,7 @@ env.hosts = ['ple2.planet-lab.eu', 'dschinni.planetlab.extranet.uni-passau.de', 
              'planetlab-2.cs.ucy.ac.cy', 'planetlab1.informatik.uni-goettingen.de',
              'planetlab2.informatik.uni-goettingen.de']
 
-conn = sqlite3.connect(DB_FILE)
-c = conn.cursor()
-c.execute('CREATE TABLE hosts {host VARCHAR(255) PRIMARY KEY};')
-conn.commit()
-c.close()
-conn.close()
-
 
 @parallel(pool_size=6)
 def host_type():
     run('uname -a')
-    conn_local = sqlite3.connect(DB_FILE)
-    c_local = conn.cursor()
-    c_local.execute("insert into hosts values '{}'".format(env.host))
-    conn_local.commit()
-    c_local.close()
-    conn_local.close()
