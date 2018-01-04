@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-TIMEOUT_CMD=gtimeout
+TIMEOUT_CMD=timeout
+if [ `uname` = 'Darwin' ]
+then
+    TIMEOUT_CMD=gtimeout
+fi
 
 if [ -z ${repeat+x} ]
 then
