@@ -8,7 +8,7 @@ fi
 
 if [ -z ${repeat+x} ]
 then
-    repeat=3
+    repeat=30
 fi
 echo repeat: ${repeat}
 
@@ -21,6 +21,7 @@ cd ${BASE_DIR}
 #dns_servers=''
 #sid_router=''
 self_ip=$1
+echo self: ${self_ip}
 sid_server=`sqlite3 ../resources/db/sip.db "select server from sip where host = '${self_ip}'"`
 direct_data=''
 dns_data=''
