@@ -1,0 +1,2644 @@
+Host ple2.planet-lab.eu
+   HostName ple2.planet-lab.eu
+   User goettingenple_txp1
+
+Host dschinni.planetlab.extranet.uni-passau.de
+   HostName dschinni.planetlab.extranet.uni-passau.de
+   User goettingenple_txp1
+
+Host iraplab2.iralab.uni-karlsruhe.de
+   HostName iraplab2.iralab.uni-karlsruhe.de
+   User goettingenple_txp1
+
+Host iraplab1.iralab.uni-karlsruhe.de
+   HostName iraplab1.iralab.uni-karlsruhe.de
+   User goettingenple_txp1
+
+Host planetlab-1.ing.unimo.it
+   HostName planetlab-1.ing.unimo.it
+   User goettingenple_txp1
+
+Host nuc1.planet-lab.eu
+   HostName nuc1.planet-lab.eu
+   User goettingenple_txp1
+
+Host ple2.cesnet.cz
+   HostName ple2.cesnet.cz
+   User goettingenple_txp1
+
+Host pl221nassau0.cs.princeton.edu
+   HostName pl221nassau0.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab2.sfc.wide.ad.jp
+   HostName planetlab2.sfc.wide.ad.jp
+   User goettingenple_txp1
+
+Host planet2.scs.cs.nyu.edu
+   HostName planet2.scs.cs.nyu.edu
+   User goettingenple_txp1
+
+Host planetlab2.iii.u-tokyo.ac.jp
+   HostName planetlab2.iii.u-tokyo.ac.jp
+   User goettingenple_txp1
+
+Host ricepl-1.cs.rice.edu
+   HostName ricepl-1.cs.rice.edu
+   User goettingenple_txp1
+
+Host pl1.eecs.utk.edu
+   HostName pl1.eecs.utk.edu
+   User goettingenple_txp1
+
+Host pl2.eecs.utk.edu
+   HostName pl2.eecs.utk.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.ubc.ca
+   HostName planetlab1.cs.ubc.ca
+   User goettingenple_txp1
+
+Host plab1.cs.ust.hk
+   HostName plab1.cs.ust.hk
+   User goettingenple_txp1
+
+Host planetlab-2.scie.uestc.edu.cn
+   HostName planetlab-2.scie.uestc.edu.cn
+   User goettingenple_txp1
+
+Host planetlab1.cs.umass.edu
+   HostName planetlab1.cs.umass.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.umass.edu
+   HostName planetlab2.cs.umass.edu
+   User goettingenple_txp1
+
+Host planetlab1.iii.u-tokyo.ac.jp
+   HostName planetlab1.iii.u-tokyo.ac.jp
+   User goettingenple_txp1
+
+Host planetlab-1.cs.colostate.edu
+   HostName planetlab-1.cs.colostate.edu
+   User goettingenple_txp1
+
+Host planetlab3.cs.uchicago.edu
+   HostName planetlab3.cs.uchicago.edu
+   User goettingenple_txp1
+
+Host planetlab1.eecs.northwestern.edu
+   HostName planetlab1.eecs.northwestern.edu
+   User goettingenple_txp1
+
+Host planetlab1.postel.org
+   HostName planetlab1.postel.org
+   User goettingenple_txp1
+
+Host planetlab2.eecs.northwestern.edu
+   HostName planetlab2.eecs.northwestern.edu
+   User goettingenple_txp1
+
+Host planetlab1.poly.edu
+   HostName planetlab1.poly.edu
+   User goettingenple_txp1
+
+Host planetlab1.eee.hku.hk
+   HostName planetlab1.eee.hku.hk
+   User goettingenple_txp1
+
+Host pl1.csl.utoronto.ca
+   HostName pl1.csl.utoronto.ca
+   User goettingenple_txp1
+
+Host planetlab2.eee.hku.hk
+   HostName planetlab2.eee.hku.hk
+   User goettingenple_txp1
+
+Host planetlab-1.cmcl.cs.cmu.edu
+   HostName planetlab-1.cmcl.cs.cmu.edu
+   User goettingenple_txp1
+
+Host planetlab-2.cmcl.cs.cmu.edu
+   HostName planetlab-2.cmcl.cs.cmu.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.duke.edu
+   HostName planetlab2.cs.duke.edu
+   User goettingenple_txp1
+
+Host planet2.scs.stanford.edu
+   HostName planet2.scs.stanford.edu
+   User goettingenple_txp1
+
+Host planetlab2.csres.utexas.edu
+   HostName planetlab2.csres.utexas.edu
+   User goettingenple_txp1
+
+Host planetlab-5.eecs.cwru.edu
+   HostName planetlab-5.eecs.cwru.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.cornell.edu
+   HostName planetlab1.cs.cornell.edu
+   User goettingenple_txp1
+
+Host plnode01.cs.mu.oz.au
+   HostName plnode01.cs.mu.oz.au
+   User goettingenple_txp1
+
+Host plnode02.cs.mu.oz.au
+   HostName plnode02.cs.mu.oz.au
+   User goettingenple_txp1
+
+Host planetlab1.dtc.umn.edu
+   HostName planetlab1.dtc.umn.edu
+   User goettingenple_txp1
+
+Host planetlab2.netlab.uky.edu
+   HostName planetlab2.netlab.uky.edu
+   User goettingenple_txp1
+
+Host lefthand.eecs.harvard.edu
+   HostName lefthand.eecs.harvard.edu
+   User goettingenple_txp1
+
+Host righthand.eecs.harvard.edu
+   HostName righthand.eecs.harvard.edu
+   User goettingenple_txp1
+
+Host planetlab1.csres.utexas.edu
+   HostName planetlab1.csres.utexas.edu
+   User goettingenple_txp1
+
+Host planetlab3.csres.utexas.edu
+   HostName planetlab3.csres.utexas.edu
+   User goettingenple_txp1
+
+Host planet1.cc.gt.atl.ga.us
+   HostName planet1.cc.gt.atl.ga.us
+   User goettingenple_txp1
+
+Host planetlab2.cis.upenn.edu
+   HostName planetlab2.cis.upenn.edu
+   User goettingenple_txp1
+
+Host planetlab01.uncc.edu
+   HostName planetlab01.uncc.edu
+   User goettingenple_txp1
+
+Host ricepl-2.cs.rice.edu
+   HostName ricepl-2.cs.rice.edu
+   User goettingenple_txp1
+
+Host planetlab1.cis.upenn.edu
+   HostName planetlab1.cis.upenn.edu
+   User goettingenple_txp1
+
+Host kupl2.ittc.ku.edu
+   HostName kupl2.ittc.ku.edu
+   User goettingenple_txp1
+
+Host planetlab01.erin.utoronto.ca
+   HostName planetlab01.erin.utoronto.ca
+   User goettingenple_txp1
+
+Host planetlab02.erin.utoronto.ca
+   HostName planetlab02.erin.utoronto.ca
+   User goettingenple_txp1
+
+Host planetlab1.eecs.umich.edu
+   HostName planetlab1.eecs.umich.edu
+   User goettingenple_txp1
+
+Host planetlab2.eecs.umich.edu
+   HostName planetlab2.eecs.umich.edu
+   User goettingenple_txp1
+
+Host kupl1.ittc.ku.edu
+   HostName kupl1.ittc.ku.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.columbia.edu
+   HostName planetlab1.cs.columbia.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.columbia.edu
+   HostName planetlab2.cs.columbia.edu
+   User goettingenple_txp1
+
+Host planetlab3.cs.columbia.edu
+   HostName planetlab3.cs.columbia.edu
+   User goettingenple_txp1
+
+Host plink.cs.uwaterloo.ca
+   HostName plink.cs.uwaterloo.ca
+   User goettingenple_txp1
+
+Host planetlab1.cs.uiuc.edu
+   HostName planetlab1.cs.uiuc.edu
+   User goettingenple_txp1
+
+Host planetlab2.engr.uconn.edu
+   HostName planetlab2.engr.uconn.edu
+   User goettingenple_txp1
+
+Host planetlab1.koganei.itrc.net
+   HostName planetlab1.koganei.itrc.net
+   User goettingenple_txp1
+
+Host planetlab2.koganei.itrc.net
+   HostName planetlab2.koganei.itrc.net
+   User goettingenple_txp1
+
+Host newbootcd.cs.princeton.edu
+   HostName newbootcd.cs.princeton.edu
+   User goettingenple_txp1
+
+Host f20bootcd.cs.princeton.edu
+   HostName f20bootcd.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab3.singaren.net.sg
+   HostName planetlab3.singaren.net.sg
+   User goettingenple_txp1
+
+Host planetx.scs.cs.nyu.edu
+   HostName planetx.scs.cs.nyu.edu
+   User goettingenple_txp1
+
+Host planetlab1.pop-ce.rnp.br
+   HostName planetlab1.pop-ce.rnp.br
+   User goettingenple_txp1
+
+Host planetlab1.pop-rs.rnp.br
+   HostName planetlab1.pop-rs.rnp.br
+   User goettingenple_txp1
+
+Host planetlab0.ias.csusb.edu
+   HostName planetlab0.ias.csusb.edu
+   User goettingenple_txp1
+
+Host plab2.cs.ust.hk
+   HostName plab2.cs.ust.hk
+   User goettingenple_txp1
+
+Host orbpl1.rutgers.edu
+   HostName orbpl1.rutgers.edu
+   User goettingenple_txp1
+
+Host orbpl2.rutgers.edu
+   HostName orbpl2.rutgers.edu
+   User goettingenple_txp1
+
+Host planet-lab1.cs.ucr.edu
+   HostName planet-lab1.cs.ucr.edu
+   User goettingenple_txp1
+
+Host planetlab3.georgetown.edu
+   HostName planetlab3.georgetown.edu
+   User goettingenple_txp1
+
+Host planetlab4.georgetown.edu
+   HostName planetlab4.georgetown.edu
+   User goettingenple_txp1
+
+Host planetlab1.iis.sinica.edu.tw
+   HostName planetlab1.iis.sinica.edu.tw
+   User goettingenple_txp1
+
+Host planetlab2.iis.sinica.edu.tw
+   HostName planetlab2.iis.sinica.edu.tw
+   User goettingenple_txp1
+
+Host planetlab-1.cse.ohio-state.edu
+   HostName planetlab-1.cse.ohio-state.edu
+   User goettingenple_txp1
+
+Host planetlab-2.cse.ohio-state.edu
+   HostName planetlab-2.cse.ohio-state.edu
+   User goettingenple_txp1
+
+Host planetlab1.netmedia.gist.ac.kr
+   HostName planetlab1.netmedia.gist.ac.kr
+   User goettingenple_txp1
+
+Host planetlab1.cs.uchicago.edu
+   HostName planetlab1.cs.uchicago.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.uchicago.edu
+   HostName planetlab2.cs.uchicago.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.purdue.edu
+   HostName planetlab2.cs.purdue.edu
+   User goettingenple_txp1
+
+Host planetlab2.cnds.jhu.edu
+   HostName planetlab2.cnds.jhu.edu
+   User goettingenple_txp1
+
+Host planetlab2.netmedia.gist.ac.kr
+   HostName planetlab2.netmedia.gist.ac.kr
+   User goettingenple_txp1
+
+Host pli1-pa-1.hpl.hp.com
+   HostName pli1-pa-1.hpl.hp.com
+   User goettingenple_txp1
+
+Host pli1-pa-2.hpl.hp.com
+   HostName pli1-pa-2.hpl.hp.com
+   User goettingenple_txp1
+
+Host pli1-pa-3.hpl.hp.com
+   HostName pli1-pa-3.hpl.hp.com
+   User goettingenple_txp1
+
+Host pl1.cs.unm.edu
+   HostName pl1.cs.unm.edu
+   User goettingenple_txp1
+
+Host planetlab2.utep.edu
+   HostName planetlab2.utep.edu
+   User goettingenple_txp1
+
+Host pl2-higashi.ics.es.osaka-u.ac.jp
+   HostName pl2-higashi.ics.es.osaka-u.ac.jp
+   User goettingenple_txp1
+
+Host planetlab1.cse.msu.edu
+   HostName planetlab1.cse.msu.edu
+   User goettingenple_txp1
+
+Host planetlab-1a.ics.uci.edu
+   HostName planetlab-1a.ics.uci.edu
+   User goettingenple_txp1
+
+Host planetlab2.cse.msu.edu
+   HostName planetlab2.cse.msu.edu
+   User goettingenple_txp1
+
+Host planetlab1.uc.edu
+   HostName planetlab1.uc.edu
+   User goettingenple_txp1
+
+Host planetlab-01.ece.uprm.edu
+   HostName planetlab-01.ece.uprm.edu
+   User goettingenple_txp1
+
+Host planetlab-02.ece.uprm.edu
+   HostName planetlab-02.ece.uprm.edu
+   User goettingenple_txp1
+
+Host planetlab4.cs.uiuc.edu
+   HostName planetlab4.cs.uiuc.edu
+   User goettingenple_txp1
+
+Host planetlab1.pop-mg.rnp.br
+   HostName planetlab1.pop-mg.rnp.br
+   User goettingenple_txp1
+
+Host planetlab2.pop-mg.rnp.br
+   HostName planetlab2.pop-mg.rnp.br
+   User goettingenple_txp1
+
+Host planetlab-2a.ics.uci.edu
+   HostName planetlab-2a.ics.uci.edu
+   User goettingenple_txp1
+
+Host planet0.jaist.ac.jp
+   HostName planet0.jaist.ac.jp
+   User goettingenple_txp1
+
+Host planet1.jaist.ac.jp
+   HostName planet1.jaist.ac.jp
+   User goettingenple_txp1
+
+Host planetlab02.cs.washington.edu
+   HostName planetlab02.cs.washington.edu
+   User goettingenple_txp1
+
+Host planetlab2.uc.edu
+   HostName planetlab2.uc.edu
+   User goettingenple_txp1
+
+Host planetlab-1.vuse.vanderbilt.edu
+   HostName planetlab-1.vuse.vanderbilt.edu
+   User goettingenple_txp1
+
+Host planetlab-2.vuse.vanderbilt.edu
+   HostName planetlab-2.vuse.vanderbilt.edu
+   User goettingenple_txp1
+
+Host server2.planetlab.iit-tech.net
+   HostName server2.planetlab.iit-tech.net
+   User goettingenple_txp1
+
+Host planetlab-1.usask.ca
+   HostName planetlab-1.usask.ca
+   User goettingenple_txp1
+
+Host planetlab-2.usask.ca
+   HostName planetlab-2.usask.ca
+   User goettingenple_txp1
+
+Host planetlab2.cs.cornell.edu
+   HostName planetlab2.cs.cornell.edu
+   User goettingenple_txp1
+
+Host planetlab1.eecs.wsu.edu
+   HostName planetlab1.eecs.wsu.edu
+   User goettingenple_txp1
+
+Host planetlab2.eecs.wsu.edu
+   HostName planetlab2.eecs.wsu.edu
+   User goettingenple_txp1
+
+Host planetlab1.sfc.wide.ad.jp
+   HostName planetlab1.sfc.wide.ad.jp
+   User goettingenple_txp1
+
+Host planetlab3.csail.mit.edu
+   HostName planetlab3.csail.mit.edu
+   User goettingenple_txp1
+
+Host planetlab1.cesnet.cz
+   HostName planetlab1.cesnet.cz
+   User goettingenple_txp1
+
+Host planetlab04.cs.washington.edu
+   HostName planetlab04.cs.washington.edu
+   User goettingenple_txp1
+
+Host planetlab2.cesnet.cz
+   HostName planetlab2.cesnet.cz
+   User goettingenple_txp1
+
+Host kc-sce-plab1.umkc.edu
+   HostName kc-sce-plab1.umkc.edu
+   User goettingenple_txp1
+
+Host kc-sce-plab2.umkc.edu
+   HostName kc-sce-plab2.umkc.edu
+   User goettingenple_txp1
+
+Host planetlab3.netmedia.gist.ac.kr
+   HostName planetlab3.netmedia.gist.ac.kr
+   User goettingenple_txp1
+
+Host planetlab1.ucsd.edu
+   HostName planetlab1.ucsd.edu
+   User goettingenple_txp1
+
+Host planetlab2.ucsd.edu
+   HostName planetlab2.ucsd.edu
+   User goettingenple_txp1
+
+Host planetlab3.ucsd.edu
+   HostName planetlab3.ucsd.edu
+   User goettingenple_txp1
+
+Host pl3.sos.info.hiroshima-cu.ac.jp
+   HostName pl3.sos.info.hiroshima-cu.ac.jp
+   User goettingenple_txp1
+
+Host pl4.sos.info.hiroshima-cu.ac.jp
+   HostName pl4.sos.info.hiroshima-cu.ac.jp
+   User goettingenple_txp1
+
+Host planetlab2.piotrkow.rd.tp.pl
+   HostName planetlab2.piotrkow.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab1.piotrkow.rd.tp.pl
+   HostName planetlab1.piotrkow.rd.tp.pl
+   User goettingenple_txp1
+
+Host csplanetlab3.kaist.ac.kr
+   HostName csplanetlab3.kaist.ac.kr
+   User goettingenple_txp1
+
+Host plab1.engr.sjsu.edu
+   HostName plab1.engr.sjsu.edu
+   User goettingenple_txp1
+
+Host plab2.engr.sjsu.edu
+   HostName plab2.engr.sjsu.edu
+   User goettingenple_txp1
+
+Host planet2.cc.gt.atl.ga.us
+   HostName planet2.cc.gt.atl.ga.us
+   User goettingenple_txp1
+
+Host planet3.cc.gt.atl.ga.us
+   HostName planet3.cc.gt.atl.ga.us
+   User goettingenple_txp1
+
+Host planet4.cc.gt.atl.ga.us
+   HostName planet4.cc.gt.atl.ga.us
+   User goettingenple_txp1
+
+Host planetlab0.otemachi.wide.ad.jp
+   HostName planetlab0.otemachi.wide.ad.jp
+   User goettingenple_txp1
+
+Host planetlab1.otemachi.wide.ad.jp
+   HostName planetlab1.otemachi.wide.ad.jp
+   User goettingenple_txp1
+
+Host planetlab0.dojima.wide.ad.jp
+   HostName planetlab0.dojima.wide.ad.jp
+   User goettingenple_txp1
+
+Host planetlab1.dojima.wide.ad.jp
+   HostName planetlab1.dojima.wide.ad.jp
+   User goettingenple_txp1
+
+Host planetlab1.swidnik.rd.tp.pl
+   HostName planetlab1.swidnik.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab1.ias.csusb.edu
+   HostName planetlab1.ias.csusb.edu
+   User goettingenple_txp1
+
+Host planetlab2.singaren.net.sg
+   HostName planetlab2.singaren.net.sg
+   User goettingenple_txp1
+
+Host planetlab7.csail.mit.edu
+   HostName planetlab7.csail.mit.edu
+   User goettingenple_txp1
+
+Host planetlab4.csail.mit.edu
+   HostName planetlab4.csail.mit.edu
+   User goettingenple_txp1
+
+Host planetlab-01.kusa.ac.jp
+   HostName planetlab-01.kusa.ac.jp
+   User goettingenple_txp1
+
+Host planetlab-02.kusa.ac.jp
+   HostName planetlab-02.kusa.ac.jp
+   User goettingenple_txp1
+
+Host planetlab1.emich.edu
+   HostName planetlab1.emich.edu
+   User goettingenple_txp1
+
+Host planetlab2.emich.edu
+   HostName planetlab2.emich.edu
+   User goettingenple_txp1
+
+Host planetlab1.iin-bit.com.cn
+   HostName planetlab1.iin-bit.com.cn
+   User goettingenple_txp1
+
+Host fobos.cecalc.ula.ve
+   HostName fobos.cecalc.ula.ve
+   User goettingenple_txp1
+
+Host planetlab1.gdansk.rd.tp.pl
+   HostName planetlab1.gdansk.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab2.gdansk.rd.tp.pl
+   HostName planetlab2.gdansk.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab1.nowogrodzka.rd.tp.pl
+   HostName planetlab1.nowogrodzka.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab5.cs.duke.edu
+   HostName planetlab5.cs.duke.edu
+   User goettingenple_txp1
+
+Host deimos.cecalc.ula.ve
+   HostName deimos.cecalc.ula.ve
+   User goettingenple_txp1
+
+Host planetlab2.nowogrodzka.rd.tp.pl
+   HostName planetlab2.nowogrodzka.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab5.cs.cornell.edu
+   HostName planetlab5.cs.cornell.edu
+   User goettingenple_txp1
+
+Host planetlab6.cs.cornell.edu
+   HostName planetlab6.cs.cornell.edu
+   User goettingenple_txp1
+
+Host planetlab4.ie.cuhk.edu.hk
+   HostName planetlab4.ie.cuhk.edu.hk
+   User goettingenple_txp1
+
+Host planetlab2.tudelft.nl
+   HostName planetlab2.tudelft.nl
+   User goettingenple_txp1
+
+Host planetlab5.ie.cuhk.edu.hk
+   HostName planetlab5.ie.cuhk.edu.hk
+   User goettingenple_txp1
+
+Host planetlab-03.naist.jp
+   HostName planetlab-03.naist.jp
+   User goettingenple_txp1
+
+Host planetlab-04.naist.jp
+   HostName planetlab-04.naist.jp
+   User goettingenple_txp1
+
+Host pllab2.kamgu.ru
+   HostName pllab2.kamgu.ru
+   User goettingenple_txp1
+
+Host planetlab2.cs.ubc.ca
+   HostName planetlab2.cs.ubc.ca
+   User goettingenple_txp1
+
+Host planetlab2.inf.ethz.ch
+   HostName planetlab2.inf.ethz.ch
+   User goettingenple_txp1
+
+Host planetlab3.mini.pw.edu.pl
+   HostName planetlab3.mini.pw.edu.pl
+   User goettingenple_txp1
+
+Host planetlab4.mini.pw.edu.pl
+   HostName planetlab4.mini.pw.edu.pl
+   User goettingenple_txp1
+
+Host planetlab2.eas.asu.edu
+   HostName planetlab2.eas.asu.edu
+   User goettingenple_txp1
+
+Host planetlab1.eas.asu.edu
+   HostName planetlab1.eas.asu.edu
+   User goettingenple_txp1
+
+Host planetlab4.flux.utah.edu
+   HostName planetlab4.flux.utah.edu
+   User goettingenple_txp1
+
+Host planetlab5.flux.utah.edu
+   HostName planetlab5.flux.utah.edu
+   User goettingenple_txp1
+
+Host planetlab02.uncc.edu
+   HostName planetlab02.uncc.edu
+   User goettingenple_txp1
+
+Host planetlab2.iin-bit.com.cn
+   HostName planetlab2.iin-bit.com.cn
+   User goettingenple_txp1
+
+Host pub1-s.ane.cmc.osaka-u.ac.jp
+   HostName pub1-s.ane.cmc.osaka-u.ac.jp
+   User goettingenple_txp1
+
+Host pub2-s.ane.cmc.osaka-u.ac.jp
+   HostName pub2-s.ane.cmc.osaka-u.ac.jp
+   User goettingenple_txp1
+
+Host planetlab1.citadel.edu
+   HostName planetlab1.citadel.edu
+   User goettingenple_txp1
+
+Host planetlab2.citadel.edu
+   HostName planetlab2.citadel.edu
+   User goettingenple_txp1
+
+Host planetlab3.inf.ethz.ch
+   HostName planetlab3.inf.ethz.ch
+   User goettingenple_txp1
+
+Host planetlab4.inf.ethz.ch
+   HostName planetlab4.inf.ethz.ch
+   User goettingenple_txp1
+
+Host planetlab1.arizona-gigapop.net
+   HostName planetlab1.arizona-gigapop.net
+   User goettingenple_txp1
+
+Host planetlab1-santiago.lan.redclara.net
+   HostName planetlab1-santiago.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlab2-santiago.lan.redclara.net
+   HostName planetlab2-santiago.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlab1-saopaulo.lan.redclara.net
+   HostName planetlab1-saopaulo.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlab2-saopaulo.lan.redclara.net
+   HostName planetlab2-saopaulo.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlabnode-1.docomolabs-usa.com
+   HostName planetlabnode-1.docomolabs-usa.com
+   User goettingenple_txp1
+
+Host planetlabnode-2.docomolabs-usa.com
+   HostName planetlabnode-2.docomolabs-usa.com
+   User goettingenple_txp1
+
+Host planetlab2-buenosaires.lan.redclara.net
+   HostName planetlab2-buenosaires.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlab1-tijuana.lan.redclara.net
+   HostName planetlab1-tijuana.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlab2-tijuana.lan.redclara.net
+   HostName planetlab2-tijuana.lan.redclara.net
+   User goettingenple_txp1
+
+Host pl1snu.koren.kr
+   HostName pl1snu.koren.kr
+   User goettingenple_txp1
+
+Host planetlab-05.cs.princeton.edu
+   HostName planetlab-05.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab2.byu.edu
+   HostName planetlab2.byu.edu
+   User goettingenple_txp1
+
+Host mercury.silicon-valley.ru
+   HostName mercury.silicon-valley.ru
+   User goettingenple_txp1
+
+Host venus.silicon-valley.ru
+   HostName venus.silicon-valley.ru
+   User goettingenple_txp1
+
+Host plab-1.sinp.msu.ru
+   HostName plab-1.sinp.msu.ru
+   User goettingenple_txp1
+
+Host plab-2.sinp.msu.ru
+   HostName plab-2.sinp.msu.ru
+   User goettingenple_txp1
+
+Host planetlabb.engr.ccny.cuny.edu
+   HostName planetlabb.engr.ccny.cuny.edu
+   User goettingenple_txp1
+
+Host planetlab3.piotrkow.rd.tp.pl
+   HostName planetlab3.piotrkow.rd.tp.pl
+   User goettingenple_txp1
+
+Host pllab1.kamgu.ru
+   HostName pllab1.kamgu.ru
+   User goettingenple_txp1
+
+Host planetlab-02.bu.edu
+   HostName planetlab-02.bu.edu
+   User goettingenple_txp1
+
+Host planetlab01.lums.edu.pk
+   HostName planetlab01.lums.edu.pk
+   User goettingenple_txp1
+
+Host planetlab02.lums.edu.pk
+   HostName planetlab02.lums.edu.pk
+   User goettingenple_txp1
+
+Host pli1-pa-5.hpl.hp.com
+   HostName pli1-pa-5.hpl.hp.com
+   User goettingenple_txp1
+
+Host planetlab1.eecs.ucf.edu
+   HostName planetlab1.eecs.ucf.edu
+   User goettingenple_txp1
+
+Host planetlab2.eecs.ucf.edu
+   HostName planetlab2.eecs.ucf.edu
+   User goettingenple_txp1
+
+Host planetlab4.warsaw.rd.tp.pl
+   HostName planetlab4.warsaw.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab1.williams.edu
+   HostName planetlab1.williams.edu
+   User goettingenple_txp1
+
+Host planetlab2.williams.edu
+   HostName planetlab2.williams.edu
+   User goettingenple_txp1
+
+Host planetlab3.williams.edu
+   HostName planetlab3.williams.edu
+   User goettingenple_txp1
+
+Host planetlab1.nileu.edu.eg
+   HostName planetlab1.nileu.edu.eg
+   User goettingenple_txp1
+
+Host planetlab2.lublin.rd.tp.pl
+   HostName planetlab2.lublin.rd.tp.pl
+   User goettingenple_txp1
+
+Host planetlab1.lublin.rd.tp.pl
+   HostName planetlab1.lublin.rd.tp.pl
+   User goettingenple_txp1
+
+Host pl4.planetlab.uvic.ca
+   HostName pl4.planetlab.uvic.ca
+   User goettingenple_txp1
+
+Host pluto.cs.binghamton.edu
+   HostName pluto.cs.binghamton.edu
+   User goettingenple_txp1
+
+Host planetlab02.sys.virginia.edu
+   HostName planetlab02.sys.virginia.edu
+   User goettingenple_txp1
+
+Host pl1.planetlab.uvic.ca
+   HostName pl1.planetlab.uvic.ca
+   User goettingenple_txp1
+
+Host pl3.planetlab.uvic.ca
+   HostName pl3.planetlab.uvic.ca
+   User goettingenple_txp1
+
+Host planetlab1.comp.nus.edu.sg
+   HostName planetlab1.comp.nus.edu.sg
+   User goettingenple_txp1
+
+Host planetlab2.comp.nus.edu.sg
+   HostName planetlab2.comp.nus.edu.sg
+   User goettingenple_txp1
+
+Host saturn.cs.brown.edu
+   HostName saturn.cs.brown.edu
+   User goettingenple_txp1
+
+Host jupiter.cs.brown.edu
+   HostName jupiter.cs.brown.edu
+   User goettingenple_txp1
+
+Host pluto.cs.brown.edu
+   HostName pluto.cs.brown.edu
+   User goettingenple_txp1
+
+Host planetlab1.iitr.ernet.in
+   HostName planetlab1.iitr.ernet.in
+   User goettingenple_txp1
+
+Host node01.verivue.princeton.edu
+   HostName node01.verivue.princeton.edu
+   User goettingenple_txp1
+
+Host planetlabone.ccs.neu.edu
+   HostName planetlabone.ccs.neu.edu
+   User goettingenple_txp1
+
+Host planet-lab1.ufabc.edu.br
+   HostName planet-lab1.ufabc.edu.br
+   User goettingenple_txp1
+
+Host planet-lab2.ufabc.edu.br
+   HostName planet-lab2.ufabc.edu.br
+   User goettingenple_txp1
+
+Host planetlab2.cs.unc.edu
+   HostName planetlab2.cs.unc.edu
+   User goettingenple_txp1
+
+Host mtuplanetlab1.cs.mtu.edu
+   HostName mtuplanetlab1.cs.mtu.edu
+   User goettingenple_txp1
+
+Host planet3.cs.ucsb.edu
+   HostName planet3.cs.ucsb.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.uoregon.edu
+   HostName planetlab1.cs.uoregon.edu
+   User goettingenple_txp1
+
+Host planetlab15.millennium.berkeley.edu
+   HostName planetlab15.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab16.millennium.berkeley.edu
+   HostName planetlab16.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.umb.edu
+   HostName planetlab2.cs.umb.edu
+   User goettingenple_txp1
+
+Host planetlab2.dtc.umn.edu
+   HostName planetlab2.dtc.umn.edu
+   User goettingenple_txp1
+
+Host pl1.bit.uoit.ca
+   HostName pl1.bit.uoit.ca
+   User goettingenple_txp1
+
+Host pl2.bit.uoit.ca
+   HostName pl2.bit.uoit.ca
+   User goettingenple_txp1
+
+Host planetlab1.n.info.eng.osaka-cu.ac.jp
+   HostName planetlab1.n.info.eng.osaka-cu.ac.jp
+   User goettingenple_txp1
+
+Host plgmu2.ite.gmu.edu
+   HostName plgmu2.ite.gmu.edu
+   User goettingenple_txp1
+
+Host planet1.ku.edu.tr
+   HostName planet1.ku.edu.tr
+   User goettingenple_txp1
+
+Host planet2.ku.edu.tr
+   HostName planet2.ku.edu.tr
+   User goettingenple_txp1
+
+Host cs-planetlab3.cs.surrey.sfu.ca
+   HostName cs-planetlab3.cs.surrey.sfu.ca
+   User goettingenple_txp1
+
+Host planetlab1.csie.nuk.edu.tw
+   HostName planetlab1.csie.nuk.edu.tw
+   User goettingenple_txp1
+
+Host planetlab2.csie.nuk.edu.tw
+   HostName planetlab2.csie.nuk.edu.tw
+   User goettingenple_txp1
+
+Host planetlab3.csee.usf.edu
+   HostName planetlab3.csee.usf.edu
+   User goettingenple_txp1
+
+Host pl1.ucs.indiana.edu
+   HostName pl1.ucs.indiana.edu
+   User goettingenple_txp1
+
+Host pl2.ucs.indiana.edu
+   HostName pl2.ucs.indiana.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.umb.edu
+   HostName planetlab1.cs.umb.edu
+   User goettingenple_txp1
+
+Host planetlab2.n.info.eng.osaka-cu.ac.jp
+   HostName planetlab2.n.info.eng.osaka-cu.ac.jp
+   User goettingenple_txp1
+
+Host cs-planetlab4.cs.surrey.sfu.ca
+   HostName cs-planetlab4.cs.surrey.sfu.ca
+   User goettingenple_txp1
+
+Host planetlab5.csres.utexas.edu
+   HostName planetlab5.csres.utexas.edu
+   User goettingenple_txp1
+
+Host planetlab4.csee.usf.edu
+   HostName planetlab4.csee.usf.edu
+   User goettingenple_txp1
+
+Host netapp6.cs.kookmin.ac.kr
+   HostName netapp6.cs.kookmin.ac.kr
+   User goettingenple_txp1
+
+Host netapp7.cs.kookmin.ac.kr
+   HostName netapp7.cs.kookmin.ac.kr
+   User goettingenple_txp1
+
+Host planetlab3.eecs.northwestern.edu
+   HostName planetlab3.eecs.northwestern.edu
+   User goettingenple_txp1
+
+Host planetlab1.buaa.edu.cn
+   HostName planetlab1.buaa.edu.cn
+   User goettingenple_txp1
+
+Host node1.planetlab.mathcs.emory.edu
+   HostName node1.planetlab.mathcs.emory.edu
+   User goettingenple_txp1
+
+Host planetlab4.williams.edu
+   HostName planetlab4.williams.edu
+   User goettingenple_txp1
+
+Host planetlab5.williams.edu
+   HostName planetlab5.williams.edu
+   User goettingenple_txp1
+
+Host planetslug4.cse.ucsc.edu
+   HostName planetslug4.cse.ucsc.edu
+   User goettingenple_txp1
+
+Host planetslug5.cse.ucsc.edu
+   HostName planetslug5.cse.ucsc.edu
+   User goettingenple_txp1
+
+Host plab1.larc.usp.br
+   HostName plab1.larc.usp.br
+   User goettingenple_txp1
+
+Host planetlab3.cse.nd.edu
+   HostName planetlab3.cse.nd.edu
+   User goettingenple_txp1
+
+Host planetlab4.cse.nd.edu
+   HostName planetlab4.cse.nd.edu
+   User goettingenple_txp1
+
+Host node2.planetlab.mathcs.emory.edu
+   HostName node2.planetlab.mathcs.emory.edu
+   User goettingenple_txp1
+
+Host planetlab6.flux.utah.edu
+   HostName planetlab6.flux.utah.edu
+   User goettingenple_txp1
+
+Host planetlab7.flux.utah.edu
+   HostName planetlab7.flux.utah.edu
+   User goettingenple_txp1
+
+Host planetlab2.arizona-gigapop.net
+   HostName planetlab2.arizona-gigapop.net
+   User goettingenple_txp1
+
+Host mtuplanetlab2.cs.mtu.edu
+   HostName mtuplanetlab2.cs.mtu.edu
+   User goettingenple_txp1
+
+Host planetlab4.eecs.umich.edu
+   HostName planetlab4.eecs.umich.edu
+   User goettingenple_txp1
+
+Host planetlab3.wail.wisc.edu
+   HostName planetlab3.wail.wisc.edu
+   User goettingenple_txp1
+
+Host planetlab4.wail.wisc.edu
+   HostName planetlab4.wail.wisc.edu
+   User goettingenple_txp1
+
+Host planet-lab1.itba.edu.ar
+   HostName planet-lab1.itba.edu.ar
+   User goettingenple_txp1
+
+Host planetlab1.unl.edu
+   HostName planetlab1.unl.edu
+   User goettingenple_txp1
+
+Host planetlab2.unl.edu
+   HostName planetlab2.unl.edu
+   User goettingenple_txp1
+
+Host planetlab3.comp.nus.edu.sg
+   HostName planetlab3.comp.nus.edu.sg
+   User goettingenple_txp1
+
+Host planetlab2.utdallas.edu
+   HostName planetlab2.utdallas.edu
+   User goettingenple_txp1
+
+Host planet-lab2.cs.ucr.edu
+   HostName planet-lab2.cs.ucr.edu
+   User goettingenple_txp1
+
+Host server3.planetlab.iit-tech.net
+   HostName server3.planetlab.iit-tech.net
+   User goettingenple_txp1
+
+Host nis-planet1.doshisha.ac.jp
+   HostName nis-planet1.doshisha.ac.jp
+   User goettingenple_txp1
+
+Host nis-planet2.doshisha.ac.jp
+   HostName nis-planet2.doshisha.ac.jp
+   User goettingenple_txp1
+
+Host planetlab1.csee.usf.edu
+   HostName planetlab1.csee.usf.edu
+   User goettingenple_txp1
+
+Host planetlab-2.calpoly-netlab.net
+   HostName planetlab-2.calpoly-netlab.net
+   User goettingenple_txp1
+
+Host planetlab3.postel.org
+   HostName planetlab3.postel.org
+   User goettingenple_txp1
+
+Host planetlab4.postel.org
+   HostName planetlab4.postel.org
+   User goettingenple_txp1
+
+Host plab3.eece.ksu.edu
+   HostName plab3.eece.ksu.edu
+   User goettingenple_txp1
+
+Host planet-lab1.uba.ar
+   HostName planet-lab1.uba.ar
+   User goettingenple_txp1
+
+Host planet-lab2.itba.edu.ar
+   HostName planet-lab2.itba.edu.ar
+   User goettingenple_txp1
+
+Host vn5.cse.wustl.edu
+   HostName vn5.cse.wustl.edu
+   User goettingenple_txp1
+
+Host plonk.cs.uwaterloo.ca
+   HostName plonk.cs.uwaterloo.ca
+   User goettingenple_txp1
+
+Host planetlab1.c3sl.ufpr.br
+   HostName planetlab1.c3sl.ufpr.br
+   User goettingenple_txp1
+
+Host planetlab2.c3sl.ufpr.br
+   HostName planetlab2.c3sl.ufpr.br
+   User goettingenple_txp1
+
+Host planetlab2.cs.otago.ac.nz
+   HostName planetlab2.cs.otago.ac.nz
+   User goettingenple_txp1
+
+Host planetlab1.cs.ucl.ac.uk
+   HostName planetlab1.cs.ucl.ac.uk
+   User goettingenple_txp1
+
+Host planetlab2.cs.ucl.ac.uk
+   HostName planetlab2.cs.ucl.ac.uk
+   User goettingenple_txp1
+
+Host planetlab2.csee.usf.edu
+   HostName planetlab2.csee.usf.edu
+   User goettingenple_txp1
+
+Host planetlab9.millennium.berkeley.edu
+   HostName planetlab9.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host node1.planetlab.albany.edu
+   HostName node1.planetlab.albany.edu
+   User goettingenple_txp1
+
+Host node2.planetlab.albany.edu
+   HostName node2.planetlab.albany.edu
+   User goettingenple_txp1
+
+Host roam1.cs.ou.edu
+   HostName roam1.cs.ou.edu
+   User goettingenple_txp1
+
+Host roam2.cs.ou.edu
+   HostName roam2.cs.ou.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.otago.ac.nz
+   HostName planetlab1.cs.otago.ac.nz
+   User goettingenple_txp1
+
+Host node1.planet-lab.titech.ac.jp
+   HostName node1.planet-lab.titech.ac.jp
+   User goettingenple_txp1
+
+Host node3.planet-lab.titech.ac.jp
+   HostName node3.planet-lab.titech.ac.jp
+   User goettingenple_txp1
+
+Host node4.planet-lab.titech.ac.jp
+   HostName node4.planet-lab.titech.ac.jp
+   User goettingenple_txp1
+
+Host pl1.cewit.stonybrook.edu
+   HostName pl1.cewit.stonybrook.edu
+   User goettingenple_txp1
+
+Host pl2.cewit.stonybrook.edu
+   HostName pl2.cewit.stonybrook.edu
+   User goettingenple_txp1
+
+Host charon.cs.binghamton.edu
+   HostName charon.cs.binghamton.edu
+   User goettingenple_txp1
+
+Host pl1.planet.cs.kent.edu
+   HostName pl1.planet.cs.kent.edu
+   User goettingenple_txp1
+
+Host osiris.planetlab.cs.umd.edu
+   HostName osiris.planetlab.cs.umd.edu
+   User goettingenple_txp1
+
+Host whitefall.planetlab.cs.umd.edu
+   HostName whitefall.planetlab.cs.umd.edu
+   User goettingenple_txp1
+
+Host pl2.planet.cs.kent.edu
+   HostName pl2.planet.cs.kent.edu
+   User goettingenple_txp1
+
+Host planetlab2.poly.edu
+   HostName planetlab2.poly.edu
+   User goettingenple_txp1
+
+Host planet-lab2.uba.ar
+   HostName planet-lab2.uba.ar
+   User goettingenple_txp1
+
+Host pn1-planetlab.huawei.com
+   HostName pn1-planetlab.huawei.com
+   User goettingenple_txp1
+
+Host pn2-planetlab.huawei.com
+   HostName pn2-planetlab.huawei.com
+   User goettingenple_txp1
+
+Host planetlab3.n.info.eng.osaka-cu.ac.jp
+   HostName planetlab3.n.info.eng.osaka-cu.ac.jp
+   User goettingenple_txp1
+
+Host planetlab-01.cs.princeton.edu
+   HostName planetlab-01.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab-02.cs.princeton.edu
+   HostName planetlab-02.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab-03.cs.princeton.edu
+   HostName planetlab-03.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab-04.cs.princeton.edu
+   HostName planetlab-04.cs.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab1.ntu.nodes.planet-lab.org
+   HostName planetlab1.ntu.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host planetlab01.cs.washington.edu
+   HostName planetlab01.cs.washington.edu
+   User goettingenple_txp1
+
+Host planetlab-1.cs.auckland.ac.nz
+   HostName planetlab-1.cs.auckland.ac.nz
+   User goettingenple_txp1
+
+Host planetlab-2.cs.auckland.ac.nz
+   HostName planetlab-2.cs.auckland.ac.nz
+   User goettingenple_txp1
+
+Host pl1.rcc.uottawa.ca
+   HostName pl1.rcc.uottawa.ca
+   User goettingenple_txp1
+
+Host planetlab4.n.info.eng.osaka-cu.ac.jp
+   HostName planetlab4.n.info.eng.osaka-cu.ac.jp
+   User goettingenple_txp1
+
+Host pl2.rcc.uottawa.ca
+   HostName pl2.rcc.uottawa.ca
+   User goettingenple_txp1
+
+Host planetlab2.nileu.edu.eg
+   HostName planetlab2.nileu.edu.eg
+   User goettingenple_txp1
+
+Host planetlab1.utep.edu
+   HostName planetlab1.utep.edu
+   User goettingenple_txp1
+
+Host plab4.eece.ksu.edu
+   HostName plab4.eece.ksu.edu
+   User goettingenple_txp1
+
+Host planetlab6.goto.info.waseda.ac.jp
+   HostName planetlab6.goto.info.waseda.ac.jp
+   User goettingenple_txp1
+
+Host planetlab03.cs.washington.edu
+   HostName planetlab03.cs.washington.edu
+   User goettingenple_txp1
+
+Host pl1-higashi.ics.es.osaka-u.ac.jp
+   HostName pl1-higashi.ics.es.osaka-u.ac.jp
+   User goettingenple_txp1
+
+Host planetlab3.cs.uiuc.edu
+   HostName planetlab3.cs.uiuc.edu
+   User goettingenple_txp1
+
+Host salt.planetlab.cs.umd.edu
+   HostName salt.planetlab.cs.umd.edu
+   User goettingenple_txp1
+
+Host planetlab2.csuohio.edu
+   HostName planetlab2.csuohio.edu
+   User goettingenple_txp1
+
+Host planetlab1.csuohio.edu
+   HostName planetlab1.csuohio.edu
+   User goettingenple_txp1
+
+Host planetlab-1.cs.uic.edu
+   HostName planetlab-1.cs.uic.edu
+   User goettingenple_txp1
+
+Host planetlab-2.cs.uic.edu
+   HostName planetlab-2.cs.uic.edu
+   User goettingenple_txp1
+
+Host plnodea.plaust.edu.cn
+   HostName plnodea.plaust.edu.cn
+   User goettingenple_txp1
+
+Host flow.colgate.edu
+   HostName flow.colgate.edu
+   User goettingenple_txp1
+
+Host node0.planetlab.etl.luc.edu
+   HostName node0.planetlab.etl.luc.edu
+   User goettingenple_txp1
+
+Host node1.planetlab.etl.luc.edu
+   HostName node1.planetlab.etl.luc.edu
+   User goettingenple_txp1
+
+Host planetlab-2.webedu.ccu.edu.tw
+   HostName planetlab-2.webedu.ccu.edu.tw
+   User goettingenple_txp1
+
+Host planetlab-01.vt.nodes.planet-lab.org
+   HostName planetlab-01.vt.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host planetlab-02.vt.nodes.planet-lab.org
+   HostName planetlab-02.vt.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host metis.mcs.suffolk.edu
+   HostName metis.mcs.suffolk.edu
+   User goettingenple_txp1
+
+Host adrastea.mcs.suffolk.edu
+   HostName adrastea.mcs.suffolk.edu
+   User goettingenple_txp1
+
+Host planetlab4.cs.uoregon.edu
+   HostName planetlab4.cs.uoregon.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.uoregon.edu
+   HostName planetlab2.cs.uoregon.edu
+   User goettingenple_txp1
+
+Host planet4.cs.ucsb.edu
+   HostName planet4.cs.ucsb.edu
+   User goettingenple_txp1
+
+Host planetlab2.ece.ucdavis.edu
+   HostName planetlab2.ece.ucdavis.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.ucla.edu
+   HostName planetlab1.cs.ucla.edu
+   User goettingenple_txp1
+
+Host planetlab12.millennium.berkeley.edu
+   HostName planetlab12.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab5.millennium.berkeley.edu
+   HostName planetlab5.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab13.millennium.berkeley.edu
+   HostName planetlab13.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab-1.sjtu.edu.cn
+   HostName planetlab-1.sjtu.edu.cn
+   User goettingenple_txp1
+
+Host planetlab-2.sjtu.edu.cn
+   HostName planetlab-2.sjtu.edu.cn
+   User goettingenple_txp1
+
+Host planetlab6.millennium.berkeley.edu
+   HostName planetlab6.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab7.millennium.berkeley.edu
+   HostName planetlab7.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab10.millennium.berkeley.edu
+   HostName planetlab10.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab11.millennium.berkeley.edu
+   HostName planetlab11.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab1.just.edu.jo
+   HostName planetlab1.just.edu.jo
+   User goettingenple_txp1
+
+Host planetlab1.bgu.ac.il
+   HostName planetlab1.bgu.ac.il
+   User goettingenple_txp1
+
+Host planetlab2.bgu.ac.il
+   HostName planetlab2.bgu.ac.il
+   User goettingenple_txp1
+
+Host vn4.cse.wustl.edu
+   HostName vn4.cse.wustl.edu
+   User goettingenple_txp1
+
+Host planetlab6.cs.duke.edu
+   HostName planetlab6.cs.duke.edu
+   User goettingenple_txp1
+
+Host planetlab2.ntu.nodes.planet-lab.org
+   HostName planetlab2.ntu.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host planetlab7.cs.duke.edu
+   HostName planetlab7.cs.duke.edu
+   User goettingenple_txp1
+
+Host planet11.csc.ncsu.edu
+   HostName planet11.csc.ncsu.edu
+   User goettingenple_txp1
+
+Host planetlab5.eecs.umich.edu
+   HostName planetlab5.eecs.umich.edu
+   User goettingenple_txp1
+
+Host planet12.csc.ncsu.edu
+   HostName planet12.csc.ncsu.edu
+   User goettingenple_txp1
+
+Host ebb.colgate.edu
+   HostName ebb.colgate.edu
+   User goettingenple_txp1
+
+Host planetlab5.cs.uiuc.edu
+   HostName planetlab5.cs.uiuc.edu
+   User goettingenple_txp1
+
+Host planetlab6.cs.uiuc.edu
+   HostName planetlab6.cs.uiuc.edu
+   User goettingenple_txp1
+
+Host pl1.pku.edu.cn
+   HostName pl1.pku.edu.cn
+   User goettingenple_txp1
+
+Host mnc1.pusan.ac.kr
+   HostName mnc1.pusan.ac.kr
+   User goettingenple_txp1
+
+Host mnc2.pusan.ac.kr
+   HostName mnc2.pusan.ac.kr
+   User goettingenple_txp1
+
+Host planetlab-3.ics.uci.edu
+   HostName planetlab-3.ics.uci.edu
+   User goettingenple_txp1
+
+Host planetlab1.keldysh.ru
+   HostName planetlab1.keldysh.ru
+   User goettingenple_txp1
+
+Host pl2snu.koren.kr
+   HostName pl2snu.koren.kr
+   User goettingenple_txp1
+
+Host planetlab-03.vt.nodes.planet-lab.org
+   HostName planetlab-03.vt.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host planetlab-04.vt.nodes.planet-lab.org
+   HostName planetlab-04.vt.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host planetlab2.plab.ege.edu.tr
+   HostName planetlab2.plab.ege.edu.tr
+   User goettingenple_txp1
+
+Host planetlab05.cs.washington.edu
+   HostName planetlab05.cs.washington.edu
+   User goettingenple_txp1
+
+Host planetlab06.cs.washington.edu
+   HostName planetlab06.cs.washington.edu
+   User goettingenple_txp1
+
+Host nw144.csie.ncu.edu.tw
+   HostName nw144.csie.ncu.edu.tw
+   User goettingenple_txp1
+
+Host planetslug7.cse.ucsc.edu
+   HostName planetslug7.cse.ucsc.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.colorado.edu
+   HostName planetlab2.cs.colorado.edu
+   User goettingenple_txp1
+
+Host planetlab5.csee.usf.edu
+   HostName planetlab5.csee.usf.edu
+   User goettingenple_txp1
+
+Host planetlab2.keldysh.ru
+   HostName planetlab2.keldysh.ru
+   User goettingenple_txp1
+
+Host planetlab-4.eecs.cwru.edu
+   HostName planetlab-4.eecs.cwru.edu
+   User goettingenple_txp1
+
+Host pl1.eng.monash.edu.au
+   HostName pl1.eng.monash.edu.au
+   User goettingenple_txp1
+
+Host planetlab3.cnds.jhu.edu
+   HostName planetlab3.cnds.jhu.edu
+   User goettingenple_txp1
+
+Host planetlab4.cnds.jhu.edu
+   HostName planetlab4.cnds.jhu.edu
+   User goettingenple_txp1
+
+Host pl2.eng.monash.edu.au
+   HostName pl2.eng.monash.edu.au
+   User goettingenple_txp1
+
+Host planetlab4.cs.uchicago.edu
+   HostName planetlab4.cs.uchicago.edu
+   User goettingenple_txp1
+
+Host pl3.planet.cs.kent.edu
+   HostName pl3.planet.cs.kent.edu
+   User goettingenple_txp1
+
+Host planetlab-6.ece.iastate.edu
+   HostName planetlab-6.ece.iastate.edu
+   User goettingenple_txp1
+
+Host pl1.sos.info.hiroshima-cu.ac.jp
+   HostName pl1.sos.info.hiroshima-cu.ac.jp
+   User goettingenple_txp1
+
+Host pl-node-0.csl.sri.com
+   HostName pl-node-0.csl.sri.com
+   User goettingenple_txp1
+
+Host planetlab-2.pdl.nudt.edu.cn
+   HostName planetlab-2.pdl.nudt.edu.cn
+   User goettingenple_txp1
+
+Host planetlab-1.pdl.nudt.edu.cn
+   HostName planetlab-1.pdl.nudt.edu.cn
+   User goettingenple_txp1
+
+Host plgmu3.ite.gmu.edu
+   HostName plgmu3.ite.gmu.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.dartmouth.edu
+   HostName planetlab1.cs.dartmouth.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.dartmouth.edu
+   HostName planetlab2.cs.dartmouth.edu
+   User goettingenple_txp1
+
+Host planetlab2.uta.edu
+   HostName planetlab2.uta.edu
+   User goettingenple_txp1
+
+Host pli1-pa-6.hpl.hp.com
+   HostName pli1-pa-6.hpl.hp.com
+   User goettingenple_txp1
+
+Host planetlab6.csres.utexas.edu
+   HostName planetlab6.csres.utexas.edu
+   User goettingenple_txp1
+
+Host planetlab7.csres.utexas.edu
+   HostName planetlab7.csres.utexas.edu
+   User goettingenple_txp1
+
+Host ricepl-4.cs.rice.edu
+   HostName ricepl-4.cs.rice.edu
+   User goettingenple_txp1
+
+Host ricepl-5.cs.rice.edu
+   HostName ricepl-5.cs.rice.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.colorado.edu
+   HostName planetlab1.cs.colorado.edu
+   User goettingenple_txp1
+
+Host pnode2.pdcc-ntu.singaren.net.sg
+   HostName pnode2.pdcc-ntu.singaren.net.sg
+   User goettingenple_txp1
+
+Host pl2.pku.edu.cn
+   HostName pl2.pku.edu.cn
+   User goettingenple_txp1
+
+Host planetlab1.simula.no
+   HostName planetlab1.simula.no
+   User goettingenple_txp1
+
+Host pnode1.pdcc-ntu.singaren.net.sg
+   HostName pnode1.pdcc-ntu.singaren.net.sg
+   User goettingenple_txp1
+
+Host nodeb.howard.edu
+   HostName nodeb.howard.edu
+   User goettingenple_txp1
+
+Host planetlab02.just.edu.jo
+   HostName planetlab02.just.edu.jo
+   User goettingenple_txp1
+
+Host plgmu5.ite.gmu.edu
+   HostName plgmu5.ite.gmu.edu
+   User goettingenple_txp1
+
+Host planetlab1.ecs.vuw.ac.nz
+   HostName planetlab1.ecs.vuw.ac.nz
+   User goettingenple_txp1
+
+Host planetlab2.ecs.vuw.ac.nz
+   HostName planetlab2.ecs.vuw.ac.nz
+   User goettingenple_txp1
+
+Host planet5.cs.ucsb.edu
+   HostName planet5.cs.ucsb.edu
+   User goettingenple_txp1
+
+Host planet6.cs.ucsb.edu
+   HostName planet6.cs.ucsb.edu
+   User goettingenple_txp1
+
+Host plnode-03.gpolab.bbn.com
+   HostName plnode-03.gpolab.bbn.com
+   User goettingenple_txp1
+
+Host plnode-04.gpolab.bbn.com
+   HostName plnode-04.gpolab.bbn.com
+   User goettingenple_txp1
+
+Host server1.planetlab.iit-tech.net
+   HostName server1.planetlab.iit-tech.net
+   User goettingenple_txp1
+
+Host planetlab2.pop-pa.rnp.br
+   HostName planetlab2.pop-pa.rnp.br
+   User goettingenple_txp1
+
+Host planetlab1.ece.ucdavis.edu
+   HostName planetlab1.ece.ucdavis.edu
+   User goettingenple_txp1
+
+Host planetlab4.canterbury.ac.nz
+   HostName planetlab4.canterbury.ac.nz
+   User goettingenple_txp1
+
+Host planetlab2.cs.stevens-tech.edu
+   HostName planetlab2.cs.stevens-tech.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.stevens-tech.edu
+   HostName planetlab1.cs.stevens-tech.edu
+   User goettingenple_txp1
+
+Host planetlab2.tamu.edu
+   HostName planetlab2.tamu.edu
+   User goettingenple_txp1
+
+Host planetlab1.pop-pa.rnp.br
+   HostName planetlab1.pop-pa.rnp.br
+   User goettingenple_txp1
+
+Host planetlab2.cs.uml.edu
+   HostName planetlab2.cs.uml.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.uml.edu
+   HostName planetlab1.cs.uml.edu
+   User goettingenple_txp1
+
+Host planetlab6.csee.usf.edu
+   HostName planetlab6.csee.usf.edu
+   User goettingenple_txp1
+
+Host planetlab-n2.wand.net.nz
+   HostName planetlab-n2.wand.net.nz
+   User goettingenple_txp1
+
+Host planet-plc-3.mpi-sws.org
+   HostName planet-plc-3.mpi-sws.org
+   User goettingenple_txp1
+
+Host planetlab2.clemson.edu
+   HostName planetlab2.clemson.edu
+   User goettingenple_txp1
+
+Host planet-plc-4.mpi-sws.org
+   HostName planet-plc-4.mpi-sws.org
+   User goettingenple_txp1
+
+Host planetlab-2.elisa.cpsc.ucalgary.ca
+   HostName planetlab-2.elisa.cpsc.ucalgary.ca
+   User goettingenple_txp1
+
+Host pl1.6test.edu.cn
+   HostName pl1.6test.edu.cn
+   User goettingenple_txp1
+
+Host pl2.6test.edu.cn
+   HostName pl2.6test.edu.cn
+   User goettingenple_txp1
+
+Host planetlab3.rutgers.edu
+   HostName planetlab3.rutgers.edu
+   User goettingenple_txp1
+
+Host planetlab4.rutgers.edu
+   HostName planetlab4.rutgers.edu
+   User goettingenple_txp1
+
+Host planetlab1.jhu.edu
+   HostName planetlab1.jhu.edu
+   User goettingenple_txp1
+
+Host planetlab2.jhu.edu
+   HostName planetlab2.jhu.edu
+   User goettingenple_txp1
+
+Host planetlab4.netmedia.gist.ac.kr
+   HostName planetlab4.netmedia.gist.ac.kr
+   User goettingenple_txp1
+
+Host ttu1-1.nodes.planet-lab.org
+   HostName ttu1-1.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host ttu2-1.nodes.planet-lab.org
+   HostName ttu2-1.nodes.planet-lab.org
+   User goettingenple_txp1
+
+Host planetlab1.ustc.edu.cn
+   HostName planetlab1.ustc.edu.cn
+   User goettingenple_txp1
+
+Host planetlab1.bupt.edu.cn
+   HostName planetlab1.bupt.edu.cn
+   User goettingenple_txp1
+
+Host planetlab2.bupt.edu.cn
+   HostName planetlab2.bupt.edu.cn
+   User goettingenple_txp1
+
+Host pl2.sos.info.hiroshima-cu.ac.jp
+   HostName pl2.sos.info.hiroshima-cu.ac.jp
+   User goettingenple_txp1
+
+Host planetlab2.cse.nd.edu
+   HostName planetlab2.cse.nd.edu
+   User goettingenple_txp1
+
+Host of-planet5.stanford.edu
+   HostName of-planet5.stanford.edu
+   User goettingenple_txp1
+
+Host planet2.pnl.nitech.ac.jp
+   HostName planet2.pnl.nitech.ac.jp
+   User goettingenple_txp1
+
+Host planet1.dsp.ac.cn
+   HostName planet1.dsp.ac.cn
+   User goettingenple_txp1
+
+Host planet2.dsp.ac.cn
+   HostName planet2.dsp.ac.cn
+   User goettingenple_txp1
+
+Host planetlab2.aut.ac.nz
+   HostName planetlab2.aut.ac.nz
+   User goettingenple_txp1
+
+Host pl2.cs.yale.edu
+   HostName pl2.cs.yale.edu
+   User goettingenple_txp1
+
+Host pl1.cs.yale.edu
+   HostName pl1.cs.yale.edu
+   User goettingenple_txp1
+
+Host pl1.cis.uab.edu
+   HostName pl1.cis.uab.edu
+   User goettingenple_txp1
+
+Host planetlab-1.sysu.edu.cn
+   HostName planetlab-1.sysu.edu.cn
+   User goettingenple_txp1
+
+Host planetlab-2.sysu.edu.cn
+   HostName planetlab-2.sysu.edu.cn
+   User goettingenple_txp1
+
+Host planet2.cs.rochester.edu
+   HostName planet2.cs.rochester.edu
+   User goettingenple_txp1
+
+Host pl2.cis.uab.edu
+   HostName pl2.cis.uab.edu
+   User goettingenple_txp1
+
+Host planetlab2.cnis.nyit.edu
+   HostName planetlab2.cnis.nyit.edu
+   User goettingenple_txp1
+
+Host pl-dccd-01.cua.uam.mx
+   HostName pl-dccd-01.cua.uam.mx
+   User goettingenple_txp1
+
+Host server4.planetlab.iit-tech.net
+   HostName server4.planetlab.iit-tech.net
+   User goettingenple_txp1
+
+Host arari.snu.ac.kr
+   HostName arari.snu.ac.kr
+   User goettingenple_txp1
+
+Host recall.snu.ac.kr
+   HostName recall.snu.ac.kr
+   User goettingenple_txp1
+
+Host planetlab1.tsuniv.edu
+   HostName planetlab1.tsuniv.edu
+   User goettingenple_txp1
+
+Host planetlab-5.ece.iastate.edu
+   HostName planetlab-5.ece.iastate.edu
+   User goettingenple_txp1
+
+Host planetlab2.buaa.edu.cn
+   HostName planetlab2.buaa.edu.cn
+   User goettingenple_txp1
+
+Host planetlab2.tsuniv.edu
+   HostName planetlab2.tsuniv.edu
+   User goettingenple_txp1
+
+Host planetlab1.ie.cuhk.edu.hk
+   HostName planetlab1.ie.cuhk.edu.hk
+   User goettingenple_txp1
+
+Host planet-lab4.uba.ar
+   HostName planet-lab4.uba.ar
+   User goettingenple_txp1
+
+Host planetlab3.tamu.edu
+   HostName planetlab3.tamu.edu
+   User goettingenple_txp1
+
+Host planetlab4.tamu.edu
+   HostName planetlab4.tamu.edu
+   User goettingenple_txp1
+
+Host planetlab1.umassd.edu
+   HostName planetlab1.umassd.edu
+   User goettingenple_txp1
+
+Host planetlab2.umassd.edu
+   HostName planetlab2.umassd.edu
+   User goettingenple_txp1
+
+Host planetlab2.ustc.edu.cn
+   HostName planetlab2.ustc.edu.cn
+   User goettingenple_txp1
+
+Host pl01.comp.polyu.edu.hk
+   HostName pl01.comp.polyu.edu.hk
+   User goettingenple_txp1
+
+Host planetlab0.ucsc.cmb.ac.lk
+   HostName planetlab0.ucsc.cmb.ac.lk
+   User goettingenple_txp1
+
+Host planetlab1.ucsc.cmb.ac.lk
+   HostName planetlab1.ucsc.cmb.ac.lk
+   User goettingenple_txp1
+
+Host saturn.planetlab.carleton.ca
+   HostName saturn.planetlab.carleton.ca
+   User goettingenple_txp1
+
+Host planetlab1.unr.edu
+   HostName planetlab1.unr.edu
+   User goettingenple_txp1
+
+Host planetlab4.bupt.edu.cn
+   HostName planetlab4.bupt.edu.cn
+   User goettingenple_txp1
+
+Host jupiter.planetlab.carleton.ca
+   HostName jupiter.planetlab.carleton.ca
+   User goettingenple_txp1
+
+Host planetlab1.hust.edu.cn
+   HostName planetlab1.hust.edu.cn
+   User goettingenple_txp1
+
+Host planetlab2.hust.edu.cn
+   HostName planetlab2.hust.edu.cn
+   User goettingenple_txp1
+
+Host planetlab-js2.cert.org.cn
+   HostName planetlab-js2.cert.org.cn
+   User goettingenple_txp1
+
+Host planetlab3.bupt.edu.cn
+   HostName planetlab3.bupt.edu.cn
+   User goettingenple_txp1
+
+Host planetlab2.cti.espol.edu.ec
+   HostName planetlab2.cti.espol.edu.ec
+   User goettingenple_txp1
+
+Host 75-130-96-12.static.oxfr.ma.charter.com
+   HostName 75-130-96-12.static.oxfr.ma.charter.com
+   User goettingenple_txp1
+
+Host 75-130-96-13.static.oxfr.ma.charter.com
+   HostName 75-130-96-13.static.oxfr.ma.charter.com
+   User goettingenple_txp1
+
+Host pl02.comp.polyu.edu.hk
+   HostName pl02.comp.polyu.edu.hk
+   User goettingenple_txp1
+
+Host planetlab2.cqupt.edu.cn
+   HostName planetlab2.cqupt.edu.cn
+   User goettingenple_txp1
+
+Host planetlab1.cqupt.edu.cn
+   HostName planetlab1.cqupt.edu.cn
+   User goettingenple_txp1
+
+Host pln.zju.edu.cn
+   HostName pln.zju.edu.cn
+   User goettingenple_txp1
+
+Host planetlab1.nakao-lab.org
+   HostName planetlab1.nakao-lab.org
+   User goettingenple_txp1
+
+Host planetlab2.nakao-lab.org
+   HostName planetlab2.nakao-lab.org
+   User goettingenple_txp1
+
+Host plab1.cs.msu.ru
+   HostName plab1.cs.msu.ru
+   User goettingenple_txp1
+
+Host plab3.cs.msu.ru
+   HostName plab3.cs.msu.ru
+   User goettingenple_txp1
+
+Host planetlab1.iitkgp.ac.in
+   HostName planetlab1.iitkgp.ac.in
+   User goettingenple_txp1
+
+Host planetlab2.iitkgp.ac.in
+   HostName planetlab2.iitkgp.ac.in
+   User goettingenple_txp1
+
+Host pl2.zju.edu.cn
+   HostName pl2.zju.edu.cn
+   User goettingenple_txp1
+
+Host planetlab2.cs.okstate.edu
+   HostName planetlab2.cs.okstate.edu
+   User goettingenple_txp1
+
+Host planetlab2.rutgers.edu
+   HostName planetlab2.rutgers.edu
+   User goettingenple_txp1
+
+Host planetlab1.pop-rj.rnp.br
+   HostName planetlab1.pop-rj.rnp.br
+   User goettingenple_txp1
+
+Host planetlab2.pop-rj.rnp.br
+   HostName planetlab2.pop-rj.rnp.br
+   User goettingenple_txp1
+
+Host planetlab1.temple.edu
+   HostName planetlab1.temple.edu
+   User goettingenple_txp1
+
+Host planetlab2.temple.edu
+   HostName planetlab2.temple.edu
+   User goettingenple_txp1
+
+Host planetlab-js1.cert.org.cn
+   HostName planetlab-js1.cert.org.cn
+   User goettingenple_txp1
+
+Host planetlab-1.scie.uestc.edu.cn
+   HostName planetlab-1.scie.uestc.edu.cn
+   User goettingenple_txp1
+
+Host pl2.cs.unm.edu
+   HostName pl2.cs.unm.edu
+   User goettingenple_txp1
+
+Host pl3.cs.unm.edu
+   HostName pl3.cs.unm.edu
+   User goettingenple_txp1
+
+Host pl4.cs.unm.edu
+   HostName pl4.cs.unm.edu
+   User goettingenple_txp1
+
+Host pl1.cs.montana.edu
+   HostName pl1.cs.montana.edu
+   User goettingenple_txp1
+
+Host planetlab2.iitr.ernet.in
+   HostName planetlab2.iitr.ernet.in
+   User goettingenple_txp1
+
+Host planetlab-1.ece.iastate.edu
+   HostName planetlab-1.ece.iastate.edu
+   User goettingenple_txp1
+
+Host planetlab02.alucloud.com
+   HostName planetlab02.alucloud.com
+   User goettingenple_txp1
+
+Host planetlab01.alucloud.com
+   HostName planetlab01.alucloud.com
+   User goettingenple_txp1
+
+Host plnodeb.plaust.edu.cn
+   HostName plnodeb.plaust.edu.cn
+   User goettingenple_txp1
+
+Host planetlab1.mnlab.cti.depaul.edu
+   HostName planetlab1.mnlab.cti.depaul.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.unc.edu
+   HostName planetlab1.cs.unc.edu
+   User goettingenple_txp1
+
+Host planetlab2.een.orst.edu
+   HostName planetlab2.een.orst.edu
+   User goettingenple_txp1
+
+Host planetlab1.een.orst.edu
+   HostName planetlab1.een.orst.edu
+   User goettingenple_txp1
+
+Host node02.verivue.princeton.edu
+   HostName node02.verivue.princeton.edu
+   User goettingenple_txp1
+
+Host planetlab3.arizona-gigapop.net
+   HostName planetlab3.arizona-gigapop.net
+   User goettingenple_txp1
+
+Host planet-plc-1.mpi-sws.org
+   HostName planet-plc-1.mpi-sws.org
+   User goettingenple_txp1
+
+Host planet-plc-2.mpi-sws.org
+   HostName planet-plc-2.mpi-sws.org
+   User goettingenple_txp1
+
+Host planetlab-2.ece.iastate.edu
+   HostName planetlab-2.ece.iastate.edu
+   User goettingenple_txp1
+
+Host planet-plc-6.mpi-sws.org
+   HostName planet-plc-6.mpi-sws.org
+   User goettingenple_txp1
+
+Host planetlab3.canterbury.ac.nz
+   HostName planetlab3.canterbury.ac.nz
+   User goettingenple_txp1
+
+Host planetlab1.cs.du.edu
+   HostName planetlab1.cs.du.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.du.edu
+   HostName planetlab2.cs.du.edu
+   User goettingenple_txp1
+
+Host planet-lab3.uba.ar
+   HostName planet-lab3.uba.ar
+   User goettingenple_txp1
+
+Host planetlab-1.elisa.cpsc.ucalgary.ca
+   HostName planetlab-1.elisa.cpsc.ucalgary.ca
+   User goettingenple_txp1
+
+Host planetlab1.engr.uconn.edu
+   HostName planetlab1.engr.uconn.edu
+   User goettingenple_txp1
+
+Host planetlab-3.ece.iastate.edu
+   HostName planetlab-3.ece.iastate.edu
+   User goettingenple_txp1
+
+Host planetlab3.cesnet.cz
+   HostName planetlab3.cesnet.cz
+   User goettingenple_txp1
+
+Host planetlab1.acis.ufl.edu
+   HostName planetlab1.acis.ufl.edu
+   User goettingenple_txp1
+
+Host planetlab1.cs.wayne.edu
+   HostName planetlab1.cs.wayne.edu
+   User goettingenple_txp1
+
+Host planetlab1.inf.ethz.ch
+   HostName planetlab1.inf.ethz.ch
+   User goettingenple_txp1
+
+Host planetlab1.cs.pitt.edu
+   HostName planetlab1.cs.pitt.edu
+   User goettingenple_txp1
+
+Host planetlab2.unr.edu
+   HostName planetlab2.unr.edu
+   User goettingenple_txp1
+
+Host pl1.yonsei.ac.kr
+   HostName pl1.yonsei.ac.kr
+   User goettingenple_txp1
+
+Host pl2.yonsei.ac.kr
+   HostName pl2.yonsei.ac.kr
+   User goettingenple_txp1
+
+Host planetlab2.ie.cuhk.edu.hk
+   HostName planetlab2.ie.cuhk.edu.hk
+   User goettingenple_txp1
+
+Host planetlab2.cs.wayne.edu
+   HostName planetlab2.cs.wayne.edu
+   User goettingenple_txp1
+
+Host planetlab-n1.wand.net.nz
+   HostName planetlab-n1.wand.net.nz
+   User goettingenple_txp1
+
+Host plgmu1.ite.gmu.edu
+   HostName plgmu1.ite.gmu.edu
+   User goettingenple_txp1
+
+Host planetlab1.warsaw.rd.tp.pl
+   HostName planetlab1.warsaw.rd.tp.pl
+   User goettingenple_txp1
+
+Host nw142.csie.ncu.edu.tw
+   HostName nw142.csie.ncu.edu.tw
+   User goettingenple_txp1
+
+Host planetlab-01.naist.jp
+   HostName planetlab-01.naist.jp
+   User goettingenple_txp1
+
+Host planetlab-02.naist.jp
+   HostName planetlab-02.naist.jp
+   User goettingenple_txp1
+
+Host planetlab1.ewi.tudelft.nl
+   HostName planetlab1.ewi.tudelft.nl
+   User goettingenple_txp1
+
+Host planetlab2.ewi.tudelft.nl
+   HostName planetlab2.ewi.tudelft.nl
+   User goettingenple_txp1
+
+Host planetlabtwo.ccs.neu.edu
+   HostName planetlabtwo.ccs.neu.edu
+   User goettingenple_txp1
+
+Host planetlab-2.ssvl.kth.se
+   HostName planetlab-2.ssvl.kth.se
+   User goettingenple_txp1
+
+Host planetlab3.millennium.berkeley.edu
+   HostName planetlab3.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab1.millennium.berkeley.edu
+   HostName planetlab1.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab2.millennium.berkeley.edu
+   HostName planetlab2.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab2.olsztyn.rd.tp.pl
+   HostName planetlab2.olsztyn.rd.tp.pl
+   User goettingenple_txp1
+
+Host planet1.scs.cs.nyu.edu
+   HostName planet1.scs.cs.nyu.edu
+   User goettingenple_txp1
+
+Host planet1.scs.stanford.edu
+   HostName planet1.scs.stanford.edu
+   User goettingenple_txp1
+
+Host planetlab-2.cs.colostate.edu
+   HostName planetlab-2.cs.colostate.edu
+   User goettingenple_txp1
+
+Host pl2.csl.utoronto.ca
+   HostName pl2.csl.utoronto.ca
+   User goettingenple_txp1
+
+Host planetlab-3.cmcl.cs.cmu.edu
+   HostName planetlab-3.cmcl.cs.cmu.edu
+   User goettingenple_txp1
+
+Host pli1-pa-4.hpl.hp.com
+   HostName pli1-pa-4.hpl.hp.com
+   User goettingenple_txp1
+
+Host planetlab1.netlab.uky.edu
+   HostName planetlab1.netlab.uky.edu
+   User goettingenple_txp1
+
+Host plab2.nec-labs.com
+   HostName plab2.nec-labs.com
+   User goettingenple_txp1
+
+Host plab1.nec-labs.com
+   HostName plab1.nec-labs.com
+   User goettingenple_txp1
+
+Host planetlab1.rutgers.edu
+   HostName planetlab1.rutgers.edu
+   User goettingenple_txp1
+
+Host planetlab1.byu.edu
+   HostName planetlab1.byu.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.uiuc.edu
+   HostName planetlab2.cs.uiuc.edu
+   User goettingenple_txp1
+
+Host planetlab2.pop-rs.rnp.br
+   HostName planetlab2.pop-rs.rnp.br
+   User goettingenple_txp1
+
+Host planetlab1.cs.purdue.edu
+   HostName planetlab1.cs.purdue.edu
+   User goettingenple_txp1
+
+Host planetlab1.cnds.jhu.edu
+   HostName planetlab1.cnds.jhu.edu
+   User goettingenple_txp1
+
+Host planetlab1.cse.nd.edu
+   HostName planetlab1.cse.nd.edu
+   User goettingenple_txp1
+
+Host planetlab1.tamu.edu
+   HostName planetlab1.tamu.edu
+   User goettingenple_txp1
+
+Host planetlab1.uta.edu
+   HostName planetlab1.uta.edu
+   User goettingenple_txp1
+
+Host csplanetlab4.kaist.ac.kr
+   HostName csplanetlab4.kaist.ac.kr
+   User goettingenple_txp1
+
+Host planetlab1.singaren.net.sg
+   HostName planetlab1.singaren.net.sg
+   User goettingenple_txp1
+
+Host planetlab5.csail.mit.edu
+   HostName planetlab5.csail.mit.edu
+   User goettingenple_txp1
+
+Host planetlab4.cs.duke.edu
+   HostName planetlab4.cs.duke.edu
+   User goettingenple_txp1
+
+Host planetlab1.tudelft.nl
+   HostName planetlab1.tudelft.nl
+   User goettingenple_txp1
+
+Host planetlab6.csail.mit.edu
+   HostName planetlab6.csail.mit.edu
+   User goettingenple_txp1
+
+Host planetlab1-buenosaires.lan.redclara.net
+   HostName planetlab1-buenosaires.lan.redclara.net
+   User goettingenple_txp1
+
+Host planetlab2.postel.org
+   HostName planetlab2.postel.org
+   User goettingenple_txp1
+
+Host planetlab-01.bu.edu
+   HostName planetlab-01.bu.edu
+   User goettingenple_txp1
+
+Host planetlab01.sys.virginia.edu
+   HostName planetlab01.sys.virginia.edu
+   User goettingenple_txp1
+
+Host earth.cs.brown.edu
+   HostName earth.cs.brown.edu
+   User goettingenple_txp1
+
+Host pl-dccd-02.cua.uam.mx
+   HostName pl-dccd-02.cua.uam.mx
+   User goettingenple_txp1
+
+Host planetlab2.pop-ce.rnp.br
+   HostName planetlab2.pop-ce.rnp.br
+   User goettingenple_txp1
+
+Host planetlab4.csres.utexas.edu
+   HostName planetlab4.csres.utexas.edu
+   User goettingenple_txp1
+
+Host plab2.larc.usp.br
+   HostName plab2.larc.usp.br
+   User goettingenple_txp1
+
+Host planetlab1.utdallas.edu
+   HostName planetlab1.utdallas.edu
+   User goettingenple_txp1
+
+Host planetlab-1.calpoly-netlab.net
+   HostName planetlab-1.calpoly-netlab.net
+   User goettingenple_txp1
+
+Host planetlab14.millennium.berkeley.edu
+   HostName planetlab14.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab3.eecs.umich.edu
+   HostName planetlab3.eecs.umich.edu
+   User goettingenple_txp1
+
+Host planetlab5.goto.info.waseda.ac.jp
+   HostName planetlab5.goto.info.waseda.ac.jp
+   User goettingenple_txp1
+
+Host planetlab4.singaren.net.sg
+   HostName planetlab4.singaren.net.sg
+   User goettingenple_txp1
+
+Host planetlab-1.webedu.ccu.edu.tw
+   HostName planetlab-1.webedu.ccu.edu.tw
+   User goettingenple_txp1
+
+Host planetlab3.cs.uoregon.edu
+   HostName planetlab3.cs.uoregon.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.ucla.edu
+   HostName planetlab2.cs.ucla.edu
+   User goettingenple_txp1
+
+Host planetlab4.millennium.berkeley.edu
+   HostName planetlab4.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab8.millennium.berkeley.edu
+   HostName planetlab8.millennium.berkeley.edu
+   User goettingenple_txp1
+
+Host planetlab1.plab.ege.edu.tr
+   HostName planetlab1.plab.ege.edu.tr
+   User goettingenple_txp1
+
+Host pl-node-1.csl.sri.com
+   HostName pl-node-1.csl.sri.com
+   User goettingenple_txp1
+
+Host plgmu4.ite.gmu.edu
+   HostName plgmu4.ite.gmu.edu
+   User goettingenple_txp1
+
+Host miranda.planetlab.cs.umd.edu
+   HostName miranda.planetlab.cs.umd.edu
+   User goettingenple_txp1
+
+Host nodea.howard.edu
+   HostName nodea.howard.edu
+   User goettingenple_txp1
+
+Host planet1.cs.rochester.edu
+   HostName planet1.cs.rochester.edu
+   User goettingenple_txp1
+
+Host planetlab1.clemson.edu
+   HostName planetlab1.clemson.edu
+   User goettingenple_txp1
+
+Host planet1.pnl.nitech.ac.jp
+   HostName planet1.pnl.nitech.ac.jp
+   User goettingenple_txp1
+
+Host planetlab1.aut.ac.nz
+   HostName planetlab1.aut.ac.nz
+   User goettingenple_txp1
+
+Host planetlab1.cnis.nyit.edu
+   HostName planetlab1.cnis.nyit.edu
+   User goettingenple_txp1
+
+Host planetlab-4.ece.iastate.edu
+   HostName planetlab-4.ece.iastate.edu
+   User goettingenple_txp1
+
+Host planetlab4.goto.info.waseda.ac.jp
+   HostName planetlab4.goto.info.waseda.ac.jp
+   User goettingenple_txp1
+
+Host planetlab1.cti.espol.edu.ec
+   HostName planetlab1.cti.espol.edu.ec
+   User goettingenple_txp1
+
+Host planetlab1.cs.okstate.edu
+   HostName planetlab1.cs.okstate.edu
+   User goettingenple_txp1
+
+Host pl2.cs.montana.edu
+   HostName pl2.cs.montana.edu
+   User goettingenple_txp1
+
+Host planet-plc-5.mpi-sws.org
+   HostName planet-plc-5.mpi-sws.org
+   User goettingenple_txp1
+
+Host planetlab2.acis.ufl.edu
+   HostName planetlab2.acis.ufl.edu
+   User goettingenple_txp1
+
+Host planetlab2.cs.pitt.edu
+   HostName planetlab2.cs.pitt.edu
+   User goettingenple_txp1
+
+Host planetlab-1.ssvl.kth.se
+   HostName planetlab-1.ssvl.kth.se
+   User goettingenple_txp1
+
+Host planetlab2.mnlab.cti.depaul.edu
+   HostName planetlab2.mnlab.cti.depaul.edu
+   User goettingenple_txp1
+
+Host ple41.planet-lab.eu
+   HostName ple41.planet-lab.eu
+   User goettingenple_txp1
+
+Host ple43.planet-lab.eu
+   HostName ple43.planet-lab.eu
+   User goettingenple_txp1
+
+Host ple1.cesnet.cz
+   HostName ple1.cesnet.cz
+   User goettingenple_txp1
+
+Host ple42.planet-lab.eu
+   HostName ple42.planet-lab.eu
+   User goettingenple_txp1
+
+Host netissime1.planet-lab.eu
+   HostName netissime1.planet-lab.eu
+   User goettingenple_txp1
+
+Host ple1.planet-lab.eu
+   HostName ple1.planet-lab.eu
+   User goettingenple_txp1
+
+Host aladdin.planetlab.extranet.uni-passau.de
+   HostName aladdin.planetlab.extranet.uni-passau.de
+   User goettingenple_txp1
+
+Host onelab2.pl.sophia.inria.fr
+   HostName onelab2.pl.sophia.inria.fr
+   User goettingenple_txp1
+
+Host ple44.planet-lab.eu
+   HostName ple44.planet-lab.eu
+   User goettingenple_txp1
+
+Host stella.planetlab.ntua.gr
+   HostName stella.planetlab.ntua.gr
+   User goettingenple_txp1
+
+Host kulcha.mimuw.edu.pl
+   HostName kulcha.mimuw.edu.pl
+   User goettingenple_txp1
+
+Host planet3.cs.huji.ac.il
+   HostName planet3.cs.huji.ac.il
+   User goettingenple_txp1
+
+Host planetlab11.net.in.tum.de
+   HostName planetlab11.net.in.tum.de
+   User goettingenple_txp1
+
+Host planet-lab-node2.netgroup.uniroma2.it
+   HostName planet-lab-node2.netgroup.uniroma2.it
+   User goettingenple_txp1
+
+Host planetvs2.informatik.uni-stuttgart.de
+   HostName planetvs2.informatik.uni-stuttgart.de
+   User goettingenple_txp1
+
+Host dplanet1.uoc.edu
+   HostName dplanet1.uoc.edu
+   User goettingenple_txp1
+
+Host planetlab-2.ing.unimo.it
+   HostName planetlab-2.ing.unimo.it
+   User goettingenple_txp1
+
+Host planetlab1.cs.uit.no
+   HostName planetlab1.cs.uit.no
+   User goettingenple_txp1
+
+Host planetlab2.upm.ro
+   HostName planetlab2.upm.ro
+   User goettingenple_txp1
+
+Host puri.mimuw.edu.pl
+   HostName puri.mimuw.edu.pl
+   User goettingenple_txp1
+
+Host vicky.planetlab.ntua.gr
+   HostName vicky.planetlab.ntua.gr
+   User goettingenple_txp1
+
+Host netissime2.planet-lab.eu
+   HostName netissime2.planet-lab.eu
+   User goettingenple_txp1
+
+Host planet4.cs.huji.ac.il
+   HostName planet4.cs.huji.ac.il
+   User goettingenple_txp1
+
+Host planetlab1.upm.ro
+   HostName planetlab1.upm.ro
+   User goettingenple_txp1
+
+Host planetlab13.net.in.tum.de
+   HostName planetlab13.net.in.tum.de
+   User goettingenple_txp1
+
+Host planetlab-2.cs.ucy.ac.cy
+   HostName planetlab-2.cs.ucy.ac.cy
+   User goettingenple_txp1
+
+Host planetlab1.informatik.uni-goettingen.de
+   HostName planetlab1.informatik.uni-goettingen.de
+   User goettingenple_txp1
+
+Host planetlab2.informatik.uni-goettingen.de
+   HostName planetlab2.informatik.uni-goettingen.de
+   User goettingenple_txp1
+
