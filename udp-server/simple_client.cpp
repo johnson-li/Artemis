@@ -42,7 +42,11 @@ int main(int argc, char **argv) {
     auto begin = std::chrono::high_resolution_clock::now();
     if (server_ip[0] > '9' || server_ip[0] < '0') {
         struct hostent *he;
+        auto dns_begin = std::chrono::high_resolution_clock::now();
         he = gethostbyname(server_ip);
+        auto dns_end = std::chrono::high_resolution_clock::now();
+        std::cout << "DNS delay " << std::fixed
+                  << std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count() << "ns" << std::endl;
         struct in_addr **addr_list;
         addr_list = (struct in_addr **) he->h_addr_list;
         server_addr.sin_addr = *addr_list[0];

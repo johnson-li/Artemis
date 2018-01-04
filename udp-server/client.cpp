@@ -65,8 +65,11 @@ int main(int argc, char **argv) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
         auto end = std::chrono::high_resolution_clock::now();
         long long diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
-        if (recv != -1 || diff > 2000000000) {
+        if (recv != -1) {
             break;
+        }
+        if (diff > 4000000000) {
+            return 1;
         }
     }
     printf("got %ld bytes from the server\n", recv);
