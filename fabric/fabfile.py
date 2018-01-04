@@ -72,7 +72,7 @@ def show_ovs():
     sudo("ovs-vsctl show")
 
 
-@parallel(pool_size=1)
+@parallel(pool_size=4)
 def setup_gre():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()

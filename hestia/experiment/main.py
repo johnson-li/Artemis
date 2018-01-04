@@ -189,11 +189,12 @@ def add_flows(target, other_regions, peer_ip):
 peer = '35.193.107.149'
 
 if __name__ == '__main__':
+    regions = ['tokyo', 'sydney', 'singapore']
     if len(sys.argv) == 2:
         peer = sys.argv[1]
+    else:
+        add_default_flows(regions)
     init_db()
-    regions = ['tokyo', 'sydney', 'singapore']
-    add_default_flows(regions)
     results = []
     for region in regions:
         results.append((region, get_latency(region + "-server", peer)))
