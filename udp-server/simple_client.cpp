@@ -31,11 +31,15 @@ int main(int argc, char **argv) {
     char server_buf[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a'};
     char read_buf[BUFSIZE];
 
+    server_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (server_fd < 0)
+        perror("ERROR opening socket");
     char *server_ip = argv[1];
     struct sockaddr_in server_addr;
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
+    auto begin = std::chrono::high_resolution_clock::now();
     if (server_ip[0] > '9' || server_ip[0] < '0') {
         struct hostent *he;
         he = gethostbyname(server_ip);
@@ -46,11 +50,6 @@ int main(int argc, char **argv) {
         inet_pton(AF_INET, server_ip, &(server_addr.sin_addr));
     }
 
-    server_fd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (server_fd < 0)
-        perror("ERROR opening socket");
-
-    auto begin = std::chrono::high_resolution_clock::now();
     result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0, (sockaddr *) &server_addr,
                     sizeof(server_addr));
     printf("sent %ld bytes to the server\n", result);
