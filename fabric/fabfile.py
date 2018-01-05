@@ -27,6 +27,16 @@ def host_type():
     run('uname -a')
 
 
+@parallel(pool_size=6)
+def host_type():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    # c.execute("SELECT primaryIpv6 FROM instances")
+    c.execute("SELECT primaryIpv4Pub FROM instances ")
+    for host in c.fetchall():
+        print("ping -c10 " + host[0] + "|tail -1|awk '{print $4}' | cut -d '/' -f 2")
+
+
 @parallel(pool_size=4)
 def start_servers():
     conn = sqlite3.connect(DB_FILE)

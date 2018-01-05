@@ -131,7 +131,7 @@ def allocate_ips(sessions):
 def main():
     sessions = Sessions()
     session_list = [sessions.ap_northeast_1, sessions.ap_southeast_2, sessions.ap_southeast_1]
-    # session_list = [sessions.ap_southeast_1]
+    # session_list = sessions.all()
     allocate_ips(session_list)
     init_db()
     start_machines(session_list)
