@@ -45,4 +45,9 @@ def host_type():
 
 @parallel(pool_size=6)
 def init():
-    sudo('yum install -y gcc-c++')
+    sudo('yum install -y gcc-c++ bind-utils')
+
+
+@parallel(pool_size=6)
+def test_dns_delay():
+    sudo('dig miss.xuebing.name|grep Query')
