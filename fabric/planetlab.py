@@ -44,6 +44,28 @@ def host_type():
 
 
 @parallel(pool_size=6)
+def install_quic_dependencies():
+    sudo('yum install -y libnet-devel')
+
+
+@parallel(pool_size=6)
+def disk_size():
+    run('df -h')
+
+
+@parallel(pool_size=6)
+def simple_client():
+    run('./server/simple_client gcp.xuebing.name')
+
+
+@parallel(pool_size=6)
+def simple_client_repeat():
+    run('./server/simple_client gcp.xuebing.name')
+    run('./server/simple_client gcp.xuebing.name')
+    run('./server/simple_client gcp.xuebing.name')
+
+
+@parallel(pool_size=6)
 def init():
     sudo('yum install -y gcc-c++ bind-utils')
 
