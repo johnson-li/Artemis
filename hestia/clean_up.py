@@ -1,4 +1,5 @@
 from hestia.aws.sessions import Sessions
+import hestia.aws.utils as utils
 
 
 def release_ips(sessions):
@@ -19,9 +20,10 @@ def main():
     for session in session_list:
         ec2 = session.resource('ec2')
         for instance in ec2.instances.all():
-            print('Stop instance: {} in region: {}'.format(str(instance), session.region_name))
-            instance.stop()
-            pending_instances.append(instance)
+            if instance.state['Name'] == 'running':
+                print('Stop instance: {} in region: {}'.format(str(instance), session.region_name))
+                instance.stop()
+                pending_instances.append(instance)
     release_ips(session_list)
     print('Wait for instances')
     while pending_instances:
