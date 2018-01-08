@@ -17,18 +17,8 @@ namespace socks5 {
             Closed
         };
 
-        struct SocksUrl {
-            enum Type {
-                WS,
-                WSS,
-                HTTP
-            };
-
-            Type type;
-            std::string ip;
-            unsigned int port;
-            uint8_t ipv4[4];
-            uint8_t ipv6[16];
+        enum SocksType {
+            UDP, TCP
         };
 
     private:
@@ -40,19 +30,31 @@ namespace socks5 {
         std::string socksIP;
         int socksPort;
         sockaddr_in relyAddr;
+        SocksType type;
+        int rfd, sfd;
 
     public:
         unsigned long long timeoutDuration = 8000;
 
-        SocksClient(std::string _ip, std::string _port, std::string _target_ip, std::string _target_port);
+        SocksClient(std::string _ip, std::string _port, std::string _target_ip, std::string _target_port,
+                    SocksType _type);
 
         ~SocksClient();
 
-        SocksClient::SocksUrl scanURL(const std::string _url);
-
         int connect();
 
-        ssize_t send(const char *buffer, const size_t size);
+        ssize_t sendTCP(const char *buffer, const size_t size);
+
+        ssize_t sendUDP(const char *buffer, const size_t size);
+
+        ssize_t send(const char *buffer, const size_t size) {
+            switch (type) {
+                case TCP:
+                    return sendTCP(buffer, size);
+                case UDP:
+                    return sendUDP(buffer, size);
+            }
+        }
 
         ssize_t recv(char *buffer, const size_t size);
 

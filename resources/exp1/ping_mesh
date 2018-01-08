@@ -1,0 +1,917 @@
+[virginia-router] Executing task 'ping_mesh'
+[ohio-router] Executing task 'ping_mesh'
+[california-router] Executing task 'ping_mesh'
+[oregon-router] Executing task 'ping_mesh'
+[mumbai-router] Executing task 'ping_mesh'
+[singapore-router] Executing task 'ping_mesh'
+[sydney-router] Executing task 'ping_mesh'
+[tokyo-router] Executing task 'ping_mesh'
+[seoul-router] Executing task 'ping_mesh'
+[central-router] Executing task 'ping_mesh'
+[frankfurt-router] Executing task 'ping_mesh'
+[ireland-router] Executing task 'ping_mesh'
+[london-router] Executing task 'ping_mesh'
+[paris-router] Executing task 'ping_mesh'
+[saopaulo-router] Executing task 'ping_mesh'
+[central-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 35.169.211.139 14.072
+[central-router] out: 
+
+[central-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 35.182.38.203 0.588
+[central-router] out: 
+
+[central-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 52.67.147.108 124.572
+[central-router] out: 
+
+[central-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 54.177.30.134 74.569
+[central-router] out: 
+
+[central-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 18.217.193.159 23.927
+[central-router] out: 
+
+[central-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 52.66.88.194 194.979
+[central-router] out: 
+
+[central-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 13.112.78.71 141.317
+[central-router] out: 
+
+[central-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 34.208.91.105 66.406
+[central-router] out: 
+
+[central-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 13.210.203.24 209.989
+[central-router] out: 
+
+[central-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 54.72.73.200 77.655
+[central-router] out: 
+
+[central-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 18.195.200.101 101.449
+[central-router] out: 
+
+[central-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 13.125.114.36 170.218
+[central-router] out: 
+
+[central-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 35.177.32.164 89.451
+[central-router] out: 
+
+[central-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 13.228.250.247 204.934
+[central-router] out: 
+
+[central-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 52.47.132.113 92.119
+[central-router] out: 
+
+[london-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 35.169.211.139 75.208
+[london-router] out: 
+
+[london-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 35.182.38.203 89.449
+[london-router] out: 
+
+[london-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 52.67.147.108 194.895
+[london-router] out: 
+
+[london-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 54.177.30.134 136.854
+[london-router] out: 
+
+[london-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 18.217.193.159 86.145
+[london-router] out: 
+
+[london-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 52.66.88.194 110.903
+[london-router] out: 
+
+[london-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 13.112.78.71 247.153
+[london-router] out: 
+
+[london-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 34.208.91.105 156.472
+[london-router] out: 
+
+[london-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 13.210.203.24 280.312
+[london-router] out: 
+
+[london-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 54.72.73.200 10.404
+[london-router] out: 
+
+[london-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 18.195.200.101 15.214
+[london-router] out: 
+
+[london-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 13.125.114.36 274.245
+[london-router] out: 
+
+[london-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 35.177.32.164 0.527
+[london-router] out: 
+
+[london-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 13.228.250.247 160.088
+[london-router] out: 
+
+[london-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 52.47.132.113 8.336
+[london-router] out: 
+
+[ireland-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 35.169.211.139 75.528
+[ireland-router] out: 
+
+[ireland-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 35.182.38.203 77.762
+[ireland-router] out: 
+
+[ireland-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 52.67.147.108 183.287
+[ireland-router] out: 
+
+[ireland-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 54.177.30.134 133.971
+[ireland-router] out: 
+
+[ireland-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 18.217.193.159 92.100
+[ireland-router] out: 
+
+[ireland-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 52.66.88.194 120.138
+[ireland-router] out: 
+
+[ireland-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 13.112.78.71 215.303
+[ireland-router] out: 
+
+[ireland-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 34.208.91.105 140.010
+[ireland-router] out: 
+
+[ireland-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 13.210.203.24 285.987
+[ireland-router] out: 
+
+[ireland-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 54.72.73.200 0.566
+[ireland-router] out: 
+
+[ireland-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 18.195.200.101 24.565
+[ireland-router] out: 
+
+[ireland-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 13.125.114.36 243.822
+[ireland-router] out: 
+
+[ireland-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 35.177.32.164 10.635
+[ireland-router] out: 
+
+[ireland-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 13.228.250.247 171.554
+[ireland-router] out: 
+
+[ireland-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 52.47.132.113 17.704
+[ireland-router] out: 
+
+[frankfurt-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 35.169.211.139 88.667
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 35.182.38.203 101.828
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 52.67.147.108 208.375
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 54.177.30.134 146.454
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 18.217.193.159 97.864
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 52.66.88.194 110.526
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 13.112.78.71 228.546
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 34.208.91.105 163.443
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 13.210.203.24 291.389
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 54.72.73.200 24.613
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 18.195.200.101 0.528
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 13.125.114.36 257.726
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 35.177.32.164 15.186
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 13.228.250.247 161.770
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 52.47.132.113 10.999
+[frankfurt-router] out: 
+
+[paris-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 35.169.211.139 79.369
+[paris-router] out: 
+
+[paris-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 35.182.38.203 92.228
+[paris-router] out: 
+
+[paris-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 52.67.147.108 200.576
+[paris-router] out: 
+
+[paris-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 54.177.30.134 137.064
+[paris-router] out: 
+
+[paris-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 18.217.193.159 88.583
+[paris-router] out: 
+
+[paris-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 52.66.88.194 105.642
+[paris-router] out: 
+
+[paris-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 13.112.78.71 267.658
+[paris-router] out: 
+
+[paris-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 34.208.91.105 155.998
+[paris-router] out: 
+
+[paris-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 13.210.203.24 282.069
+[paris-router] out: 
+
+[paris-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 54.72.73.200 18.031
+[paris-router] out: 
+
+[paris-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 18.195.200.101 11.039
+[paris-router] out: 
+
+[paris-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 13.125.114.36 290.250
+[paris-router] out: 
+
+[paris-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 35.177.32.164 8.441
+[paris-router] out: 
+
+[paris-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 13.228.250.247 155.840
+[paris-router] out: 
+
+[paris-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 52.47.132.113 0.443
+[paris-router] out: 
+
+[tokyo-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 35.169.211.139 180.957
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 35.182.38.203 141.286
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 52.67.147.108 271.188
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 54.177.30.134 112.611
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 18.217.193.159 161.747
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 52.66.88.194 119.739
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 13.112.78.71 0.416
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 34.208.91.105 104.466
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 13.210.203.24 103.987
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 54.72.73.200 214.676
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 18.195.200.101 228.561
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 13.125.114.36 31.473
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 35.177.32.164 249.707
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 13.228.250.247 71.411
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 52.47.132.113 267.736
+[tokyo-router] out: 
+
+[seoul-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 35.169.211.139 191.758
+[seoul-router] out: 
+
+[seoul-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 35.182.38.203 170.312
+[seoul-router] out: 
+
+[seoul-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 52.67.147.108 289.667
+[seoul-router] out: 
+
+[seoul-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 54.177.30.134 136.892
+[seoul-router] out: 
+
+[seoul-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 18.217.193.159 184.357
+[seoul-router] out: 
+
+[seoul-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 52.66.88.194 150.167
+[seoul-router] out: 
+
+[seoul-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 13.112.78.71 31.389
+[seoul-router] out: 
+
+[seoul-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 34.208.91.105 132.009
+[seoul-router] out: 
+
+[seoul-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 13.210.203.24 132.526
+[seoul-router] out: 
+
+[seoul-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 54.72.73.200 243.774
+[seoul-router] out: 
+
+[seoul-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 18.195.200.101 257.719
+[seoul-router] out: 
+
+[seoul-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 13.125.114.36 0.482
+[seoul-router] out: 
+
+[seoul-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 35.177.32.164 271.275
+[seoul-router] out: 
+
+[seoul-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 13.228.250.247 96.593
+[seoul-router] out: 
+
+[seoul-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 52.47.132.113 289.986
+[seoul-router] out: 
+
+[saopaulo-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 35.169.211.139 122.667
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 35.182.38.203 123.515
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 52.67.147.108 0.513
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 54.177.30.134 184.604
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 18.217.193.159 132.308
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 52.66.88.194 303.215
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 13.112.78.71 271.222
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 34.208.91.105 185.683
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 13.210.203.24 325.587
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 54.72.73.200 183.635
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 18.195.200.101 208.435
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 13.125.114.36 289.606
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 35.177.32.164 194.846
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 13.228.250.247 331.354
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 52.47.132.113 200.922
+[saopaulo-router] out: 
+
+[california-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 35.169.211.139 66.516
+[california-router] out: 
+
+[california-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 35.182.38.203 74.533
+[california-router] out: 
+
+[california-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 52.67.147.108 183.999
+[california-router] out: 
+
+[california-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 54.177.30.134 0.601
+[california-router] out: 
+
+[california-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 18.217.193.159 50.513
+[california-router] out: 
+
+[california-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 52.66.88.194 239.433
+[california-router] out: 
+
+[california-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 13.112.78.71 112.655
+[california-router] out: 
+
+[california-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 34.208.91.105 21.318
+[california-router] out: 
+
+[california-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 13.210.203.24 146.704
+[california-router] out: 
+
+[california-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 54.72.73.200 144.025
+[california-router] out: 
+
+[california-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 18.195.200.101 146.348
+[california-router] out: 
+
+[california-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 13.125.114.36 136.674
+[california-router] out: 
+
+[california-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 35.177.32.164 136.962
+[california-router] out: 
+
+[california-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 13.228.250.247 177.028
+[california-router] out: 
+
+[california-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 52.47.132.113 137.084
+[california-router] out: 
+
+[ohio-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 35.169.211.139 11.236
+[ohio-router] out: 
+
+[ohio-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 35.182.38.203 23.943
+[ohio-router] out: 
+
+[ohio-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 52.67.147.108 132.495
+[ohio-router] out: 
+
+[ohio-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 54.177.30.134 50.440
+[ohio-router] out: 
+
+[ohio-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 18.217.193.159 0.425
+[ohio-router] out: 
+
+[ohio-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 52.66.88.194 191.035
+[ohio-router] out: 
+
+[ohio-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 13.112.78.71 161.784
+[ohio-router] out: 
+
+[ohio-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 34.208.91.105 71.033
+[ohio-router] out: 
+
+[ohio-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 13.210.203.24 194.552
+[ohio-router] out: 
+
+[ohio-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 54.72.73.200 89.652
+[ohio-router] out: 
+
+[ohio-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 18.195.200.101 97.854
+[ohio-router] out: 
+
+[ohio-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 13.125.114.36 184.361
+[ohio-router] out: 
+
+[ohio-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 35.177.32.164 86.090
+[ohio-router] out: 
+
+[ohio-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 13.228.250.247 226.960
+[ohio-router] out: 
+
+[ohio-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 52.47.132.113 88.567
+[ohio-router] out: 
+
+[oregon-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 35.169.211.139 74.074
+[oregon-router] out: 
+
+[oregon-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 35.182.38.203 66.376
+[oregon-router] out: 
+
+[oregon-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 52.67.147.108 185.742
+[oregon-router] out: 
+
+[oregon-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 54.177.30.134 21.460
+[oregon-router] out: 
+
+[oregon-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 18.217.193.159 71.008
+[oregon-router] out: 
+
+[oregon-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 52.66.88.194 211.898
+[oregon-router] out: 
+
+[oregon-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 13.112.78.71 104.479
+[oregon-router] out: 
+
+[oregon-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 34.208.91.105 0.473
+[oregon-router] out: 
+
+[oregon-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 13.210.203.24 162.083
+[oregon-router] out: 
+
+[oregon-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 54.72.73.200 139.005
+[oregon-router] out: 
+
+[oregon-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 18.195.200.101 163.485
+[oregon-router] out: 
+
+[oregon-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 13.125.114.36 132.113
+[oregon-router] out: 
+
+[oregon-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 35.177.32.164 156.449
+[oregon-router] out: 
+
+[oregon-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 13.228.250.247 161.926
+[oregon-router] out: 
+
+[oregon-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 52.47.132.113 156.016
+[oregon-router] out: 
+
+[virginia-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 35.169.211.139 0.536
+[virginia-router] out: 
+
+[virginia-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 35.182.38.203 13.781
+[virginia-router] out: 
+
+[virginia-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 52.67.147.108 122.409
+[virginia-router] out: 
+
+[virginia-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 54.177.30.134 63.228
+[virginia-router] out: 
+
+[virginia-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 18.217.193.159 11.247
+[virginia-router] out: 
+
+[virginia-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 52.66.88.194 181.780
+[virginia-router] out: 
+
+[virginia-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 13.112.78.71 180.973
+[virginia-router] out: 
+
+[virginia-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 34.208.91.105 80.120
+[virginia-router] out: 
+
+[virginia-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 13.210.203.24 204.675
+[virginia-router] out: 
+
+[virginia-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 54.72.73.200 80.128
+[virginia-router] out: 
+
+[virginia-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 18.195.200.101 88.701
+[virginia-router] out: 
+
+[virginia-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 13.125.114.36 191.593
+[virginia-router] out: 
+
+[virginia-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 35.177.32.164 75.159
+[virginia-router] out: 
+
+[virginia-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 13.228.250.247 237.251
+[virginia-router] out: 
+
+[virginia-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 52.47.132.113 79.282
+[virginia-router] out: 
+
+[sydney-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 35.169.211.139 204.688
+[sydney-router] out: 
+
+[sydney-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 35.182.38.203 209.974
+[sydney-router] out: 
+
+[sydney-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 52.67.147.108 325.638
+[sydney-router] out: 
+
+[sydney-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 54.177.30.134 146.719
+[sydney-router] out: 
+
+[sydney-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 18.217.193.159 194.546
+[sydney-router] out: 
+
+[sydney-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 52.66.88.194 228.386
+[sydney-router] out: 
+
+[sydney-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 13.112.78.71 103.944
+[sydney-router] out: 
+
+[sydney-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 34.208.91.105 162.095
+[sydney-router] out: 
+
+[sydney-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 13.210.203.24 0.742
+[sydney-router] out: 
+
+[sydney-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 54.72.73.200 286.301
+[sydney-router] out: 
+
+[sydney-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 18.195.200.101 291.375
+[sydney-router] out: 
+
+[sydney-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 13.125.114.36 132.804
+[sydney-router] out: 
+
+[sydney-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 35.177.32.164 280.646
+[sydney-router] out: 
+
+[sydney-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 13.228.250.247 177.768
+[sydney-router] out: 
+
+[sydney-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 52.47.132.113 282.054
+[sydney-router] out: 
+
+[singapore-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 35.169.211.139 238.175
+[singapore-router] out: 
+
+[singapore-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 35.182.38.203 204.921
+[singapore-router] out: 
+
+[singapore-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 52.67.147.108 327.151
+[singapore-router] out: 
+
+[singapore-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 54.177.30.134 177.016
+[singapore-router] out: 
+
+[singapore-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 18.217.193.159 226.697
+[singapore-router] out: 
+
+[singapore-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 52.66.88.194 52.146
+[singapore-router] out: 
+
+[singapore-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 13.112.78.71 71.346
+[singapore-router] out: 
+
+[singapore-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 34.208.91.105 162.008
+[singapore-router] out: 
+
+[singapore-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 13.210.203.24 178.901
+[singapore-router] out: 
+
+[singapore-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 54.72.73.200 178.298
+[singapore-router] out: 
+
+[singapore-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 18.195.200.101 161.817
+[singapore-router] out: 
+
+[singapore-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 13.125.114.36 96.603
+[singapore-router] out: 
+
+[singapore-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 35.177.32.164 159.966
+[singapore-router] out: 
+
+[singapore-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 13.228.250.247 0.627
+[singapore-router] out: 
+
+[singapore-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 52.47.132.113 155.872
+[singapore-router] out: 
+
+[mumbai-router] run: echo '35.169.211.139' `ping -c10 35.169.211.139|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 35.169.211.139 181.735
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '35.182.38.203' `ping -c10 35.182.38.203|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 35.182.38.203 194.549
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '52.67.147.108' `ping -c10 52.67.147.108|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 52.67.147.108 303.107
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '54.177.30.134' `ping -c10 54.177.30.134|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 54.177.30.134 239.456
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '18.217.193.159' `ping -c10 18.217.193.159|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 18.217.193.159 190.931
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '52.66.88.194' `ping -c10 52.66.88.194|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 52.66.88.194 0.409
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '13.112.78.71' `ping -c10 13.112.78.71|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 13.112.78.71 119.681
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '34.208.91.105' `ping -c10 34.208.91.105|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 34.208.91.105 211.904
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '13.210.203.24' `ping -c10 13.210.203.24|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 13.210.203.24 228.654
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '54.72.73.200' `ping -c10 54.72.73.200|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 54.72.73.200 120.104
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '18.195.200.101' `ping -c10 18.195.200.101|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 18.195.200.101 110.418
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '13.125.114.36' `ping -c10 13.125.114.36|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 13.125.114.36 150.067
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '35.177.32.164' `ping -c10 35.177.32.164|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 35.177.32.164 110.724
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '13.228.250.247' `ping -c10 13.228.250.247|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 13.228.250.247 52.188
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '52.47.132.113' `ping -c10 52.47.132.113|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 52.47.132.113 104.566
+[mumbai-router] out: 
+
+
+Done.

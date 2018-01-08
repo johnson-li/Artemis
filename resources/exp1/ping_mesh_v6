@@ -1,0 +1,917 @@
+[virginia-router] Executing task 'ping_mesh'
+[ohio-router] Executing task 'ping_mesh'
+[california-router] Executing task 'ping_mesh'
+[oregon-router] Executing task 'ping_mesh'
+[mumbai-router] Executing task 'ping_mesh'
+[singapore-router] Executing task 'ping_mesh'
+[sydney-router] Executing task 'ping_mesh'
+[tokyo-router] Executing task 'ping_mesh'
+[seoul-router] Executing task 'ping_mesh'
+[central-router] Executing task 'ping_mesh'
+[frankfurt-router] Executing task 'ping_mesh'
+[ireland-router] Executing task 'ping_mesh'
+[london-router] Executing task 'ping_mesh'
+[paris-router] Executing task 'ping_mesh'
+[saopaulo-router] Executing task 'ping_mesh'
+[central-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 194.221
+[central-router] out: 
+
+[central-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 79.046
+[central-router] out: 
+
+[central-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 153.482
+[central-router] out: 
+
+[central-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 92.135
+[central-router] out: 
+
+[central-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 23.867
+[central-router] out: 
+
+[central-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[central-router] out: 
+
+[central-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 170.183
+[central-router] out: 
+
+[central-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 0.030
+[central-router] out: 
+
+[central-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 77.747
+[central-router] out: 
+
+[central-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 13.792
+[central-router] out: 
+
+[central-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 101.091
+[central-router] out: 
+
+[central-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 206.436
+[central-router] out: 
+
+[central-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 89.588
+[central-router] out: 
+
+[central-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 210.010
+[central-router] out: 
+
+[central-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[central-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 121.985
+[central-router] out: 
+
+[london-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 110.499
+[london-router] out: 
+
+[london-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 136.677
+[london-router] out: 
+
+[london-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 249.402
+[london-router] out: 
+
+[london-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 8.483
+[london-router] out: 
+
+[london-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 86.138
+[london-router] out: 
+
+[london-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[london-router] out: 
+
+[london-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 269.864
+[london-router] out: 
+
+[london-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 89.451
+[london-router] out: 
+
+[london-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 12.092
+[london-router] out: 
+
+[london-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 75.171
+[london-router] out: 
+
+[london-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 15.192
+[london-router] out: 
+
+[london-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 159.749
+[london-router] out: 
+
+[london-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 0.028
+[london-router] out: 
+
+[london-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 280.194
+[london-router] out: 
+
+[london-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[london-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 193.349
+[london-router] out: 
+
+[ireland-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 119.800
+[ireland-router] out: 
+
+[ireland-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 129.004
+[ireland-router] out: 
+
+[ireland-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 217.099
+[ireland-router] out: 
+
+[ireland-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 17.848
+[ireland-router] out: 
+
+[ireland-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 89.554
+[ireland-router] out: 
+
+[ireland-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[ireland-router] out: 
+
+[ireland-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 243.848
+[ireland-router] out: 
+
+[ireland-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 77.664
+[ireland-router] out: 
+
+[ireland-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 0.028
+[ireland-router] out: 
+
+[ireland-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 76.517
+[ireland-router] out: 
+
+[ireland-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 22.813
+[ireland-router] out: 
+
+[ireland-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 170.503
+[ireland-router] out: 
+
+[ireland-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 12.413
+[ireland-router] out: 
+
+[ireland-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 285.957
+[ireland-router] out: 
+
+[ireland-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ireland-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 183.303
+[ireland-router] out: 
+
+[frankfurt-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 110.209
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 146.000
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 229.162
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 10.960
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 97.901
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 258.178
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 100.757
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 22.827
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 88.663
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 0.033
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 159.741
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 15.244
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 291.453
+[frankfurt-router] out: 
+
+[frankfurt-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[frankfurt-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 208.731
+[frankfurt-router] out: 
+
+[paris-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 104.157
+[paris-router] out: 
+
+[paris-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 136.952
+[paris-router] out: 
+
+[paris-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 254.185
+[paris-router] out: 
+
+[paris-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 0.028
+[paris-router] out: 
+
+[paris-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 88.545
+[paris-router] out: 
+
+[paris-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[paris-router] out: 
+
+[paris-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 280.844
+[paris-router] out: 
+
+[paris-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 92.136
+[paris-router] out: 
+
+[paris-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 18.267
+[paris-router] out: 
+
+[paris-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 79.353
+[paris-router] out: 
+
+[paris-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 11.018
+[paris-router] out: 
+
+[paris-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 155.808
+[paris-router] out: 
+
+[paris-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 8.855
+[paris-router] out: 
+
+[paris-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 282.178
+[paris-router] out: 
+
+[paris-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[paris-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 200.606
+[paris-router] out: 
+
+[tokyo-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 121.038
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 113.399
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 0.028
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 254.132
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 162.363
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 31.610
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 151.274
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 214.841
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 181.034
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 228.719
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 67.755
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 247.765
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 115.790
+[tokyo-router] out: 
+
+[tokyo-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[tokyo-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 271.319
+[tokyo-router] out: 
+
+[seoul-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 149.335
+[seoul-router] out: 
+
+[seoul-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 135.298
+[seoul-router] out: 
+
+[seoul-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 31.650
+[seoul-router] out: 
+
+[seoul-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 280.786
+[seoul-router] out: 
+
+[seoul-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 184.507
+[seoul-router] out: 
+
+[seoul-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[seoul-router] out: 
+
+[seoul-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 0.027
+[seoul-router] out: 
+
+[seoul-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 170.211
+[seoul-router] out: 
+
+[seoul-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 243.872
+[seoul-router] out: 
+
+[seoul-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 170.328
+[seoul-router] out: 
+
+[seoul-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 257.591
+[seoul-router] out: 
+
+[seoul-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 96.934
+[seoul-router] out: 
+
+[seoul-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 270.301
+[seoul-router] out: 
+
+[seoul-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 132.592
+[seoul-router] out: 
+
+[seoul-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[seoul-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 288.112
+[seoul-router] out: 
+
+[saopaulo-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 302.739
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 182.480
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 271.206
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 200.576
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 130.714
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 288.022
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 121.854
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 183.062
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 120.905
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 208.705
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 327.186
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 193.398
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 331.707
+[saopaulo-router] out: 
+
+[saopaulo-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[saopaulo-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 0.042
+[saopaulo-router] out: 
+
+[oregon-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 212.893
+[oregon-router] out: 
+
+[oregon-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 20.131
+[oregon-router] out: 
+
+[oregon-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 103.977
+[oregon-router] out: 
+
+[oregon-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 156.228
+[oregon-router] out: 
+
+[oregon-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 68.888
+[oregon-router] out: 
+
+[oregon-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81 0.028
+[oregon-router] out: 
+
+[oregon-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 132.070
+[oregon-router] out: 
+
+[oregon-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 65.433
+[oregon-router] out: 
+
+[oregon-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 133.459
+[oregon-router] out: 
+
+[oregon-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 80.738
+[oregon-router] out: 
+
+[oregon-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 163.609
+[oregon-router] out: 
+
+[oregon-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 162.816
+[oregon-router] out: 
+
+[oregon-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 156.390
+[oregon-router] out: 
+
+[oregon-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 162.216
+[oregon-router] out: 
+
+[oregon-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[oregon-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 185.579
+[oregon-router] out: 
+
+[california-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 249.300
+[california-router] out: 
+
+[california-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 0.029
+[california-router] out: 
+
+[california-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 113.330
+[california-router] out: 
+
+[california-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 136.973
+[california-router] out: 
+
+[california-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 51.715
+[california-router] out: 
+
+[california-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[california-router] out: 
+
+[california-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 135.514
+[california-router] out: 
+
+[california-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 79.242
+[california-router] out: 
+
+[california-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 139.419
+[california-router] out: 
+
+[california-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 60.742
+[california-router] out: 
+
+[california-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 146.382
+[california-router] out: 
+
+[california-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 179.656
+[california-router] out: 
+
+[california-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 136.690
+[california-router] out: 
+
+[california-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 146.653
+[california-router] out: 
+
+[california-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[california-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 182.788
+[california-router] out: 
+
+[virginia-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 181.500
+[virginia-router] out: 
+
+[virginia-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 70.634
+[virginia-router] out: 
+
+[virginia-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 181.057
+[virginia-router] out: 
+
+[virginia-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 79.274
+[virginia-router] out: 
+
+[virginia-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 11.184
+[virginia-router] out: 
+
+[virginia-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[virginia-router] out: 
+
+[virginia-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 170.385
+[virginia-router] out: 
+
+[virginia-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 13.796
+[virginia-router] out: 
+
+[virginia-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 76.403
+[virginia-router] out: 
+
+[virginia-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 0.028
+[virginia-router] out: 
+
+[virginia-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 88.664
+[virginia-router] out: 
+
+[virginia-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 251.272
+[virginia-router] out: 
+
+[virginia-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 75.218
+[virginia-router] out: 
+
+[virginia-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 204.573
+[virginia-router] out: 
+
+[virginia-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[virginia-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 121.434
+[virginia-router] out: 
+
+[sydney-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 222.821
+[sydney-router] out: 
+
+[sydney-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 146.595
+[sydney-router] out: 
+
+[sydney-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 117.126
+[sydney-router] out: 
+
+[sydney-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 281.967
+[sydney-router] out: 
+
+[sydney-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 194.450
+[sydney-router] out: 
+
+[sydney-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[sydney-router] out: 
+
+[sydney-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 132.738
+[sydney-router] out: 
+
+[sydney-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 210.309
+[sydney-router] out: 
+
+[sydney-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 286.014
+[sydney-router] out: 
+
+[sydney-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 204.606
+[sydney-router] out: 
+
+[sydney-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 291.338
+[sydney-router] out: 
+
+[sydney-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 177.807
+[sydney-router] out: 
+
+[sydney-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 280.205
+[sydney-router] out: 
+
+[sydney-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 0.027
+[sydney-router] out: 
+
+[sydney-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[sydney-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 331.763
+[sydney-router] out: 
+
+[singapore-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 52.895
+[singapore-router] out: 
+
+[singapore-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 176.815
+[singapore-router] out: 
+
+[singapore-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 67.726
+[singapore-router] out: 
+
+[singapore-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 155.810
+[singapore-router] out: 
+
+[singapore-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 227.059
+[singapore-router] out: 
+
+[singapore-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[singapore-router] out: 
+
+[singapore-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 96.893
+[singapore-router] out: 
+
+[singapore-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 206.455
+[singapore-router] out: 
+
+[singapore-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 169.217
+[singapore-router] out: 
+
+[singapore-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 245.873
+[singapore-router] out: 
+
+[singapore-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 159.907
+[singapore-router] out: 
+
+[singapore-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 0.027
+[singapore-router] out: 
+
+[singapore-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 159.803
+[singapore-router] out: 
+
+[singapore-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 177.654
+[singapore-router] out: 
+
+[singapore-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[singapore-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 327.175
+[singapore-router] out: 
+
+[mumbai-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1 0.029
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3 248.958
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89 120.456
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3 104.326
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 190.685
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75 149.274
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e 194.269
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda 119.749
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f 181.537
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66 110.330
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1 53.069
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83 110.509
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8 222.627
+[mumbai-router] out: 
+
+[mumbai-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[mumbai-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939 302.777
+[mumbai-router] out: 
+
+[ohio-router] run: echo '2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1' `ping6 -c10 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2406:da1a:c9d:4e00:1874:2d9b:66e1:46f1
+[ohio-router] out: 
+
+[ohio-router] run: echo '2600:1f1c:45:4101:e003:68a0:b28:32f3' `ping6 -c10 2600:1f1c:45:4101:e003:68a0:b28:32f3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2600:1f1c:45:4101:e003:68a0:b28:32f3
+[ohio-router] out: 
+
+[ohio-router] run: echo '2406:da14:1a0:b00:1f2f:dd9e:424c:8b89' `ping6 -c10 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2406:da14:1a0:b00:1f2f:dd9e:424c:8b89
+[ohio-router] out: 
+
+[ohio-router] run: echo '2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3' `ping6 -c10 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2a05:d012:947:9402:8bb5:ef31:e8d2:d7e3
+[ohio-router] out: 
+
+[ohio-router] run: echo '2600:1f16:f11:e102:7a8a:59b0:a3c:aeff' `ping6 -c10 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2600:1f16:f11:e102:7a8a:59b0:a3c:aeff 0.033
+[ohio-router] out: 
+
+[ohio-router] run: echo '2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81' `ping6 -c10 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2600:1f14:e4a:f800:7a8c:9239:fa2e:bd81
+[ohio-router] out: 
+
+[ohio-router] run: echo '2406:da12:c78:7000:6859:cb11:5dd1:ec75' `ping6 -c10 2406:da12:c78:7000:6859:cb11:5dd1:ec75|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2406:da12:c78:7000:6859:cb11:5dd1:ec75
+[ohio-router] out: 
+
+[ohio-router] run: echo '2600:1f11:931:501:f321:edd:7dd0:234e' `ping6 -c10 2600:1f11:931:501:f321:edd:7dd0:234e|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2600:1f11:931:501:f321:edd:7dd0:234e
+[ohio-router] out: 
+
+[ohio-router] run: echo '2a05:d018:8:300:e7d6:3494:9234:deda' `ping6 -c10 2a05:d018:8:300:e7d6:3494:9234:deda|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2a05:d018:8:300:e7d6:3494:9234:deda
+[ohio-router] out: 
+
+[ohio-router] run: echo '2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f' `ping6 -c10 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2600:1f18:41bc:db00:7ec8:a72d:58fd:7b4f
+[ohio-router] out: 
+
+[ohio-router] run: echo '2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66' `ping6 -c10 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2a05:d014:5e1:5b00:4b1d:41bb:585d:8f66
+[ohio-router] out: 
+
+[ohio-router] run: echo '2406:da18:f54:ad00:2d47:a781:6fda:73a1' `ping6 -c10 2406:da18:f54:ad00:2d47:a781:6fda:73a1|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2406:da18:f54:ad00:2d47:a781:6fda:73a1
+[ohio-router] out: 
+
+[ohio-router] run: echo '2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83' `ping6 -c10 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2a05:d01c:1b2:8101:f6ba:4960:3cf5:5b83
+[ohio-router] out: 
+
+[ohio-router] run: echo '2406:da1c:a69:e02:15ab:6536:dee7:f5b8' `ping6 -c10 2406:da1c:a69:e02:15ab:6536:dee7:f5b8|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2406:da1c:a69:e02:15ab:6536:dee7:f5b8
+[ohio-router] out: 
+
+[ohio-router] run: echo '2600:1f1e:c2e:bb00:240f:4b44:dc09:6939' `ping6 -c10 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939|tail -1|awk '{print $4}' | cut -d '/' -f 2`
+[ohio-router] out: 2600:1f1e:c2e:bb00:240f:4b44:dc09:6939
+[ohio-router] out: 
+
+
+Done.
