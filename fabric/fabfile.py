@@ -20,21 +20,28 @@ env.hosts = ['virginia-router', 'virginia-server', 'ohio-server', 'ohio-router',
              'ireland-router', 'ireland-server', 'london-server', 'london-router',
              'paris-server', 'paris-router', 'saopaulo-server', 'saopaulo-router']
 env.hosts = ['tokyo-router', 'tokyo-server', 'sydney-router', 'sydney-server', 'singapore-router', 'singapore-server']
+'''env.hosts = ['virginia-router', 'ohio-router', 'california-router',
+             'oregon-router', 'mumbai-router',
+             'singapore-router', 'sydney-router', 'tokyo-router',
+             'seoul-router', 'central-router', 'frankfurt-router',
+             'ireland-router', 'london-router',
+             'paris-router', 'saopaulo-router']
+             '''
 
 
-@parallel(pool_size=4)
+@parallel(pool_size=8)
 def host_type():
     run('uname -a')
 
 
-@parallel(pool_size=6)
-def host_type():
+@parallel(pool_size=8)
+def ping_mesh():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
-    # c.execute("SELECT primaryIpv6 FROM instances")
-    c.execute("SELECT primaryIpv4Pub FROM instances ")
+    c.execute("SELECT primaryIpv6 FROM instances")
+    #c.execute("SELECT primaryIpv4Pub FROM instances where name = 'router'")
     for host in c.fetchall():
-        print("ping -c10 " + host[0] + "|tail -1|awk '{print $4}' | cut -d '/' -f 2")
+        run("echo '" + host[0] + "' `ping6 -c10 " + host[0] + "|tail -1|awk '{print $4}' | cut -d '/' -f 2`")
 
 
 @parallel(pool_size=4)
