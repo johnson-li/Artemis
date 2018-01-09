@@ -37,8 +37,8 @@ if not env.hosts:
     env.hosts = []
     for region in c.fetchall():
         region = region[0]
-        env.hosts.append(REGIONS[region] + '-router')
-        env.hosts.append(REGIONS[region] + '-server')
+        env.hosts.append(REGIONS[region].lower() + '-router')
+        env.hosts.append(REGIONS[region].lower() + '-server')
     conn.close()
 
 
