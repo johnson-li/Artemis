@@ -65,8 +65,13 @@ int main(int argc, char **argv) {
 
     for (;;) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
+        gettimeofday(&end, NULL);
+        double diff = (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000;
         if (recv != -1) {
             break;
+        }
+        if (diff > 5000) {
+            return 1;
         }
     }
     printf("got %ld bytes from the server\n", recv);

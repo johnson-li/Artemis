@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
         if (recv != -1) {
             break;
         }
-        if (diff > 3000) {
+        if (diff > 5000) {
             return 1;
         }
     }
