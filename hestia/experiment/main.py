@@ -37,7 +37,7 @@ def store_result(host, server):
     c = conn.cursor()
     c.execute("select * from sip where host = '{}'".format(host))
     if c.fetchone():
-        c.execute("UPDATE sip set server = '' where host = ''".format(server, host))
+        c.execute("UPDATE sip set server = '{}' where host = '{}'".format(server, host))
     else:
         c.execute("insert into sip (host, server) VALUES ('{}', '{}')".format(host, server))
     conn.commit()
