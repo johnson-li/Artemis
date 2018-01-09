@@ -54,7 +54,7 @@ do
     then
         output=0
     fi
-    dns_hit_data=${dns_hit_data},${output}
+    dns_hit_data=${dns_hit_data},${cost}
 done
 echo dns_hit_data: ${dns_hit_data}
 echo dns_hit_delay: ${dns_hit_delay}
