@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import socket
 import sqlite3
 import sys
 
@@ -194,6 +195,7 @@ if __name__ == '__main__':
         peer = sys.argv[1]
     else:
         add_default_flows(regions)
+    peer = socket.gethostbyname(peer)
     init_db()
     results = []
     for region in regions:
