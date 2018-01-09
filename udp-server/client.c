@@ -9,6 +9,7 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <time.h>
+#include <unistd.h>
 
 #define BUFSIZE 1024000
 #define PORT 80
@@ -56,7 +57,14 @@ int main(int argc, char **argv) {
     result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0,
                     (struct sockaddr *) &server_addr, sizeof(server_addr));
     printf("sent %ld bytes to the server\n", result);
+    result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0,
+                    (struct sockaddr *) &server_addr, sizeof(server_addr));
+    printf("sent %ld bytes to the server\n", result);
+    result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0,
+                    (struct sockaddr *) &server_addr, sizeof(server_addr));
+    printf("sent %ld bytes to the server\n", result);
 
+    sleep(1);
     start = clock();
     result = sendto(router_fd, router_buf, sizeof(router_buf) / sizeof(router_buf[0]), 0,
                     (struct sockaddr *) &router_addr, sizeof(router_addr));
