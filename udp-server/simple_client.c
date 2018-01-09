@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
         inet_pton(AF_INET, server_ip, &(server_addr.sin_addr));
     }
 
-    result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0, (sockaddr *) &server_addr,
+    result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0, (struct sockaddr *) &server_addr,
                     sizeof(server_addr));
     printf("sent %ld bytes to the server\n", result);
 
