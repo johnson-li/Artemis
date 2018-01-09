@@ -8,7 +8,8 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
-#include <time.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 
 #define BUFSIZE 1024000
@@ -22,7 +23,7 @@ int main(int argc, char **argv) {
         printf("too much arguments");
         return 1;
     }
-    clock_t start, end, dns_start, dns_end;
+    struct timeval start, end, dns_start, dns_end;
     ssize_t result;
     ssize_t recv;
     int server_fd;
@@ -38,13 +39,14 @@ int main(int argc, char **argv) {
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
-    start = clock();
+    gettimeofday(&start, NULL);
     if (server_ip[0] > '9' || server_ip[0] < '0') {
         struct hostent *he;
-        dns_start = clock();
+        gettimeofday(&dns_start, NULL);
         he = gethostbyname(server_ip);
-        dns_end = clock();
-        printf("DNS delay %f ns\n", (double) (dns_end - dns_start) / CLOCKS_PER_SEC * 1000);
+        gettimeofday(&dns_end, NULL);
+        printf("DNS delay %f ms\n",
+               (double) (dns_end.tv_usec - dns_start.tv_usec) / 1000 + (dns_end.tv_sec - dns_start.tv_sec) * 1000);
         struct in_addr **addr_list;
         addr_list = (struct in_addr **) he->h_addr_list;
         server_addr.sin_addr = *addr_list[0];
@@ -52,16 +54,17 @@ int main(int argc, char **argv) {
         inet_pton(AF_INET, server_ip, &(server_addr.sin_addr));
     }
 
-    result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0, (struct sockaddr *) &server_addr,
+    result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0,
+                    (struct sockaddr *) &server_addr,
                     sizeof(server_addr));
     printf("sent %ld bytes to the server\n", result);
 
     socklen_t addrlen;
     recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
     printf("got %ld bytes from the server\n", recv);
-    end = clock();
+    gettimeofday(&end, NULL);
 
-    printf("cost %f ms\n", (double) (end - start) / CLOCKS_PER_SEC * 1000);
+    printf("cost %f ms\n", (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000);
     char name[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &(server_addr.sin_addr), name, INET_ADDRSTRLEN);
     printf("server ip by DNS %s\n", name);

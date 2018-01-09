@@ -8,7 +8,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
-#include <time.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 #define BUFSIZE 1024000
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     }
     ssize_t result;
     ssize_t recv;
-    clock_t start, end;
+    struct timeval start, end;
     int server_fd;
     int router_fd;
     char server_buf[] = {'i', 'n', 'i', 't'};
@@ -65,25 +65,25 @@ int main(int argc, char **argv) {
     printf("sent %ld bytes to the server\n", result);
 
     sleep(1);
-    start = clock();
+    gettimeofday(&start, NULL);
     result = sendto(router_fd, router_buf, sizeof(router_buf) / sizeof(router_buf[0]), 0,
                     (struct sockaddr *) &router_addr, sizeof(router_addr));
     printf("sent %ld bytes to the router\n", result);
 
     for (;;) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
-        end = clock();
-        double diff = (double) (end - start) / CLOCKS_PER_SEC;
+        gettimeofday(&end, NULL);
+        double diff = (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000;
         if (recv != -1) {
             break;
         }
-        if (diff > 4) {
+        if (diff > 3000) {
             return 1;
         }
     }
     printf("got %ld bytes from the server\n", recv);
-    end = clock();
+    gettimeofday(&end, NULL);
 
-    printf("cost %f ms\n", (double) (end - start) / CLOCKS_PER_SEC * 1000);
+    printf("cost %f ms\n", (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000);
     return 0;
 }
