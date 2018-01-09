@@ -31,6 +31,15 @@ if not env.hosts:
              'ireland-router', 'london-router',
              'paris-router', 'saopaulo-router']
              '''
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("SELECT region FROM instances GROUP BY region")
+    env.hosts = []
+    for region in c.fetchall():
+        region = region[0]
+        env.hosts.append(REGIONS[region] + '-router')
+        env.hosts.append(REGIONS[region] + '-server')
+    conn.close()
 
 
 @parallel(pool_size=8)
