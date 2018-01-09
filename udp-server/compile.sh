@@ -1,6 +1,5 @@
-g++ -std=c++11 dns_server.cpp -o dns_server
-g++ -std=c++11 serviceid_server.cpp -o serviceid_server
-g++ -std=c++11 client.cpp -o client
-g++ -std=c++11 simple_client.cpp -o simple_client
+gcc dns_server.c -o dns_server
+gcc serviceid_server.c -o serviceid_server
+gcc client.c -o client
+gcc simple_client.c-o simple_client
 
-g++ -std=c++11 proxy/SocksClient.cpp -o SocksClient

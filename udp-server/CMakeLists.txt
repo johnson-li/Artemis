@@ -4,4 +4,4 @@ project(udp_server)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(udp_server
-        serviceid_server.cpp client.cpp proxy/SocksClient.cpp proxy/SocksClient.h)
+        serviceid_server.c client.c proxy/SocksClient.cpp proxy/SocksClient.h)

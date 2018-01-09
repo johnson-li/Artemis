@@ -6,11 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <netdb.h>
-#include <map>
 #include <arpa/inet.h>
-#include <chrono>
-#include <iostream>
 #include <netinet/in.h>
+#include <time.h>
 
 
 #define BUFSIZE 1024000
@@ -24,6 +22,7 @@ int main(int argc, char **argv) {
         printf("too much arguments");
         return 1;
     }
+    clock_t start, end, dns_start, dns_end;
     ssize_t result;
     ssize_t recv;
     int server_fd;
@@ -39,15 +38,13 @@ int main(int argc, char **argv) {
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
-    auto begin = std::chrono::high_resolution_clock::now();
+    start = clock();
     if (server_ip[0] > '9' || server_ip[0] < '0') {
         struct hostent *he;
-        auto dns_begin = std::chrono::high_resolution_clock::now();
+        dns_start = clock();
         he = gethostbyname(server_ip);
-        auto dns_end = std::chrono::high_resolution_clock::now();
-        std::cout << "DNS delay " << std::fixed
-                  << std::chrono::duration_cast<std::chrono::nanoseconds>(dns_end - dns_begin).count() << "ns"
-                  << std::endl;
+        dns_end = clock();
+        printf("DNS delay %f ns\n", (double) (dns_end - dns_start) / CLOCKS_PER_SEC * 1000);
         struct in_addr **addr_list;
         addr_list = (struct in_addr **) he->h_addr_list;
         server_addr.sin_addr = *addr_list[0];
@@ -62,10 +59,9 @@ int main(int argc, char **argv) {
     socklen_t addrlen;
     recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
     printf("got %ld bytes from the server\n", recv);
-    auto end = std::chrono::high_resolution_clock::now();
+    end = clock();
 
-    std::cout << "cost " << std::fixed << std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count()
-              << "ns" << std::endl;
+    printf("cost %f ms\n", (double) (end - start) / CLOCKS_PER_SEC * 1000);
     char name[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &(server_addr.sin_addr), name, INET_ADDRSTRLEN);
     printf("server ip by DNS %s\n", name);

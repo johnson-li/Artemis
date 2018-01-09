@@ -6,11 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <netdb.h>
-#include <map>
 #include <arpa/inet.h>
-#include <chrono>
-#include <iostream>
 #include <fcntl.h>
+#include <ctime>
 
 #define BUFSIZE 1024000
 #define PORT 80
@@ -25,6 +23,7 @@ int main(int argc, char **argv) {
     }
     ssize_t result;
     ssize_t recv;
+    clock_t start, end;
     int server_fd;
     int router_fd;
     char server_buf[] = {'i', 'n', 'i', 't'};
@@ -56,29 +55,25 @@ int main(int argc, char **argv) {
                     sizeof(server_addr));
     printf("sent %ld bytes to the server\n", result);
 
-    auto begin = std::chrono::high_resolution_clock::now();
+    start = clock();
     result = sendto(router_fd, router_buf, sizeof(router_buf) / sizeof(router_buf[0]), 0, (sockaddr *) &router_addr,
                     sizeof(router_addr));
     printf("sent %ld bytes to the router\n", result);
 
     for (;;) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
-        auto end = std::chrono::high_resolution_clock::now();
-        long long diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
+        end = clock();
+        double diff = (double) (end - start) / CLOCKS_PER_SEC;
         if (recv != -1) {
             break;
         }
-        if (diff > 4000000000) {
+        if (diff > 4) {
             return 1;
         }
     }
     printf("got %ld bytes from the server\n", recv);
-    auto end = std::chrono::high_resolution_clock::now();
+    end = clock();
 
-
-    std::cout << "cost " << std::fixed << std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count()
-              << "ns" << std::endl;
-
-
+    printf("cost %f ms\n", (double) (end - start) / CLOCKS_PER_SEC * 1000);
     return 0;
 }

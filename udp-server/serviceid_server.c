@@ -4,17 +4,23 @@
 #include <string.h>
 #include <netdb.h>
 #include <arpa/inet.h>
-#include <map>
+#include "uthash.h"
 
 
 #define PORT 80
 #define BUFSIZE 1024000
 
+struct map_entry {
+    in_addr_t key;
+    struct sockaddr_in val;
+    UT_hash_handle hh;
+};
+
 int main(int argc, char **argv) {
+    struct map_entry *map = NULL;
     struct sockaddr_in sa_gre;
     struct sockaddr_in myaddr;      /* our address */
     struct sockaddr_in remaddr;     /* remote address */
-    std::map<in_addr_t, sockaddr_in> map;
     socklen_t addrlen = sizeof(remaddr);            /* length of addresses */
     int recvlen;                    /* # bytes received */
     int result;
@@ -49,14 +55,26 @@ int main(int argc, char **argv) {
         printf("received %d bytes from %s:%d\n", recvlen, str, remaddr.sin_port);
         if (recvlen > 10) {
             printf("got message from gre\n");
-            sockaddr_in remaddr_old = map[remaddr.sin_addr.s_addr];
+            struct sockaddr_in remaddr_old;
+            struct map_entry *entry;
+            HASH_FIND_INT(map, &(remaddr.sin_addr.s_addr), entry);
+            remaddr_old = entry->val;
             inet_ntop(AF_INET, &(remaddr_old.sin_addr), str, INET_ADDRSTRLEN);
             result = sendto(fd, send_buf, sizeof(send_buf) / sizeof(send_buf[0]), 0, (struct sockaddr *) &remaddr_old,
                             sizeof(remaddr_old));
             printf("%d bytes sent to %s:%d\n", result, str, remaddr_old.sin_port);
         } else {
             printf("got message from internet\n");
-            map[remaddr.sin_addr.s_addr] = remaddr;
+            struct map_entry *entry;
+            HASH_FIND_INT(map, &(remaddr.sin_addr.s_addr), entry);
+            if (entry != NULL) {
+                entry->val = remaddr;
+            } else {
+                entry = malloc(sizeof(struct map_entry));
+                entry->key = remaddr.sin_addr.s_addr;
+                entry->val = remaddr;
+                HASH_ADD_INT(map, key, entry);
+            }
         }
     }
 }
