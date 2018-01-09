@@ -26,6 +26,7 @@ dns_hit_data=''
 dns_data=''
 sid_data=''
 dns_delay=''
+dns_hit_delay=''
 
 # Direct query
 # direct_server=`dig +short cdn.xuebing.name`
@@ -45,7 +46,10 @@ echo direct_data: ${direct_data}
 # DNS hit
 for i in `seq ${repeat}`
 do
-    output=`./timeout.sh ./server/simple_client cdn.xuebing.name| grep cost| egrep -o '[0-9.]+'`
+    output=`./timeout.sh ./server/simple_client cdn.xuebing.name`
+    cost=`echo "${output}"| grep cost| egrep -o '[0-9.]+'`
+    dns_cost=`echo "${output}"| grep 'DNS delay'| egrep -o '[0-9.]+'`
+    dns_hit_delay=${dns_hit_delay},${dns_cost}
     if [ -z "$output" ]
     then
         output=0
@@ -53,6 +57,7 @@ do
     dns_hit_data=${dns_hit_data},${output}
 done
 echo dns_hit_data: ${dns_hit_data}
+echo dns_hit_delay: ${dns_hit_delay}
 
 # Dns miss
 for i in `seq ${repeat}`
