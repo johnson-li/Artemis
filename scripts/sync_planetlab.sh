@@ -9,5 +9,6 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no goettingenple_tx
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no server/client goettingenple_txp1@$1:~/server/client
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no server/simple_client goettingenple_txp1@$1:~/server/simple_client
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no conduct_exp1.sh goettingenple_txp1@$1:~/
+scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no timeout.sh goettingenple_txp1@$1:~/
 
 cd ${USER_DIR}

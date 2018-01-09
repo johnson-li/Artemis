@@ -11,3 +11,14 @@ See [this doc](docs/topology.md).
 Configuration
 ===
 
+Steps
+===
+
+## Start servers
+1. `ls`
+
+## Init servers
+
+## Prepare clients
+
+## Run clients
