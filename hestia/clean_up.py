@@ -14,8 +14,8 @@ def release_ips(sessions):
 
 def main():
     sessions = Sessions()
-    session_list = [sessions.ap_northeast_1, sessions.ap_southeast_2, sessions.ap_southeast_1]
-    # session_list = sessions.all()
+    # session_list = [sessions.ap_northeast_1, sessions.ap_southeast_2, sessions.ap_southeast_1]
+    session_list = sessions.all()
     pending_instances = []
     for session in session_list:
         ec2 = session.resource('ec2')
