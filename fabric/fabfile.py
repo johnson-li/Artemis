@@ -54,6 +54,11 @@ def disable_ssh_dns_resolve():
 
 
 @parallel(pool_size=8)
+def hosts_file():
+    sudo('bash -c "echo 127.0.0.1 `hostname` >> /etc/hosts"')
+
+
+@parallel(pool_size=8)
 def ping_mesh():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
