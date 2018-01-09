@@ -22,6 +22,7 @@ cd ${BASE_DIR}
 #sid_router=''
 sid_server=$1
 direct_data=''
+dns_hit_data=''
 dns_data=''
 sid_data=''
 dns_delay=''
@@ -41,7 +42,19 @@ do
 done
 echo direct_data: ${direct_data}
 
-# Dns query
+# DNS hit
+for i in `seq ${repeat}`
+do
+    output=`./timeout.sh ./server/simple_client cdn.xuebing.name| grep cost| egrep -o '[0-9.]+'`
+    if [ -z "$output" ]
+    then
+        output=0
+    fi
+    dns_hit_data=${dns_hit_data},${output}
+done
+echo dns_hit_data: ${dns_hit_data}
+
+# Dns miss
 for i in `seq ${repeat}`
 do
 #    dns_server=127.0.0.1
