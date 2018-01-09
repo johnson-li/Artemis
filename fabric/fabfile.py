@@ -48,6 +48,11 @@ def host_type():
 
 
 @parallel(pool_size=8)
+def disable_ssh_dns_resolve():
+    sudo('bash -c "echo \'UseDNS no\' >> /etc/ssh/sshd_config"')
+
+
+@parallel(pool_size=8)
 def ping_mesh():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
