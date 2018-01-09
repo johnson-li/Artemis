@@ -13,14 +13,18 @@ env.skip_bad_hosts = True
 env.use_ssh_config = True
 env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config'
 
-env.hosts = ['virginia-router', 'virginia-server', 'ohio-server', 'ohio-router', 'california-router',
-             'california-server', 'oregon-server', 'oregon-router', 'mumbai-server', 'mumbai-router',
-             'singapore-router', 'singapore-server', 'sydney-router', 'sydney-server', 'tokyo-router', 'tokyo-server',
-             'seoul-router', 'seoul-server', 'central-router', 'central-server', 'frankfurt-router', 'frankfurt-server',
-             'ireland-router', 'ireland-server', 'london-server', 'london-router',
-             'paris-server', 'paris-router', 'saopaulo-server', 'saopaulo-router']
-env.hosts = ['tokyo-router', 'tokyo-server', 'sydney-router', 'sydney-server', 'singapore-router', 'singapore-server']
-'''env.hosts = ['virginia-router', 'ohio-router', 'california-router',
+if not env.hosts:
+    env.hosts = ['virginia-router', 'virginia-server', 'ohio-server', 'ohio-router', 'california-router',
+                 'california-server', 'oregon-server', 'oregon-router', 'mumbai-server', 'mumbai-router',
+                 'singapore-router', 'singapore-server', 'sydney-router', 'sydney-server', 'tokyo-router',
+                 'tokyo-server',
+                 'seoul-router', 'seoul-server', 'central-router', 'central-server', 'frankfurt-router',
+                 'frankfurt-server',
+                 'ireland-router', 'ireland-server', 'london-server', 'london-router',
+                 'paris-server', 'paris-router', 'saopaulo-server', 'saopaulo-router']
+    env.hosts = ['tokyo-router', 'tokyo-server', 'sydney-router', 'sydney-server', 'singapore-router',
+                 'singapore-server']
+    '''env.hosts = ['virginia-router', 'ohio-router', 'california-router',
              'oregon-router', 'mumbai-router',
              'singapore-router', 'sydney-router', 'tokyo-router',
              'seoul-router', 'central-router', 'frankfurt-router',
@@ -39,7 +43,7 @@ def ping_mesh():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     c.execute("SELECT primaryIpv6 FROM instances")
-    #c.execute("SELECT primaryIpv4Pub FROM instances where name = 'router'")
+    # c.execute("SELECT primaryIpv4Pub FROM instances where name = 'router'")
     for host in c.fetchall():
         run("echo '" + host[0] + "' `ping6 -c10 " + host[0] + "|tail -1|awk '{print $4}' | cut -d '/' -f 2`")
 
