@@ -95,6 +95,7 @@ def stop_servers():
 @parallel(pool_size=4)
 def init():
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
+    sudo('ovs-vsctl set-controller br1 tcp:35.193.107.149:6653')
 
 
 @parallel(pool_size=4)
