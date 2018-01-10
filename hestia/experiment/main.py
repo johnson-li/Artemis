@@ -9,11 +9,13 @@ import httplib
 import paramiko
 
 from hestia import RESOURCE_PATH, SQL_PATH
+from hestia.aws.regions import REGIONS
 from hestia.info.dpid import DPID
 from hestia.info.mac import MAC
 
 DB_PATH = RESOURCE_PATH + '/db'
 DB_FILE = DB_PATH + '/sip.db'
+INSTANCE_DB_FILE = DB_PATH + '/instances.db'
 SQL_FILE = SQL_PATH + '/sip.sql'
 ssh_clients = {}
 host_mapping = {}
@@ -190,7 +192,13 @@ def add_flows(target, other_regions, peer_ip):
 peer = '35.193.107.149'
 
 if __name__ == '__main__':
-    regions = ['tokyo', 'sydney', 'singapore']
+    conn = sqlite3.connect(INSTANCE_DB_FILE)
+    c = conn.cursor()
+    c.execute("SELECT region FROM instances GROUP BY region")
+    regions = []
+    for region in c.fetchall():
+        region = region[0]
+        regions.append(REGIONS[region].lower())
     if len(sys.argv) == 2:
         peer = sys.argv[1]
     else:
