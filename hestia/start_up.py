@@ -53,7 +53,7 @@ def start_machines(sessions):
             for interface in resource.network_interfaces.all():
                 if not interface.attachment and interface.description == utils.get_instance_name(instance) + '-eth1':
                     pending_interfaces.append(interface)
-                    time.sleep(5)
+                    time.sleep(3)
                     interface.attach(DeviceIndex=1, InstanceId=instance.id)
                     break
             INITIATED_INSTANCES.append((instance, region_name))
@@ -89,9 +89,9 @@ def store_instances_info():
         instance.load()
         try:
             for interface in instance.network_interfaces:
-                secondary_ipv4=''
-                secondary_ipv4_pub=''
-                secondary_ipv6=''
+                secondary_ipv4 = ''
+                secondary_ipv4_pub = ''
+                secondary_ipv6 = ''
                 if interface.attachment['DeviceIndex'] == 0:
                     primary_ipv4 = interface.private_ip_address
                     primary_ipv4_pub = interface.private_ip_addresses[0]['Association']['PublicIp']
