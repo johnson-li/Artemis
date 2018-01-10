@@ -4,6 +4,7 @@ import re
 import socket
 import sqlite3
 import sys
+from multiprocessing import Pool
 
 import httplib
 import paramiko
@@ -62,12 +63,13 @@ def get_ssh(host):
     return ssh
 
 
-def get_latency(host, peer):
+def get_latency(region, peer):
+    host = region + '-server'
     ssh = get_ssh(host)
     ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(
         "ping -c 10 " + peer + " | tail -1| awk '{print $4}' | cut -d '/' -f 2")
     for line in ssh_stdout:
-        return float(line)
+        return region, float(line)
 
 
 def get_port(host, port_name):
@@ -112,53 +114,63 @@ class StaticFlowPusher(object):
 pusher = StaticFlowPusher('35.193.107.149')
 
 
+def add_default_flow(region):
+    # router -> server
+    flow = {
+        'switch': DPID[region]['router'],
+        'name': '{}-route-server-default'.format(region),
+        'cookie': '0',
+        'eth_type': '0x0800',
+        'priority': '10',
+        'in_port': get_port(region + '-router', 'eth1'),
+        'active': 'true',
+        'actions': 'output={}'.format(get_port(region + '-router', 'gre_server')),
+    }
+    print(flow)
+    pusher.set(flow)
+    # server -> local
+    flow = {
+        'switch': DPID[region]['server'],
+        'name': '{}-server-default'.format(region),
+        'cookie': '0',
+        'eth_type': '0x0800',
+        'priority': '200',
+        'in_port': get_port(region + '-server', 'gre_router'),
+        'active': 'true',
+        'actions': 'set_field=ipv4_dst->10.10.10.10,set_field=eth_dst->{},output=local'.format(
+            MAC[region]['server']['br1']),
+    }
+    print(flow)
+    pusher.set(flow)
+
+
 def add_default_flows(all_regions):
-    for region in all_regions:
-        # router -> server
-        flow = {
-            'switch': DPID[region]['router'],
-            'name': '{}-route-server-default'.format(region),
-            'cookie': '0',
-            'eth_type': '0x0800',
-            'priority': '10',
-            'in_port': get_port(region + '-router', 'eth1'),
-            'active': 'true',
-            'actions': 'output={}'.format(get_port(region + '-router', 'gre_server')),
-        }
-        print(flow)
-        pusher.set(flow)
-        # server -> local
-        flow = {
-            'switch': DPID[region]['server'],
-            'name': '{}-server-default'.format(region),
-            'cookie': '0',
-            'eth_type': '0x0800',
-            'priority': '200',
-            'in_port': get_port(region + '-server', 'gre_router'),
-            'active': 'true',
-            'actions': 'set_field=ipv4_dst->10.10.10.10,set_field=eth_dst->{},output=local'.format(
-                MAC[region]['server']['br1']),
-        }
-        print(flow)
-        pusher.set(flow)
+    with Pool(concurrency) as pool:
+        pool.map(add_default_flow, all_regions)
+
+
+def add_route_flow(target, other_region, peer_ip):
+    flow = {
+        'switch': DPID[other_region]['router'],
+        'name': 'route-{}-{}'.format(other_region, peer_ip),
+        'cookie': '0',
+        'eth_type': '0x0800',
+        'ipv4_src': peer_ip,
+        'priority': '100',
+        'in_port': get_port(other_region + '-router', 'eth1'),
+        'active': 'true',
+        'actions': 'output={}'.format(get_port(other_region + '-router', 'gre_' + target)),
+    }
+    pusher.set(flow)
+    print(flow)
 
 
 def add_flows(target, other_regions, peer_ip):
     # router -> router forwarding
-    for other_region in other_regions:
-        flow = {
-            'switch': DPID[other_region]['router'],
-            'name': 'route-{}-{}'.format(other_region, peer_ip),
-            'cookie': '0',
-            'eth_type': '0x0800',
-            'ipv4_src': peer_ip,
-            'priority': '100',
-            'in_port': get_port(other_region + '-router', 'eth1'),
-            'active': 'true',
-            'actions': 'output={}'.format(get_port(other_region + '-router', 'gre_' + target)),
-        }
-        pusher.set(flow)
-        print(flow)
+    pairs = [(target, other_region, peer_ip) for other_region in other_regions]
+    with Pool(concurrency) as pool:
+        pool.starmap(add_route_flow, pairs)
+
     # router(eth) -> server forwarding
     flow = {
         'switch': DPID[target]['router'],
@@ -173,6 +185,7 @@ def add_flows(target, other_regions, peer_ip):
     }
     print(flow)
     pusher.set(flow)
+
     # router(gre) -> server forwarding
     flow = {
         'switch': DPID[target]['router'],
@@ -190,6 +203,7 @@ def add_flows(target, other_regions, peer_ip):
 
 
 peer = '35.193.107.149'
+concurrency = 8
 
 if __name__ == '__main__':
     conn = sqlite3.connect(INSTANCE_DB_FILE)
@@ -206,8 +220,9 @@ if __name__ == '__main__':
     peer = socket.gethostbyname(peer)
     init_db()
     results = []
-    for region in regions:
-        results.append((region, get_latency(region + "-server", peer)))
+    pairs = [(region, peer) for region in regions]
+    with Pool(concurrency) as pool:
+        results = pool.starmap(get_latency, pairs)
     results.sort(key=lambda pair: pair[1])
     # results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
     print(results)
