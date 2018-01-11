@@ -48,6 +48,11 @@ def host_type():
 
 
 @parallel(pool_size=8)
+def disable_ohmyzsh_update():
+    run("sed -i -e '1iDISABLE_AUTO_UPDATE=true\\' .zshrc")
+
+
+@parallel(pool_size=8)
 def disable_ssh_dns_resolve():
     sudo('bash -c "echo \'UseDNS no\' >> /etc/ssh/sshd_config"')
     sudo('/etc/init.d/ssh restart')

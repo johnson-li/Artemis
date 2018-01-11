@@ -145,8 +145,7 @@ def add_default_flow(region):
 
 
 def add_default_flows(all_regions):
-    with Pool(concurrency) as pool:
-        pool.map(add_default_flow, all_regions)
+    pool.map(add_default_flow, all_regions)
 
 
 def add_route_flow(target, other_region, peer_ip):
@@ -168,8 +167,7 @@ def add_route_flow(target, other_region, peer_ip):
 def add_flows(target, other_regions, peer_ip):
     # router -> router forwarding
     pairs = [(target, other_region, peer_ip) for other_region in other_regions]
-    with Pool(concurrency) as pool:
-        pool.starmap(add_route_flow, pairs)
+    pool.starmap(add_route_flow, pairs)
 
     # router(eth) -> server forwarding
     flow = {
@@ -204,6 +202,7 @@ def add_flows(target, other_regions, peer_ip):
 
 peer = '35.193.107.149'
 concurrency = 8
+pool = Pool(8)
 
 if __name__ == '__main__':
     conn = sqlite3.connect(INSTANCE_DB_FILE)
@@ -221,8 +220,7 @@ if __name__ == '__main__':
     init_db()
     results = []
     pairs = [(region, peer) for region in regions]
-    with Pool(concurrency) as pool:
-        results = pool.starmap(get_latency, pairs)
+    results = pool.starmap(get_latency, pairs)
     results.sort(key=lambda pair: pair[1])
     # results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
     print(results)
