@@ -6,7 +6,7 @@ import sqlite3
 import sys
 from multiprocessing import Pool
 
-import httplib
+from http.client import HTTPConnection
 import paramiko
 
 from hestia import RESOURCE_PATH, SQL_PATH
@@ -103,7 +103,7 @@ class StaticFlowPusher(object):
             'Accept': 'application/json',
         }
         body = json.dumps(data)
-        conn = httplib.HTTPConnection(self.server, 8080)
+        conn = HTTPConnection(self.server, 8080)
         conn.request(action, path, body, headers)
         response = conn.getresponse()
         ret = (response.status, response.reason, response.read())
