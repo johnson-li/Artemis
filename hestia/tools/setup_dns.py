@@ -32,7 +32,7 @@ def add_cdn():
             record = {'Name': 'cdn.xuebing.name.', 'Type': 'A', 'SetIdentifier': REGIONS[host['region']],
                       'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['primaryIpv4Pub']}]}
             sets.append(record)
-            for i in range(50):
+            for i in range(20):
                 record = {'Name': 'cdn{}.xuebing.name.'.format(i), 'Type': 'A',
                           'SetIdentifier': REGIONS[host['region']],
                           'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['primaryIpv4Pub']}]}
