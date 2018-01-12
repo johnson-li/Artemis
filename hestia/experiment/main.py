@@ -4,7 +4,7 @@ import re
 import socket
 import sqlite3
 import sys
-from multiprocessing import Pool
+from multiprocessing.pool import ThreadPool
 
 from http.client import HTTPConnection
 import paramiko
@@ -202,7 +202,7 @@ def add_flows(target, other_regions, peer_ip):
 
 peer = '35.193.107.149'
 concurrency = 8
-pool = Pool(8)
+pool = ThreadPool(8)
 
 if __name__ == '__main__':
     conn = sqlite3.connect(INSTANCE_DB_FILE)
