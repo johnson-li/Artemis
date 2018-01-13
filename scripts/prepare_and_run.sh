@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 host=$1
+arch=$2
 echo host: ${host}
 python3 -m hestia.experiment.main ${host}
 ip=`dig +short ${host}| tail -n1`
@@ -13,7 +14,12 @@ then
     cd scripts
 fi
 
-cp ../udp-server/client server
-cp ../udp-server/simple_client server
-./sync_planetlab.sh ${host}
+if [ "$arch" = "32" ]; then
+    ./sync_planetlab_i386.sh ${host}
+else
+    cp ../udp-server/client server
+    cp ../udp-server/simple_client server
+    ./sync_planetlab.sh ${host}
+fi;
+
 ./run_remote.sh ${ip}
