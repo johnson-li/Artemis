@@ -13,8 +13,9 @@ def clear_cdn():
     client = boto3.client('route53')
     sets = client.list_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2")['ResourceRecordSets']
     sets = list(filter(lambda a: a['Type'] == 'A' and a['Name'].endswith('.xuebing.name.'), sets))
-    client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={
-        'Changes': [{'Action': 'DELETE', "ResourceRecordSet": se} for se in sets]})
+    if sets:
+        client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={
+            'Changes': [{'Action': 'DELETE', "ResourceRecordSet": se} for se in sets]})
 
 
 def add_cdn():
