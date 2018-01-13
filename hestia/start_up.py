@@ -98,8 +98,10 @@ def store_instances_info():
                     primary_ipv6 = interface.ipv6_addresses[0]['Ipv6Address']
                 else:
                     secondary_ipv4 = interface.private_ip_address
-                    secondary_ipv4_pub = interface.private_ip_addresses[0]['Association'][
-                        'PublicIp'] if utils.get_instance_name(instance) == 'router' else ''
+                    if utils.get_instance_name(instance) == 'router':
+                        while not interface.private_ip_addresses[0]['Association']['PublicIp']:
+                            interface.load()
+                        secondary_ipv4_pub = interface.private_ip_addresses[0]['Association']['PublicIp']
                     secondary_ipv6 = interface.ipv6_addresses[0]['Ipv6Address']
             c.execute(
                 "INSERT INTO instances (region, name, instanceId, "
