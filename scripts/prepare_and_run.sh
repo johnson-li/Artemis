@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 host=$1
+echo host: ${host}
+python3 -m hestia.experiment.main ${host}
 ip=`dig +short ${host}| tail -n1`
 sid_server=`sqlite3 ../resources/db/sip.db "select server from sip where host = '${ip}'"`
 
