@@ -88,6 +88,8 @@ def store_instances_info():
     for instance, region_name in INITIATED_INSTANCES:
         instance.load()
         try:
+            while len(instance.network_interfaces) < 2:
+                instance.load()
             for interface in instance.network_interfaces:
                 secondary_ipv4 = ''
                 secondary_ipv4_pub = ''
