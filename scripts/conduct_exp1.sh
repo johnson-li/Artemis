@@ -17,7 +17,6 @@ BASE_DIR=$(dirname "$0")
 
 cd ${BASE_DIR}
 
-arch=$2
 #direct_server=''
 #dns_servers=''
 #sid_router=''
@@ -28,11 +27,6 @@ dns_data=''
 sid_data=''
 dns_delay=''
 dns_hit_delay=''
-
-if [ ${arch} = '32' ]; then
-    DIR='server'
-else
-    DIR='server-i386'
 
 
 # Direct query
