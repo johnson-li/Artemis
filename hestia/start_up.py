@@ -90,10 +90,10 @@ def store_instances_info():
         try:
             while len(instance.network_interfaces) < 2:
                 instance.load()
+            secondary_ipv4 = ''
+            secondary_ipv4_pub = ''
+            secondary_ipv6 = ''
             for interface in instance.network_interfaces:
-                secondary_ipv4 = ''
-                secondary_ipv4_pub = ''
-                secondary_ipv6 = ''
                 if interface.attachment['DeviceIndex'] == 0:
                     primary_ipv4 = interface.private_ip_address
                     primary_ipv4_pub = interface.private_ip_addresses[0]['Association']['PublicIp']
