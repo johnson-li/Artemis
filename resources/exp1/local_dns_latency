@@ -1,0 +1,462 @@
+[planetlab13.net.in.tum.de] Executing task 'local_dns_latency'
+[planetlab1.informatik.uni-goettingen.de] Executing task 'local_dns_latency'
+[planetlab1.upm.ro] Executing task 'local_dns_latency'
+[planetlab2.informatik.uni-goettingen.de] Executing task 'local_dns_latency'
+[planetlab-2.cs.ucy.ac.cy] Executing task 'local_dns_latency'
+[planet4.cs.huji.ac.il] Executing task 'local_dns_latency'
+[netissime2.planet-lab.eu] Executing task 'local_dns_latency'
+[puri.mimuw.edu.pl] Executing task 'local_dns_latency'
+[planetlab2.upm.ro] Executing task 'local_dns_latency'
+[planetlab-2.ing.unimo.it] Executing task 'local_dns_latency'
+[vicky.planetlab.ntua.gr] Executing task 'local_dns_latency'
+[planetlab1.cs.uit.no] Executing task 'local_dns_latency'
+[dplanet1.uoc.edu] Executing task 'local_dns_latency'
+[planetvs2.informatik.uni-stuttgart.de] Executing task 'local_dns_latency'
+[planetlab11.net.in.tum.de] Executing task 'local_dns_latency'
+[planet-lab-node2.netgroup.uniroma2.it] Executing task 'local_dns_latency'
+[kulcha.mimuw.edu.pl] Executing task 'local_dns_latency'
+[planet3.cs.huji.ac.il] Executing task 'local_dns_latency'
+[stella.planetlab.ntua.gr] Executing task 'local_dns_latency'
+[ple44.planet-lab.eu] Executing task 'local_dns_latency'
+[onelab2.pl.sophia.inria.fr] Executing task 'local_dns_latency'
+[ple1.planet-lab.eu] Executing task 'local_dns_latency'
+[aladdin.planetlab.extranet.uni-passau.de] Executing task 'local_dns_latency'
+[netissime1.planet-lab.eu] Executing task 'local_dns_latency'
+[ple1.cesnet.cz] Executing task 'local_dns_latency'
+[ple42.planet-lab.eu] Executing task 'local_dns_latency'
+[ple43.planet-lab.eu] Executing task 'local_dns_latency'
+[ple41.planet-lab.eu] Executing task 'local_dns_latency'
+[planetlab3.cs.uoregon.edu] Executing task 'local_dns_latency'
+[planetlab3.eecs.umich.edu] Executing task 'local_dns_latency'
+[planetlab1.utdallas.edu] Executing task 'local_dns_latency'
+[planetlab1.cs.purdue.edu] Executing task 'local_dns_latency'
+[planetlab-n1.wand.net.nz] Executing task 'local_dns_latency'
+[planetlab3.cesnet.cz] Executing task 'local_dns_latency'
+[planetlab-1.scie.uestc.edu.cn] Executing task 'local_dns_latency'
+[planetlab-js1.cert.org.cn] Executing task 'local_dns_latency'
+[planetlab1.temple.edu] Executing task 'local_dns_latency'
+[saturn.planetlab.carleton.ca] Executing task 'local_dns_latency'
+[planetlab1.unr.edu] Executing task 'local_dns_latency'
+[planet-lab4.uba.ar] Executing task 'local_dns_latency'
+[planetlab3.rutgers.edu] Executing task 'local_dns_latency'
+[planetlab1.pop-pa.rnp.br] Executing task 'local_dns_latency'
+[planetlab2.pop-pa.rnp.br] Executing task 'local_dns_latency'
+[pl2.eng.monash.edu.au] Executing task 'local_dns_latency'
+[pl1.eng.monash.edu.au] Executing task 'local_dns_latency'
+[planetlab5.eecs.umich.edu] Executing task 'local_dns_latency'
+[planetlab4.cs.uoregon.edu] Executing task 'local_dns_latency'
+[planetlab03.cs.washington.edu] Executing task 'local_dns_latency'
+[pl1.rcc.uottawa.ca] Executing task 'local_dns_latency'
+[planetlab01.cs.washington.edu] Executing task 'local_dns_latency'
+[planetlab-04.cs.princeton.edu] Executing task 'local_dns_latency'
+[whitefall.planetlab.cs.umd.edu] Executing task 'local_dns_latency'
+[node1.planetlab.albany.edu] Executing task 'local_dns_latency'
+[planetlab2.c3sl.ufpr.br] Executing task 'local_dns_latency'
+[planetlab4.postel.org] Executing task 'local_dns_latency'
+[planetlab-2.calpoly-netlab.net] Executing task 'local_dns_latency'
+[planetlab3.comp.nus.edu.sg] Executing task 'local_dns_latency'
+[planetlab3.wail.wisc.edu] Executing task 'local_dns_latency'
+[planetlab2.utdallas.edu] Executing task 'local_dns_latency'
+[node2.planetlab.mathcs.emory.edu] Executing task 'local_dns_latency'
+[planetlab5.williams.edu] Executing task 'local_dns_latency'
+[planetlab4.williams.edu] Executing task 'local_dns_latency'
+[node1.planetlab.mathcs.emory.edu] Executing task 'local_dns_latency'
+[cs-planetlab3.cs.surrey.sfu.ca] Executing task 'local_dns_latency'
+[planetlab2.dtc.umn.edu] Executing task 'local_dns_latency'
+[planetlab1.cs.uoregon.edu] Executing task 'local_dns_latency'
+[planetlabone.ccs.neu.edu] Executing task 'local_dns_latency'
+[planetlab1.comp.nus.edu.sg] Executing task 'local_dns_latency'
+[planetlab3.williams.edu] Executing task 'local_dns_latency'
+[planetlab4.mini.pw.edu.pl] Executing task 'local_dns_latency'
+[planetlab2.inf.ethz.ch] Executing task 'local_dns_latency'
+[planetlab5.ie.cuhk.edu.hk] Executing task 'local_dns_latency'
+[planetlab2.cesnet.cz] Executing task 'local_dns_latency'
+[planetlab1.cesnet.cz] Executing task 'local_dns_latency'
+[planetlab04.cs.washington.edu] Executing task 'local_dns_latency'
+[planetlab02.cs.washington.edu] Executing task 'local_dns_latency'
+[planetlab2.pop-mg.rnp.br] Executing task 'local_dns_latency'
+[planetlab1.pop-mg.rnp.br] Executing task 'local_dns_latency'
+[planetlab2.cs.purdue.edu] Executing task 'local_dns_latency'
+[planetlab2.koganei.itrc.net] Executing task 'local_dns_latency'
+[planetlab1.koganei.itrc.net] Executing task 'local_dns_latency'
+[plink.cs.uwaterloo.ca] Executing task 'local_dns_latency'
+[lefthand.eecs.harvard.edu] Executing task 'local_dns_latency'
+[planetlab1.dtc.umn.edu] Executing task 'local_dns_latency'
+[planetlab-5.eecs.cwru.edu] Executing task 'local_dns_latency'
+[planetlab1.postel.org] Executing task 'local_dns_latency'
+[planetlab1.cs.ubc.ca] Executing task 'local_dns_latency'
+[ple2.cesnet.cz] Executing task 'local_dns_latency'
+[nuc1.planet-lab.eu] Executing task 'local_dns_latency'
+[planetlab-1.ing.unimo.it] Executing task 'local_dns_latency'
+[iraplab1.iralab.uni-karlsruhe.de] Executing task 'local_dns_latency'
+[iraplab2.iralab.uni-karlsruhe.de] Executing task 'local_dns_latency'
+[dschinni.planetlab.extranet.uni-passau.de] Executing task 'local_dns_latency'
+[ple2.planet-lab.eu] Executing task 'local_dns_latency'
+[nuc1.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[nuc1.planet-lab.eu] out: 1.043
+[nuc1.planet-lab.eu] out: 
+
+[ple2.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple2.planet-lab.eu] out: 0.041
+[ple2.planet-lab.eu] out: 
+
+[dschinni.planetlab.extranet.uni-passau.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[dschinni.planetlab.extranet.uni-passau.de] out: 0.444
+[dschinni.planetlab.extranet.uni-passau.de] out: 
+
+[iraplab1.iralab.uni-karlsruhe.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[iraplab1.iralab.uni-karlsruhe.de] out: 0.459
+[iraplab1.iralab.uni-karlsruhe.de] out: 
+
+[iraplab2.iralab.uni-karlsruhe.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[iraplab2.iralab.uni-karlsruhe.de] out: 0.031
+[iraplab2.iralab.uni-karlsruhe.de] out: 
+
+[planetlab-1.ing.unimo.it] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-1.ing.unimo.it] out: 0.027
+[planetlab-1.ing.unimo.it] out: 
+
+[planetlab-5.eecs.cwru.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-5.eecs.cwru.edu] out: 12.129
+[planetlab-5.eecs.cwru.edu] out: 
+
+[planetlab1.dtc.umn.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.dtc.umn.edu] out: 0.368
+[planetlab1.dtc.umn.edu] out: 
+
+[planetlab1.cs.ubc.ca] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.cs.ubc.ca] out: 2.964
+[planetlab1.cs.ubc.ca] out: 
+
+[lefthand.eecs.harvard.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[lefthand.eecs.harvard.edu] out: 0.363
+[lefthand.eecs.harvard.edu] out: 
+
+[ple2.cesnet.cz] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple2.cesnet.cz] out: 0.478
+[ple2.cesnet.cz] out: 
+
+[planetlab1.koganei.itrc.net] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.koganei.itrc.net] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.postel.org] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.postel.org] out: 8.488
+[planetlab1.postel.org] out: 
+
+[plink.cs.uwaterloo.ca] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[plink.cs.uwaterloo.ca] out: 1.133
+[plink.cs.uwaterloo.ca] out: 
+
+[planetlab2.cs.purdue.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.cs.purdue.edu] out: 39.661
+[planetlab2.cs.purdue.edu] out: 
+
+[planetlab1.pop-mg.rnp.br] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.pop-mg.rnp.br] out: 0.303
+[planetlab1.pop-mg.rnp.br] out: 
+
+[planetlab02.cs.washington.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab02.cs.washington.edu] out: 0.293
+[planetlab02.cs.washington.edu] out: 
+
+[planetlab2.pop-mg.rnp.br] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.pop-mg.rnp.br] out: 1.613
+[planetlab2.pop-mg.rnp.br] out: 
+
+[planetlab04.cs.washington.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab04.cs.washington.edu] out: 0.261
+[planetlab04.cs.washington.edu] out: 
+
+[planetlab1.cesnet.cz] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.cesnet.cz] out: 0.341
+[planetlab1.cesnet.cz] out: 
+
+[planetlab2.cesnet.cz] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.cesnet.cz] out: 0.341
+[planetlab2.cesnet.cz] out: 
+
+[planetlab2.inf.ethz.ch] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.inf.ethz.ch] out: 0.452
+[planetlab2.inf.ethz.ch] out: 
+
+[planetlab3.williams.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.williams.edu] out: 1.268
+[planetlab3.williams.edu] out: 
+
+[planetlab4.mini.pw.edu.pl] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab4.mini.pw.edu.pl] out: 0.175
+[planetlab4.mini.pw.edu.pl] out: 
+
+[planetlab5.ie.cuhk.edu.hk] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab5.ie.cuhk.edu.hk] out: 
+[planetlab5.ie.cuhk.edu.hk] out: 
+[planetlabone.ccs.neu.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlabone.ccs.neu.edu] out: 6.864
+[planetlabone.ccs.neu.edu] out: 
+
+[planetlab1.comp.nus.edu.sg] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.comp.nus.edu.sg] out: 0.234
+[planetlab1.comp.nus.edu.sg] out: 
+
+[planetlab2.dtc.umn.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.dtc.umn.edu] out: 0.358
+[planetlab2.dtc.umn.edu] out: 
+
+[planetlab1.cs.uoregon.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.cs.uoregon.edu] out: 0.211
+[planetlab1.cs.uoregon.edu] out: 
+
+[cs-planetlab3.cs.surrey.sfu.ca] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[cs-planetlab3.cs.surrey.sfu.ca] out: 0.179
+[cs-planetlab3.cs.surrey.sfu.ca] out: 
+
+[planetlab4.williams.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab4.williams.edu] out: 1.498
+[planetlab4.williams.edu] out: 
+
+[planetlab5.williams.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab5.williams.edu] out: 1.035
+[planetlab5.williams.edu] out: 
+
+[node1.planetlab.mathcs.emory.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[node1.planetlab.mathcs.emory.edu] out: 0.718
+[node1.planetlab.mathcs.emory.edu] out: 
+
+[node2.planetlab.mathcs.emory.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[node2.planetlab.mathcs.emory.edu] out: 0.887
+[node2.planetlab.mathcs.emory.edu] out: 
+
+[planetlab3.wail.wisc.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.wail.wisc.edu] out: 0.397
+[planetlab3.wail.wisc.edu] out: 
+
+[planetlab3.comp.nus.edu.sg] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.comp.nus.edu.sg] out: 0.203
+[planetlab3.comp.nus.edu.sg] out: 
+
+[planetlab4.postel.org] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab4.postel.org] out: 0.299
+[planetlab4.postel.org] out: 
+
+[planetlab2.c3sl.ufpr.br] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.c3sl.ufpr.br] out: 0.254
+[planetlab2.c3sl.ufpr.br] out: 
+
+[node1.planetlab.albany.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[node1.planetlab.albany.edu] out: 4.189
+[node1.planetlab.albany.edu] out: 
+
+[whitefall.planetlab.cs.umd.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[whitefall.planetlab.cs.umd.edu] out: 0.142
+[whitefall.planetlab.cs.umd.edu] out: 
+
+[planetlab-04.cs.princeton.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-04.cs.princeton.edu] out: 0.678
+[planetlab-04.cs.princeton.edu] out: 
+
+[planetlab01.cs.washington.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab01.cs.washington.edu] out: 0.264
+[planetlab01.cs.washington.edu] out: 
+
+[pl1.rcc.uottawa.ca] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[pl1.rcc.uottawa.ca] out: 22.423
+[pl1.rcc.uottawa.ca] out: 
+
+[planetlab-2.calpoly-netlab.net] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-2.calpoly-netlab.net] out: 
+[planetlab-2.calpoly-netlab.net] out: 
+[planetlab2.utdallas.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.utdallas.edu] out: 
+[planetlab2.utdallas.edu] out: 
+[planetlab03.cs.washington.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab03.cs.washington.edu] out: 0.322
+[planetlab03.cs.washington.edu] out: 
+
+[planetlab4.cs.uoregon.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab4.cs.uoregon.edu] out: 0.327
+[planetlab4.cs.uoregon.edu] out: 
+
+[planetlab5.eecs.umich.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab5.eecs.umich.edu] out: 0.368
+[planetlab5.eecs.umich.edu] out: 
+
+[pl2.eng.monash.edu.au] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[pl2.eng.monash.edu.au] out: 0.695
+[pl2.eng.monash.edu.au] out: 
+
+[pl1.eng.monash.edu.au] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[pl1.eng.monash.edu.au] out: 0.520
+[pl1.eng.monash.edu.au] out: 
+
+[planetlab2.pop-pa.rnp.br] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.pop-pa.rnp.br] out: 0.643
+[planetlab2.pop-pa.rnp.br] out: 
+
+[planetlab3.rutgers.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.rutgers.edu] out: 2.263
+[planetlab3.rutgers.edu] out: 
+
+[planetlab1.pop-pa.rnp.br] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.pop-pa.rnp.br] out: 0.626
+[planetlab1.pop-pa.rnp.br] out: 
+
+[planet-lab4.uba.ar] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planet-lab4.uba.ar] out: 0.193
+[planet-lab4.uba.ar] out: 
+
+[saturn.planetlab.carleton.ca] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[saturn.planetlab.carleton.ca] out: 0.484
+[saturn.planetlab.carleton.ca] out: 
+
+[planetlab1.unr.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.unr.edu] out: 7.306
+[planetlab1.unr.edu] out: 
+
+[planetlab-js1.cert.org.cn] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-js1.cert.org.cn] out: 0.698
+[planetlab-js1.cert.org.cn] out: 
+
+[planetlab3.cesnet.cz] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.cesnet.cz] out: 0.329
+[planetlab3.cesnet.cz] out: 
+
+[planetlab-1.scie.uestc.edu.cn] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-1.scie.uestc.edu.cn] out: 0.742
+[planetlab-1.scie.uestc.edu.cn] out: 
+
+[planetlab-n1.wand.net.nz] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-n1.wand.net.nz] out: 6.849
+[planetlab-n1.wand.net.nz] out: 
+
+[planetlab1.temple.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.temple.edu] out: 
+[planetlab1.temple.edu] out: 
+[planetlab1.cs.purdue.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.cs.purdue.edu] out: 25.860
+[planetlab1.cs.purdue.edu] out: 
+
+[planetlab3.eecs.umich.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.eecs.umich.edu] out: 0.364
+[planetlab3.eecs.umich.edu] out: 
+
+[ple41.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple41.planet-lab.eu] out: 0.827
+[ple41.planet-lab.eu] out: 
+
+[planetlab3.cs.uoregon.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab3.cs.uoregon.edu] out: 0.261
+[planetlab3.cs.uoregon.edu] out: 
+
+[ple43.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple43.planet-lab.eu] out: 0.839
+[ple43.planet-lab.eu] out: 
+
+[ple42.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple42.planet-lab.eu] out: 0.694
+[ple42.planet-lab.eu] out: 
+
+[ple1.cesnet.cz] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple1.cesnet.cz] out: 0.434
+[ple1.cesnet.cz] out: 
+
+[planetlab1.utdallas.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.utdallas.edu] out: 126.048
+[planetlab1.utdallas.edu] out: 
+
+[netissime1.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[netissime1.planet-lab.eu] out: 0.054
+[netissime1.planet-lab.eu] out: 
+
+[aladdin.planetlab.extranet.uni-passau.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[aladdin.planetlab.extranet.uni-passau.de] out: 0.531
+[aladdin.planetlab.extranet.uni-passau.de] out: 
+
+[ple1.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple1.planet-lab.eu] out: 0.440
+[ple1.planet-lab.eu] out: 
+
+[onelab2.pl.sophia.inria.fr] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[onelab2.pl.sophia.inria.fr] out: 0.500
+[onelab2.pl.sophia.inria.fr] out: 
+
+[ple44.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[ple44.planet-lab.eu] out: 0.112
+[ple44.planet-lab.eu] out: 
+
+[kulcha.mimuw.edu.pl] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[kulcha.mimuw.edu.pl] out: 0.038
+[kulcha.mimuw.edu.pl] out: 
+
+[planet3.cs.huji.ac.il] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planet3.cs.huji.ac.il] out: 0.061
+[planet3.cs.huji.ac.il] out: 
+
+[stella.planetlab.ntua.gr] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[stella.planetlab.ntua.gr] out: 4.894
+[stella.planetlab.ntua.gr] out: 
+
+[planet-lab-node2.netgroup.uniroma2.it] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planet-lab-node2.netgroup.uniroma2.it] out: 0.044
+[planet-lab-node2.netgroup.uniroma2.it] out: 
+
+[planetlab11.net.in.tum.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab11.net.in.tum.de] out: 0.050
+[planetlab11.net.in.tum.de] out: 
+
+[planetvs2.informatik.uni-stuttgart.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetvs2.informatik.uni-stuttgart.de] out: 0.048
+[planetvs2.informatik.uni-stuttgart.de] out: 
+
+[dplanet1.uoc.edu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[dplanet1.uoc.edu] out: 0.251
+[dplanet1.uoc.edu] out: 
+
+[planetlab1.cs.uit.no] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.cs.uit.no] out: 0.424
+[planetlab1.cs.uit.no] out: 
+
+[planetlab-2.ing.unimo.it] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-2.ing.unimo.it] out: 0.026
+[planetlab-2.ing.unimo.it] out: 
+
+[planetlab2.upm.ro] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.upm.ro] out: 0.590
+[planetlab2.upm.ro] out: 
+
+[vicky.planetlab.ntua.gr] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[vicky.planetlab.ntua.gr] out: 4.907
+[vicky.planetlab.ntua.gr] out: 
+
+[puri.mimuw.edu.pl] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[puri.mimuw.edu.pl] out: 0.038
+[puri.mimuw.edu.pl] out: 
+
+[netissime2.planet-lab.eu] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[netissime2.planet-lab.eu] out: 0.050
+[netissime2.planet-lab.eu] out: 
+
+[planet4.cs.huji.ac.il] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planet4.cs.huji.ac.il] out: 0.061
+[planet4.cs.huji.ac.il] out: 
+
+[planetlab-2.cs.ucy.ac.cy] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab-2.cs.ucy.ac.cy] out: 0.057
+[planetlab-2.cs.ucy.ac.cy] out: 
+
+[planetlab2.informatik.uni-goettingen.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab2.informatik.uni-goettingen.de] out: 3.964
+[planetlab2.informatik.uni-goettingen.de] out: 
+
+[planetlab1.upm.ro] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.upm.ro] out: 0.028
+[planetlab1.upm.ro] out: 
+
+[planetlab1.informatik.uni-goettingen.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab1.informatik.uni-goettingen.de] out: 5.748
+[planetlab1.informatik.uni-goettingen.de] out: 
+
+[planetlab13.net.in.tum.de] sudo: ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2
+[planetlab13.net.in.tum.de] out: 0.055
+[planetlab13.net.in.tum.de] out: 
+
+
+Done.
