@@ -48,8 +48,8 @@
       <file leaf-file-name="client.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="62" column="13" lean-forward="false" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+            <state relative-caret-position="435">
+              <caret line="65" column="55" lean-forward="false" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
               <folding>
                 <element signature="e#37#59#0" expanded="true" />
               </folding>
@@ -60,8 +60,8 @@
       <file leaf-file-name="simple_client.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simple_client.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="67" column="48" lean-forward="true" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
+            <state relative-caret-position="202">
+              <caret line="62" column="12" lean-forward="false" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
               <folding>
                 <element signature="e#37#59#0" expanded="true" />
               </folding>
@@ -90,11 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ms</find>
-      <find>dns_de</find>
-      <find>start =</find>
-      <find>end =</find>
-      <find>sleep</find>
       <find>start</find>
       <find>dns_star</find>
       <find>slee</find>
@@ -120,6 +115,11 @@
       <find>server_addr</find>
       <find>fd =</find>
       <find>fd</find>
+      <find>sleep</find>
+      <find>a</find>
+      <find>server_fd</find>
+      <find>bind(</find>
+      <find>12346</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -142,8 +142,8 @@
         <option value="$PROJECT_DIR$/serviceid_server.cpp" />
         <option value="$PROJECT_DIR$/serviceid_server.c" />
         <option value="$PROJECT_DIR$/compile.sh" />
-        <option value="$PROJECT_DIR$/client.c" />
         <option value="$PROJECT_DIR$/simple_client.c" />
+        <option value="$PROJECT_DIR$/client.c" />
       </list>
     </option>
   </component>
@@ -255,12 +255,12 @@
       <workItem from="1514819064522" duration="48833000" />
       <workItem from="1516572133390" duration="2685000" />
       <workItem from="1516614839869" duration="1380000" />
-      <workItem from="1517386089676" duration="1549000" />
+      <workItem from="1517386089676" duration="2291000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58676000" />
+    <option name="totallyTimeSpent" value="59418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="32" width="1897" height="877" extended-state="0" />
@@ -597,16 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simple_client.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="67" column="48" lean-forward="true" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
-          <folding>
-            <element signature="e#37#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/serviceid_server.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -627,10 +617,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/simple_client.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="62" column="12" lean-forward="false" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+          <folding>
+            <element signature="e#37#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="62" column="13" lean-forward="false" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+        <state relative-caret-position="435">
+          <caret line="65" column="55" lean-forward="false" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
           <folding>
             <element signature="e#37#59#0" expanded="true" />
           </folding>

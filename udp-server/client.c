@@ -35,8 +35,7 @@ int main(int argc, char **argv) {
 
     char *router_ip = argv[1];
     char *server_ip = argv[2];
-    struct sockaddr_in server_addr;
-    struct sockaddr_in router_addr;
+    struct sockaddr_in server_addr, router_addr, local_addr1, local_addr2;
     bzero((char *) &server_addr, sizeof(server_addr));
     bzero((char *) &router_addr, sizeof(router_addr));
     server_addr.sin_family = AF_INET;
@@ -51,6 +50,22 @@ int main(int argc, char **argv) {
     if (server_fd < 0 || router_fd < 0)
         perror("ERROR opening socket");
     fcntl(server_fd, F_SETFL, O_NONBLOCK);
+
+
+    // Bind src port to 12345
+    local_addr1.sin_family = AF_INET;
+    local_addr1.sin_addr.s_addr = htonl(INADDR_ANY);
+    local_addr1.sin_port = htons(12345);
+    if (bind(server_fd, (struct sockaddr *) &local_addr1, sizeof(local_addr1)) < 0) {
+        perror("Error occurred when binding server fd to port: 12345");
+    }
+    // Bind src port to 12345
+    local_addr2.sin_family = AF_INET;
+    local_addr2.sin_addr.s_addr = htonl(INADDR_ANY);
+    local_addr2.sin_port = htons(12346);
+    if (bind(router_fd, (struct sockaddr *) &local_addr2, sizeof(local_addr2)) < 0) {
+        perror("Error occurred when binding router fd to port: 12346");
+    }
 
     socklen_t addrlen;
     recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
