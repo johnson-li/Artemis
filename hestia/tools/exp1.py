@@ -1,10 +1,12 @@
 import json
 import re
 import sqlite3
+import statistics
 from pprint import pprint
 
 import matplotlib.pyplot as plt
 import numpy
+import sklearn.cluster
 
 from hestia.aws.regions import REGIONS
 
@@ -90,6 +92,19 @@ def records_percentile(records, percentile):
         for data_key in record[0].keys():
             if isinstance(record[0][data_key], float):
                 data = [record[i][data_key] for i in range(len(record))]
+                # kmeans = sklearn.cluster.KMeans(n_clusters=2).fit([(d, 0) for d in data])
+                # centers = [c[0] for c in kmeans.cluster_centers_]
+                # d1 = [d for d in data if abs(d - centers[0]) < abs(d - centers[1])]
+                # d2 = [d for d in data if abs(d - centers[0]) >= abs(d - centers[1])]
+                # var = statistics.variance(data, numpy.mean(data))
+                # var1 = statistics.variance(d1, numpy.mean(d1)) if len(d1) > 1 else 0
+                # var2 = statistics.variance(d2, numpy.mean(d2)) if len(d2) > 1 else 0
+                # print((var, (var1, len(d1)), (var2, len(d2))))
+                # print(data)
+                # print(d1)
+                # print(d2)
+                # if var > 10 * var1 and var > 10 * var2:
+                #     data = d1
                 median[data_key] = numpy.percentile(data, percentile)
         median['hit_increment'] = median['dns_hit_data'] - median['direct_data']
         median['sid_increment'] = median['sid_data'] - median['direct_data']
@@ -112,7 +127,7 @@ def plot(fig, records, key):
 
 def compare(records):
     records = transform(records)
-    records_median = records_percentile(records, 50)
+    records_median = records_percentile(records, 90)
     pprint(records_median)
     # print(records_median)
     fig = plt.figure(figsize=(8, 6), dpi=320)
@@ -120,11 +135,12 @@ def compare(records):
     # plot(fig, records_median, 'dns_hit_data')
     # plot(fig, records_median, 'dns_data')
     # plot(fig, records_median, 'sid_data')
-    # plot(fig, records_median, 'dns_delay')
-    # plot(fig, records_median, 'hit_increment')
     # plot(fig, latency_map, 'latency')
-    # plot(fig, records_median, 'sid_increment')
+    # plot(fig, records_median, 'dns_delay')
+    plot(fig, records_median, 'hit_increment')
+    plot(fig, records_median, 'sid_increment')
     plot(fig, records_median, 'sid_hit_incr')
+    fig.suptitle('Latencies diff (group2-90)')
     fig.show()
 
 
@@ -165,10 +181,12 @@ def main():
                   'pl1.rcc.uottawa.ca', 'planetlab5.eecs.umich.edu', 'planetlab3.rutgers.edu',
                   'planetlab-js1.cert.org.cn', 'planetlab2.utdallas.edu', 'planetlab3.eecs.umich.edu',
                   'planetlab1.utdallas.edu']
-    exceptions = exceptions + ['planetlab2.cs.purdue.edu', 'planetlab1.cs.purdue.edu', 'planetlab-n1.wand.net.nz']
-    compare({key: val for key, val in records.items() if key not in exceptions})
+    # exceptions = exceptions + ['planetlab2.cs.purdue.edu', 'planetlab1.cs.purdue.edu', 'planetlab-n1.wand.net.nz']
+    # exceptions = []
+    # compare({key: val for key, val in records.items() if key not in exceptions})
+    # compare({key: val for key, val in records.items() if key in exceptions})
     # compare(records)
-    # sid_region(records)
+    sid_region(records)
 
 
 if __name__ == '__main__':

@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
         perror("ERROR opening socket");
     fcntl(server_fd, F_SETFL, O_NONBLOCK);
     char *server_ip = argv[1];
-    struct sockaddr_in server_addr;
+    struct sockaddr_in server_addr, local_addr;
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
@@ -54,6 +54,14 @@ int main(int argc, char **argv) {
         server_addr.sin_addr = *addr_list[0];
     } else {
         inet_pton(AF_INET, server_ip, &(server_addr.sin_addr));
+    }
+
+    // Bind src port to 12345
+    local_addr.sin_family = AF_INET;
+    local_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    local_addr.sin_port = htons(12345);
+    if (bind(server_fd, (struct sockaddr *) &local_addr, sizeof(local_addr)) < 0) {
+        perror("Error occurred when binding to port: 12345");
     }
 
     socklen_t addrlen;
