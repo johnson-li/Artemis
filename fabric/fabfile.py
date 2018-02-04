@@ -100,8 +100,10 @@ def start_servers():
     if self_host['name'] == 'server':
         run('tmux new-session -d -s server')
         run('tmux new-window -t server:1')
-        run('tmux send-keys -t server:0 "sudo /home/ubuntu/Workspace/server/dns_server" ENTER')
-        run('tmux send-keys -t server:1 "sudo /home/ubuntu/Workspace/server/serviceid_server" ENTER')
+        run('tmux send-keys -t server:0 "sudo /home/{}/Workspace/server/dns_server" ENTER'
+            % ('ubuntu' if AWS else 'johnsonli1993'))
+        run('tmux send-keys -t server:1 "sudo /home/{}/Workspace/server/serviceid_server" ENTER'
+            % ('ubuntu' if AWS else 'johnsonli1993'))
 
 
 @parallel(pool_size=4)
