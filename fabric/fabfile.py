@@ -6,7 +6,8 @@ from fabric.io import CommandTimeout
 
 from hestia.aws.regions import REGIONS
 
-DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/instances.db'
+AWS = env.AWS != 'False'
+DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/%sinstances.db' % ('' if AWS else 'gcp_')
 
 env.warn_only = True
 env.skip_bad_hosts = True
@@ -37,8 +38,8 @@ if not env.hosts:
     env.hosts = []
     for region in c.fetchall():
         region = region[0]
-        env.hosts.append(REGIONS[region].lower() + '-router')
-        env.hosts.append(REGIONS[region].lower() + '-server')
+        env.hosts.append(REGIONS[region].lower() if AWS else region + '-router')
+        env.hosts.append(REGIONS[region].lower() if AWS else region + '-server')
     conn.close()
 
 

@@ -13,7 +13,7 @@
   become: true
 
 - name: Set zsh as default shell
-  user: name=ubuntu shell=/usr/bin/zsh
+  user: name=johnsonli1993 shell=/usr/bin/zsh
   become: true
   when: installation
 

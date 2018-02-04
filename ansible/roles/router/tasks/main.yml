@@ -40,7 +40,7 @@
 
 - name: make install OVS
   make:
-    chdir: /home/ubuntu/Workspace/openvswitch-2.8.1
+    chdir: /home/johnsonli1993/Workspace/openvswitch-2.8.1
     target: install
   become: true
   when: make|success

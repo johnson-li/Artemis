@@ -27,7 +27,7 @@ def generate_ansible_hosts():
         line = '{}-{} ansible_port=22 ansible_user={} ansible_host={} ansible_private_key_file={}' \
             .format(REGIONS[record['region']].lower() if PLATFORM == 'AWS' else record['region'], record['name'],
                     'ubuntu' if PLATFORM == 'AWS' else 'johnsonli1993', record['primaryIpv4Pub'],
-                    '~/keys/%s.pem' % REGIONS[record['region']].lower() if PLATFORM == 'AWS' else '~/.ssh/.id_rsa.pub')
+                    '~/keys/%s.pem' % REGIONS[record['region']].lower() if PLATFORM == 'AWS' else '~/.ssh/id_rsa')
         f.write(line + '\n')
     f.write('\n[router]\n')
     c.execute("SELECT * FROM instances WHERE name = 'router'")
@@ -36,7 +36,7 @@ def generate_ansible_hosts():
         line = '{}-{} ansible_port=22 ansible_user={} ansible_host={} ansible_private_key_file={}' \
             .format(REGIONS[record['region']].lower() if PLATFORM == 'AWS' else record['region'], record['name'],
                     'ubuntu' if PLATFORM == 'AWS' else 'johnsonli1993', record['primaryIpv4Pub'],
-                    '~/keys/%s.pem' % REGIONS[record['region']].lower() if PLATFORM == 'AWS' else '~/.ssh/.id_rsa.pub')
+                    '~/keys/%s.pem' % REGIONS[record['region']].lower() if PLATFORM == 'AWS' else '~/.ssh/id_rsa')
         f.write(line + '\n')
     f.close()
 
@@ -55,7 +55,7 @@ def generate_ssh_hosts():
         f.write('  HostName {}\n'.format(record['primaryIpv4Pub']))
         f.write('  User {}\n'.format('ubuntu' if PLATFORM == 'AWS' else 'johnsonli1993'))
         f.write('  IdentityFile {}\n'.format(
-            '~/keys/%s.pem' % (REGIONS[record['region']].lower()) if PLATFORM == 'AWS' else '~/.ssh/.id_rsa.pub'))
+            '~/keys/%s.pem' % (REGIONS[record['region']].lower()) if PLATFORM == 'AWS' else '~/.ssh/id_rsa'))
         f.write('\n')
     if os.path.exists(CONFIG_FILE_6):
         open(CONFIG_FILE_6, 'w').close()
@@ -68,7 +68,7 @@ def generate_ssh_hosts():
         f.write('  HostName {}\n'.format(record['primaryIpv6']))
         f.write('  User ubuntu\n')
         f.write('  IdentityFile {}\n'.format(
-            '~/keys/%s.pem' % (REGIONS[record['region']].lower()) if PLATFORM == 'AWS' else '~/.ssh/.id_rsa.pub'))
+            '~/keys/%s.pem' % (REGIONS[record['region']].lower()) if PLATFORM == 'AWS' else '~/.ssh/id_rsa'))
         f.write('\n')
 
 
