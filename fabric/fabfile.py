@@ -77,6 +77,11 @@ def show_dpid():
 
 
 @parallel(pool_size=8)
+def show_mac():
+    sudo('ifconfig br1| grep HWaddr')
+
+
+@parallel(pool_size=8)
 def ping_mesh():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
