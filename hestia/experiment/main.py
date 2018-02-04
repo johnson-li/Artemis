@@ -124,7 +124,7 @@ def add_default_flow(region):
         'cookie': '0',
         'eth_type': '0x0800',
         'priority': '10',
-        'in_port': get_port(region + '-router', 'eth1'),
+        'in_port': get_port(region + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(region + '-router', 'gre_server')),
     }
@@ -158,7 +158,7 @@ def add_route_flow(target, other_region, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '100',
-        'in_port': get_port(other_region + '-router', 'eth1'),
+        'in_port': get_port(other_region + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(other_region + '-router', 'gre_' + target)),
     }
@@ -179,7 +179,7 @@ def add_flows(target, other_regions, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '200',
-        # 'in_port': get_port(target + '-router', 'eth1'),
+        # 'in_port': get_port(target + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(target + '-router', 'gre_server')),
     }
@@ -194,7 +194,7 @@ def add_flows(target, other_regions, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '100',
-        'in_port': get_port(target + '-router', 'eth1'),
+        'in_port': get_port(target + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(target + '-router', 'gre_server')),
     }
