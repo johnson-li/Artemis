@@ -172,7 +172,7 @@ def setup_gre():
                 c.execute("SELECT * FROM instances WHERE region = '{}' and name = '{}'".format(region, 'router'))
                 record = dict(zip([d[0] for d in c.description], c.fetchone()))
                 remote_ip = record['primaryIpv4Pub']
-                commands.append('add-port br1 gre_{} -- set interface gre_{} type=gre, options:remote_ip={}'.format(
+                commands.append('add-port br1 {} -- set interface {} type=gre, options:remote_ip={}'.format(
                     shrink(region_name), shrink(region_name), remote_ip))
         sudo('ovs-vsctl ' + ' -- '.join(commands))
 

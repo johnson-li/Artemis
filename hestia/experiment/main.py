@@ -12,9 +12,9 @@ import paramiko
 
 from hestia import RESOURCE_PATH, SQL_PATH
 from hestia.aws.regions import REGIONS
+from hestia.gce.zones import shrink
 from hestia.info.dpid import DPID
 from hestia.info.mac import MAC
-from hestia.gce.zones import shrink
 
 DB_PATH = RESOURCE_PATH + '/db'
 DB_FILE = DB_PATH + '/sip.db'
@@ -161,7 +161,7 @@ def add_route_flow(target, other_region, peer_ip):
         'priority': '100',
         'in_port': get_port(other_region + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
         'active': 'true',
-        'actions': 'output={}'.format(get_port(other_region + '-router', 'gre_' + shrink(target))),
+        'actions': 'output={}'.format(get_port(other_region + '-router', shrink(target))),
     }
     pusher.set(flow)
     print(flow)
