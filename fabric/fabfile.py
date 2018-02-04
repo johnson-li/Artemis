@@ -5,6 +5,7 @@ from fabric.api import *
 from fabric.io import CommandTimeout
 
 from hestia.aws.regions import REGIONS
+from hestia.gce.zones import ZONES
 
 AWS = env.AWS != 'False'
 DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/%sinstances.db' % ('' if AWS else 'gcp_')
@@ -149,10 +150,10 @@ def setup_gre():
         sudo('ovs-vsctl add-port br1 gre_server -- set interface gre_server type=gre, options:remote_ip={}'.format(
             server_host['primaryIpv4']))
         commands = []
-        for region in REGIONS:
+        for region in (REGIONS if AWS else ZONES):
             if region == self_host['region']:
                 continue
-            region_name = REGIONS[region].lower()
+            region_name = REGIONS[region].lower() if AWS else region
             # connect to other routers
             if region_name + '-router' in env.hosts:
                 c.execute("SELECT * FROM instances WHERE region = '{}' and name = '{}'".format(region, 'router'))
