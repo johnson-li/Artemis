@@ -5,7 +5,7 @@ from fabric.api import *
 from fabric.io import CommandTimeout
 
 from hestia.aws.regions import REGIONS
-from hestia.gce.zones import ZONES
+from hestia.gce.zones import ZONES, shrink
 
 AWS = env.AWS != 'False'
 DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/%sinstances.db' % ('' if AWS else 'gcp_')
@@ -173,7 +173,7 @@ def setup_gre():
                 record = dict(zip([d[0] for d in c.description], c.fetchone()))
                 remote_ip = record['primaryIpv4Pub']
                 commands.append('add-port br1 gre_{} -- set interface gre_{} type=gre, options:remote_ip={}'.format(
-                    region_name, region_name, remote_ip))
+                    shrink(region_name), shrink(region_name), remote_ip))
         sudo('ovs-vsctl ' + ' -- '.join(commands))
 
 
