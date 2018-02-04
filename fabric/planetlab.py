@@ -44,6 +44,11 @@ def host_type():
 
 
 @parallel(pool_size=6)
+def local_dns_latency():
+    sudo("ping -c 10 `sudo cat /etc/resolv.conf|grep nameserver|head -n1|egrep -o '[0-9.]+'`| tail -1| awk '{print $4}' | cut -d '/' -f 2")
+
+
+@parallel(pool_size=6)
 def install_quic_dependencies():
     sudo('yum install -y libnet-devel')
 
