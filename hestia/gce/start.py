@@ -153,7 +153,7 @@ def main():
     zones = ZONES[:8]
     compute = googleapiclient.discovery.build('compute', 'v1')
     # stop_instances(compute, PROJECT, zones)
-    start_instances(compute, PROJECT, zones)
+    # start_instances(compute, PROJECT, zones)
     store_instances(compute, PROJECT, zones)
 
 

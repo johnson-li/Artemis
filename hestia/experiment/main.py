@@ -209,6 +209,7 @@ pool = ThreadPool(8)
 if __name__ == '__main__':
     global PLATFORM
     global DB_FILE
+    global INSTANCE_DB_FILE
     parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
     parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
                         help='the cloud platform, GCP or AWS')
