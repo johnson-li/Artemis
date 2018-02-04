@@ -135,7 +135,7 @@ def store_instances(compute, project, zones):
     for zone in zones:
         instances = list_instances(compute, project, zone)
         for instance in instances:
-            if instance['status'] != 'RUNNING':
+            if not instance['name'].startswith('exp') or instance['status'] != 'RUNNING':
                 continue
             name = instance['name']
             primary_ipv4 = instance['networkInterfaces'][0]['networkIP']
