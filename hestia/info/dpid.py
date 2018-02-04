@@ -59,4 +59,12 @@ DPID = {
         'router': '00:00:5a:05:74:31:0e:41',
         'server': '00:00:36:17:74:f6:4f:47',
     },
+    'us-central1-c': {'router': '00:00:72:a9:7e:23:cc:43', 'server': '00:00:a6:99:21:1f:28:4c'},
+    'us-east4-c': {'router': '00:00:3a:a7:19:1e:2a:47', 'server': '00:00:46:4e:66:cf:84:48'},
+    'us-west1-c': {'server': '00:00:72:d4:a5:16:29:46', 'router': '00:00:f2:48:ac:42:59:43'},
+    'us-east1-c': {'router': '00:00:c6:59:f7:86:9e:48', 'server': '00:00:ca:9f:e8:4c:9d:42'},
+    'europe-west4-c': {'server': '00:00:ae:30:ce:67:71:43', 'router': '00:00:46:a6:6c:22:2f:4e'},
+    'europe-west3-c': {'server': '00:00:7a:bf:87:52:26:4d', 'router': '00:00:2e:9a:4a:e4:17:4c'},
+    'europe-west2-c': {'server': '00:00:2e:f1:8f:a3:89:49', 'router': '00:00:96:4c:f9:34:e9:43'},
+    'europe-west1-c': {'server': '00:00:d6:4e:1c:ca:8f:4f', 'router': '00:00:aa:de:75:68:27:49'}
 }
