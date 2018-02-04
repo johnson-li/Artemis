@@ -122,6 +122,7 @@ def init():
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
     sudo('ovs-vsctl set-controller br1 tcp:35.193.107.149:6653')
     sudo('ovs-vsctl add-br br1')
+    sudo('ovs-vsctl add-port ens5')
 
 
 @parallel(pool_size=4)
