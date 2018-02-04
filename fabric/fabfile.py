@@ -49,6 +49,12 @@ def host_type():
 
 
 @parallel(pool_size=8)
+def add_rsa():
+    run(
+        'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBG6FkxAtokRbDWX3V0L4zYbfn0g6GvmJIQGdhbTc7eHk5QSMcCluQ2J9q8u9DYwrweGW7tNIX6vb8GCP85GHafHGnDe1wufVTIznB69cm0CkUsRlHOFVGuk1CCeiVYuZbPAbu3UPE/Q5QNRzKzeUKMzA4QHLF99kyFYruVDj29/3EPLIHSf/svGB27hT9jiOUzvTsoCanpYb3YbEv4qff87p6hslxyo2DvOydMjybPsGD0mOB+B2mtaA6FCAF89T0AokENUZK7pr/w31qz68avZT2yiWCFUEHKiu4GaAiUb8Z18Qp++VV17W3o81AdKxPgpXc+Wcrog9XX8oxePuz johnsonli1993@ubuntu-xenial-1" >> ~/.ssh/authorized_keys')
+
+
+@parallel(pool_size=8)
 def disable_ohmyzsh_update():
     run("sed -i -e '1iDISABLE_AUTO_UPDATE=true\\' .zshrc")
 
@@ -102,6 +108,7 @@ def stop_servers():
 def init():
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
     sudo('ovs-vsctl set-controller br1 tcp:35.193.107.149:6653')
+    sudo('ovs-vsctl add-br br1')
 
 
 @parallel(pool_size=4)
