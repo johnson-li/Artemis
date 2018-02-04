@@ -22,8 +22,8 @@ int main(int argc, char **argv) {
     struct sockaddr_in myaddr;      /* our address */
     struct sockaddr_in remaddr;     /* remote address */
     socklen_t addrlen = sizeof(remaddr);            /* length of addresses */
-    int recvlen;                    /* # bytes received */
-    int result;
+    ssize_t recvlen;                    /* # bytes received */
+    ssize_t result;
     int fd;                         /* our socket */
     unsigned char buf[BUFSIZE];     /* receive buffer */
     unsigned char send_buf[] = {'a', 'b', 'c'};     /* receive buffer */
@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
         recvlen = recvfrom(fd, buf, BUFSIZE, 0, (struct sockaddr *) &remaddr, &addrlen);
         char str[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &(remaddr.sin_addr), str, INET_ADDRSTRLEN);
-        printf("received %d bytes from %s:%d\n", recvlen, str, remaddr.sin_port);
+        printf("received %ld bytes from %s:%d\n", recvlen, str, remaddr.sin_port);
         if (recvlen > 10) {
             printf("got message from gre\n");
             struct sockaddr_in remaddr_old;
@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
             inet_ntop(AF_INET, &(remaddr_old.sin_addr), str, INET_ADDRSTRLEN);
             result = sendto(fd, send_buf, sizeof(send_buf) / sizeof(send_buf[0]), 0, (struct sockaddr *) &remaddr_old,
                             sizeof(remaddr_old));
-            printf("%d bytes sent to %s:%d\n", result, str, remaddr_old.sin_port);
+            printf("%ld bytes sent to %s:%d\n", result, str, remaddr_old.sin_port);
         } else {
             printf("got message from internet\n");
             struct map_entry *entry;
