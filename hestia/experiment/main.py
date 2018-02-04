@@ -223,7 +223,7 @@ if __name__ == '__main__':
     regions = []
     for region in c.fetchall():
         region = region[0]
-        regions.append(REGIONS[region].lower())
+        regions.append(REGIONS[region].lower() if PLATFORM == 'AWS' else region)
     if len(sys.argv) == 2:
         peer = sys.argv[1]
     else:
