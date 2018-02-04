@@ -4,4 +4,4 @@ ZONES = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'europe-west
 
 
 def shrink(name):
-    return '_'.join(name.split('-'))
+    return '_'.join([n[:2] for n in name.split('-')])
