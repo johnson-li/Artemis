@@ -1,12 +1,13 @@
+import argparse
 import json
 import os
 import re
 import socket
 import sqlite3
 import sys
+from http.client import HTTPConnection
 from multiprocessing.pool import ThreadPool
 
-from http.client import HTTPConnection
 import paramiko
 
 from hestia import RESOURCE_PATH, SQL_PATH
@@ -20,6 +21,7 @@ INSTANCE_DB_FILE = DB_PATH + '/instances.db'
 SQL_FILE = SQL_PATH + '/sip.sql'
 ssh_clients = {}
 host_mapping = {}
+PLATFORM = 'AWS'
 
 
 def init_db():
@@ -205,6 +207,16 @@ concurrency = 8
 pool = ThreadPool(8)
 
 if __name__ == '__main__':
+    global PLATFORM
+    global DB_FILE
+    parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
+    parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
+                        help='the cloud platform, GCP or AWS')
+    args = parser.parse_args()
+    PLATFORM = args.platform
+    if PLATFORM == 'GCP':
+        INSTANCE_DB_FILE = DB_PATH + '/gcp_instances.db'
+
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
     c.execute("SELECT region FROM instances GROUP BY region")
