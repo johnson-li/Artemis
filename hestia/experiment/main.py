@@ -38,6 +38,15 @@ def init_db():
         conn.close()
 
 
+def get_router_secondary_ipv4_pub(region):
+    conn = sqlite3.connect(INSTANCE_DB_FILE)
+    c = conn.cursor()
+    c.execute("select secondaryIpv4Pub from main.instances where region = '{}'".format(region))
+    res = c.fetchone()[0]
+    conn.close()
+    return res
+
+
 def store_result(host, server):
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
@@ -131,6 +140,20 @@ def add_default_flow(region):
     }
     print(flow)
     pusher.set(flow)
+    # router -> internet
+    flow = {
+        'switch': DPID[region]['router'],
+        'name': '{}-route-internet'.format(region),
+        'cookie': '0',
+        'eth_type': '0x0800',
+        'priority': '10',
+        'in_port': get_port(region + '-router', 'gre_server'),
+        'active': 'true',
+        'actions': 'set_field=ipv4_src->{},set_field=eth_src->{},output={}'.format(
+            get_router_secondary_ipv4_pub(region), MAC[region]['router']['ens5'], get_port(region + '-router', 'ens5')),
+    }
+    print(flow)
+    pusher.set(flow)
     # server -> local
     flow = {
         'switch': DPID[region]['server'],
@@ -142,6 +165,19 @@ def add_default_flow(region):
         'active': 'true',
         'actions': 'set_field=ipv4_dst->10.10.10.10,set_field=eth_dst->{},output=local'.format(
             MAC[region]['server']['br1']),
+    }
+    print(flow)
+    pusher.set(flow)
+    # server -> router
+    flow = {
+        'switch': DPID[region]['server'],
+        'name': '{}-server-router'.format(region),
+        'cookie': '0',
+        'eth_type': '0x0800',
+        'priority': '200',
+        'in_port': get_port(region + '-server', 'br1'),
+        'active': 'true',
+        'actions': 'output={}'.format(get_port(region + '-server', 'gre_router')),
     }
     print(flow)
     pusher.set(flow)

@@ -81,5 +81,8 @@ MAC = {
     'europe-west4-c': {'server': {'br1': 'ae:30:ce:67:71:43'}},
     'europe-west3-c': {'server': {'br1': '7a:bf:87:52:26:4d'}},
     'europe-west2-c': {'server': {'br1': '2e:f1:8f:a3:89:49'}},
-    'europe-west1-c': {'server': {'br1': 'd6:4e:1c:ca:8f:4f'}}
+    'europe-west1-c': {
+        'server': {'br1': 'd6:4e:1c:ca:8f:4f'},
+        'router': {'ens5': '42:01:c0:a8:06:02'}
+    }
 }
