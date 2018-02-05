@@ -5,6 +5,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include "uthash.h"
+#include <net/if.h>
 
 
 #define PORT 80
@@ -28,10 +29,18 @@ int main(int argc, char **argv) {
     unsigned char buf[BUFSIZE];     /* receive buffer */
     unsigned char send_buf[] = {'a', 'b', 'c'};     /* receive buffer */
     inet_pton(AF_INET, "10.10.10.10", &(sa_gre.sin_addr));
+    struct ifreq ifr;
 
     /* create a UDP socket */
     if ((fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("cannot create socket\n");
+        return 0;
+    }
+
+    memset(&ifr, 0, sizeof(ifr));
+    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "br1");
+    if (setsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, (void *)&ifr, sizeof(ifr)) < 0) {
+        perror("bind to interface failed\n");
         return 0;
     }
 
