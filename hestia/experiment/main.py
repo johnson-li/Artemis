@@ -41,7 +41,7 @@ def init_db():
 def get_router_secondary_ipv4_pub(region):
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
-    c.execute("select secondaryIpv4Pub from main.instances where region = '{}'".format(region))
+    c.execute("select secondaryIpv4Pub from instances where name = 'router' and region = '{}'".format(region))
     res = c.fetchone()[0]
     conn.close()
     return res

@@ -7,7 +7,7 @@ from fabric.io import CommandTimeout
 from hestia.aws.regions import REGIONS
 from hestia.gce.zones import ZONES, shrink
 
-AWS = env.AWS != 'False'
+AWS = 'AWS' not in env or env.AWS != 'False'
 DB_FILE = os.path.dirname(os.path.dirname(__file__)) + '/resources/db/%sinstances.db' % ('' if AWS else 'gcp_')
 
 env.warn_only = True
@@ -16,31 +16,15 @@ env.use_ssh_config = True
 env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config'
 
 if not env.hosts:
-    env.hosts = ['virginia-router', 'virginia-server', 'ohio-server', 'ohio-router', 'california-router',
-                 'california-server', 'oregon-server', 'oregon-router', 'mumbai-server', 'mumbai-router',
-                 'singapore-router', 'singapore-server', 'sydney-router', 'sydney-server', 'tokyo-router',
-                 'tokyo-server',
-                 'seoul-router', 'seoul-server', 'central-router', 'central-server', 'frankfurt-router',
-                 'frankfurt-server',
-                 'ireland-router', 'ireland-server', 'london-server', 'london-router',
-                 'paris-server', 'paris-router', 'saopaulo-server', 'saopaulo-router']
-    env.hosts = ['tokyo-router', 'tokyo-server', 'sydney-router', 'sydney-server', 'singapore-router',
-                 'singapore-server']
-    '''env.hosts = ['virginia-router', 'ohio-router', 'california-router',
-             'oregon-router', 'mumbai-router',
-             'singapore-router', 'sydney-router', 'tokyo-router',
-             'seoul-router', 'central-router', 'frankfurt-router',
-             'ireland-router', 'london-router',
-             'paris-router', 'saopaulo-router']
-             '''
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     c.execute("SELECT region FROM instances GROUP BY region")
     env.hosts = []
     for region in c.fetchall():
         region = region[0]
-        env.hosts.append(REGIONS[region].lower() if AWS else region + '-router')
-        env.hosts.append(REGIONS[region].lower() if AWS else region + '-server')
+        env.hosts.append((REGIONS[region].lower() if AWS else region) + '-router')
+        env.hosts.append((REGIONS[region].lower() if AWS else region) + '-server')
+    print('hosts: ' + str(env.hosts))
     conn.close()
 
 
@@ -120,9 +104,9 @@ def stop_servers():
 @parallel(pool_size=4)
 def init():
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
+    sudo('ovs-vsctl --may-exist add-br br1')
+    sudo('ovs-vsctl --may-exist add-port br1 %s' % 'eth1' if AWS else 'ens5')
     sudo('ovs-vsctl set-controller br1 tcp:35.193.107.149:6653')
-    sudo('ovs-vsctl add-br br1')
-    sudo('ovs-vsctl add-port br1 ens5')
 
 
 @parallel(pool_size=4)
@@ -151,7 +135,7 @@ def setup_gre():
         # connect to the router
         c.execute("select * from instances where region = '{}' and name = '{}'".format(self_host['region'], 'router'))
         router_host = dict(zip([d[0] for d in c.description], c.fetchone()))
-        sudo('ovs-vsctl add-port br1 gre_router -- set interface gre_router type=gre, options:remote_ip={}'.format(
+        sudo('ovs-vsctl add-port br1 gre_router -- set interface gre_router type=vxlan, options:remote_ip={}'.format(
             router_host['primaryIpv4']))
         sudo('ifconfig br1 10.10.10.10/24 up')
         sudo('ip route add default dev br1 tab 2')
@@ -160,7 +144,7 @@ def setup_gre():
         # connect to the server
         c.execute("select * from instances where region = '{}' and name = '{}'".format(self_host['region'], 'server'))
         server_host = dict(zip([d[0] for d in c.description], c.fetchone()))
-        sudo('ovs-vsctl add-port br1 gre_server -- set interface gre_server type=gre, options:remote_ip={}'.format(
+        sudo('ovs-vsctl add-port br1 gre_server -- set interface gre_server type=vxlan, options:remote_ip={}'.format(
             server_host['primaryIpv4']))
         commands = []
         for region in (REGIONS if AWS else ZONES):
@@ -172,7 +156,7 @@ def setup_gre():
                 c.execute("SELECT * FROM instances WHERE region = '{}' and name = '{}'".format(region, 'router'))
                 record = dict(zip([d[0] for d in c.description], c.fetchone()))
                 remote_ip = record['primaryIpv4Pub']
-                commands.append('add-port br1 {} -- set interface {} type=gre, options:remote_ip={}'.format(
+                commands.append('add-port br1 {} -- set interface {} type=vxlan, options:remote_ip={}'.format(
                     shrink(region_name), shrink(region_name), remote_ip))
         sudo('ovs-vsctl ' + ' -- '.join(commands))
 
