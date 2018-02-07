@@ -209,6 +209,7 @@ def add_route_flow(target, other_region, peer_ip):
         'cookie': '0',
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
+        'udp_dst': 8082,
         'priority': '100',
         'in_port': get_port(other_region + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
