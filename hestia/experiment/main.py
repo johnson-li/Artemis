@@ -219,7 +219,16 @@ def add_route_flow(target, other_region, peer_ip):
     print(flow)
 
 
+def set_arp(target, peer_ip):
+    ssh = get_ssh(target)
+    ssh.exec_command("sudo arp -s {} 00:00:00:00:00:00 -i br1".format(peer_ip))
+
+
 def add_flows(target, other_regions, peer_ip):
+    pairs = [(region, peer_ip) for region in other_regions]
+    pairs.append((target, peer_ip))
+    pool.starmap(set_arp, pairs)
+
     # router -> router forwarding
     pairs = [(target, other_region, peer_ip) for other_region in other_regions]
     pool.starmap(add_route_flow, pairs)
