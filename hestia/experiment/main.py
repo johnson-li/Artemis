@@ -25,6 +25,16 @@ host_mapping = {}
 PLATFORM = 'AWS'
 
 
+def is_aws():
+    return PLATFORM == 'AWS'
+
+
+def get_region(region):
+    if is_aws():
+        return REGIONS[region].lower()
+    return region
+
+
 def init_db():
     if not os.path.exists(DB_PATH):
         os.mkdir(DB_PATH)
@@ -134,7 +144,7 @@ def add_default_flow(region):
         'cookie': '0',
         'eth_type': '0x0800',
         'priority': '10',
-        'in_port': get_port(region + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
+        'in_port': get_port(region + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(region + '-router', 'gre_server')),
     }
@@ -195,7 +205,7 @@ def add_route_flow(target, other_region, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '100',
-        'in_port': get_port(other_region + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
+        'in_port': get_port(other_region + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(other_region + '-router', shrink(target))),
     }
@@ -216,7 +226,7 @@ def add_flows(target, other_regions, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '200',
-        # 'in_port': get_port(target + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
+        # 'in_port': get_port(target + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(target + '-router', 'gre_server')),
     }
@@ -231,7 +241,7 @@ def add_flows(target, other_regions, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '100',
-        'in_port': get_port(target + '-router', 'eth1' if PLATFORM == 'AWS' else 'ens5'),
+        'in_port': get_port(target + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(target + '-router', 'gre_server')),
     }
@@ -261,7 +271,7 @@ if __name__ == '__main__':
     regions = []
     for region in c.fetchall():
         region = region[0]
-        regions.append(REGIONS[region].lower() if PLATFORM == 'AWS' else region)
+        regions.append(get_region(region))
     if len(sys.argv) == 2:
         peer = sys.argv[1]
     else:
