@@ -249,18 +249,18 @@ def add_flows(target, other_regions, peer_ip):
     pusher.set(flow)
 
 
-peer = '35.193.107.149'
+DEFAULT_PEER = '35.193.107.149'
+peer = DEFAULT_PEER
 concurrency = 8
 pool = ThreadPool(8)
 
 if __name__ == '__main__':
-    global PLATFORM
-    global DB_FILE
-    global INSTANCE_DB_FILE
     parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
     parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
                         help='the cloud platform, GCP or AWS')
+    parser.add_argument('--peer', default=DEFAULT_PEER, help='the IP of the client')
     args = parser.parse_args()
+    peer = args.peer
     PLATFORM = args.platform
     if PLATFORM == 'GCP':
         INSTANCE_DB_FILE = DB_PATH + '/gcp_instances.db'
@@ -272,9 +272,7 @@ if __name__ == '__main__':
     for region in c.fetchall():
         region = region[0]
         regions.append(get_region(region))
-    if len(sys.argv) == 2:
-        peer = sys.argv[1]
-    else:
+    if peer == DEFAULT_PEER:
         add_default_flows(regions)
     peer = socket.gethostbyname(peer)
     init_db()
