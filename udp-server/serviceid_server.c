@@ -8,7 +8,7 @@
 #include <net/if.h>
 
 
-#define PORT 80
+#define PORT 8082
 #define BUFSIZE 1024000
 
 struct map_entry {
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 
     memset(&ifr, 0, sizeof(ifr));
     snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "br1");
-    if (setsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, (void *)&ifr, sizeof(ifr)) < 0) {
+    if (setsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, (void *) &ifr, sizeof(ifr)) < 0) {
         perror("bind to interface failed\n");
         return 0;
     }

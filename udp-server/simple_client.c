@@ -14,7 +14,7 @@
 
 
 #define BUFSIZE 1024000
-#define PORT 8080
+#define PORT 8081
 
 int main(int argc, char **argv) {
     if (argc < 2) {

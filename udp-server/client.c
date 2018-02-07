@@ -12,7 +12,7 @@
 #include <unistd.h>
 
 #define BUFSIZE 1024000
-#define PORT 80
+#define PORT 8082
 
 int main(int argc, char **argv) {
     if (argc < 3) {
