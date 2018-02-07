@@ -86,6 +86,7 @@ def get_ssh(host):
 
 
 def get_latency(region, peer):
+    region = get_region(region)
     host = region + '-server'
     ssh = get_ssh(host)
     ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(
@@ -137,6 +138,8 @@ pusher = StaticFlowPusher('35.193.107.149')
 
 
 def add_default_flow(region):
+    region_name = region
+    region = get_region(region)
     # router -> server
     flow = {
         'switch': DPID[region]['router'],
@@ -160,7 +163,7 @@ def add_default_flow(region):
         'in_port': get_port(region + '-router', 'gre_server'),
         'active': 'true',
         'actions': 'set_field=ipv4_src->{},set_field=eth_src->{},output={}'.format(
-            get_router_secondary_ipv4_pub(region), MAC[region]['router']['ens5'], get_port(region + '-router', 'ens5')),
+            get_router_secondary_ipv4_pub(region_name), MAC[region]['router']['eth1' if is_aws() else 'ens5'], get_port(region + '-router', 'eth1' if is_aws() else 'ens5')),
     }
     print(flow)
     pusher.set(flow)
@@ -271,7 +274,7 @@ if __name__ == '__main__':
     regions = []
     for region in c.fetchall():
         region = region[0]
-        regions.append(get_region(region))
+        regions.append(region)
     if peer == DEFAULT_PEER:
         add_default_flows(regions)
     peer = socket.gethostbyname(peer)
