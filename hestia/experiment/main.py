@@ -4,7 +4,6 @@ import os
 import re
 import socket
 import sqlite3
-import sys
 from http.client import HTTPConnection
 from multiprocessing.pool import ThreadPool
 
@@ -96,6 +95,8 @@ def get_latency(region, peer):
 
 
 def get_port(host, port_name):
+    if port_name == 'br1':
+        return 'local'
     ssh = get_ssh(host)
     ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("sudo ovs-ofctl show br1| grep '({})'".format(port_name))
     for line in ssh_stdout:
@@ -163,7 +164,8 @@ def add_default_flow(region):
         'in_port': get_port(region + '-router', 'gre_server'),
         'active': 'true',
         'actions': 'set_field=ipv4_src->{},set_field=eth_src->{},output={}'.format(
-            get_router_secondary_ipv4_pub(region_name), MAC[region]['router']['eth1' if is_aws() else 'ens5'], get_port(region + '-router', 'eth1' if is_aws() else 'ens5')),
+            get_router_secondary_ipv4_pub(region_name), MAC[region]['router']['eth1' if is_aws() else 'ens5'],
+            get_port(region + '-router', 'eth1' if is_aws() else 'ens5')),
     }
     print(flow)
     pusher.set(flow)
