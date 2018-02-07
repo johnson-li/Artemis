@@ -5,7 +5,7 @@ arch=$2
 echo host: ${host}
 
 cd ..
-python3 -m hestia.experiment.main ${host}
+python3 -m hestia.experiment.main --peer ${host}
 cd scripts
 
 ip=`dig +short ${host}| tail -n1`
