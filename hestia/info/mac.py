@@ -2,16 +2,25 @@ MAC = {
     'tokyo': {
         'server': {
             'br1': '1e:89:80:a8:96:4c'
+        },
+        'router': {
+            'eth1': '06:1e:a3:e4:1f:12'
         }
     },
     'sydney': {
         'server': {
             'br1': '2a:ad:f0:91:54:4c'
+        },
+        'router': {
+            'eth1': '02:9c:0a:ca:a1:60'
         }
     },
     'singapore': {
         'server': {
             'br1': '4a:3e:54:de:b9:4a'
+        },
+        'router': {
+            'eth1': '02:a6:f5:64:c6:50'
         }
     },
     'saopaulo': {
