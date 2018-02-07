@@ -112,7 +112,7 @@ def init():
 
 @parallel(pool_size=4)
 def clear_gre():
-    sudo("for port in `sudo ovs-vsctl show|grep 'Port \"*gre_'| grep -o 'gre_[0-9a-z_-]*'`; "
+    sudo("for port in `sudo ovs-vsctl show|egrep 'vxlan|gre' -B2|grep Port| egrep 'Port (.+)'| sed -E 's/ +Port //'`; "
          "do sudo ovs-vsctl del-port br1 $port; done")
 
 
