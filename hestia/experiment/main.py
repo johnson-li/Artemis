@@ -47,10 +47,10 @@ def init_db():
         conn.close()
 
 
-def get_router_secondary_ipv4_pub(region):
+def get_router_secondary_ipv4(region):
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
-    c.execute("select secondaryIpv4Pub from instances where name = 'router' and region = '{}'".format(region))
+    c.execute("select secondaryIpv4 from instances where name = 'router' and region = '{}'".format(region))
     res = c.fetchone()[0]
     conn.close()
     return res
@@ -164,7 +164,7 @@ def add_default_flow(region):
         'in_port': get_port(region + '-router', 'gre_server'),
         'active': 'true',
         'actions': 'set_field=ipv4_src->{},set_field=eth_src->{},output={}'.format(
-            get_router_secondary_ipv4_pub(region_name), MAC[region]['router']['eth1' if is_aws() else 'ens5'],
+            get_router_secondary_ipv4(region_name), MAC[region]['router']['eth1' if is_aws() else 'ens5'],
             get_port(region + '-router', 'eth1' if is_aws() else 'ens5')),
     }
     print(flow)
@@ -221,8 +221,8 @@ def add_route_flow(target, other_region, peer_ip):
 
 
 def set_arp(target, peer_ip):
-    ssh = get_ssh(target)
-    ssh.exec_command("sudo arp -s {} 00:00:00:00:00:00 -i br1".format(peer_ip))
+    ssh = get_ssh(target + '-server')
+    ssh.exec_command("sudo arp -s %s `ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'` -i br1" % peer_ip)
 
 
 def add_flows(target, other_regions, peer_ip):
