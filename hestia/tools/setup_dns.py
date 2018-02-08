@@ -29,14 +29,14 @@ def add_cdn():
             record = {'Name': 'sid.xuebing.name.', 'Type': 'A', 'SetIdentifier': REGIONS[host['region']],
                       'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
             sets.append(record)
-        elif host['name'] == 'server':
+        #elif host['name'] == 'server':
             record = {'Name': 'cdn.xuebing.name.', 'Type': 'A', 'SetIdentifier': REGIONS[host['region']],
-                      'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['primaryIpv4Pub']}]}
+                      'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
             sets.append(record)
             for i in range(20):
                 record = {'Name': 'cdn{}.xuebing.name.'.format(i), 'Type': 'A',
                           'SetIdentifier': REGIONS[host['region']],
-                          'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['primaryIpv4Pub']}]}
+                          'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
                 sets.append(record)
     client = boto3.client('route53')
     client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={

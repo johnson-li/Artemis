@@ -10,7 +10,7 @@ from multiprocessing.pool import ThreadPool
 import paramiko
 
 from hestia import RESOURCE_PATH, SQL_PATH
-from hestia.aws.regions import REGIONS
+from hestia.aws.regions import REGIONS, REVERSE_REGIONS
 from hestia.gce.zones import shrink
 from hestia.info.dpid import DPID
 from hestia.info.mac import MAC
@@ -47,10 +47,10 @@ def init_db():
         conn.close()
 
 
-def get_router_secondary_ipv4(region):
+def get_router_secondary_ipv4(region, pub=False):
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
-    c.execute("select secondaryIpv4 from instances where name = 'router' and region = '{}'".format(region))
+    c.execute("select secondaryIpv4{} from instances where name = 'router' and region = '{}'".format('Pub' if pub else '', region))
     res = c.fetchone()[0]
     conn.close()
     return res
@@ -221,8 +221,14 @@ def add_route_flow(target, other_region, peer_ip):
 
 
 def set_arp(target, peer_ip):
-    ssh = get_ssh(target + '-server')
-    ssh.exec_command("sudo arp -s %s `ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'` -i br1" % peer_ip)
+    print('Set arp for %s in %s' % (peer_ip, target))
+    ssh_server = get_ssh(target + '-server')
+    ssh_router = get_ssh(target + '-router')
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh_router.exec_command("ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'")
+    for line in ssh_stdout:
+        mac = line.strip()
+        break
+    ssh_server.exec_command("sudo arp -s %s %s -i br1" % (peer_ip, mac))
 
 
 def add_flows(target, other_regions, peer_ip):
@@ -298,5 +304,6 @@ if __name__ == '__main__':
     results.sort(key=lambda pair: pair[1])
     # results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
     print(results)
-    store_result(peer, host_mapping[results[0][0] + '-server'])
+    get_ssh(results[0][0] + '-router')
+    store_result(peer, get_router_secondary_ipv4(REVERSE_REGIONS[results[0][0]], pub=True))
     add_flows(results[0][0], [i[0] for i in results[1:]], peer)

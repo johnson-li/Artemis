@@ -43,6 +43,15 @@ def start_machines(sessions):
                 pending_instances.append((instance, resource, session.region_name))
 
     print('Wait for instances')
+    loop = True
+    while loop:
+        loop = False
+        for instance, resource, regions_name in pending_instances:
+            instance.load()
+            if instance.state['Name'] != 'running':
+                loop = True
+                break
+    time.sleep(5)
     while pending_instances:
         instance, resource, region_name = pending_instances.pop(0)
         instance.load()
@@ -53,7 +62,6 @@ def start_machines(sessions):
             for interface in resource.network_interfaces.all():
                 if not interface.attachment and interface.description == utils.get_instance_name(instance) + '-eth1':
                     pending_interfaces.append(interface)
-                    time.sleep(3)
                     interface.attach(DeviceIndex=1, InstanceId=instance.id)
                     break
             INITIATED_INSTANCES.append((instance, region_name))

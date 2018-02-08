@@ -15,3 +15,6 @@ REGIONS = {
     'eu-west-3': 'Paris',
     'sa-east-1': 'SaoPaulo',
 }
+
+REVERSE_REGIONS = {v.lower(): k for k, v in REGIONS.items()}
+
