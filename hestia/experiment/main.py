@@ -289,9 +289,7 @@ def run(peer):
         regions.append(region)
     if peer == DEFAULT_PEER:
         add_default_flows(regions)
-        os.remove(DB_FILE)
     peer = socket.gethostbyname(peer)
-    init_db()
     results = []
     pairs = [(region, peer) for region in regions]
     results = pool.starmap(get_latency, pairs)
@@ -303,10 +301,13 @@ def run(peer):
     add_flows(results[0][0], [i[0] for i in results[1:]], peer)
 
 
-def init():
+def init(clear_db=False):
     global INSTANCE_DB_FILE
     if PLATFORM == 'GCP':
         INSTANCE_DB_FILE = DB_PATH + '/gcp_instances.db'
+    if clear_db:
+        os.remove(DB_FILE)
+    init_db()
 
 
 def main():
@@ -318,7 +319,7 @@ def main():
     args = parser.parse_args()
     peer = args.peer
     PLATFORM = args.platform
-    init()
+    init(peer == DEFAULT_PEER)
     run(peer)
 
 
