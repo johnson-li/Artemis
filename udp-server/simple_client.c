@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
     result = sendto(server_fd, server_buf, sizeof(server_buf) / sizeof(server_buf[0]), 0,
                     (struct sockaddr *) &server_addr,
                     sizeof(server_addr));
-    printf("sent %ld bytes to the server\n", result);
+    printf("sent %zd bytes to the server\n", result);
 
     for (;;) {
         recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
             return 1;
         }
     }
-    printf("got %ld bytes from the server\n", recv);
+    printf("got %zd bytes from the server\n", recv);
     gettimeofday(&end, NULL);
 
     printf("cost %f ms\n", (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000);

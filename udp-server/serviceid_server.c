@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
         recvlen = recvfrom(fd, buf, BUFSIZE, 0, (struct sockaddr *) &remaddr, &addrlen);
         char str[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &(remaddr.sin_addr), str, INET_ADDRSTRLEN);
-        printf("received %ld bytes from %s:%d\n", recvlen, str, remaddr.sin_port);
+        printf("received %zd bytes from %s:%d\n", recvlen, str, remaddr.sin_port);
         if (recvlen > 10) {
             printf("got message from gre\n");
             struct sockaddr_in remaddr_old;
@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
             inet_ntop(AF_INET, &(remaddr_old.sin_addr), str, INET_ADDRSTRLEN);
             result = sendto(fd, send_buf, sizeof(send_buf) / sizeof(send_buf[0]), 0, (struct sockaddr *) &remaddr_old,
                             sizeof(remaddr_old));
-            printf("%ld bytes sent to %s:%d\n", result, str, remaddr_old.sin_port);
+            printf("%zd bytes sent to %s:%d\n", result, str, remaddr_old.sin_port);
         } else {
             printf("got message from internet\n");
             struct map_entry *entry;
