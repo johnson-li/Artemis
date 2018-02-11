@@ -102,8 +102,12 @@ def stop_servers():
         sudo('killall serviceid_server')
 
 
-@parallel(pool_size=4)
+@parallel(pool_size=8)
 def init():
+    sudo('echo "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet dhcp\n\nauto eth1\n'
+         'iface eth1 inet dhcp\n" > /etc/network/interfaces.d/50-cloud-init.cfg')
+    sudo('echo "iface eth0 inet6 dhcp\niface eth0 inet6 dhcp\n" > /etc/network/interfaces.d/60-default-with-ipv6.cfg')
+    sudo('/etc/init.d/networking restart', timeout=5)
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
     sudo('ovs-vsctl --may-exist add-br br1')
     sudo('ovs-vsctl --may-exist add-port br1 %s' % 'eth1' if AWS else 'ens5')
