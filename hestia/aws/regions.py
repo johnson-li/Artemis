@@ -17,4 +17,3 @@ REGIONS = {
 }
 
 REVERSE_REGIONS = {v.lower(): k for k, v in REGIONS.items()}
-

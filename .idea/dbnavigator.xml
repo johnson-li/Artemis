@@ -23,22 +23,21 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="057cc516-c8db-4048-9824-bb51e7d2e082">
-        <schema name="main" object-types="table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="057cc516-c8db-4048-9824-bb51e7d2e082">
       <console name="Connection" type="STANDARD" />
     </connection>
   </component>
+  <component name="DBNavigator.Project.DatabaseSessionManager">
+    <connection id="057cc516-c8db-4048-9824-bb51e7d2e082" />
+  </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/sql/instances.sql" connection-id="057cc516-c8db-4048-9824-bb51e7d2e082" current-schema="main" />
+    <mapping file-url="file://$PROJECT_DIR$/sql/instances.sql" connection-id="057cc516-c8db-4048-9824-bb51e7d2e082" session-id="MAIN" current-schema="main" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -99,6 +98,7 @@
         </ssh-settings>
         <details>
           <charset value="UTF-8" />
+          <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
           <connect-automatically value="true" />
@@ -455,7 +455,6 @@
         <debug-execution-timeout value="600" />
         <focus-result value="false" />
         <prompt-execution value="false" />
-        <target-connection value="MAIN" />
       </statement-execution>
       <script-execution>
         <command-line-interfaces />
