@@ -289,6 +289,7 @@ def run(peer):
         regions.append(region)
     if peer == DEFAULT_PEER:
         add_default_flows(regions)
+        os.remove(DB_FILE)
     peer = socket.gethostbyname(peer)
     init_db()
     results = []
