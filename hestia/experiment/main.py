@@ -43,6 +43,7 @@ def init_db():
         c = conn.cursor()
         init_sql = ''.join(open(SQL_FILE).readlines())
         c.execute(init_sql)
+        conn.commit()
         c.close()
         conn.close()
 
