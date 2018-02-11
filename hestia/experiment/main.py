@@ -50,7 +50,9 @@ def init_db():
 def get_router_secondary_ipv4(region, pub=False):
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
-    c.execute("select secondaryIpv4{} from instances where name = 'router' and region = '{}'".format('Pub' if pub else '', region))
+    c.execute(
+        "select secondaryIpv4{} from instances where name = 'router' and region = '{}'".format('Pub' if pub else '',
+                                                                                               region))
     res = c.fetchone()[0]
     conn.close()
     return res
@@ -224,7 +226,8 @@ def set_arp(target, peer_ip):
     print('Set arp for %s in %s' % (peer_ip, target))
     ssh_server = get_ssh(target + '-server')
     ssh_router = get_ssh(target + '-router')
-    ssh_stdin, ssh_stdout, ssh_stderr = ssh_router.exec_command("ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'")
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh_router.exec_command(
+        "ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'")
     for line in ssh_stdout:
         mac = line.strip()
         break
@@ -272,21 +275,11 @@ def add_flows(target, other_regions, peer_ip):
 
 
 DEFAULT_PEER = '35.193.107.149'
-peer = DEFAULT_PEER
 concurrency = 8
 pool = ThreadPool(8)
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
-    parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
-                        help='the cloud platform, GCP or AWS')
-    parser.add_argument('--peer', default=DEFAULT_PEER, help='the IP of the client')
-    args = parser.parse_args()
-    peer = args.peer
-    PLATFORM = args.platform
-    if PLATFORM == 'GCP':
-        INSTANCE_DB_FILE = DB_PATH + '/gcp_instances.db'
 
+def run(peer):
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
     c.execute("SELECT region FROM instances GROUP BY region")
@@ -307,3 +300,26 @@ if __name__ == '__main__':
     get_ssh(results[0][0] + '-router')
     store_result(peer, get_router_secondary_ipv4(REVERSE_REGIONS[results[0][0]], pub=True))
     add_flows(results[0][0], [i[0] for i in results[1:]], peer)
+
+
+def init():
+    global INSTANCE_DB_FILE
+    if PLATFORM == 'GCP':
+        INSTANCE_DB_FILE = DB_PATH + '/gcp_instances.db'
+
+
+def main():
+    global PLATFORM
+    parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
+    parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
+                        help='the cloud platform, GCP or AWS')
+    parser.add_argument('--peer', default=DEFAULT_PEER, help='the IP of the client')
+    args = parser.parse_args()
+    peer = args.peer
+    PLATFORM = args.platform
+    init()
+    run(peer)
+
+
+if __name__ == '__main__':
+    main()
