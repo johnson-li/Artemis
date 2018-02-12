@@ -8,7 +8,7 @@ fi
 
 if [ -z ${repeat+x} ]
 then
-    repeat=20
+    repeat=10
 fi
 echo repeat: ${repeat}
 
