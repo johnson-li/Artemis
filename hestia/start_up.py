@@ -51,7 +51,7 @@ def start_machines(sessions):
             if instance.state['Name'] != 'running':
                 loop = True
                 break
-    time.sleep(5)
+    time.sleep(10)
     while pending_instances:
         instance, resource, region_name = pending_instances.pop(0)
         instance.load()
