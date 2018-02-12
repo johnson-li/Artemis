@@ -227,8 +227,7 @@ def set_arp(target, peer_ip):
     print('Set arp for %s in %s' % (peer_ip, target))
     ssh_server = get_ssh(target + '-server')
     ssh_router = get_ssh(target + '-router')
-    ssh_stdin, ssh_stdout, ssh_stderr = ssh_router.exec_command(
-        "ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'")
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh_router.exec_command("cat ~/neigh.mac")
     for line in ssh_stdout:
         mac = line.strip()
         break

@@ -1,0 +1,171 @@
+hosts: ['tokyo-router', 'tokyo-server', 'seoul-router', 'seoul-server', 'mumbai-router', 'mumbai-server', 'singapore-router', 'singapore-server', 'sydney-router', 'sydney-server', 'central-router', 'central-server', 'frankfurt-router', 'frankfurt-server', 'ireland-router', 'ireland-server', 'london-router', 'london-server', 'paris-router', 'paris-server', 'saopaulo-router', 'saopaulo-server', 'virginia-router', 'virginia-server', 'ohio-router', 'ohio-server', 'oregon-router', 'oregon-server']
+[tokyo-router] Executing task 'show_neigh'
+[tokyo-server] Executing task 'show_neigh'
+[seoul-router] Executing task 'show_neigh'
+[seoul-server] Executing task 'show_neigh'
+[mumbai-router] Executing task 'show_neigh'
+[mumbai-server] Executing task 'show_neigh'
+[singapore-router] Executing task 'show_neigh'
+[singapore-server] Executing task 'show_neigh'
+[sydney-router] Executing task 'show_neigh'
+[sydney-server] Executing task 'show_neigh'
+[central-router] Executing task 'show_neigh'
+[central-server] Executing task 'show_neigh'
+[frankfurt-router] Executing task 'show_neigh'
+[frankfurt-server] Executing task 'show_neigh'
+[ireland-router] Executing task 'show_neigh'
+[ireland-server] Executing task 'show_neigh'
+[london-router] Executing task 'show_neigh'
+[london-server] Executing task 'show_neigh'
+[paris-router] Executing task 'show_neigh'
+[paris-server] Executing task 'show_neigh'
+[saopaulo-router] Executing task 'show_neigh'
+[saopaulo-server] Executing task 'show_neigh'
+[virginia-router] Executing task 'show_neigh'
+[virginia-server] Executing task 'show_neigh'
+[ohio-router] Executing task 'show_neigh'
+[ohio-server] Executing task 'show_neigh'
+[oregon-router] Executing task 'show_neigh'
+[oregon-server] Executing task 'show_neigh'
+[ohio-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[ohio-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[ohio-server] out: neigh: 06:68:51:fb:b8:8a
+[ohio-server] out: 
+
+[ohio-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[ohio-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[ohio-router] out: neigh: 06:68:51:fb:b8:8a
+[ohio-router] out: 
+
+[virginia-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[virginia-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[virginia-server] out: neigh: 12:9d:1e:38:c6:c4
+[virginia-server] out: 
+
+[virginia-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[virginia-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[virginia-router] out: neigh: 12:9d:1e:38:c6:c4
+[virginia-router] out: 
+
+[oregon-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[oregon-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[oregon-router] out: neigh: 02:44:ce:eb:97:78
+[oregon-router] out: 
+
+[oregon-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[oregon-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[oregon-server] out: neigh: 02:44:ce:eb:97:78
+[oregon-server] out: 
+
+[saopaulo-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[saopaulo-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[saopaulo-server] out: neigh: 02:7f:90:4d:b3:c2
+[saopaulo-server] out: 
+
+[london-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[london-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[london-router] out: neigh: 06:fb:3e:62:20:6e
+[london-router] out: 
+
+[saopaulo-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[saopaulo-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[saopaulo-router] out: neigh: 02:7f:90:4d:b3:c2
+[saopaulo-router] out: 
+
+[london-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[london-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[london-server] out: neigh: 06:fb:3e:62:20:6e
+[london-server] out: 
+
+[paris-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[paris-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[paris-server] out: neigh: 06:35:a0:8f:03:1e
+[paris-server] out: 
+
+[paris-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[paris-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[paris-router] out: neigh: 06:35:a0:8f:03:1e
+[paris-router] out: 
+
+[ireland-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[ireland-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[ireland-server] out: neigh: 0a:31:cc:c9:35:c2
+[ireland-server] out: 
+
+[ireland-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[ireland-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[ireland-router] out: neigh: 0a:31:cc:c9:35:c2
+[ireland-router] out: 
+
+[central-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[central-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[central-server] out: neigh: 02:38:6a:bd:3f:be
+[central-server] out: 
+
+[central-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[central-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[central-router] out: neigh: 02:38:6a:bd:3f:be
+[central-router] out: 
+
+[frankfurt-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[frankfurt-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[frankfurt-server] out: neigh: 06:13:83:75:86:48
+[frankfurt-server] out: 
+
+[frankfurt-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[frankfurt-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[frankfurt-router] out: neigh: 06:13:83:75:86:48
+[frankfurt-router] out: 
+
+[sydney-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[sydney-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[sydney-server] out: neigh: 02:e3:88:4a:ba:ec
+[sydney-server] out: 
+
+[sydney-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[sydney-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[sydney-router] out: neigh: 02:e3:88:4a:ba:ec
+[sydney-router] out: 
+
+[singapore-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[singapore-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[singapore-router] out: neigh: 02:da:db:38:1a:4c
+[singapore-router] out: 
+
+[singapore-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[singapore-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[singapore-server] out: neigh: 02:da:db:38:1a:4c
+[singapore-server] out: 
+
+[seoul-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[seoul-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[seoul-server] out: neigh: 02:46:65:60:cd:4e
+[seoul-server] out: 
+
+[seoul-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[seoul-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[seoul-router] out: neigh: 02:46:65:60:cd:4e
+[seoul-router] out: 
+
+[mumbai-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[mumbai-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[mumbai-router] out: neigh: 02:56:0b:9f:c5:92
+[mumbai-router] out: 
+
+[mumbai-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[mumbai-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[mumbai-server] out: neigh: 02:56:0b:9f:c5:92
+[mumbai-server] out: 
+
+[tokyo-server] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[tokyo-server] run: echo 'neigh:' `cat ~/neigh.mac`
+[tokyo-server] out: neigh: 06:43:34:f3:bf:be
+[tokyo-server] out: 
+
+[tokyo-router] run: ip neigh|grep eth1|egrep -o '([0-9a-f]{2}:){5}[0-9a-f]+'|head -n1 > ~/neigh.mac
+[tokyo-router] run: echo 'neigh:' `cat ~/neigh.mac`
+[tokyo-router] out: neigh: 06:43:34:f3:bf:be
+[tokyo-router] out: 
+
+
+Done.
