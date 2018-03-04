@@ -78,3 +78,12 @@ def init():
 @parallel(pool_size=6)
 def test_dns_delay():
     sudo('dig miss.xuebing.name|grep Query')
+
+
+@parallel(pool_size=10)
+def traceroute():
+    output = sudo('traceroute 8.8.8.8')
+    ip = ''
+    location = ''
+    gcp_ip = ''
+    print(output)
