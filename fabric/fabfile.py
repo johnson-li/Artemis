@@ -114,7 +114,7 @@ def init_nic():
 def init_ovs():
     sudo('/usr/local/share/openvswitch/scripts/ovs-ctl start')
     sudo('ovs-vsctl --may-exist add-br br1')
-    sudo('ovs-vsctl --may-exist add-port br1 %s' % 'eth1' if AWS else 'ens5')
+    sudo('ovs-vsctl --may-exist add-port br1 %s' % ('eth1' if AWS else 'ens5'))
     sudo('ovs-vsctl set-controller br1 tcp:35.193.107.149:6653')
 
 
