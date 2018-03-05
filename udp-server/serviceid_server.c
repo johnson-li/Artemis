@@ -8,7 +8,7 @@
 #include <net/if.h>
 
 
-#define PORT 8082
+#define PORT 8081
 #define BUFSIZE 1024000
 
 struct map_entry {
