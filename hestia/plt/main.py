@@ -13,6 +13,7 @@ DB_FILE = hestia.RESOURCE_PATH + '/db/sip.db'
 USER_NAME = 'goettingenple_txp1'
 pool = ThreadPool(20)
 SSH_CLIENTS = {}
+PROGRAMME = ['direct', 'hit', 'miss', 'sid'][0]
 
 
 def read(ssh_stdin):
@@ -46,7 +47,7 @@ def sync_files(host):
     ssh = get_ssh(host)
     execute(ssh, 'mkdir -p ~/server')
     scp = SCPClient(ssh.get_transport())
-    for f in ['conduct_exp1.sh', 'timeout.sh']:
+    for f in ['conduct_exp1_direct.sh', 'conduct_exp1_hit.sh', 'conduct_exp1_miss.sh', 'conduct_exp1_sid.sh']:
         scp.put(hestia.SCRIPT_PATH + '/' + f, '~/' + f)
     arch = execute(ssh, 'uname -m')
     if arch == 'x86_64':
@@ -73,7 +74,7 @@ def conduct_experiment(host):
         hestia.experiment.main.run(host)
         sid_server = get_sid_server(host)
     sync_files(host)
-    output = execute(ssh, './conduct_exp1.sh %s' % sid_server)
+    output = execute(ssh, './conduct_exp1_%s.sh %s' % (PROGRAMME, sid_server))
     print('Host: {}\n'.format(host) + output)
 
 
