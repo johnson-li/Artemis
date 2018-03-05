@@ -258,7 +258,7 @@ def add_flows(target, other_regions, peer_ip):
     print(flow)
     pusher.set(flow)
 
-    # router(gre) -> server forwarding
+    # other router(gre) -> server forwarding
     flow = {
         'switch': DPID[target]['router'],
         'name': 'route-{}'.format(peer_ip),
