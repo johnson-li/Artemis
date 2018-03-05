@@ -80,6 +80,11 @@ int main(int argc, char **argv) {
     printf("sent %zd bytes to the server\n", result);
 
     sleep(1);
+
+    do {
+        recv = recvfrom(server_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &server_addr, &addrlen);
+    } while (recv > 0);
+
     gettimeofday(&start, NULL);
     result = sendto(router_fd, router_buf, sizeof(router_buf) / sizeof(router_buf[0]), 0,
                     (struct sockaddr *) &router_addr, sizeof(router_addr));
