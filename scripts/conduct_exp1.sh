@@ -35,7 +35,7 @@ direct_server=`sudo ping cdn.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egre
 #direct_server=127.0.0.1
 for i in `seq ${repeat}`
 do
-    output=`sudo ./timeout.sh ./server/simple_client ${direct_server}| grep cost| egrep -o '[0-9.]+'`
+    output=`sudo ./server/simple_client ${direct_server}| grep cost| egrep -o '[0-9.]+'`
     if [ -z "$output" ]
     then
         output=0
@@ -47,7 +47,7 @@ echo direct_data: ${direct_data}
 # DNS hit
 for i in `seq ${repeat}`
 do
-    output=`sudo ./timeout.sh ./server/simple_client cdn.xuebing.name`
+    output=`sudo ./server/simple_client cdn.xuebing.name`
     cost=`echo "${output}"| grep cost| egrep -o '[0-9.]+'`
     dns_cost=`echo "${output}"| grep 'DNS delay'| egrep -o '[0-9.]+'`
     dns_hit_delay=${dns_hit_delay},${dns_cost}
@@ -64,7 +64,7 @@ echo dns_hit_delay: ${dns_hit_delay}
 for i in `seq ${repeat}`
 do
 #    dns_server=127.0.0.1
-    output=`sudo ./timeout.sh ./server/simple_client cdn${i}.xuebing.name`
+    output=`sudo ./server/simple_client cdn${i}.xuebing.name`
     cost=`echo "${output}"| grep cost| egrep -o '[0-9.]+'`
     dns_cost=`echo "${output}"| grep 'DNS delay'| egrep -o '[0-9.]+'`
     dns_delay=${dns_delay},${dns_cost}

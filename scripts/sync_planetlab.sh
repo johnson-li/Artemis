@@ -12,6 +12,5 @@ scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no conduct_exp1_dir
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no conduct_exp1_hit.sh goettingenple_txp1@$1:~/
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no conduct_exp1_miss.sh goettingenple_txp1@$1:~/
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no conduct_exp1_sid.sh goettingenple_txp1@$1:~/
-scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no timeout.sh goettingenple_txp1@$1:~/
 
 cd ${USER_DIR}

@@ -8,7 +8,7 @@ echo repeat: ${repeat}
 
 for i in `seq ${repeat}`
 do
-    output=`sudo ./timeout.sh ./server/simple_client cdn${i}.xuebing.name`
+    output=`sudo ./server/simple_client cdn${i}.xuebing.name`
     cost=`echo "${output}"| grep cost| egrep -o '[0-9.]+'`
     dns_cost=`echo "${output}"| grep 'DNS delay'| egrep -o '[0-9.]+'`
     dns_delay=${dns_delay},${dns_cost}
