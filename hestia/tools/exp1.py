@@ -1,18 +1,17 @@
 import json
 import re
 import sqlite3
-import statistics
 from pprint import pprint
 
 import matplotlib.pyplot as plt
 import numpy
-import sklearn.cluster
 
 from hestia.aws.regions import REGIONS
 
-PATH = '/Users/johnson/exp1/full'
-INSTANCES_DB = '/Users/johnson/exp1/full/instances.db'
-SIP_DB = '/Users/johnson/exp1/full/sip.db'
+PATH = '/Users/johnson/exp1'
+INSTANCES_DB = '/Users/johnson/exp1/instances.db3'
+REPEAT = 10
+PERCENTILE = 90
 
 
 def parse_local_dns_latency():
@@ -30,13 +29,12 @@ def parse_local_dns_latency():
 
 def parse():
     records = {}
-    for file in ['exp1', 'exp1_32', 'exp1_32_last_10-19', 'exp1_32_last_20-29', 'exp1_32_last_30-39',
-                 'exp1_32_last_40-49', 'exp1_32_last_50-59']:
+    for file in ['exp3']:
         # for file in ['exp1']:
         file = PATH + '/' + file
         with open(file) as f:
             for line in f.readlines():
-                if line.startswith('host: '):
+                if line.startswith('Host: '):
                     host = line[6:-1]
                     record = {}
                 elif line.startswith('direct_data'):
@@ -67,8 +65,8 @@ def parse():
                 elif line.startswith('sid_server'):
                     record['sid_server'] = line[12:-1]
                     records[host] = record
-                elif line.startswith('['):
-                    record['ping'] = dict(eval(line[:-1]))
+                # elif line.startswith('['):
+                #     record['ping'] = dict(eval(line[:-1]))
     return records
 
 
@@ -77,7 +75,7 @@ def transform(records):
         key: [{val_key: val[val_key][i] if isinstance(val[val_key], list) else val[val_key] for val_key in
                ['direct_data', 'dns_hit_data', 'dns_hit_delay', 'dns_data', 'dns_delay', 'sid_data', 'direct_server',
                 'dns_servers', 'sid_router', 'sid_server']} for
-              i in range(20)] for key, val in records.items()}
+              i in range(REPEAT)] for key, val in records.items()}
     for key in records.keys():
         records[key] = list(filter(lambda x: all(i != 0 for i in x.values()), records[key]))
     records = {key: val for key, val in records.items() if val}
@@ -92,19 +90,6 @@ def records_percentile(records, percentile):
         for data_key in record[0].keys():
             if isinstance(record[0][data_key], float):
                 data = [record[i][data_key] for i in range(len(record))]
-                # kmeans = sklearn.cluster.KMeans(n_clusters=2).fit([(d, 0) for d in data])
-                # centers = [c[0] for c in kmeans.cluster_centers_]
-                # d1 = [d for d in data if abs(d - centers[0]) < abs(d - centers[1])]
-                # d2 = [d for d in data if abs(d - centers[0]) >= abs(d - centers[1])]
-                # var = statistics.variance(data, numpy.mean(data))
-                # var1 = statistics.variance(d1, numpy.mean(d1)) if len(d1) > 1 else 0
-                # var2 = statistics.variance(d2, numpy.mean(d2)) if len(d2) > 1 else 0
-                # print((var, (var1, len(d1)), (var2, len(d2))))
-                # print(data)
-                # print(d1)
-                # print(d2)
-                # if var > 10 * var1 and var > 10 * var2:
-                #     data = d1
                 median[data_key] = numpy.percentile(data, percentile)
         median['hit_increment'] = median['dns_hit_data'] - median['direct_data']
         median['sid_increment'] = median['sid_data'] - median['direct_data']
@@ -116,18 +101,21 @@ def records_percentile(records, percentile):
 def plot(fig, records, key):
     data = [d[key] for d in records.values()]
     data = sorted(data)
+    if key == 'sid_increment':
+        print(numpy.mean(data))
     print({key: {a: b[key] for a, b in records.items()}})
     p = 1. * numpy.arange(len(data)) / (len(data) - 1)
     ax1 = fig.add_subplot(121)
     ax1.plot(data, p, label=key)
-    ax1.set_xlabel('Time')
+    ax1.set_xlabel('Time (ms)')
     ax1.set_ylabel('CDF')
+    # ax1.legend(loc="upper left")
     ax1.legend(loc="lower right")
 
 
 def compare(records):
     records = transform(records)
-    records_median = records_percentile(records, 90)
+    records_median = records_percentile(records, PERCENTILE)
     pprint(records_median)
     # print(records_median)
     fig = plt.figure(figsize=(8, 6), dpi=320)
@@ -135,8 +123,8 @@ def compare(records):
     # plot(fig, records_median, 'dns_hit_data')
     # plot(fig, records_median, 'dns_data')
     # plot(fig, records_median, 'sid_data')
-    # plot(fig, latency_map, 'latency')
     # plot(fig, records_median, 'dns_delay')
+    # plot(fig, latency_map, 'latency')
     plot(fig, records_median, 'hit_increment')
     plot(fig, records_median, 'sid_increment')
     plot(fig, records_median, 'sid_hit_incr')
@@ -152,7 +140,7 @@ def sid_region(records):
     for key, val in records.items():
         router = val['sid_router']
         server = val['sid_server']
-        c.execute("select region from instances where primaryIpv4Pub = '{}'".format(server))
+        c.execute("select region from instances where secondaryIpv4Pub = '{}'".format(server))
         server_region = c.fetchone()[0]
         c.execute("select region from instances where secondaryIpv4Pub = '{}'".format(router))
         router_region = c.fetchone()[0]
@@ -160,31 +148,30 @@ def sid_region(records):
             exceptions.append(key)
             count += 1
             print('{} -> {}'.format(REGIONS[router_region], REGIONS[server_region]))
-            print(val['ping'])
+            # print(val['ping'])
     print("region change: {}/{}".format(count, len(records.keys())))
     print("exceptions = " + str(exceptions))
 
 
-latency_map = parse_local_dns_latency()
+# latency_map = parse_local_dns_latency()
 
 
 def main():
     records = parse()
     print(json.dumps(records))
-    invalid_hosts = [key for key, val in records.items() if all(x == 0 for x in val['sid_data'])]
+    invalid_hosts = [key for key, val in records.items() if all(not x for x in val['dns_servers'])]
     print('Invalid data: {}/{}'.format(len(invalid_hosts), len(records.keys())))
     for host in invalid_hosts:
         records.pop(host)
-    exceptions = ['stella.planetlab.ntua.gr', 'vicky.planetlab.ntua.gr', 'planetlab1.dtc.umn.edu',
-                  'planetlab-5.eecs.cwru.edu', 'plink.cs.uwaterloo.ca', 'planetlabone.ccs.neu.edu',
-                  'planetlab2.dtc.umn.edu', 'node1.planetlab.mathcs.emory.edu', 'node2.planetlab.mathcs.emory.edu',
-                  'pl1.rcc.uottawa.ca', 'planetlab5.eecs.umich.edu', 'planetlab3.rutgers.edu',
-                  'planetlab-js1.cert.org.cn', 'planetlab2.utdallas.edu', 'planetlab3.eecs.umich.edu',
-                  'planetlab1.utdallas.edu']
-    # exceptions = exceptions + ['planetlab2.cs.purdue.edu', 'planetlab1.cs.purdue.edu', 'planetlab-n1.wand.net.nz']
+    exceptions = ['planet-lab-node2.netgroup.uniroma2.it', 'puri.mimuw.edu.pl', 'vicky.planetlab.ntua.gr',
+                  'ple1.cesnet.cz', 'onelab2.pl.sophia.inria.fr', 'planetlab3.cesnet.cz', 'pl1.rcc.uottawa.ca',
+                  'planetlab-js1.cert.org.cn', 'planetlab4.mini.pw.edu.pl', 'planetlab2.inf.ethz.ch',
+                  'planetlab1.cesnet.cz', 'planetlab2.cs.purdue.edu', 'ple2.cesnet.cz']
+    exceptions = exceptions + ['planetlab2.cs.purdue.edu', 'planetlab1.cs.purdue.edu', 'planetlab-n1.wand.net.nz']
     # exceptions = []
-    # compare({key: val for key, val in records.items() if key not in exceptions})
+    compare({key: val for key, val in records.items() if key not in exceptions})
     # compare({key: val for key, val in records.items() if key in exceptions})
+    # print(len(records))
     # compare(records)
     sid_region(records)
 
