@@ -71,7 +71,7 @@ def conduct_experiment(host):
     ssh = get_ssh(host)
     sid_server = get_sid_server(host)
     if not sid_server:
-        hestia.experiment.main.run(host)
+        hestia.experiment.main.run(host, enable_sid=PROGRAMME == 'sid')
         sid_server = get_sid_server(host)
     sync_files(host)
     output = execute(ssh, './conduct_exp1_%s.sh %s' % (PROGRAMME, sid_server if PROGRAMME == 'sid' else ''))
