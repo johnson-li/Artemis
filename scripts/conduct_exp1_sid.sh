@@ -12,7 +12,7 @@ then
 fi
 echo repeat: ${repeat}
 
-sid_router=`sudo ping sid.xuebing.name -w2|grep PING| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
+sid_router=`sudo ping cdn.xuebing.name -w2|grep PING| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
 for i in `seq ${repeat}`
 do
     output=`sudo ./server/client ${sid_router} ${sid_server}| grep cost| egrep -o '[0-9.]+'`
