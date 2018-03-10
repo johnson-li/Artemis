@@ -22,6 +22,7 @@ SQL_FILE = SQL_PATH + '/sip.sql'
 ssh_clients = {}
 host_mapping = {}
 PLATFORM = 'AWS'
+ENABLE_SID = False
 
 
 def is_aws():
@@ -240,8 +241,9 @@ def add_flows(target, other_regions, peer_ip):
     pool.starmap(set_arp, pairs)
 
     # router -> router forwarding
-    pairs = [(target, other_region, peer_ip) for other_region in other_regions]
-    pool.starmap(add_route_flow, pairs)
+    if ENABLE_SID:
+        pairs = [(target, other_region, peer_ip) for other_region in other_regions]
+        pool.starmap(add_route_flow, pairs)
 
     # router(eth) -> server forwarding
     flow = {
@@ -251,7 +253,7 @@ def add_flows(target, other_regions, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '200',
-        # 'in_port': get_port(target + '-router', 'eth1' if is_aws() else 'ens5'),
+        'in_port': get_port(target + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(target + '-router', 'gre_server')),
     }
@@ -266,7 +268,7 @@ def add_flows(target, other_regions, peer_ip):
         'eth_type': '0x0800',
         'ipv4_src': peer_ip,
         'priority': '100',
-        'in_port': get_port(target + '-router', 'eth1' if is_aws() else 'ens5'),
+        # 'in_port': get_port(target + '-router', 'eth1' if is_aws() else 'ens5'),
         'active': 'true',
         'actions': 'output={}'.format(get_port(target + '-router', 'gre_server')),
     }
@@ -312,13 +314,16 @@ def init(clear_db=False):
 
 def main():
     global PLATFORM
+    global ENABLE_SID
     parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
     parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
                         help='the cloud platform, GCP or AWS')
     parser.add_argument('--peer', default=DEFAULT_PEER, help='the IP of the client')
+    parser.add_argument('--sid', type=bool, default=False, help='enable the service id routing')
     args = parser.parse_args()
     peer = args.peer
     PLATFORM = args.platform
+    ENABLE_SID = args.sid
     init(peer == DEFAULT_PEER)
     run(peer)
 
