@@ -281,7 +281,12 @@ concurrency = 8
 pool = ThreadPool(8)
 
 
-def run(peer):
+def run(peer, platform='AWS', enable_sid=False):
+    global PLATFORM
+    global ENABLE_SID
+    PLATFORM = platform
+    ENABLE_SID = enable_sid
+
     conn = sqlite3.connect(INSTANCE_DB_FILE)
     c = conn.cursor()
     c.execute("SELECT region FROM instances GROUP BY region")
@@ -313,8 +318,6 @@ def init(clear_db=False):
 
 
 def main():
-    global PLATFORM
-    global ENABLE_SID
     parser = argparse.ArgumentParser(description='Setup gre bridges between hosts.')
     parser.add_argument('--platform', dest='platform', type=str, default='AWS', choices=['AWS', 'GCP'],
                         help='the cloud platform, GCP or AWS')
@@ -322,10 +325,8 @@ def main():
     parser.add_argument('--sid', type=bool, default=False, help='enable the service id routing')
     args = parser.parse_args()
     peer = args.peer
-    PLATFORM = args.platform
-    ENABLE_SID = args.sid
     init(peer == DEFAULT_PEER)
-    run(peer)
+    run(peer, args.platform, args.sid)
 
 
 if __name__ == '__main__':
