@@ -26,10 +26,10 @@ def add_cdn():
     for host in c.fetchall():
         host = dict(zip([d[0] for d in c.description], host))
         if host['name'] == 'router':
-            record = {'Name': 'sid.xuebing.name.', 'Type': 'A', 'SetIdentifier': REGIONS[host['region']],
-                      'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
-            sets.append(record)
-        #elif host['name'] == 'server':
+            # record = {'Name': 'sid.xuebing.name.', 'Type': 'A', 'SetIdentifier': REGIONS[host['region']],
+            #           'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
+            # sets.append(record)
+            # elif host['name'] == 'server':
             record = {'Name': 'cdn.xuebing.name.', 'Type': 'A', 'SetIdentifier': REGIONS[host['region']],
                       'Region': host['region'], 'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
             sets.append(record)
