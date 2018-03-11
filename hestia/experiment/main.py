@@ -203,7 +203,7 @@ def add_default_flow(region):
 
 
 def add_default_flows(all_regions):
-    pool.map(add_default_flow, all_regions)
+    pool2.map(add_default_flow, all_regions)
 
 
 def add_route_flow(target, other_region, peer_ip):
@@ -238,12 +238,12 @@ def set_arp(target, peer_ip):
 def add_flows(target, other_regions, peer_ip):
     pairs = [(region, peer_ip) for region in other_regions]
     pairs.append((target, peer_ip))
-    pool.starmap(set_arp, pairs)
+    pool3.starmap(set_arp, pairs)
 
     # router -> router forwarding
     if ENABLE_SID:
         pairs = [(target, other_region, peer_ip) for other_region in other_regions]
-        pool.starmap(add_route_flow, pairs)
+        pool4.starmap(add_route_flow, pairs)
 
     # router(eth) -> server forwarding
     flow = {
@@ -278,7 +278,10 @@ def add_flows(target, other_regions, peer_ip):
 
 DEFAULT_PEER = '35.193.107.149'
 concurrency = 8
-pool = ThreadPool(8)
+pool1 = ThreadPool(concurrency)
+pool2 = ThreadPool(concurrency)
+pool3 = ThreadPool(concurrency)
+pool4 = ThreadPool(concurrency)
 
 
 def run(peer, platform='AWS', enable_sid=False):
@@ -299,7 +302,7 @@ def run(peer, platform='AWS', enable_sid=False):
     peer = socket.gethostbyname(peer)
     results = []
     pairs = [(region, peer) for region in regions]
-    results = pool.starmap(get_latency, pairs)
+    results = pool1.starmap(get_latency, pairs)
     results.sort(key=lambda pair: pair[1])
     # results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
     print(results)
