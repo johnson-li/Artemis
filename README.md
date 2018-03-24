@@ -38,3 +38,6 @@ Steps
 
 ## Stop hosts and release resources
 1. `python3 -m hestia.clean_up`
+
+## Refresh planetlab hosts
+1. `python3 -m hestia.tools.available_plt_hosts`
