@@ -67,6 +67,9 @@ int main(int argc, char **argv) {
 
     for (;;) {
         recv = recvfrom(router_fd, read_buf, BUFSIZE, 0, (struct sockaddr *) &router_addr, &addrlen);
+        char str[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &(router_addr.sin_addr), str, INET_ADDRSTRLEN);
+        printf("received %zd bytes from %s:%d\n", recv, str, ntohs(router_addr.sin_port));
         gettimeofday(&end, NULL);
         double diff = (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000;
         if (recv != -1) {
@@ -82,4 +85,5 @@ int main(int argc, char **argv) {
     printf("cost %f ms\n", (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000);
     return 0;
 }
+
 
