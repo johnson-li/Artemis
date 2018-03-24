@@ -13,7 +13,7 @@ echo repeat: ${repeat}
 direct_server=`sudo ping cdn.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
 for i in `seq ${repeat}`
 do
-    output=`sudo ./server/simple_client ${direct_server}| grep cost| egrep -o '[0-9.]+'`
+    output=`./server/simple_client ${direct_server}| grep cost| egrep -o '[0-9.]+'`
     if [ -z "$output" ]
     then
         output=0

@@ -1,0 +1,2362 @@
+[planetlab13.net.in.tum.de] Executing task 'trace_route'
+[planetlab1.informatik.uni-goettingen.de] Executing task 'trace_route'
+[planetlab1.upm.ro] Executing task 'trace_route'
+[planetlab2.informatik.uni-goettingen.de] Executing task 'trace_route'
+[planetlab-2.cs.ucy.ac.cy] Executing task 'trace_route'
+[planet4.cs.huji.ac.il] Executing task 'trace_route'
+[netissime2.planet-lab.eu] Executing task 'trace_route'
+[puri.mimuw.edu.pl] Executing task 'trace_route'
+[planetlab2.upm.ro] Executing task 'trace_route'
+[planetlab-2.ing.unimo.it] Executing task 'trace_route'
+[vicky.planetlab.ntua.gr] Executing task 'trace_route'
+[planetlab1.cs.uit.no] Executing task 'trace_route'
+[dplanet1.uoc.edu] Executing task 'trace_route'
+[planetvs2.informatik.uni-stuttgart.de] Executing task 'trace_route'
+[planetlab11.net.in.tum.de] Executing task 'trace_route'
+[planet-lab-node2.netgroup.uniroma2.it] Executing task 'trace_route'
+[kulcha.mimuw.edu.pl] Executing task 'trace_route'
+[planet3.cs.huji.ac.il] Executing task 'trace_route'
+[stella.planetlab.ntua.gr] Executing task 'trace_route'
+[ple44.planet-lab.eu] Executing task 'trace_route'
+[onelab2.pl.sophia.inria.fr] Executing task 'trace_route'
+[ple1.planet-lab.eu] Executing task 'trace_route'
+[aladdin.planetlab.extranet.uni-passau.de] Executing task 'trace_route'
+[netissime1.planet-lab.eu] Executing task 'trace_route'
+[ple1.cesnet.cz] Executing task 'trace_route'
+[ple42.planet-lab.eu] Executing task 'trace_route'
+[ple43.planet-lab.eu] Executing task 'trace_route'
+[ple41.planet-lab.eu] Executing task 'trace_route'
+[planetlab3.cs.uoregon.edu] Executing task 'trace_route'
+[planetlab3.eecs.umich.edu] Executing task 'trace_route'
+[planetlab1.utdallas.edu] Executing task 'trace_route'
+[planetlab1.cs.purdue.edu] Executing task 'trace_route'
+[netissime1.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[netissime1.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[netissime1.planet-lab.eu] out:  1  46.21.193.162  0.685 ms 46.21.193.163  0.618 ms 46.21.193.162  0.750 ms
+[netissime1.planet-lab.eu] out:  2  62.100.128.132  4.052 ms  4.045 ms  4.021 ms
+[netissime1.planet-lab.eu] out:  3  37.49.236.2  0.856 ms  0.830 ms  0.801 ms
+[netissime1.planet-lab.eu] out:  4  108.170.244.161  0.760 ms 37.49.236.2  0.833 ms  0.792 ms
+[netissime1.planet-lab.eu] out:  5  209.85.250.31  1.763 ms 66.249.94.177  1.038 ms 108.170.230.245  1.768 ms
+[netissime1.planet-lab.eu] out:  6  8.8.8.8  0.725 ms 64.233.175.225  1.150 ms 8.8.8.8  0.693 ms
+[netissime1.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  46.21.193.162  0.685 ms 46.21.193.163  0.618 ms 46.21.193.162  0.750 ms
+ 2  62.100.128.132  4.052 ms  4.045 ms  4.021 ms
+ 3  37.49.236.2  0.856 ms  0.830 ms  0.801 ms
+ 4  108.170.244.161  0.760 ms 37.49.236.2  0.833 ms  0.792 ms
+ 5  209.85.250.31  1.763 ms 66.249.94.177  1.038 ms 108.170.230.245  1.768 ms
+ 6  8.8.8.8  0.725 ms 64.233.175.225  1.150 ms 8.8.8.8  0.693 ms
+37.49.236.2
+Paris
+[ple41.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[ple41.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple41.planet-lab.eu] out: bind: Cannot assign requested address
+[ple41.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[ple42.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[ple42.planet-lab.eu] out: Traceback (most recent call last):
+[ple42.planet-lab.eu] out:   File "/usr/sbin/lxcsu-internal", line 277, in <module>
+[ple42.planet-lab.eu] out:   File "/usr/sbin/lxcsu-internal", line 234, in main
+[ple42.planet-lab.eu] out:   File "/usr/sbin/lxcsu-internal", line 43, in umount
+[ple42.planet-lab.eu] out: OSError: [Errno 11] Resource temporarily unavailable
+[ple42.planet-lab.eu] out: 
+
+Traceback (most recent call last):
+  File "/usr/sbin/lxcsu-internal", line 277, in <module>
+  File "/usr/sbin/lxcsu-internal", line 234, in main
+  File "/usr/sbin/lxcsu-internal", line 43, in umount
+OSError: [Errno 11] Resource temporarily unavailable
+
+
+[ple1.cesnet.cz] sudo: traceroute -n 8.8.8.8
+[ple1.cesnet.cz] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple1.cesnet.cz] out:  1  195.113.161.1  0.553 ms  0.609 ms  0.716 ms
+[ple1.cesnet.cz] out:  2  195.113.235.109  2.692 ms  2.672 ms  2.660 ms
+[ple1.cesnet.cz] out:  3  195.113.157.70  0.796 ms  0.799 ms  0.821 ms
+[ple1.cesnet.cz] out:  4  108.170.245.33  0.709 ms 108.170.245.49  0.671 ms  0.680 ms
+[ple1.cesnet.cz] out:  5  216.239.43.75  0.737 ms 216.239.62.183  1.587 ms 216.239.43.73  0.721 ms
+[ple1.cesnet.cz] out:  6  8.8.8.8  0.636 ms  0.640 ms  0.614 ms
+[ple1.cesnet.cz] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  195.113.161.1  0.553 ms  0.609 ms  0.716 ms
+ 2  195.113.235.109  2.692 ms  2.672 ms  2.660 ms
+ 3  195.113.157.70  0.796 ms  0.799 ms  0.821 ms
+ 4  108.170.245.33  0.709 ms 108.170.245.49  0.671 ms  0.680 ms
+ 5  216.239.43.75  0.737 ms 216.239.62.183  1.587 ms 216.239.43.73  0.721 ms
+ 6  8.8.8.8  0.636 ms  0.640 ms  0.614 ms
+195.113.157.70
+Prague
+[ple43.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[ple43.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple43.planet-lab.eu] out:  1  132.227.123.1  0.768 ms  0.653 ms  0.547 ms
+[ple43.planet-lab.eu] out:  2  134.157.167.125  0.458 ms  0.459 ms  0.401 ms
+[ple43.planet-lab.eu] out:  3  134.157.254.124  0.552 ms  0.501 ms  0.464 ms
+[ple43.planet-lab.eu] out:  4  195.221.127.181  0.386 ms  0.397 ms  0.335 ms
+[ple43.planet-lab.eu] out:  5  193.51.181.102  0.923 ms  0.999 ms  0.877 ms
+[ple43.planet-lab.eu] out:  6  193.51.177.114  1.272 ms  1.029 ms  1.283 ms
+[ple43.planet-lab.eu] out:  7  * * *
+[ple43.planet-lab.eu] out:  8  72.14.214.160  1.151 ms  1.138 ms  1.060 ms
+[ple43.planet-lab.eu] out:  9  108.170.244.161  1.217 ms  1.324 ms 108.170.245.1  1.014 ms
+[ple43.planet-lab.eu] out: 10  108.170.230.253  2.171 ms 209.85.249.185  2.107 ms 66.249.94.177  0.966 ms
+[ple43.planet-lab.eu] out: 11  8.8.8.8  0.937 ms  1.195 ms  1.238 ms
+[ple43.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  132.227.123.1  0.768 ms  0.653 ms  0.547 ms
+ 2  134.157.167.125  0.458 ms  0.459 ms  0.401 ms
+ 3  134.157.254.124  0.552 ms  0.501 ms  0.464 ms
+ 4  195.221.127.181  0.386 ms  0.397 ms  0.335 ms
+ 5  193.51.181.102  0.923 ms  0.999 ms  0.877 ms
+ 6  193.51.177.114  1.272 ms  1.029 ms  1.283 ms
+ 7  * * *
+ 8  72.14.214.160  1.151 ms  1.138 ms  1.060 ms
+ 9  108.170.244.161  1.217 ms  1.324 ms 108.170.245.1  1.014 ms
+10  108.170.230.253  2.171 ms 209.85.249.185  2.107 ms 66.249.94.177  0.966 ms
+11  8.8.8.8  0.937 ms  1.195 ms  1.238 ms
+193.51.177.114
+Nantes
+[aladdin.planetlab.extranet.uni-passau.de] sudo: traceroute -n 8.8.8.8
+[aladdin.planetlab.extranet.uni-passau.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[aladdin.planetlab.extranet.uni-passau.de] out:  1  195.37.16.126  0.507 ms  0.507 ms  0.423 ms
+[aladdin.planetlab.extranet.uni-passau.de] out:  2  188.1.241.253  5.342 ms  5.425 ms  5.613 ms
+[aladdin.planetlab.extranet.uni-passau.de] out:  3  188.1.144.222  9.082 ms  9.017 ms  9.447 ms
+[aladdin.planetlab.extranet.uni-passau.de] out:  4  72.14.194.58  8.746 ms  8.645 ms  10.356 ms
+[aladdin.planetlab.extranet.uni-passau.de] out:  5  * 108.170.251.193  8.733 ms  8.653 ms
+[aladdin.planetlab.extranet.uni-passau.de] out:  6  216.239.59.119  8.742 ms 108.170.236.85  9.024 ms 209.85.240.225  9.383 ms
+[aladdin.planetlab.extranet.uni-passau.de] out:  7  8.8.8.8  10.309 ms  8.963 ms  10.321 ms
+[aladdin.planetlab.extranet.uni-passau.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  195.37.16.126  0.507 ms  0.507 ms  0.423 ms
+ 2  188.1.241.253  5.342 ms  5.425 ms  5.613 ms
+ 3  188.1.144.222  9.082 ms  9.017 ms  9.447 ms
+ 4  72.14.194.58  8.746 ms  8.645 ms  10.356 ms
+ 5  * 108.170.251.193  8.733 ms  8.653 ms
+ 6  216.239.59.119  8.742 ms 108.170.236.85  9.024 ms 209.85.240.225  9.383 ms
+ 7  8.8.8.8  10.309 ms  8.963 ms  10.321 ms
+188.1.144.222
+Berlin (Bezirk Mitte)
+[ple1.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[ple1.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple1.planet-lab.eu] out:  1  132.227.123.1  0.367 ms  0.320 ms  0.461 ms
+[ple1.planet-lab.eu] out:  2  134.157.167.125  0.418 ms  0.380 ms  0.343 ms
+[ple1.planet-lab.eu] out:  3  134.157.254.124  0.460 ms  0.465 ms  0.468 ms
+[ple1.planet-lab.eu] out:  4  195.221.127.181  0.286 ms  0.290 ms  0.298 ms
+[ple1.planet-lab.eu] out:  5  193.51.181.102  0.749 ms  0.763 ms  0.820 ms
+[ple1.planet-lab.eu] out:  6  193.51.177.114  12.157 ms  12.096 ms  12.183 ms
+[ple1.planet-lab.eu] out:  7  * * *
+[ple1.planet-lab.eu] out:  8  72.14.214.160  1.052 ms  0.961 ms  0.951 ms
+[ple1.planet-lab.eu] out:  9  108.170.244.225  1.186 ms  1.255 ms  1.262 ms
+[ple1.planet-lab.eu] out: 10  108.170.230.245  1.673 ms 209.85.255.17  0.929 ms 209.85.254.235  0.925 ms
+[ple1.planet-lab.eu] out: 11  8.8.8.8  1.091 ms  1.095 ms  1.137 ms
+[ple1.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  132.227.123.1  0.367 ms  0.320 ms  0.461 ms
+ 2  134.157.167.125  0.418 ms  0.380 ms  0.343 ms
+ 3  134.157.254.124  0.460 ms  0.465 ms  0.468 ms
+ 4  195.221.127.181  0.286 ms  0.290 ms  0.298 ms
+ 5  193.51.181.102  0.749 ms  0.763 ms  0.820 ms
+ 6  193.51.177.114  12.157 ms  12.096 ms  12.183 ms
+ 7  * * *
+ 8  72.14.214.160  1.052 ms  0.961 ms  0.951 ms
+ 9  108.170.244.225  1.186 ms  1.255 ms  1.262 ms
+10  108.170.230.245  1.673 ms 209.85.255.17  0.929 ms 209.85.254.235  0.925 ms
+11  8.8.8.8  1.091 ms  1.095 ms  1.137 ms
+193.51.177.114
+Nantes
+[ple44.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[ple44.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple44.planet-lab.eu] out:  1  132.227.123.1  0.396 ms  0.381 ms  0.353 ms
+[ple44.planet-lab.eu] out:  2  134.157.167.125  0.431 ms  0.431 ms  0.419 ms
+[ple44.planet-lab.eu] out:  3  134.157.254.124  0.482 ms  0.558 ms  0.530 ms
+[ple44.planet-lab.eu] out:  4  195.221.127.181  0.420 ms  0.458 ms  0.409 ms
+[ple44.planet-lab.eu] out:  5  193.51.181.102  0.956 ms  0.919 ms  0.809 ms
+[ple44.planet-lab.eu] out:  6  193.51.177.114  1.164 ms  1.061 ms  1.103 ms
+[ple44.planet-lab.eu] out:  7  * * *
+[ple44.planet-lab.eu] out:  8  72.14.214.160  1.123 ms  1.043 ms  0.968 ms
+[ple44.planet-lab.eu] out:  9  108.170.245.1  1.088 ms  1.138 ms 108.170.244.193  1.062 ms
+[ple44.planet-lab.eu] out: 10  209.85.254.117  1.060 ms 209.85.251.153  1.271 ms 209.85.251.155  1.274 ms
+[ple44.planet-lab.eu] out: 11  8.8.8.8  0.982 ms  1.161 ms  1.258 ms
+[ple44.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  132.227.123.1  0.396 ms  0.381 ms  0.353 ms
+ 2  134.157.167.125  0.431 ms  0.431 ms  0.419 ms
+ 3  134.157.254.124  0.482 ms  0.558 ms  0.530 ms
+ 4  195.221.127.181  0.420 ms  0.458 ms  0.409 ms
+ 5  193.51.181.102  0.956 ms  0.919 ms  0.809 ms
+ 6  193.51.177.114  1.164 ms  1.061 ms  1.103 ms
+ 7  * * *
+ 8  72.14.214.160  1.123 ms  1.043 ms  0.968 ms
+ 9  108.170.245.1  1.088 ms  1.138 ms 108.170.244.193  1.062 ms
+10  209.85.254.117  1.060 ms 209.85.251.153  1.271 ms 209.85.251.155  1.274 ms
+11  8.8.8.8  0.982 ms  1.161 ms  1.258 ms
+193.51.177.114
+Nantes
+[kulcha.mimuw.edu.pl] sudo: traceroute -n 8.8.8.8
+[kulcha.mimuw.edu.pl] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[kulcha.mimuw.edu.pl] out: bind: Cannot assign requested address
+[kulcha.mimuw.edu.pl] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[onelab2.pl.sophia.inria.fr] sudo: traceroute -n 8.8.8.8
+[onelab2.pl.sophia.inria.fr] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[onelab2.pl.sophia.inria.fr] out: bind: Cannot assign requested address
+[onelab2.pl.sophia.inria.fr] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[planetlab3.eecs.umich.edu] sudo: traceroute -n 8.8.8.8
+[planetlab3.eecs.umich.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.eecs.umich.edu] out:  1  141.212.113.1  1.073 ms  0.903 ms  1.042 ms
+[planetlab3.eecs.umich.edu] out:  2  10.224.253.24  0.258 ms  0.246 ms  0.235 ms
+[planetlab3.eecs.umich.edu] out:  3  192.12.80.136  0.474 ms  0.467 ms  0.415 ms
+[planetlab3.eecs.umich.edu] out:  4  192.12.80.69  0.575 ms  0.561 ms  0.544 ms
+[planetlab3.eecs.umich.edu] out:  5  198.108.22.97  6.114 ms  6.158 ms  6.124 ms
+[planetlab3.eecs.umich.edu] out:  6  198.108.22.100  6.113 ms 198.108.22.36  6.176 ms  6.163 ms
+[planetlab3.eecs.umich.edu] out:  7  192.35.170.50  6.357 ms  6.389 ms  6.330 ms
+[planetlab3.eecs.umich.edu] out:  8  * * *
+[planetlab3.eecs.umich.edu] out:  9  216.239.47.89  6.355 ms 108.170.225.77  7.363 ms 209.85.142.255  6.310 ms
+[planetlab3.eecs.umich.edu] out: 10  8.8.8.8  6.273 ms  6.242 ms  6.293 ms
+[planetlab3.eecs.umich.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  141.212.113.1  1.073 ms  0.903 ms  1.042 ms
+ 2  10.224.253.24  0.258 ms  0.246 ms  0.235 ms
+ 3  192.12.80.136  0.474 ms  0.467 ms  0.415 ms
+ 4  192.12.80.69  0.575 ms  0.561 ms  0.544 ms
+ 5  198.108.22.97  6.114 ms  6.158 ms  6.124 ms
+ 6  198.108.22.100  6.113 ms 198.108.22.36  6.176 ms  6.163 ms
+ 7  192.35.170.50  6.357 ms  6.389 ms  6.330 ms
+ 8  * * *
+ 9  216.239.47.89  6.355 ms 108.170.225.77  7.363 ms 209.85.142.255  6.310 ms
+10  8.8.8.8  6.273 ms  6.242 ms  6.293 ms
+192.35.170.50
+Ann Arbor
+[planet3.cs.huji.ac.il] sudo: traceroute -n 8.8.8.8
+[planet3.cs.huji.ac.il] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planet3.cs.huji.ac.il] out: bind: Cannot assign requested address
+[planet3.cs.huji.ac.il] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[planetlab3.cs.uoregon.edu] sudo: traceroute -n 8.8.8.8
+[planetlab3.cs.uoregon.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.cs.uoregon.edu] out:  1  * * *
+[planetlab3.cs.uoregon.edu] out:  2  * * *
+[planetlab3.cs.uoregon.edu] out:  3  10.252.253.129  0.536 ms  0.584 ms 10.252.253.130  0.552 ms
+[planetlab3.cs.uoregon.edu] out:  4  128.223.3.10  0.933 ms 128.223.3.9  2.351 ms 128.223.3.10  1.149 ms
+[planetlab3.cs.uoregon.edu] out:  5  198.32.165.254  3.442 ms  3.431 ms  3.388 ms
+[planetlab3.cs.uoregon.edu] out:  6  64.57.20.253  6.781 ms  6.653 ms  6.786 ms
+[planetlab3.cs.uoregon.edu] out:  7  * * *
+[planetlab3.cs.uoregon.edu] out:  8  108.170.245.113  6.521 ms * *
+[planetlab3.cs.uoregon.edu] out:  9  209.85.246.219  6.928 ms 209.85.249.155  7.092 ms 216.239.63.189  6.553 ms
+[planetlab3.cs.uoregon.edu] out: 10  8.8.8.8  6.636 ms  6.629 ms  6.647 ms
+[planetlab3.cs.uoregon.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  * * *
+ 3  10.252.253.129  0.536 ms  0.584 ms 10.252.253.130  0.552 ms
+ 4  128.223.3.10  0.933 ms 128.223.3.9  2.351 ms 128.223.3.10  1.149 ms
+ 5  198.32.165.254  3.442 ms  3.431 ms  3.388 ms
+ 6  64.57.20.253  6.781 ms  6.653 ms  6.786 ms
+ 7  * * *
+ 8  108.170.245.113  6.521 ms * *
+ 9  209.85.246.219  6.928 ms 209.85.249.155  7.092 ms 216.239.63.189  6.553 ms
+10  8.8.8.8  6.636 ms  6.629 ms  6.647 ms
+64.57.20.253
+Ann Arbor
+[stella.planetlab.ntua.gr] sudo: traceroute -n 8.8.8.8
+[stella.planetlab.ntua.gr] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[stella.planetlab.ntua.gr] out: bind: Cannot assign requested address
+[stella.planetlab.ntua.gr] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[planetlab11.net.in.tum.de] sudo: traceroute -n 8.8.8.8
+[planetlab11.net.in.tum.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab11.net.in.tum.de] out:  1  138.246.253.253  0.188 ms 138.246.253.252  0.266 ms  0.273 ms
+[planetlab11.net.in.tum.de] out:  2  * * 131.159.252.2  0.584 ms
+[planetlab11.net.in.tum.de] out:  3  188.1.37.89  0.640 ms  0.652 ms *
+[planetlab11.net.in.tum.de] out:  4  * * 188.1.37.89  0.580 ms
+[planetlab11.net.in.tum.de] out:  5  188.1.144.253  25.642 ms 72.14.194.58  8.951 ms  8.956 ms
+[planetlab11.net.in.tum.de] out:  6  72.14.194.58  8.942 ms 108.170.251.193  8.867 ms 72.14.194.58  8.953 ms
+[planetlab11.net.in.tum.de] out:  7  108.170.251.193  8.931 ms 209.85.248.255  9.774 ms 209.85.241.137  25.685 ms
+[planetlab11.net.in.tum.de] out:  8  72.14.239.105  25.536 ms 216.239.59.109  8.919 ms 8.8.8.8  8.845 ms
+[planetlab11.net.in.tum.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  138.246.253.253  0.188 ms 138.246.253.252  0.266 ms  0.273 ms
+ 2  * * 131.159.252.2  0.584 ms
+ 3  188.1.37.89  0.640 ms  0.652 ms *
+ 4  * * 188.1.37.89  0.580 ms
+ 5  188.1.144.253  25.642 ms 72.14.194.58  8.951 ms  8.956 ms
+ 6  72.14.194.58  8.942 ms 108.170.251.193  8.867 ms 72.14.194.58  8.953 ms
+ 7  108.170.251.193  8.931 ms 209.85.248.255  9.774 ms 209.85.241.137  25.685 ms
+ 8  72.14.239.105  25.536 ms 216.239.59.109  8.919 ms 8.8.8.8  8.845 ms
+188.1.144.253
+Berlin (Bezirk Mitte)
+[planetvs2.informatik.uni-stuttgart.de] sudo: traceroute -n 8.8.8.8
+[planetvs2.informatik.uni-stuttgart.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetvs2.informatik.uni-stuttgart.de] out:  1  129.69.210.253  0.623 ms  0.882 ms  1.216 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  2  192.168.217.3  2.166 ms  2.231 ms  2.225 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  3  141.58.196.44  1.028 ms  1.012 ms  1.026 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  4  141.58.196.2  0.690 ms  0.786 ms 141.58.196.6  0.661 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  5  193.197.61.12  1.274 ms 193.197.63.12  2.175 ms 193.197.61.12  1.372 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  6  129.143.60.113  3.945 ms 129.143.60.115  3.855 ms 129.143.60.113  4.013 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  7  129.143.200.61  3.909 ms  3.844 ms  3.770 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  8  108.170.251.129  4.139 ms  4.120 ms 108.170.251.193  3.818 ms
+[planetvs2.informatik.uni-stuttgart.de] out:  9  108.170.226.145  4.991 ms 209.85.240.231  4.444 ms 108.170.232.237  4.069 ms
+[planetvs2.informatik.uni-stuttgart.de] out: 10  8.8.8.8  3.770 ms  3.952 ms  3.712 ms
+[planetvs2.informatik.uni-stuttgart.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.69.210.253  0.623 ms  0.882 ms  1.216 ms
+ 2  192.168.217.3  2.166 ms  2.231 ms  2.225 ms
+ 3  141.58.196.44  1.028 ms  1.012 ms  1.026 ms
+ 4  141.58.196.2  0.690 ms  0.786 ms 141.58.196.6  0.661 ms
+ 5  193.197.61.12  1.274 ms 193.197.63.12  2.175 ms 193.197.61.12  1.372 ms
+ 6  129.143.60.113  3.945 ms 129.143.60.115  3.855 ms 129.143.60.113  4.013 ms
+ 7  129.143.200.61  3.909 ms  3.844 ms  3.770 ms
+ 8  108.170.251.129  4.139 ms  4.120 ms 108.170.251.193  3.818 ms
+ 9  108.170.226.145  4.991 ms 209.85.240.231  4.444 ms 108.170.232.237  4.069 ms
+10  8.8.8.8  3.770 ms  3.952 ms  3.712 ms
+129.143.200.61
+Stuttgart
+[dplanet1.uoc.edu] sudo: traceroute -n 8.8.8.8
+[dplanet1.uoc.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[dplanet1.uoc.edu] out:  1  * * *
+[dplanet1.uoc.edu] out:  2  84.88.19.165  1.560 ms  1.541 ms  1.506 ms
+[dplanet1.uoc.edu] out:  3  * * *
+[dplanet1.uoc.edu] out:  4  108.170.253.241  9.960 ms  9.932 ms  10.018 ms
+[dplanet1.uoc.edu] out:  5  216.239.35.237  10.589 ms 216.239.48.83  9.951 ms 216.239.48.245  10.245 ms
+[dplanet1.uoc.edu] out:  6  8.8.8.8  10.014 ms  9.960 ms  9.927 ms
+[dplanet1.uoc.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  84.88.19.165  1.560 ms  1.541 ms  1.506 ms
+ 3  * * *
+ 4  108.170.253.241  9.960 ms  9.932 ms  10.018 ms
+ 5  216.239.35.237  10.589 ms 216.239.48.83  9.951 ms 216.239.48.245  10.245 ms
+ 6  8.8.8.8  10.014 ms  9.960 ms  9.927 ms
+84.88.19.165
+Barcelona
+[planetlab-2.ing.unimo.it] sudo: traceroute -n 8.8.8.8
+[planetlab-2.ing.unimo.it] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-2.ing.unimo.it] out:  1  155.185.54.254  0.231 ms  0.192 ms  0.172 ms
+[planetlab-2.ing.unimo.it] out:  2  155.185.255.252  0.512 ms  0.501 ms  0.513 ms
+[planetlab-2.ing.unimo.it] out:  3  155.185.255.1  1.877 ms  1.796 ms  1.703 ms
+[planetlab-2.ing.unimo.it] out:  4  193.204.219.85  2.309 ms  2.456 ms  2.457 ms
+[planetlab-2.ing.unimo.it] out:  5  90.147.80.5  4.871 ms 90.147.80.33  8.395 ms  8.321 ms
+[planetlab-2.ing.unimo.it] out:  6  90.147.80.17  17.991 ms 90.147.80.10  11.493 ms 90.147.80.17  17.737 ms
+[planetlab-2.ing.unimo.it] out:  7  72.14.214.105  11.277 ms  11.197 ms  17.398 ms
+[planetlab-2.ing.unimo.it] out:  8  * * *
+[planetlab-2.ing.unimo.it] out:  9  209.85.249.67  5.674 ms 209.85.255.223  11.940 ms 209.85.249.123  11.223 ms
+[planetlab-2.ing.unimo.it] out: 10  8.8.8.8  5.934 ms  5.628 ms  5.595 ms
+[planetlab-2.ing.unimo.it] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  155.185.54.254  0.231 ms  0.192 ms  0.172 ms
+ 2  155.185.255.252  0.512 ms  0.501 ms  0.513 ms
+ 3  155.185.255.1  1.877 ms  1.796 ms  1.703 ms
+ 4  193.204.219.85  2.309 ms  2.456 ms  2.457 ms
+ 5  90.147.80.5  4.871 ms 90.147.80.33  8.395 ms  8.321 ms
+ 6  90.147.80.17  17.991 ms 90.147.80.10  11.493 ms 90.147.80.17  17.737 ms
+ 7  72.14.214.105  11.277 ms  11.197 ms  17.398 ms
+ 8  * * *
+ 9  209.85.249.67  5.674 ms 209.85.255.223  11.940 ms 209.85.249.123  11.223 ms
+10  8.8.8.8  5.934 ms  5.628 ms  5.595 ms
+90.147.80.17
+Rome
+[planetlab1.cs.uit.no] sudo: traceroute -n 8.8.8.8
+[planetlab1.cs.uit.no] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.cs.uit.no] out: bind: Cannot assign requested address
+[planetlab1.cs.uit.no] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[planetlab2.upm.ro] sudo: traceroute -n 8.8.8.8
+[planetlab2.upm.ro] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.upm.ro] out:  1  193.226.19.1  0.212 ms  0.169 ms  0.148 ms
+[planetlab2.upm.ro] out:  2  217.73.170.253  0.582 ms  0.621 ms  0.645 ms
+[planetlab2.upm.ro] out:  3  37.128.235.21  9.054 ms  9.041 ms  9.024 ms
+[planetlab2.upm.ro] out:  4  37.128.239.121  9.964 ms  9.950 ms  9.934 ms
+[planetlab2.upm.ro] out:  5  37.128.239.14  9.170 ms  9.237 ms  9.306 ms
+[planetlab2.upm.ro] out:  6  217.156.113.94  35.599 ms  35.675 ms  35.653 ms
+[planetlab2.upm.ro] out:  7  108.170.251.129  35.696 ms 108.170.251.193  36.014 ms  35.998 ms
+[planetlab2.upm.ro] out:  8  108.170.229.143  36.630 ms 108.170.232.243  35.627 ms 108.170.232.239  37.683 ms
+[planetlab2.upm.ro] out:  9  8.8.8.8  35.505 ms  35.717 ms  35.713 ms
+[planetlab2.upm.ro] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  193.226.19.1  0.212 ms  0.169 ms  0.148 ms
+ 2  217.73.170.253  0.582 ms  0.621 ms  0.645 ms
+ 3  37.128.235.21  9.054 ms  9.041 ms  9.024 ms
+ 4  37.128.239.121  9.964 ms  9.950 ms  9.934 ms
+ 5  37.128.239.14  9.170 ms  9.237 ms  9.306 ms
+ 6  217.156.113.94  35.599 ms  35.675 ms  35.653 ms
+ 7  108.170.251.129  35.696 ms 108.170.251.193  36.014 ms  35.998 ms
+ 8  108.170.229.143  36.630 ms 108.170.232.243  35.627 ms 108.170.232.239  37.683 ms
+ 9  8.8.8.8  35.505 ms  35.717 ms  35.713 ms
+217.156.113.94
+Bucharest (Sector 5)
+[netissime2.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[netissime2.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[netissime2.planet-lab.eu] out:  1  46.21.193.163  0.601 ms  0.751 ms  0.941 ms
+[netissime2.planet-lab.eu] out:  2  62.100.128.132  0.280 ms 62.100.128.144  0.783 ms 62.100.128.146  0.771 ms
+[netissime2.planet-lab.eu] out:  3  62.100.128.130  0.336 ms 37.49.236.2  0.777 ms 62.100.128.130  0.264 ms
+[netissime2.planet-lab.eu] out:  4  37.49.236.2  0.835 ms  0.808 ms  0.785 ms
+[netissime2.planet-lab.eu] out:  5  209.85.251.157  0.792 ms 108.170.244.161  0.763 ms 108.170.230.247  2.073 ms
+[netissime2.planet-lab.eu] out:  6  8.8.8.8  0.692 ms  0.682 ms 216.239.47.255  0.798 ms
+[netissime2.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  46.21.193.163  0.601 ms  0.751 ms  0.941 ms
+ 2  62.100.128.132  0.280 ms 62.100.128.144  0.783 ms 62.100.128.146  0.771 ms
+ 3  62.100.128.130  0.336 ms 37.49.236.2  0.777 ms 62.100.128.130  0.264 ms
+ 4  37.49.236.2  0.835 ms  0.808 ms  0.785 ms
+ 5  209.85.251.157  0.792 ms 108.170.244.161  0.763 ms 108.170.230.247  2.073 ms
+ 6  8.8.8.8  0.692 ms  0.682 ms 216.239.47.255  0.798 ms
+37.49.236.2
+Paris
+[puri.mimuw.edu.pl] sudo: traceroute -n 8.8.8.8
+[puri.mimuw.edu.pl] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[puri.mimuw.edu.pl] out: bind: Cannot assign requested address
+[puri.mimuw.edu.pl] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[vicky.planetlab.ntua.gr] sudo: traceroute -n 8.8.8.8
+[vicky.planetlab.ntua.gr] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[vicky.planetlab.ntua.gr] out: bind: Cannot assign requested address
+[vicky.planetlab.ntua.gr] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[planetlab2.informatik.uni-goettingen.de] sudo: traceroute -n 8.8.8.8
+[planetlab2.informatik.uni-goettingen.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.informatik.uni-goettingen.de] out: bind: Cannot assign requested address
+[planetlab2.informatik.uni-goettingen.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+bind: Cannot assign requested address
+
+
+[planet4.cs.huji.ac.il] sudo: traceroute -n 8.8.8.8
+[planet4.cs.huji.ac.il] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planet4.cs.huji.ac.il] out:  1  132.65.240.1  0.132 ms  0.156 ms  0.102 ms
+[planet4.cs.huji.ac.il] out:  2  132.64.252.25  0.386 ms  0.362 ms  0.338 ms
+[planet4.cs.huji.ac.il] out:  3  132.64.252.57  0.273 ms  0.408 ms  0.400 ms
+[planet4.cs.huji.ac.il] out:  4  128.139.226.2  0.544 ms  0.512 ms  0.531 ms
+[planet4.cs.huji.ac.il] out:  5  128.139.233.1  2.429 ms  2.393 ms  2.447 ms
+[planet4.cs.huji.ac.il] out:  6  83.97.88.93  58.538 ms  58.111 ms  58.100 ms
+[planet4.cs.huji.ac.il] out:  7  62.40.98.81  65.525 ms  65.928 ms  65.903 ms
+[planet4.cs.huji.ac.il] out:  8  72.14.205.160  65.697 ms  65.708 ms  65.669 ms
+[planet4.cs.huji.ac.il] out:  9  * 108.170.241.129  65.551 ms 108.170.241.193  65.356 ms
+[planet4.cs.huji.ac.il] out: 10  209.85.246.41  66.187 ms 216.239.42.127  65.607 ms 108.170.236.219  66.212 ms
+[planet4.cs.huji.ac.il] out: 11  8.8.8.8  65.996 ms  65.560 ms  65.533 ms
+[planet4.cs.huji.ac.il] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  132.65.240.1  0.132 ms  0.156 ms  0.102 ms
+ 2  132.64.252.25  0.386 ms  0.362 ms  0.338 ms
+ 3  132.64.252.57  0.273 ms  0.408 ms  0.400 ms
+ 4  128.139.226.2  0.544 ms  0.512 ms  0.531 ms
+ 5  128.139.233.1  2.429 ms  2.393 ms  2.447 ms
+ 6  83.97.88.93  58.538 ms  58.111 ms  58.100 ms
+ 7  62.40.98.81  65.525 ms  65.928 ms  65.903 ms
+ 8  72.14.205.160  65.697 ms  65.708 ms  65.669 ms
+ 9  * 108.170.241.129  65.551 ms 108.170.241.193  65.356 ms
+10  209.85.246.41  66.187 ms 216.239.42.127  65.607 ms 108.170.236.219  66.212 ms
+11  8.8.8.8  65.996 ms  65.560 ms  65.533 ms
+62.40.98.81
+Cambridge (City House)
+[planetlab1.upm.ro] sudo: traceroute -n 8.8.8.8
+[planetlab-2.cs.ucy.ac.cy] sudo: traceroute -n 8.8.8.8
+[planetlab-2.cs.ucy.ac.cy] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-2.cs.ucy.ac.cy] out:  1  194.42.17.190  0.510 ms  0.408 ms  0.409 ms
+[planetlab-2.cs.ucy.ac.cy] out:  2  194.42.17.78  1.451 ms  1.421 ms  1.393 ms
+[planetlab-2.cs.ucy.ac.cy] out:  3  * * *
+[planetlab-2.cs.ucy.ac.cy] out:  4  194.42.0.42  0.822 ms  0.866 ms  0.906 ms
+[planetlab-2.cs.ucy.ac.cy] out:  5  194.42.13.150  2.747 ms  2.772 ms  3.079 ms
+[planetlab-2.cs.ucy.ac.cy] out:  6  82.116.192.190  3.172 ms  3.599 ms  4.986 ms
+[planetlab-2.cs.ucy.ac.cy] out:  7  83.97.88.45  60.154 ms  60.101 ms  60.409 ms
+[planetlab-2.cs.ucy.ac.cy] out:  8  62.40.125.202  60.630 ms  61.095 ms  61.387 ms
+[planetlab-2.cs.ucy.ac.cy] out:  9  * 108.170.251.129  62.429 ms *
+[planetlab-2.cs.ucy.ac.cy] out: 10  108.170.236.87  63.464 ms 108.170.227.57  64.300 ms 108.170.229.143  64.012 ms
+[planetlab-2.cs.ucy.ac.cy] out: 11  8.8.8.8  60.829 ms  59.237 ms  59.782 ms
+[planetlab-2.cs.ucy.ac.cy] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  194.42.17.190  0.510 ms  0.408 ms  0.409 ms
+ 2  194.42.17.78  1.451 ms  1.421 ms  1.393 ms
+ 3  * * *
+ 4  194.42.0.42  0.822 ms  0.866 ms  0.906 ms
+ 5  194.42.13.150  2.747 ms  2.772 ms  3.079 ms
+ 6  82.116.192.190  3.172 ms  3.599 ms  4.986 ms
+ 7  83.97.88.45  60.154 ms  60.101 ms  60.409 ms
+ 8  62.40.125.202  60.630 ms  61.095 ms  61.387 ms
+ 9  * 108.170.251.129  62.429 ms *
+10  108.170.236.87  63.464 ms 108.170.227.57  64.300 ms 108.170.229.143  64.012 ms
+11  8.8.8.8  60.829 ms  59.237 ms  59.782 ms
+62.40.125.202
+Cambridge
+[planetlab13.net.in.tum.de] sudo: traceroute -n 8.8.8.8
+[planetlab13.net.in.tum.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab13.net.in.tum.de] out:  1  138.246.253.253  0.241 ms  0.227 ms  0.227 ms
+[planetlab13.net.in.tum.de] out:  2  * * *
+[planetlab13.net.in.tum.de] out:  3  129.187.0.149  1.450 ms 188.1.37.89  0.677 ms  0.744 ms
+[planetlab13.net.in.tum.de] out:  4  * * 188.1.37.89  0.670 ms
+[planetlab13.net.in.tum.de] out:  5  72.14.194.58  37.320 ms 188.1.144.253  37.340 ms 72.14.194.58  37.304 ms
+[planetlab13.net.in.tum.de] out:  6  72.14.194.58  37.282 ms 108.170.251.129  9.172 ms *
+[planetlab13.net.in.tum.de] out:  7  209.85.248.255  38.262 ms 108.170.236.87  9.188 ms 108.170.236.89  9.191 ms
+[planetlab13.net.in.tum.de] out:  8  8.8.8.8  8.805 ms 216.239.59.185  9.245 ms 8.8.8.8  8.844 ms
+[planetlab13.net.in.tum.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  138.246.253.253  0.241 ms  0.227 ms  0.227 ms
+ 2  * * *
+ 3  129.187.0.149  1.450 ms 188.1.37.89  0.677 ms  0.744 ms
+ 4  * * 188.1.37.89  0.670 ms
+ 5  72.14.194.58  37.320 ms 188.1.144.253  37.340 ms 72.14.194.58  37.304 ms
+ 6  72.14.194.58  37.282 ms 108.170.251.129  9.172 ms *
+ 7  209.85.248.255  38.262 ms 108.170.236.87  9.188 ms 108.170.236.89  9.191 ms
+ 8  8.8.8.8  8.805 ms 216.239.59.185  9.245 ms 8.8.8.8  8.844 ms
+188.1.37.89
+Berlin (Bezirk Mitte)
+[planetlab1.utdallas.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.utdallas.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.utdallas.edu] out:  1  129.110.125.1  1.617 ms  1.598 ms  1.588 ms
+[planetlab1.utdallas.edu] out:  2  74.200.189.114  1.279 ms  1.283 ms  1.276 ms
+[planetlab1.utdallas.edu] out:  3  72.14.215.83  1.307 ms  1.307 ms  1.314 ms
+[planetlab1.utdallas.edu] out:  4  * * 108.170.252.129  1.246 ms
+[planetlab1.utdallas.edu] out:  5  72.14.234.223  1.325 ms 108.170.231.11  1.371 ms 108.170.235.21  1.328 ms
+[planetlab1.utdallas.edu] out:  6  8.8.8.8  1.186 ms  1.172 ms  1.261 ms
+[planetlab1.utdallas.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.110.125.1  1.617 ms  1.598 ms  1.588 ms
+ 2  74.200.189.114  1.279 ms  1.283 ms  1.276 ms
+ 3  72.14.215.83  1.307 ms  1.307 ms  1.314 ms
+ 4  * * 108.170.252.129  1.246 ms
+ 5  72.14.234.223  1.325 ms 108.170.231.11  1.371 ms 108.170.235.21  1.328 ms
+ 6  8.8.8.8  1.186 ms  1.172 ms  1.261 ms
+74.200.189.114
+Lubbock
+[planetlab1.informatik.uni-goettingen.de] sudo: traceroute -n 8.8.8.8
+[planet-lab-node2.netgroup.uniroma2.it] sudo: traceroute -n 8.8.8.8
+[planet-lab-node2.netgroup.uniroma2.it] out: Domain goettingenple_txp1 not found
+[planet-lab-node2.netgroup.uniroma2.it] out: 
+
+Domain goettingenple_txp1 not found
+
+
+[planetlab1.cs.purdue.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.cs.purdue.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.cs.purdue.edu] out:  1  * * *
+[planetlab1.cs.purdue.edu] out:  2  128.10.127.251  25.852 ms  17.617 ms  17.013 ms
+[planetlab1.cs.purdue.edu] out:  3  192.5.40.10  29.300 ms  19.619 ms  19.894 ms
+[planetlab1.cs.purdue.edu] out:  4  192.5.40.65  33.846 ms  19.885 ms  44.880 ms
+[planetlab1.cs.purdue.edu] out:  5  192.5.40.82  23.046 ms  20.034 ms  65.960 ms
+[planetlab1.cs.purdue.edu] out:  6  149.165.255.6  22.220 ms  26.341 ms  26.910 ms
+[planetlab1.cs.purdue.edu] out:  7  149.165.183.82  22.086 ms  48.342 ms  45.109 ms
+[planetlab1.cs.purdue.edu] out:  8  74.125.49.37  24.759 ms 205.213.119.62  34.264 ms 74.125.49.37  29.458 ms
+[planetlab1.cs.purdue.edu] out:  9  * 108.170.244.1  28.284 ms *
+[planetlab1.cs.purdue.edu] out: 10  72.14.233.17  26.526 ms 72.14.236.65  54.707 ms 209.85.248.235  27.362 ms
+[planetlab1.cs.purdue.edu] out: 11  * * *
+[planetlab1.cs.purdue.edu] out: 12  * * *
+[planetlab1.cs.purdue.edu] out: 13  * * *
+[planetlab1.cs.purdue.edu] out: 14  * * *
+[planetlab1.cs.purdue.edu] out: 15  * * *
+[planetlab1.cs.purdue.edu] out: 16  * * *
+[planetlab1.cs.purdue.edu] out: 17  * * *
+[planetlab1.cs.purdue.edu] out: 18  * * *
+[planetlab1.cs.purdue.edu] out: 19  * * *
+[planetlab1.cs.purdue.edu] out: 20  * * *
+[planetlab1.cs.purdue.edu] out: 21  * * *
+[planetlab1.cs.purdue.edu] out: 22  * * *
+[planetlab1.cs.purdue.edu] out: 23  * * *
+[planetlab1.cs.purdue.edu] out: 24  * * *
+[planetlab1.cs.purdue.edu] out: 25  * * *
+[planetlab1.cs.purdue.edu] out: 26  * * *
+[planetlab1.cs.purdue.edu] out: 27  * * *
+[planetlab1.cs.purdue.edu] out: 28  * * *
+[planetlab1.cs.purdue.edu] out: 29  * * *
+[planetlab1.cs.purdue.edu] out: 30  * * *
+[planetlab1.cs.purdue.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  128.10.127.251  25.852 ms  17.617 ms  17.013 ms
+ 3  192.5.40.10  29.300 ms  19.619 ms  19.894 ms
+ 4  192.5.40.65  33.846 ms  19.885 ms  44.880 ms
+ 5  192.5.40.82  23.046 ms  20.034 ms  65.960 ms
+ 6  149.165.255.6  22.220 ms  26.341 ms  26.910 ms
+ 7  149.165.183.82  22.086 ms  48.342 ms  45.109 ms
+ 8  74.125.49.37  24.759 ms 205.213.119.62  34.264 ms 74.125.49.37  29.458 ms
+ 9  * 108.170.244.1  28.284 ms *
+10  72.14.233.17  26.526 ms 72.14.236.65  54.707 ms 209.85.248.235  27.362 ms
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+149.165.183.82
+Bloomington
+
+Done.
+[planetlab-n1.wand.net.nz] Executing task 'trace_route'
+[planetlab3.cesnet.cz] Executing task 'trace_route'
+[planetlab-1.scie.uestc.edu.cn] Executing task 'trace_route'
+[planetlab-js1.cert.org.cn] Executing task 'trace_route'
+[planetlab1.temple.edu] Executing task 'trace_route'
+[saturn.planetlab.carleton.ca] Executing task 'trace_route'
+[planetlab1.unr.edu] Executing task 'trace_route'
+[planet-lab4.uba.ar] Executing task 'trace_route'
+[planetlab3.rutgers.edu] Executing task 'trace_route'
+[planetlab1.pop-pa.rnp.br] Executing task 'trace_route'
+[planetlab2.pop-pa.rnp.br] Executing task 'trace_route'
+[pl2.eng.monash.edu.au] Executing task 'trace_route'
+[pl1.eng.monash.edu.au] Executing task 'trace_route'
+[planetlab5.eecs.umich.edu] Executing task 'trace_route'
+[planetlab4.cs.uoregon.edu] Executing task 'trace_route'
+[planetlab03.cs.washington.edu] Executing task 'trace_route'
+[pl1.rcc.uottawa.ca] Executing task 'trace_route'
+[planetlab01.cs.washington.edu] Executing task 'trace_route'
+[planetlab-04.cs.princeton.edu] Executing task 'trace_route'
+[whitefall.planetlab.cs.umd.edu] Executing task 'trace_route'
+[node1.planetlab.albany.edu] Executing task 'trace_route'
+[planetlab2.c3sl.ufpr.br] Executing task 'trace_route'
+[planetlab4.postel.org] Executing task 'trace_route'
+[planetlab-2.calpoly-netlab.net] Executing task 'trace_route'
+[planetlab3.comp.nus.edu.sg] Executing task 'trace_route'
+[planetlab3.wail.wisc.edu] Executing task 'trace_route'
+[planetlab2.utdallas.edu] Executing task 'trace_route'
+[node2.planetlab.mathcs.emory.edu] Executing task 'trace_route'
+[planetlab5.williams.edu] Executing task 'trace_route'
+[planetlab4.williams.edu] Executing task 'trace_route'
+[node1.planetlab.mathcs.emory.edu] Executing task 'trace_route'
+[cs-planetlab3.cs.surrey.sfu.ca] Executing task 'trace_route'
+[planetlab2.dtc.umn.edu] Executing task 'trace_route'
+[planetlab3.comp.nus.edu.sg] sudo: traceroute -n 8.8.8.8
+[planetlab3.comp.nus.edu.sg] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.comp.nus.edu.sg] out:  1  137.132.80.98  0.309 ms  0.364 ms  0.412 ms
+[planetlab3.comp.nus.edu.sg] out:  2  172.18.176.129  0.341 ms  0.416 ms  0.488 ms
+[planetlab3.comp.nus.edu.sg] out:  3  172.18.176.180  0.146 ms  0.151 ms  0.133 ms
+[planetlab3.comp.nus.edu.sg] out:  4  172.18.176.35  0.405 ms  0.466 ms  0.518 ms
+[planetlab3.comp.nus.edu.sg] out:  5  172.18.187.9  0.617 ms  0.701 ms  0.769 ms
+[planetlab3.comp.nus.edu.sg] out:  6  172.18.21.74  0.545 ms  0.506 ms  0.572 ms
+[planetlab3.comp.nus.edu.sg] out:  7  172.18.20.102  0.663 ms  0.811 ms  0.800 ms
+[planetlab3.comp.nus.edu.sg] out:  8  137.132.3.130  1.686 ms  1.807 ms  1.789 ms
+[planetlab3.comp.nus.edu.sg] out:  9  202.51.241.13  2.145 ms  1.949 ms  2.206 ms
+[planetlab3.comp.nus.edu.sg] out: 10  202.51.240.14  2.706 ms  3.128 ms  3.133 ms
+[planetlab3.comp.nus.edu.sg] out: 11  198.32.141.140  3.581 ms  3.433 ms  3.423 ms
+[planetlab3.comp.nus.edu.sg] out: 12  108.170.240.225  3.593 ms  4.113 ms  4.079 ms
+[planetlab3.comp.nus.edu.sg] out: 13  209.85.242.51  4.062 ms 209.85.242.49  3.270 ms 209.85.242.43  3.404 ms
+[planetlab3.comp.nus.edu.sg] out: 14  8.8.8.8  3.423 ms  3.562 ms  3.462 ms
+[planetlab3.comp.nus.edu.sg] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  137.132.80.98  0.309 ms  0.364 ms  0.412 ms
+ 2  172.18.176.129  0.341 ms  0.416 ms  0.488 ms
+ 3  172.18.176.180  0.146 ms  0.151 ms  0.133 ms
+ 4  172.18.176.35  0.405 ms  0.466 ms  0.518 ms
+ 5  172.18.187.9  0.617 ms  0.701 ms  0.769 ms
+ 6  172.18.21.74  0.545 ms  0.506 ms  0.572 ms
+ 7  172.18.20.102  0.663 ms  0.811 ms  0.800 ms
+ 8  137.132.3.130  1.686 ms  1.807 ms  1.789 ms
+ 9  202.51.241.13  2.145 ms  1.949 ms  2.206 ms
+10  202.51.240.14  2.706 ms  3.128 ms  3.133 ms
+11  198.32.141.140  3.581 ms  3.433 ms  3.423 ms
+12  108.170.240.225  3.593 ms  4.113 ms  4.079 ms
+13  209.85.242.51  4.062 ms 209.85.242.49  3.270 ms 209.85.242.43  3.404 ms
+14  8.8.8.8  3.423 ms  3.562 ms  3.462 ms
+198.32.141.140
+Houston
+[planetlab2.dtc.umn.edu] sudo: traceroute -n 8.8.8.8
+[planetlab2.dtc.umn.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.dtc.umn.edu] out:  1  146.57.249.126  0.620 ms  0.672 ms  0.664 ms
+[planetlab2.dtc.umn.edu] out:  2  192.168.255.34  0.657 ms  0.650 ms  0.643 ms
+[planetlab2.dtc.umn.edu] out:  3  128.101.236.60  0.744 ms  0.740 ms  0.742 ms
+[planetlab2.dtc.umn.edu] out:  4  128.101.236.61  0.978 ms 146.57.255.164  0.673 ms 128.101.236.63  0.551 ms
+[planetlab2.dtc.umn.edu] out:  5  146.57.255.165  0.696 ms 146.57.255.169  0.742 ms 146.57.255.165  0.729 ms
+[planetlab2.dtc.umn.edu] out:  6  146.57.252.193  1.067 ms  0.980 ms  0.970 ms
+[planetlab2.dtc.umn.edu] out:  7  162.252.70.106  8.807 ms 146.57.255.243  0.586 ms 162.252.70.106  8.864 ms
+[planetlab2.dtc.umn.edu] out:  8  162.252.70.106  8.908 ms  8.949 ms  9.002 ms
+[planetlab2.dtc.umn.edu] out:  9  64.57.29.130  8.785 ms  8.827 ms  8.711 ms
+[planetlab2.dtc.umn.edu] out: 10  72.14.220.117  8.498 ms  8.472 ms 74.125.49.146  8.472 ms
+[planetlab2.dtc.umn.edu] out: 11  * * 72.14.232.237  10.062 ms
+[planetlab2.dtc.umn.edu] out: 12  8.8.8.8  8.501 ms 74.125.37.3  8.739 ms 108.170.236.19  8.615 ms
+[planetlab2.dtc.umn.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  146.57.249.126  0.620 ms  0.672 ms  0.664 ms
+ 2  192.168.255.34  0.657 ms  0.650 ms  0.643 ms
+ 3  128.101.236.60  0.744 ms  0.740 ms  0.742 ms
+ 4  128.101.236.61  0.978 ms 146.57.255.164  0.673 ms 128.101.236.63  0.551 ms
+ 5  146.57.255.165  0.696 ms 146.57.255.169  0.742 ms 146.57.255.165  0.729 ms
+ 6  146.57.252.193  1.067 ms  0.980 ms  0.970 ms
+ 7  162.252.70.106  8.807 ms 146.57.255.243  0.586 ms 162.252.70.106  8.864 ms
+ 8  162.252.70.106  8.908 ms  8.949 ms  9.002 ms
+ 9  64.57.29.130  8.785 ms  8.827 ms  8.711 ms
+10  72.14.220.117  8.498 ms  8.472 ms 74.125.49.146  8.472 ms
+11  * * 72.14.232.237  10.062 ms
+12  8.8.8.8  8.501 ms 74.125.37.3  8.739 ms 108.170.236.19  8.615 ms
+64.57.29.130
+Ann Arbor
+[planetlab-2.calpoly-netlab.net] sudo: traceroute -n 8.8.8.8
+[planetlab-2.calpoly-netlab.net] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-2.calpoly-netlab.net] out:  1  208.94.63.198  0.189 ms  0.167 ms  0.184 ms
+[planetlab-2.calpoly-netlab.net] out:  2  72.29.183.57  0.522 ms  0.534 ms  0.521 ms
+[planetlab-2.calpoly-netlab.net] out:  3  72.29.160.168  0.626 ms  0.655 ms  0.715 ms
+[planetlab-2.calpoly-netlab.net] out:  4  72.29.160.195  5.303 ms  5.308 ms  5.297 ms
+[planetlab-2.calpoly-netlab.net] out:  5  206.72.210.41  5.315 ms  5.347 ms  5.336 ms
+[planetlab-2.calpoly-netlab.net] out:  6  * * *
+[planetlab-2.calpoly-netlab.net] out:  7  108.170.232.89  5.218 ms 72.14.233.65  5.278 ms 108.170.238.29  5.250 ms
+[planetlab-2.calpoly-netlab.net] out:  8  8.8.8.8  5.095 ms  5.094 ms  5.123 ms
+[planetlab-2.calpoly-netlab.net] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  208.94.63.198  0.189 ms  0.167 ms  0.184 ms
+ 2  72.29.183.57  0.522 ms  0.534 ms  0.521 ms
+ 3  72.29.160.168  0.626 ms  0.655 ms  0.715 ms
+ 4  72.29.160.195  5.303 ms  5.308 ms  5.297 ms
+ 5  206.72.210.41  5.315 ms  5.347 ms  5.336 ms
+ 6  * * *
+ 7  108.170.232.89  5.218 ms 72.14.233.65  5.278 ms 108.170.238.29  5.250 ms
+ 8  8.8.8.8  5.095 ms  5.094 ms  5.123 ms
+206.72.210.41
+Denver (Central)
+[planetlab3.wail.wisc.edu] sudo: traceroute -n 8.8.8.8
+[planetlab3.wail.wisc.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.wail.wisc.edu] out:  1  198.133.224.129  14.446 ms  14.530 ms  14.600 ms
+[planetlab3.wail.wisc.edu] out:  2  128.105.1.50  0.188 ms  0.189 ms  0.277 ms
+[planetlab3.wail.wisc.edu] out:  3  128.105.1.45  2.380 ms  2.564 ms  2.670 ms
+[planetlab3.wail.wisc.edu] out:  4  144.92.128.195  1.196 ms  1.250 ms  2.739 ms
+[planetlab3.wail.wisc.edu] out:  5  143.235.40.2  7.517 ms  7.479 ms 143.235.40.0  0.546 ms
+[planetlab3.wail.wisc.edu] out:  6  143.235.42.5  12.179 ms 143.235.42.7  10.211 ms 143.235.42.5  12.116 ms
+[planetlab3.wail.wisc.edu] out:  7  205.213.119.62  12.075 ms  12.225 ms 74.125.49.37  10.029 ms
+[planetlab3.wail.wisc.edu] out:  8  108.170.243.193  18.703 ms  16.477 ms *
+[planetlab3.wail.wisc.edu] out:  9  72.14.232.239  10.105 ms 74.125.37.5  12.344 ms 108.170.235.165  12.344 ms
+[planetlab3.wail.wisc.edu] out: 10  8.8.8.8  12.160 ms  10.066 ms  10.057 ms
+[planetlab3.wail.wisc.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  198.133.224.129  14.446 ms  14.530 ms  14.600 ms
+ 2  128.105.1.50  0.188 ms  0.189 ms  0.277 ms
+ 3  128.105.1.45  2.380 ms  2.564 ms  2.670 ms
+ 4  144.92.128.195  1.196 ms  1.250 ms  2.739 ms
+ 5  143.235.40.2  7.517 ms  7.479 ms 143.235.40.0  0.546 ms
+ 6  143.235.42.5  12.179 ms 143.235.42.7  10.211 ms 143.235.42.5  12.116 ms
+ 7  205.213.119.62  12.075 ms  12.225 ms 74.125.49.37  10.029 ms
+ 8  108.170.243.193  18.703 ms  16.477 ms *
+ 9  72.14.232.239  10.105 ms 74.125.37.5  12.344 ms 108.170.235.165  12.344 ms
+10  8.8.8.8  12.160 ms  10.066 ms  10.057 ms
+205.213.119.62
+Middleton
+[node1.planetlab.mathcs.emory.edu] sudo: traceroute -n 8.8.8.8
+[node1.planetlab.mathcs.emory.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[node1.planetlab.mathcs.emory.edu] out:  1  170.140.119.66  8.407 ms  8.386 ms  8.371 ms
+[node1.planetlab.mathcs.emory.edu] out:  2  163.246.147.104  0.838 ms  1.064 ms  1.460 ms
+[node1.planetlab.mathcs.emory.edu] out:  3  170.140.0.45  0.723 ms 170.140.0.253  0.738 ms 170.140.0.45  0.718 ms
+[node1.planetlab.mathcs.emory.edu] out:  4  170.140.59.250  1.977 ms  1.965 ms  1.955 ms
+[node1.planetlab.mathcs.emory.edu] out:  5  163.246.13.249  1.934 ms  1.927 ms  1.906 ms
+[node1.planetlab.mathcs.emory.edu] out:  6  198.32.132.41  2.355 ms  2.341 ms  2.329 ms
+[node1.planetlab.mathcs.emory.edu] out:  7  108.170.249.65  2.316 ms * 108.170.249.161  2.177 ms
+[node1.planetlab.mathcs.emory.edu] out:  8  216.239.54.233  2.171 ms 209.85.253.239  2.430 ms 108.170.237.255  2.392 ms
+[node1.planetlab.mathcs.emory.edu] out:  9  8.8.8.8  2.344 ms  2.354 ms  2.087 ms
+[node1.planetlab.mathcs.emory.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  170.140.119.66  8.407 ms  8.386 ms  8.371 ms
+ 2  163.246.147.104  0.838 ms  1.064 ms  1.460 ms
+ 3  170.140.0.45  0.723 ms 170.140.0.253  0.738 ms 170.140.0.45  0.718 ms
+ 4  170.140.59.250  1.977 ms  1.965 ms  1.955 ms
+ 5  163.246.13.249  1.934 ms  1.927 ms  1.906 ms
+ 6  198.32.132.41  2.355 ms  2.341 ms  2.329 ms
+ 7  108.170.249.65  2.316 ms * 108.170.249.161  2.177 ms
+ 8  216.239.54.233  2.171 ms 209.85.253.239  2.430 ms 108.170.237.255  2.392 ms
+ 9  8.8.8.8  2.344 ms  2.354 ms  2.087 ms
+198.32.132.41
+New York
+[node2.planetlab.mathcs.emory.edu] sudo: traceroute -n 8.8.8.8
+[node2.planetlab.mathcs.emory.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[node2.planetlab.mathcs.emory.edu] out:  1  170.140.119.66  0.298 ms  0.381 ms  0.369 ms
+[node2.planetlab.mathcs.emory.edu] out:  2  163.246.147.104  1.193 ms  1.181 ms  1.167 ms
+[node2.planetlab.mathcs.emory.edu] out:  3  170.140.0.253  0.651 ms  0.641 ms  0.607 ms
+[node2.planetlab.mathcs.emory.edu] out:  4  170.140.59.252  1.497 ms  1.484 ms  1.458 ms
+[node2.planetlab.mathcs.emory.edu] out:  5  198.32.132.41  2.354 ms  2.341 ms  2.312 ms
+[node2.planetlab.mathcs.emory.edu] out:  6  * 108.170.249.161  1.838 ms *
+[node2.planetlab.mathcs.emory.edu] out:  7  216.239.54.237  1.934 ms 216.239.56.89  1.843 ms 216.239.54.249  1.818 ms
+[node2.planetlab.mathcs.emory.edu] out:  8  8.8.8.8  1.767 ms  1.765 ms  1.759 ms
+[node2.planetlab.mathcs.emory.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  170.140.119.66  0.298 ms  0.381 ms  0.369 ms
+ 2  163.246.147.104  1.193 ms  1.181 ms  1.167 ms
+ 3  170.140.0.253  0.651 ms  0.641 ms  0.607 ms
+ 4  170.140.59.252  1.497 ms  1.484 ms  1.458 ms
+ 5  198.32.132.41  2.354 ms  2.341 ms  2.312 ms
+ 6  * 108.170.249.161  1.838 ms *
+ 7  216.239.54.237  1.934 ms 216.239.56.89  1.843 ms 216.239.54.249  1.818 ms
+ 8  8.8.8.8  1.767 ms  1.765 ms  1.759 ms
+198.32.132.41
+New York
+[planetlab5.williams.edu] sudo: traceroute -n 8.8.8.8
+[planetlab5.williams.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab5.williams.edu] out:  1  137.165.1.65  6.416 ms  7.209 ms  8.242 ms
+[planetlab5.williams.edu] out:  2  137.165.1.61  2.412 ms  2.364 ms  2.351 ms
+[planetlab5.williams.edu] out:  3  137.165.1.130  2.575 ms  2.599 ms  2.587 ms
+[planetlab5.williams.edu] out:  4  209.51.184.201  10.577 ms  10.603 ms  10.591 ms
+[planetlab5.williams.edu] out:  5  206.130.10.41  10.584 ms 198.32.160.130  10.887 ms  10.911 ms
+[planetlab5.williams.edu] out:  6  * * *
+[planetlab5.williams.edu] out:  7  72.14.235.215  11.602 ms 209.85.243.187  11.358 ms 108.170.238.197  11.895 ms
+[planetlab5.williams.edu] out:  8  8.8.8.8  11.870 ms  10.198 ms  10.050 ms
+[planetlab5.williams.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  137.165.1.65  6.416 ms  7.209 ms  8.242 ms
+ 2  137.165.1.61  2.412 ms  2.364 ms  2.351 ms
+ 3  137.165.1.130  2.575 ms  2.599 ms  2.587 ms
+ 4  209.51.184.201  10.577 ms  10.603 ms  10.591 ms
+ 5  206.130.10.41  10.584 ms 198.32.160.130  10.887 ms  10.911 ms
+ 6  * * *
+ 7  72.14.235.215  11.602 ms 209.85.243.187  11.358 ms 108.170.238.197  11.895 ms
+ 8  8.8.8.8  11.870 ms  10.198 ms  10.050 ms
+206.130.10.41
+New York
+[planetlab4.williams.edu] sudo: traceroute -n 8.8.8.8
+[planetlab4.williams.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab4.williams.edu] out:  1  137.165.1.65  3.368 ms  5.408 ms  6.144 ms
+[planetlab4.williams.edu] out:  2  137.165.1.61  1.429 ms  1.484 ms  1.469 ms
+[planetlab4.williams.edu] out:  3  137.165.1.130  1.452 ms  1.437 ms  1.421 ms
+[planetlab4.williams.edu] out:  4  209.51.184.201  10.123 ms  10.347 ms  17.412 ms
+[planetlab4.williams.edu] out:  5  198.32.160.130  10.556 ms  10.603 ms  10.588 ms
+[planetlab4.williams.edu] out:  6  * * *
+[planetlab4.williams.edu] out:  7  108.170.235.181  10.447 ms 209.85.243.31  10.412 ms 209.85.245.191  10.402 ms
+[planetlab4.williams.edu] out:  8  8.8.8.8  10.679 ms  10.726 ms  10.649 ms
+[planetlab4.williams.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  137.165.1.65  3.368 ms  5.408 ms  6.144 ms
+ 2  137.165.1.61  1.429 ms  1.484 ms  1.469 ms
+ 3  137.165.1.130  1.452 ms  1.437 ms  1.421 ms
+ 4  209.51.184.201  10.123 ms  10.347 ms  17.412 ms
+ 5  198.32.160.130  10.556 ms  10.603 ms  10.588 ms
+ 6  * * *
+ 7  108.170.235.181  10.447 ms 209.85.243.31  10.412 ms 209.85.245.191  10.402 ms
+ 8  8.8.8.8  10.679 ms  10.726 ms  10.649 ms
+198.32.160.130
+Staten Island
+[cs-planetlab3.cs.surrey.sfu.ca] sudo: traceroute -n 8.8.8.8
+[pl1.rcc.uottawa.ca] sudo: traceroute -n 8.8.8.8
+[pl1.rcc.uottawa.ca] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[pl1.rcc.uottawa.ca] out:  1  216.48.80.1  0.445 ms  0.485 ms  0.544 ms
+[pl1.rcc.uottawa.ca] out:  2  66.97.23.137  1.145 ms  1.213 ms  1.265 ms
+[pl1.rcc.uottawa.ca] out:  3  66.97.16.53  5.679 ms  5.865 ms  5.944 ms
+[pl1.rcc.uottawa.ca] out:  4  66.97.16.22  5.924 ms  5.744 ms  5.700 ms
+[pl1.rcc.uottawa.ca] out:  5  74.125.48.230  5.267 ms  5.298 ms  21.951 ms
+[pl1.rcc.uottawa.ca] out:  6  108.170.250.225  5.415 ms  5.390 ms 108.170.250.241  5.423 ms
+[pl1.rcc.uottawa.ca] out:  7  108.170.227.45  5.435 ms  5.450 ms 108.170.227.171  5.446 ms
+[pl1.rcc.uottawa.ca] out:  8  8.8.8.8  5.351 ms  5.356 ms  5.356 ms
+[pl1.rcc.uottawa.ca] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  216.48.80.1  0.445 ms  0.485 ms  0.544 ms
+ 2  66.97.23.137  1.145 ms  1.213 ms  1.265 ms
+ 3  66.97.16.53  5.679 ms  5.865 ms  5.944 ms
+ 4  66.97.16.22  5.924 ms  5.744 ms  5.700 ms
+ 5  74.125.48.230  5.267 ms  5.298 ms  21.951 ms
+ 6  108.170.250.225  5.415 ms  5.390 ms 108.170.250.241  5.423 ms
+ 7  108.170.227.45  5.435 ms  5.450 ms 108.170.227.171  5.446 ms
+ 8  8.8.8.8  5.351 ms  5.356 ms  5.356 ms
+66.97.16.22
+Bowmanville
+[planetlab4.postel.org] sudo: traceroute -n 8.8.8.8
+[planetlab4.postel.org] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab4.postel.org] out:  1  206.117.37.1  0.126 ms  0.103 ms  0.089 ms
+[planetlab4.postel.org] out:  2  198.32.16.81  0.286 ms  0.412 ms  0.401 ms
+[planetlab4.postel.org] out:  3  137.164.23.225  2.067 ms  3.390 ms  3.353 ms
+[planetlab4.postel.org] out:  4  74.125.49.165  1.576 ms  1.567 ms  1.553 ms
+[planetlab4.postel.org] out:  5  * * *
+[planetlab4.postel.org] out:  6  216.239.62.37  1.581 ms 209.85.240.35  2.269 ms 216.239.50.89  1.500 ms
+[planetlab4.postel.org] out:  7  8.8.8.8  1.477 ms  1.455 ms  1.479 ms
+[planetlab4.postel.org] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  206.117.37.1  0.126 ms  0.103 ms  0.089 ms
+ 2  198.32.16.81  0.286 ms  0.412 ms  0.401 ms
+ 3  137.164.23.225  2.067 ms  3.390 ms  3.353 ms
+ 4  74.125.49.165  1.576 ms  1.567 ms  1.553 ms
+ 5  * * *
+ 6  216.239.62.37  1.581 ms 209.85.240.35  2.269 ms 216.239.50.89  1.500 ms
+ 7  8.8.8.8  1.477 ms  1.455 ms  1.479 ms
+137.164.23.225
+Cypress
+[whitefall.planetlab.cs.umd.edu] sudo: traceroute -n 8.8.8.8
+[whitefall.planetlab.cs.umd.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[whitefall.planetlab.cs.umd.edu] out:  1  128.8.126.1  0.819 ms  1.341 ms  1.865 ms
+[whitefall.planetlab.cs.umd.edu] out:  2  128.8.239.69  3.096 ms  3.198 ms  3.273 ms
+[whitefall.planetlab.cs.umd.edu] out:  3  129.2.0.178  0.590 ms  0.655 ms  0.715 ms
+[whitefall.planetlab.cs.umd.edu] out:  4  128.8.0.160  1.381 ms  1.367 ms  1.487 ms
+[whitefall.planetlab.cs.umd.edu] out:  5  128.8.0.71  0.711 ms  0.796 ms  0.841 ms
+[whitefall.planetlab.cs.umd.edu] out:  6  128.8.0.226  1.709 ms  1.277 ms  1.338 ms
+[whitefall.planetlab.cs.umd.edu] out:  7  206.196.177.86  1.581 ms  1.550 ms  1.461 ms
+[whitefall.planetlab.cs.umd.edu] out:  8  206.196.178.80  2.967 ms  2.923 ms  3.123 ms
+[whitefall.planetlab.cs.umd.edu] out:  9  * * *
+[whitefall.planetlab.cs.umd.edu] out: 10  * 108.170.246.1  4.262 ms  4.120 ms
+[whitefall.planetlab.cs.umd.edu] out: 11  216.239.40.53  6.678 ms 209.85.252.17  5.237 ms 216.239.47.145  6.394 ms
+[whitefall.planetlab.cs.umd.edu] out: 12  8.8.8.8  3.454 ms  3.409 ms  4.525 ms
+[whitefall.planetlab.cs.umd.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  128.8.126.1  0.819 ms  1.341 ms  1.865 ms
+ 2  128.8.239.69  3.096 ms  3.198 ms  3.273 ms
+ 3  129.2.0.178  0.590 ms  0.655 ms  0.715 ms
+ 4  128.8.0.160  1.381 ms  1.367 ms  1.487 ms
+ 5  128.8.0.71  0.711 ms  0.796 ms  0.841 ms
+ 6  128.8.0.226  1.709 ms  1.277 ms  1.338 ms
+ 7  206.196.177.86  1.581 ms  1.550 ms  1.461 ms
+ 8  206.196.178.80  2.967 ms  2.923 ms  3.123 ms
+ 9  * * *
+10  * 108.170.246.1  4.262 ms  4.120 ms
+11  216.239.40.53  6.678 ms 209.85.252.17  5.237 ms 216.239.47.145  6.394 ms
+12  8.8.8.8  3.454 ms  3.409 ms  4.525 ms
+206.196.178.80
+Kingsville
+[planetlab-04.cs.princeton.edu] sudo: traceroute -n 8.8.8.8
+[planetlab-04.cs.princeton.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-04.cs.princeton.edu] out:  1  128.112.139.1  0.652 ms  0.624 ms  0.607 ms
+[planetlab-04.cs.princeton.edu] out:  2  128.112.12.57  0.918 ms  0.911 ms  0.954 ms
+[planetlab-04.cs.princeton.edu] out:  3  128.112.12.142  0.881 ms  0.932 ms  1.022 ms
+[planetlab-04.cs.princeton.edu] out:  4  38.122.150.1  2.696 ms  2.507 ms  2.541 ms
+[planetlab-04.cs.princeton.edu] out:  5  154.24.17.141  2.220 ms 154.24.4.169  2.454 ms  2.449 ms
+[planetlab-04.cs.princeton.edu] out:  6  154.54.7.1  2.631 ms  2.540 ms 154.54.25.141  2.477 ms
+[planetlab-04.cs.princeton.edu] out:  7  154.54.3.141  6.443 ms  6.761 ms 154.54.5.1  5.051 ms
+[planetlab-04.cs.princeton.edu] out:  8  154.54.47.218  5.291 ms  5.265 ms  5.434 ms
+[planetlab-04.cs.princeton.edu] out:  9  154.54.12.18  5.194 ms  4.881 ms  4.852 ms
+[planetlab-04.cs.princeton.edu] out: 10  66.110.96.5  5.141 ms  5.177 ms  5.223 ms
+[planetlab-04.cs.princeton.edu] out: 11  72.14.195.232  4.753 ms  4.662 ms  4.195 ms
+[planetlab-04.cs.princeton.edu] out: 12  * * *
+[planetlab-04.cs.princeton.edu] out: 13  209.85.241.53  4.089 ms 209.85.245.193  3.788 ms 72.14.238.91  5.082 ms
+[planetlab-04.cs.princeton.edu] out: 14  8.8.8.8  4.013 ms  3.996 ms  4.075 ms
+[planetlab-04.cs.princeton.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  128.112.139.1  0.652 ms  0.624 ms  0.607 ms
+ 2  128.112.12.57  0.918 ms  0.911 ms  0.954 ms
+ 3  128.112.12.142  0.881 ms  0.932 ms  1.022 ms
+ 4  38.122.150.1  2.696 ms  2.507 ms  2.541 ms
+ 5  154.24.17.141  2.220 ms 154.24.4.169  2.454 ms  2.449 ms
+ 6  154.54.7.1  2.631 ms  2.540 ms 154.54.25.141  2.477 ms
+ 7  154.54.3.141  6.443 ms  6.761 ms 154.54.5.1  5.051 ms
+ 8  154.54.47.218  5.291 ms  5.265 ms  5.434 ms
+ 9  154.54.12.18  5.194 ms  4.881 ms  4.852 ms
+10  66.110.96.5  5.141 ms  5.177 ms  5.223 ms
+11  72.14.195.232  4.753 ms  4.662 ms  4.195 ms
+12  * * *
+13  209.85.241.53  4.089 ms 209.85.245.193  3.788 ms 72.14.238.91  5.082 ms
+14  8.8.8.8  4.013 ms  3.996 ms  4.075 ms
+66.110.96.5
+New York
+[planetlab03.cs.washington.edu] sudo: traceroute -n 8.8.8.8
+[planetlab03.cs.washington.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab03.cs.washington.edu] out:  1  128.208.4.102  0.355 ms  0.315 ms  0.294 ms
+[planetlab03.cs.washington.edu] out:  2  198.48.66.1  9.190 ms  9.291 ms  9.310 ms
+[planetlab03.cs.washington.edu] out:  3  10.132.1.75  15.661 ms  15.647 ms  16.318 ms
+[planetlab03.cs.washington.edu] out:  4  209.124.190.134  6.546 ms  3.326 ms  9.125 ms
+[planetlab03.cs.washington.edu] out:  5  72.14.223.77  8.752 ms  8.091 ms  3.326 ms
+[planetlab03.cs.washington.edu] out:  6  * 108.170.245.113  11.615 ms  6.074 ms
+[planetlab03.cs.washington.edu] out:  7  209.85.249.247  11.603 ms 108.170.237.191  1.073 ms 209.85.249.245  4.655 ms
+[planetlab03.cs.washington.edu] out:  8  8.8.8.8  7.973 ms  8.934 ms  15.504 ms
+[planetlab03.cs.washington.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  128.208.4.102  0.355 ms  0.315 ms  0.294 ms
+ 2  198.48.66.1  9.190 ms  9.291 ms  9.310 ms
+ 3  10.132.1.75  15.661 ms  15.647 ms  16.318 ms
+ 4  209.124.190.134  6.546 ms  3.326 ms  9.125 ms
+ 5  72.14.223.77  8.752 ms  8.091 ms  3.326 ms
+ 6  * 108.170.245.113  11.615 ms  6.074 ms
+ 7  209.85.249.247  11.603 ms 108.170.237.191  1.073 ms 209.85.249.245  4.655 ms
+ 8  8.8.8.8  7.973 ms  8.934 ms  15.504 ms
+209.124.190.134
+Seattle
+[planetlab01.cs.washington.edu] sudo: traceroute -n 8.8.8.8
+[planetlab01.cs.washington.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab01.cs.washington.edu] out:  1  128.208.4.102  0.191 ms  0.318 ms  0.198 ms
+[planetlab01.cs.washington.edu] out:  2  198.48.66.1  8.956 ms  8.935 ms  8.952 ms
+[planetlab01.cs.washington.edu] out:  3  10.132.1.75  2.920 ms  2.922 ms  2.905 ms
+[planetlab01.cs.washington.edu] out:  4  209.124.190.134  0.538 ms  0.636 ms  0.567 ms
+[planetlab01.cs.washington.edu] out:  5  72.14.223.77  0.888 ms  0.914 ms  0.883 ms
+[planetlab01.cs.washington.edu] out:  6  * * 108.170.245.113  0.739 ms
+[planetlab01.cs.washington.edu] out:  7  108.170.231.27  0.642 ms 209.85.253.127  1.473 ms 108.170.237.189  0.804 ms
+[planetlab01.cs.washington.edu] out:  8  8.8.8.8  0.651 ms  0.652 ms  0.764 ms
+[planetlab01.cs.washington.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  128.208.4.102  0.191 ms  0.318 ms  0.198 ms
+ 2  198.48.66.1  8.956 ms  8.935 ms  8.952 ms
+ 3  10.132.1.75  2.920 ms  2.922 ms  2.905 ms
+ 4  209.124.190.134  0.538 ms  0.636 ms  0.567 ms
+ 5  72.14.223.77  0.888 ms  0.914 ms  0.883 ms
+ 6  * * 108.170.245.113  0.739 ms
+ 7  108.170.231.27  0.642 ms 209.85.253.127  1.473 ms 108.170.237.189  0.804 ms
+ 8  8.8.8.8  0.651 ms  0.652 ms  0.764 ms
+209.124.190.134
+Seattle
+[planetlab2.c3sl.ufpr.br] sudo: traceroute -n 8.8.8.8
+[planetlab2.c3sl.ufpr.br] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.c3sl.ufpr.br] out:  1  * * *
+[planetlab2.c3sl.ufpr.br] out:  2  200.19.74.157  0.643 ms * *
+[planetlab2.c3sl.ufpr.br] out:  3  200.238.139.9  16.407 ms  17.137 ms  17.121 ms
+[planetlab2.c3sl.ufpr.br] out:  4  200.143.254.129  0.771 ms  0.757 ms  0.822 ms
+[planetlab2.c3sl.ufpr.br] out:  5  200.143.255.142  5.393 ms  5.546 ms  5.515 ms
+[planetlab2.c3sl.ufpr.br] out:  6  187.16.216.55  9.817 ms 187.16.218.58  7.279 ms 187.16.216.55  9.174 ms
+[planetlab2.c3sl.ufpr.br] out:  7  108.170.245.161  7.268 ms 108.170.245.129  7.287 ms 108.170.245.161  7.227 ms
+[planetlab2.c3sl.ufpr.br] out:  8  66.249.95.171  7.325 ms 72.14.238.221  7.555 ms 108.170.229.103  7.057 ms
+[planetlab2.c3sl.ufpr.br] out:  9  8.8.8.8  6.873 ms  6.955 ms  6.789 ms
+[planetlab2.c3sl.ufpr.br] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  200.19.74.157  0.643 ms * *
+ 3  200.238.139.9  16.407 ms  17.137 ms  17.121 ms
+ 4  200.143.254.129  0.771 ms  0.757 ms  0.822 ms
+ 5  200.143.255.142  5.393 ms  5.546 ms  5.515 ms
+ 6  187.16.216.55  9.817 ms 187.16.218.58  7.279 ms 187.16.216.55  9.174 ms
+ 7  108.170.245.161  7.268 ms 108.170.245.129  7.287 ms 108.170.245.161  7.227 ms
+ 8  66.249.95.171  7.325 ms 72.14.238.221  7.555 ms 108.170.229.103  7.057 ms
+ 9  8.8.8.8  6.873 ms  6.955 ms  6.789 ms
+[planetlab5.eecs.umich.edu] sudo: traceroute -n 8.8.8.8
+[planetlab5.eecs.umich.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab5.eecs.umich.edu] out:  1  141.212.113.1  1.987 ms  2.072 ms  2.210 ms
+[planetlab5.eecs.umich.edu] out:  2  10.224.253.24  0.287 ms  0.435 ms  0.426 ms
+[planetlab5.eecs.umich.edu] out:  3  192.12.80.136  0.414 ms  0.538 ms  0.531 ms
+[planetlab5.eecs.umich.edu] out:  4  192.12.80.69  0.578 ms  0.570 ms  0.558 ms
+[planetlab5.eecs.umich.edu] out:  5  198.108.22.97  6.162 ms  6.198 ms  6.187 ms
+[planetlab5.eecs.umich.edu] out:  6  198.108.23.13  6.175 ms 198.108.22.36  6.178 ms 198.108.23.13  6.141 ms
+[planetlab5.eecs.umich.edu] out:  7  192.35.170.50  6.464 ms  6.414 ms  6.464 ms
+[planetlab5.eecs.umich.edu] out:  8  * 108.170.244.1  6.324 ms *
+[planetlab5.eecs.umich.edu] out:  9  72.14.236.65  7.026 ms 216.239.47.219  6.367 ms 72.14.233.17  6.454 ms
+[planetlab5.eecs.umich.edu] out: 10  8.8.8.8  6.464 ms  6.230 ms  6.360 ms
+[planetlab5.eecs.umich.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  141.212.113.1  1.987 ms  2.072 ms  2.210 ms
+ 2  10.224.253.24  0.287 ms  0.435 ms  0.426 ms
+ 3  192.12.80.136  0.414 ms  0.538 ms  0.531 ms
+ 4  192.12.80.69  0.578 ms  0.570 ms  0.558 ms
+ 5  198.108.22.97  6.162 ms  6.198 ms  6.187 ms
+ 6  198.108.23.13  6.175 ms 198.108.22.36  6.178 ms 198.108.23.13  6.141 ms
+ 7  192.35.170.50  6.464 ms  6.414 ms  6.464 ms
+ 8  * 108.170.244.1  6.324 ms *
+ 9  72.14.236.65  7.026 ms 216.239.47.219  6.367 ms 72.14.233.17  6.454 ms
+10  8.8.8.8  6.464 ms  6.230 ms  6.360 ms
+192.35.170.50
+Ann Arbor
+[node1.planetlab.albany.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.unr.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.unr.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.unr.edu] out:  1  134.197.113.14  0.618 ms  1.011 ms  1.008 ms
+[planetlab1.unr.edu] out:  2  134.197.0.33  0.146 ms  0.134 ms  0.132 ms
+[planetlab1.unr.edu] out:  3  207.197.33.69  0.183 ms  0.163 ms  0.171 ms
+[planetlab1.unr.edu] out:  4  4.16.86.153  4.902 ms  5.138 ms  5.129 ms
+[planetlab1.unr.edu] out:  5  4.69.209.177  6.395 ms 4.69.209.173  6.540 ms  6.571 ms
+[planetlab1.unr.edu] out:  6  72.14.223.91  8.871 ms  7.316 ms  7.136 ms
+[planetlab1.unr.edu] out:  7  108.170.242.81  7.241 ms  7.149 ms  7.180 ms
+[planetlab1.unr.edu] out:  8  216.239.46.167  7.326 ms 209.85.143.55  7.825 ms 108.170.232.63  7.304 ms
+[planetlab1.unr.edu] out:  9  8.8.8.8  7.088 ms  7.094 ms  7.337 ms
+[planetlab1.unr.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  134.197.113.14  0.618 ms  1.011 ms  1.008 ms
+ 2  134.197.0.33  0.146 ms  0.134 ms  0.132 ms
+ 3  207.197.33.69  0.183 ms  0.163 ms  0.171 ms
+ 4  4.16.86.153  4.902 ms  5.138 ms  5.129 ms
+ 5  4.69.209.177  6.395 ms 4.69.209.173  6.540 ms  6.571 ms
+ 6  72.14.223.91  8.871 ms  7.316 ms  7.136 ms
+ 7  108.170.242.81  7.241 ms  7.149 ms  7.180 ms
+ 8  216.239.46.167  7.326 ms 209.85.143.55  7.825 ms 108.170.232.63  7.304 ms
+ 9  8.8.8.8  7.088 ms  7.094 ms  7.337 ms
+4.69.209.177
+Dallas
+[saturn.planetlab.carleton.ca] sudo: traceroute -n 8.8.8.8
+[saturn.planetlab.carleton.ca] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[saturn.planetlab.carleton.ca] out:  1  134.117.226.178  0.538 ms  0.596 ms  0.698 ms
+[saturn.planetlab.carleton.ca] out:  2  10.30.25.1  0.419 ms  0.498 ms  0.609 ms
+[saturn.planetlab.carleton.ca] out:  3  10.30.53.1  0.571 ms  0.608 ms  0.706 ms
+[saturn.planetlab.carleton.ca] out:  4  134.117.254.242  0.987 ms  1.002 ms  1.047 ms
+[saturn.planetlab.carleton.ca] out:  5  10.30.58.1  1.630 ms  1.765 ms  1.833 ms
+[saturn.planetlab.carleton.ca] out:  6  66.97.23.141  2.194 ms  1.829 ms  1.833 ms
+[saturn.planetlab.carleton.ca] out:  7  66.97.16.53  8.117 ms  8.138 ms  8.088 ms
+[saturn.planetlab.carleton.ca] out:  8  66.97.16.22  7.022 ms  7.348 ms  8.495 ms
+[saturn.planetlab.carleton.ca] out:  9  74.125.48.230  7.717 ms  7.440 ms  7.537 ms
+[saturn.planetlab.carleton.ca] out: 10  108.170.250.241  7.769 ms  7.167 ms 108.170.250.225  6.303 ms
+[saturn.planetlab.carleton.ca] out: 11  108.170.227.33  7.567 ms 108.170.227.41  7.261 ms 108.170.227.33  7.381 ms
+[saturn.planetlab.carleton.ca] out: 12  8.8.8.8  7.423 ms  7.250 ms  7.200 ms
+[saturn.planetlab.carleton.ca] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  134.117.226.178  0.538 ms  0.596 ms  0.698 ms
+ 2  10.30.25.1  0.419 ms  0.498 ms  0.609 ms
+ 3  10.30.53.1  0.571 ms  0.608 ms  0.706 ms
+ 4  134.117.254.242  0.987 ms  1.002 ms  1.047 ms
+ 5  10.30.58.1  1.630 ms  1.765 ms  1.833 ms
+ 6  66.97.23.141  2.194 ms  1.829 ms  1.833 ms
+ 7  66.97.16.53  8.117 ms  8.138 ms  8.088 ms
+ 8  66.97.16.22  7.022 ms  7.348 ms  8.495 ms
+ 9  74.125.48.230  7.717 ms  7.440 ms  7.537 ms
+10  108.170.250.241  7.769 ms  7.167 ms 108.170.250.225  6.303 ms
+11  108.170.227.33  7.567 ms 108.170.227.41  7.261 ms 108.170.227.33  7.381 ms
+12  8.8.8.8  7.423 ms  7.250 ms  7.200 ms
+66.97.16.22
+Bowmanville
+[pl1.eng.monash.edu.au] sudo: traceroute -n 8.8.8.8
+[pl1.eng.monash.edu.au] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[pl1.eng.monash.edu.au] out:  1  130.194.252.253  0.920 ms  0.855 ms  1.135 ms
+[pl1.eng.monash.edu.au] out:  2  130.194.29.111  0.798 ms  0.800 ms  1.045 ms
+[pl1.eng.monash.edu.au] out:  3  130.194.29.146  0.794 ms  1.063 ms  1.378 ms
+[pl1.eng.monash.edu.au] out:  4  138.44.64.220  0.736 ms  0.725 ms  0.720 ms
+[pl1.eng.monash.edu.au] out:  5  113.197.15.24  14.165 ms 113.197.15.26  1.292 ms  1.291 ms
+[pl1.eng.monash.edu.au] out:  6  113.197.15.139  2.241 ms 113.197.15.174  1.538 ms  1.527 ms
+[pl1.eng.monash.edu.au] out:  7  202.158.210.41  13.043 ms  13.071 ms  13.055 ms
+[pl1.eng.monash.edu.au] out:  8  * * *
+[pl1.eng.monash.edu.au] out:  9  108.170.232.10  14.144 ms 108.170.235.192  14.181 ms 209.85.255.174  14.162 ms
+[pl1.eng.monash.edu.au] out: 10  216.239.41.3  13.357 ms 216.239.41.185  13.306 ms 209.85.251.53  13.306 ms
+[pl1.eng.monash.edu.au] out: 11  8.8.8.8  13.660 ms  13.635 ms  13.629 ms
+[pl1.eng.monash.edu.au] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  130.194.252.253  0.920 ms  0.855 ms  1.135 ms
+ 2  130.194.29.111  0.798 ms  0.800 ms  1.045 ms
+ 3  130.194.29.146  0.794 ms  1.063 ms  1.378 ms
+ 4  138.44.64.220  0.736 ms  0.725 ms  0.720 ms
+ 5  113.197.15.24  14.165 ms 113.197.15.26  1.292 ms  1.291 ms
+ 6  113.197.15.139  2.241 ms 113.197.15.174  1.538 ms  1.527 ms
+ 7  202.158.210.41  13.043 ms  13.071 ms  13.055 ms
+ 8  * * *
+ 9  108.170.232.10  14.144 ms 108.170.235.192  14.181 ms 209.85.255.174  14.162 ms
+10  216.239.41.3  13.357 ms 216.239.41.185  13.306 ms 209.85.251.53  13.306 ms
+11  8.8.8.8  13.660 ms  13.635 ms  13.629 ms
+202.158.210.41
+Canberra
+[planetlab2.utdallas.edu] sudo: traceroute -n 8.8.8.8
+[planetlab2.utdallas.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.utdallas.edu] out:  1  129.110.125.1  8.886 ms  8.885 ms  8.875 ms
+[planetlab2.utdallas.edu] out:  2  74.200.189.114  1.243 ms  1.258 ms  1.253 ms
+[planetlab2.utdallas.edu] out:  3  72.14.215.83  1.355 ms  1.346 ms  1.339 ms
+[planetlab2.utdallas.edu] out:  4  * * 108.170.252.129  1.262 ms
+[planetlab2.utdallas.edu] out:  5  209.85.142.243  1.327 ms 209.85.241.73  2.137 ms 209.85.244.7  1.403 ms
+[planetlab2.utdallas.edu] out:  6  8.8.8.8  1.258 ms  1.184 ms  1.193 ms
+[planetlab2.utdallas.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.110.125.1  8.886 ms  8.885 ms  8.875 ms
+ 2  74.200.189.114  1.243 ms  1.258 ms  1.253 ms
+ 3  72.14.215.83  1.355 ms  1.346 ms  1.339 ms
+ 4  * * 108.170.252.129  1.262 ms
+ 5  209.85.142.243  1.327 ms 209.85.241.73  2.137 ms 209.85.244.7  1.403 ms
+ 6  8.8.8.8  1.258 ms  1.184 ms  1.193 ms
+74.200.189.114
+Lubbock
+[planetlab2.pop-pa.rnp.br] sudo: traceroute -n 8.8.8.8
+[planetlab2.pop-pa.rnp.br] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.pop-pa.rnp.br] out:  1  200.129.132.1  0.209 ms  0.192 ms  0.189 ms
+[planetlab2.pop-pa.rnp.br] out:  2  200.143.255.213  0.578 ms  0.574 ms  0.563 ms
+[planetlab2.pop-pa.rnp.br] out:  3  200.143.253.50  15.703 ms  15.734 ms  15.789 ms
+[planetlab2.pop-pa.rnp.br] out:  4  200.143.252.170  30.834 ms  30.875 ms  30.934 ms
+[planetlab2.pop-pa.rnp.br] out:  5  200.143.253.78  33.059 ms  33.093 ms  33.159 ms
+[planetlab2.pop-pa.rnp.br] out:  6  200.143.252.77  52.280 ms  52.258 ms  52.247 ms
+[planetlab2.pop-pa.rnp.br] out:  7  45.6.52.32  52.510 ms  52.609 ms  52.535 ms
+[planetlab2.pop-pa.rnp.br] out:  8  108.170.251.65  52.586 ms 108.170.251.81  52.548 ms  52.530 ms
+[planetlab2.pop-pa.rnp.br] out:  9  108.170.237.101  52.559 ms 108.170.228.125  52.606 ms 209.85.143.87  52.543 ms
+[planetlab2.pop-pa.rnp.br] out: 10  8.8.8.8  52.432 ms  52.477 ms  52.494 ms
+[planetlab2.pop-pa.rnp.br] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  200.129.132.1  0.209 ms  0.192 ms  0.189 ms
+ 2  200.143.255.213  0.578 ms  0.574 ms  0.563 ms
+ 3  200.143.253.50  15.703 ms  15.734 ms  15.789 ms
+ 4  200.143.252.170  30.834 ms  30.875 ms  30.934 ms
+ 5  200.143.253.78  33.059 ms  33.093 ms  33.159 ms
+ 6  200.143.252.77  52.280 ms  52.258 ms  52.247 ms
+ 7  45.6.52.32  52.510 ms  52.609 ms  52.535 ms
+ 8  108.170.251.65  52.586 ms 108.170.251.81  52.548 ms  52.530 ms
+ 9  108.170.237.101  52.559 ms 108.170.228.125  52.606 ms 209.85.143.87  52.543 ms
+10  8.8.8.8  52.432 ms  52.477 ms  52.494 ms
+[planetlab1.pop-pa.rnp.br] sudo: traceroute -n 8.8.8.8
+[planetlab1.pop-pa.rnp.br] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.pop-pa.rnp.br] out:  1  200.129.132.1  0.187 ms  0.200 ms  0.216 ms
+[planetlab1.pop-pa.rnp.br] out:  2  200.143.255.213  0.327 ms  0.319 ms  0.309 ms
+[planetlab1.pop-pa.rnp.br] out:  3  200.143.253.50  15.616 ms  15.649 ms  15.718 ms
+[planetlab1.pop-pa.rnp.br] out:  4  200.143.252.170  30.088 ms  30.216 ms  30.274 ms
+[planetlab1.pop-pa.rnp.br] out:  5  200.143.253.78  32.989 ms  33.010 ms  33.054 ms
+[planetlab1.pop-pa.rnp.br] out:  6  200.143.252.77  52.163 ms  52.202 ms  52.196 ms
+[planetlab1.pop-pa.rnp.br] out:  7  45.6.52.32  54.499 ms  54.522 ms  54.512 ms
+[planetlab1.pop-pa.rnp.br] out:  8  108.170.251.81  52.483 ms 108.170.251.65  52.518 ms  52.558 ms
+[planetlab1.pop-pa.rnp.br] out:  9  108.170.228.121  52.544 ms  52.545 ms 108.170.233.93  52.546 ms
+[planetlab1.pop-pa.rnp.br] out: 10  8.8.8.8  52.449 ms  52.442 ms  52.507 ms
+[planetlab1.pop-pa.rnp.br] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  200.129.132.1  0.187 ms  0.200 ms  0.216 ms
+ 2  200.143.255.213  0.327 ms  0.319 ms  0.309 ms
+ 3  200.143.253.50  15.616 ms  15.649 ms  15.718 ms
+ 4  200.143.252.170  30.088 ms  30.216 ms  30.274 ms
+ 5  200.143.253.78  32.989 ms  33.010 ms  33.054 ms
+ 6  200.143.252.77  52.163 ms  52.202 ms  52.196 ms
+ 7  45.6.52.32  54.499 ms  54.522 ms  54.512 ms
+ 8  108.170.251.81  52.483 ms 108.170.251.65  52.518 ms  52.558 ms
+ 9  108.170.228.121  52.544 ms  52.545 ms 108.170.233.93  52.546 ms
+10  8.8.8.8  52.449 ms  52.442 ms  52.507 ms
+[planetlab3.rutgers.edu] sudo: traceroute -n 8.8.8.8
+[planetlab3.rutgers.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.rutgers.edu] out:  1  165.230.49.113  0.871 ms  1.097 ms  1.852 ms
+[planetlab3.rutgers.edu] out:  2  172.28.1.33  14.718 ms  14.753 ms  14.744 ms
+[planetlab3.rutgers.edu] out:  3  172.29.18.10  0.518 ms  0.509 ms 172.29.18.14  0.390 ms
+[planetlab3.rutgers.edu] out:  4  172.29.6.9  0.523 ms 172.29.6.3  0.464 ms 172.29.6.9  0.514 ms
+[planetlab3.rutgers.edu] out:  5  172.29.6.55  0.996 ms  0.994 ms 172.29.6.68  0.908 ms
+[planetlab3.rutgers.edu] out:  6  172.29.8.6  0.929 ms  0.853 ms  0.905 ms
+[planetlab3.rutgers.edu] out:  7  128.6.1.114  0.965 ms  1.039 ms  1.150 ms
+[planetlab3.rutgers.edu] out:  8  * * *
+[planetlab3.rutgers.edu] out:  9  108.170.235.185  1.539 ms 108.170.238.201  1.610 ms 74.125.251.25  2.060 ms
+[planetlab3.rutgers.edu] out: 10  8.8.8.8  1.375 ms  1.187 ms  1.182 ms
+[planetlab3.rutgers.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  165.230.49.113  0.871 ms  1.097 ms  1.852 ms
+ 2  172.28.1.33  14.718 ms  14.753 ms  14.744 ms
+ 3  172.29.18.10  0.518 ms  0.509 ms 172.29.18.14  0.390 ms
+ 4  172.29.6.9  0.523 ms 172.29.6.3  0.464 ms 172.29.6.9  0.514 ms
+ 5  172.29.6.55  0.996 ms  0.994 ms 172.29.6.68  0.908 ms
+ 6  172.29.8.6  0.929 ms  0.853 ms  0.905 ms
+ 7  128.6.1.114  0.965 ms  1.039 ms  1.150 ms
+ 8  * * *
+ 9  108.170.235.185  1.539 ms 108.170.238.201  1.610 ms 74.125.251.25  2.060 ms
+10  8.8.8.8  1.375 ms  1.187 ms  1.182 ms
+128.6.1.114
+Piscataway
+[pl2.eng.monash.edu.au] sudo: traceroute -n 8.8.8.8
+[pl2.eng.monash.edu.au] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[pl2.eng.monash.edu.au] out:  1  130.194.252.252  0.985 ms  1.012 ms  1.233 ms
+[pl2.eng.monash.edu.au] out:  2  130.194.29.253  0.871 ms  1.215 ms  1.456 ms
+[pl2.eng.monash.edu.au] out:  3  130.194.29.111  0.744 ms  0.738 ms  0.959 ms
+[pl2.eng.monash.edu.au] out:  4  130.194.29.146  0.976 ms  1.264 ms  1.521 ms
+[pl2.eng.monash.edu.au] out:  5  138.44.64.220  0.629 ms  0.626 ms  0.622 ms
+[pl2.eng.monash.edu.au] out:  6  113.197.15.26  1.187 ms  1.164 ms 113.197.15.24  1.911 ms
+[pl2.eng.monash.edu.au] out:  7  113.197.15.139  1.136 ms  1.132 ms 113.197.15.174  1.107 ms
+[pl2.eng.monash.edu.au] out:  8  202.158.210.41  13.746 ms  13.757 ms  13.736 ms
+[pl2.eng.monash.edu.au] out:  9  * * *
+[pl2.eng.monash.edu.au] out: 10  108.170.233.192  13.672 ms 209.85.243.144  13.376 ms 209.85.254.118  13.399 ms
+[pl2.eng.monash.edu.au] out: 11  216.239.40.255  13.028 ms 209.85.247.157  14.490 ms 216.239.41.191  14.162 ms
+[pl2.eng.monash.edu.au] out: 12  8.8.8.8  13.629 ms  13.290 ms  13.543 ms
+[pl2.eng.monash.edu.au] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  130.194.252.252  0.985 ms  1.012 ms  1.233 ms
+ 2  130.194.29.253  0.871 ms  1.215 ms  1.456 ms
+ 3  130.194.29.111  0.744 ms  0.738 ms  0.959 ms
+ 4  130.194.29.146  0.976 ms  1.264 ms  1.521 ms
+ 5  138.44.64.220  0.629 ms  0.626 ms  0.622 ms
+ 6  113.197.15.26  1.187 ms  1.164 ms 113.197.15.24  1.911 ms
+ 7  113.197.15.139  1.136 ms  1.132 ms 113.197.15.174  1.107 ms
+ 8  202.158.210.41  13.746 ms  13.757 ms  13.736 ms
+ 9  * * *
+10  108.170.233.192  13.672 ms 209.85.243.144  13.376 ms 209.85.254.118  13.399 ms
+11  216.239.40.255  13.028 ms 209.85.247.157  14.490 ms 216.239.41.191  14.162 ms
+12  8.8.8.8  13.629 ms  13.290 ms  13.543 ms
+202.158.210.41
+Canberra
+[planetlab3.cesnet.cz] sudo: traceroute -n 8.8.8.8
+[planetlab3.cesnet.cz] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.cesnet.cz] out:  1  195.113.161.65  1.327 ms  1.509 ms  1.635 ms
+[planetlab3.cesnet.cz] out:  2  195.113.235.109  2.361 ms  2.365 ms  2.354 ms
+[planetlab3.cesnet.cz] out:  3  195.113.157.70  0.780 ms  0.771 ms  0.774 ms
+[planetlab3.cesnet.cz] out:  4  108.170.245.33  0.711 ms 108.170.245.49  0.686 ms  0.680 ms
+[planetlab3.cesnet.cz] out:  5  108.170.237.195  0.726 ms 108.170.237.193  0.780 ms  0.770 ms
+[planetlab3.cesnet.cz] out:  6  8.8.8.8  0.623 ms  0.624 ms  0.623 ms
+[planetlab3.cesnet.cz] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  195.113.161.65  1.327 ms  1.509 ms  1.635 ms
+ 2  195.113.235.109  2.361 ms  2.365 ms  2.354 ms
+ 3  195.113.157.70  0.780 ms  0.771 ms  0.774 ms
+ 4  108.170.245.33  0.711 ms 108.170.245.49  0.686 ms  0.680 ms
+ 5  108.170.237.195  0.726 ms 108.170.237.193  0.780 ms  0.770 ms
+ 6  8.8.8.8  0.623 ms  0.624 ms  0.623 ms
+195.113.157.70
+Prague
+[planetlab4.cs.uoregon.edu] sudo: traceroute -n 8.8.8.8
+[planetlab4.cs.uoregon.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab4.cs.uoregon.edu] out:  1  * * *
+[planetlab4.cs.uoregon.edu] out:  2  * * *
+[planetlab4.cs.uoregon.edu] out:  3  10.252.253.129  1.948 ms  0.990 ms 10.252.253.130  0.763 ms
+[planetlab4.cs.uoregon.edu] out:  4  128.223.3.9  2.657 ms  3.165 ms 128.223.3.10  1.498 ms
+[planetlab4.cs.uoregon.edu] out:  5  198.32.165.254  3.365 ms  3.354 ms  3.310 ms
+[planetlab4.cs.uoregon.edu] out:  6  64.57.20.253  6.851 ms  6.745 ms  7.177 ms
+[planetlab4.cs.uoregon.edu] out:  7  * * *
+[planetlab4.cs.uoregon.edu] out:  8  * * 108.170.245.113  6.677 ms
+[planetlab4.cs.uoregon.edu] out:  9  209.85.250.109  7.070 ms 108.170.233.125  6.532 ms 216.239.63.189  6.969 ms
+[planetlab4.cs.uoregon.edu] out: 10  8.8.8.8  6.526 ms  6.546 ms  6.536 ms
+[planetlab4.cs.uoregon.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  * * *
+ 3  10.252.253.129  1.948 ms  0.990 ms 10.252.253.130  0.763 ms
+ 4  128.223.3.9  2.657 ms  3.165 ms 128.223.3.10  1.498 ms
+ 5  198.32.165.254  3.365 ms  3.354 ms  3.310 ms
+ 6  64.57.20.253  6.851 ms  6.745 ms  7.177 ms
+ 7  * * *
+ 8  * * 108.170.245.113  6.677 ms
+ 9  209.85.250.109  7.070 ms 108.170.233.125  6.532 ms 216.239.63.189  6.969 ms
+10  8.8.8.8  6.526 ms  6.546 ms  6.536 ms
+64.57.20.253
+Ann Arbor
+[planet-lab4.uba.ar] sudo: traceroute -n 8.8.8.8
+[planet-lab4.uba.ar] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planet-lab4.uba.ar] out:  1  157.92.44.97  0.377 ms  0.445 ms  0.522 ms
+[planet-lab4.uba.ar] out:  2  10.169.242.225  1.839 ms  1.988 ms  2.386 ms
+[planet-lab4.uba.ar] out:  3  * * *
+[planet-lab4.uba.ar] out:  4  131.100.186.98  3.381 ms  3.337 ms  3.350 ms
+[planet-lab4.uba.ar] out:  5  72.14.203.52  2.428 ms  2.237 ms  2.239 ms
+[planet-lab4.uba.ar] out:  6  108.170.248.241  2.316 ms  2.319 ms 108.170.248.225  4.711 ms
+[planet-lab4.uba.ar] out:  7  209.85.143.33  3.649 ms 108.170.229.193  4.668 ms 209.85.143.185  3.611 ms
+[planet-lab4.uba.ar] out:  8  8.8.8.8  2.298 ms  2.432 ms  2.797 ms
+[planet-lab4.uba.ar] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  157.92.44.97  0.377 ms  0.445 ms  0.522 ms
+ 2  10.169.242.225  1.839 ms  1.988 ms  2.386 ms
+ 3  * * *
+ 4  131.100.186.98  3.381 ms  3.337 ms  3.350 ms
+ 5  72.14.203.52  2.428 ms  2.237 ms  2.239 ms
+ 6  108.170.248.241  2.316 ms  2.319 ms 108.170.248.225  4.711 ms
+ 7  209.85.143.33  3.649 ms 108.170.229.193  4.668 ms 209.85.143.185  3.611 ms
+ 8  8.8.8.8  2.298 ms  2.432 ms  2.797 ms
+[planetlab1.temple.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.temple.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.temple.edu] out:  1  129.32.84.129  0.810 ms  0.743 ms  0.764 ms
+[planetlab1.temple.edu] out:  2  155.247.119.82  1.490 ms  1.469 ms  1.462 ms
+[planetlab1.temple.edu] out:  3  216.27.98.233  1.546 ms  1.521 ms  1.498 ms
+[planetlab1.temple.edu] out:  4  216.27.100.14  1.756 ms  1.685 ms  1.683 ms
+[planetlab1.temple.edu] out:  5  162.252.70.102  3.843 ms  3.768 ms  3.929 ms
+[planetlab1.temple.edu] out:  6  64.57.20.215  7.996 ms  8.495 ms  8.515 ms
+[planetlab1.temple.edu] out:  7  162.252.69.201  3.727 ms  3.722 ms 162.252.69.199  3.735 ms
+[planetlab1.temple.edu] out:  8  * * *
+[planetlab1.temple.edu] out:  9  74.125.37.97  4.314 ms 209.85.249.1  4.711 ms 209.85.243.193  3.979 ms
+[planetlab1.temple.edu] out: 10  8.8.8.8  4.402 ms  4.177 ms  3.790 ms
+[planetlab1.temple.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.32.84.129  0.810 ms  0.743 ms  0.764 ms
+ 2  155.247.119.82  1.490 ms  1.469 ms  1.462 ms
+ 3  216.27.98.233  1.546 ms  1.521 ms  1.498 ms
+ 4  216.27.100.14  1.756 ms  1.685 ms  1.683 ms
+ 5  162.252.70.102  3.843 ms  3.768 ms  3.929 ms
+ 6  64.57.20.215  7.996 ms  8.495 ms  8.515 ms
+ 7  162.252.69.201  3.727 ms  3.722 ms 162.252.69.199  3.735 ms
+ 8  * * *
+ 9  74.125.37.97  4.314 ms 209.85.249.1  4.711 ms 209.85.243.193  3.979 ms
+10  8.8.8.8  4.402 ms  4.177 ms  3.790 ms
+162.252.69.201
+Ann Arbor (Bryant Pattengill East)
+[planetlab-n1.wand.net.nz] sudo: traceroute -n 8.8.8.8
+[planetlab-n1.wand.net.nz] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-n1.wand.net.nz] out:  1  192.107.171.49  0.280 ms  0.257 ms  0.248 ms
+[planetlab-n1.wand.net.nz] out:  2  130.217.2.59  0.246 ms  0.250 ms  0.245 ms
+[planetlab-n1.wand.net.nz] out:  3  210.7.39.9  0.284 ms  0.281 ms  0.279 ms
+[planetlab-n1.wand.net.nz] out:  4  210.7.39.251  2.805 ms  2.849 ms  2.845 ms
+[planetlab-n1.wand.net.nz] out:  5  210.7.39.250  2.896 ms  2.972 ms  2.897 ms
+[planetlab-n1.wand.net.nz] out:  6  182.255.119.138  2.960 ms  2.972 ms  2.966 ms
+[planetlab-n1.wand.net.nz] out:  7  113.197.15.68  3.942 ms  3.950 ms  4.027 ms
+[planetlab-n1.wand.net.nz] out:  8  113.197.15.66  26.430 ms  26.421 ms 113.197.15.182  26.419 ms
+[planetlab-n1.wand.net.nz] out:  9  113.197.15.152  26.398 ms  26.439 ms 113.197.15.156  26.386 ms
+[planetlab-n1.wand.net.nz] out: 10  113.197.15.111  27.047 ms  27.076 ms 113.197.15.109  26.386 ms
+[planetlab-n1.wand.net.nz] out: 11  202.158.205.150  26.674 ms  26.764 ms  26.801 ms
+[planetlab-n1.wand.net.nz] out: 12  * * *
+[planetlab-n1.wand.net.nz] out: 13  108.170.232.10  26.761 ms 108.170.235.192  27.078 ms 108.170.235.194  27.103 ms
+[planetlab-n1.wand.net.nz] out: 14  216.239.41.185  27.145 ms 216.239.41.189  26.667 ms 209.85.251.53  27.175 ms
+[planetlab-n1.wand.net.nz] out: 15  8.8.8.8  26.304 ms  26.324 ms  26.543 ms
+[planetlab-n1.wand.net.nz] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  192.107.171.49  0.280 ms  0.257 ms  0.248 ms
+ 2  130.217.2.59  0.246 ms  0.250 ms  0.245 ms
+ 3  210.7.39.9  0.284 ms  0.281 ms  0.279 ms
+ 4  210.7.39.251  2.805 ms  2.849 ms  2.845 ms
+ 5  210.7.39.250  2.896 ms  2.972 ms  2.897 ms
+ 6  182.255.119.138  2.960 ms  2.972 ms  2.966 ms
+ 7  113.197.15.68  3.942 ms  3.950 ms  4.027 ms
+ 8  113.197.15.66  26.430 ms  26.421 ms 113.197.15.182  26.419 ms
+ 9  113.197.15.152  26.398 ms  26.439 ms 113.197.15.156  26.386 ms
+10  113.197.15.111  27.047 ms  27.076 ms 113.197.15.109  26.386 ms
+11  202.158.205.150  26.674 ms  26.764 ms  26.801 ms
+12  * * *
+13  108.170.232.10  26.761 ms 108.170.235.192  27.078 ms 108.170.235.194  27.103 ms
+14  216.239.41.185  27.145 ms 216.239.41.189  26.667 ms 209.85.251.53  27.175 ms
+15  8.8.8.8  26.304 ms  26.324 ms  26.543 ms
+202.158.205.150
+Wodonga
+[planetlab-js1.cert.org.cn] sudo: traceroute -n 8.8.8.8
+[planetlab-js1.cert.org.cn] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-js1.cert.org.cn] out:  1  61.155.108.201  2.500 ms  3.043 ms  3.041 ms
+[planetlab-js1.cert.org.cn] out:  2  218.2.249.181  4.377 ms  4.576 ms  4.577 ms
+[planetlab-js1.cert.org.cn] out:  3  * * *
+[planetlab-js1.cert.org.cn] out:  4  221.231.191.181  4.078 ms  4.071 ms  4.065 ms
+[planetlab-js1.cert.org.cn] out:  5  218.2.134.81  5.097 ms  5.134 ms  5.122 ms
+[planetlab-js1.cert.org.cn] out:  6  202.97.92.1  9.060 ms  7.141 ms  6.596 ms
+[planetlab-js1.cert.org.cn] out:  7  202.97.24.150  8.487 ms  7.315 ms  7.310 ms
+[planetlab-js1.cert.org.cn] out:  8  202.97.90.29  10.491 ms  10.495 ms  10.431 ms
+[planetlab-js1.cert.org.cn] out:  9  202.97.25.226  41.782 ms  40.823 ms  40.811 ms
+[planetlab-js1.cert.org.cn] out: 10  202.97.62.214  33.889 ms  33.788 ms  34.006 ms
+[planetlab-js1.cert.org.cn] out: 11  108.170.241.79  33.279 ms  32.995 ms 108.170.241.48  33.746 ms
+[planetlab-js1.cert.org.cn] out: 12  209.85.250.119  33.799 ms 209.85.250.133  32.868 ms 74.125.251.11  34.434 ms
+[planetlab-js1.cert.org.cn] out: 13  209.85.247.124  45.136 ms 216.239.41.7  47.746 ms  47.827 ms
+[planetlab-js1.cert.org.cn] out: 14  216.239.43.101  45.964 ms 209.85.249.75  44.937 ms 209.85.252.13  48.197 ms
+[planetlab-js1.cert.org.cn] out: 15  * * *
+[planetlab-js1.cert.org.cn] out: 16  * * *
+[planetlab-js1.cert.org.cn] out: 17  * * *
+[planetlab-js1.cert.org.cn] out: 18  * * *
+[planetlab-js1.cert.org.cn] out: 19  * * *
+[planetlab-js1.cert.org.cn] out: 20  * * *
+[planetlab-js1.cert.org.cn] out: 21  * * *
+[planetlab-js1.cert.org.cn] out: 22  * * *
+[planetlab-js1.cert.org.cn] out: 23  * * *
+[planetlab-js1.cert.org.cn] out: 24  * * *
+[planetlab-js1.cert.org.cn] out: 25  8.8.8.8  47.532 ms  45.879 ms  45.849 ms
+[planetlab-js1.cert.org.cn] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  61.155.108.201  2.500 ms  3.043 ms  3.041 ms
+ 2  218.2.249.181  4.377 ms  4.576 ms  4.577 ms
+ 3  * * *
+ 4  221.231.191.181  4.078 ms  4.071 ms  4.065 ms
+ 5  218.2.134.81  5.097 ms  5.134 ms  5.122 ms
+ 6  202.97.92.1  9.060 ms  7.141 ms  6.596 ms
+ 7  202.97.24.150  8.487 ms  7.315 ms  7.310 ms
+ 8  202.97.90.29  10.491 ms  10.495 ms  10.431 ms
+ 9  202.97.25.226  41.782 ms  40.823 ms  40.811 ms
+10  202.97.62.214  33.889 ms  33.788 ms  34.006 ms
+11  108.170.241.79  33.279 ms  32.995 ms 108.170.241.48  33.746 ms
+12  209.85.250.119  33.799 ms 209.85.250.133  32.868 ms 74.125.251.11  34.434 ms
+13  209.85.247.124  45.136 ms 216.239.41.7  47.746 ms  47.827 ms
+14  216.239.43.101  45.964 ms 209.85.249.75  44.937 ms 209.85.252.13  48.197 ms
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  8.8.8.8  47.532 ms  45.879 ms  45.849 ms
+202.97.62.214
+Beijing (Haidian Qu)
+[planetlab-1.scie.uestc.edu.cn] sudo: traceroute -n 8.8.8.8
+[planetlab-1.scie.uestc.edu.cn] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-1.scie.uestc.edu.cn] out:  1  222.197.180.129  0.500 ms  1.169 ms  1.434 ms
+[planetlab-1.scie.uestc.edu.cn] out:  2  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  3  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  4  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  5  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  6  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  7  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  8  * * *
+[planetlab-1.scie.uestc.edu.cn] out:  9  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 10  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 11  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 12  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 13  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 14  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 15  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 16  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 17  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 18  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 19  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 20  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 21  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 22  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 23  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 24  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 25  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 26  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 27  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 28  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 29  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 30  * * *
+[planetlab-1.scie.uestc.edu.cn] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  222.197.180.129  0.500 ms  1.169 ms  1.434 ms
+ 2  * * *
+ 3  * * *
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+222.197.180.129
+Chengdu
+
+Done.
+[planetlab1.cs.uoregon.edu] Executing task 'trace_route'
+[planetlabone.ccs.neu.edu] Executing task 'trace_route'
+[planetlab1.comp.nus.edu.sg] Executing task 'trace_route'
+[planetlab3.williams.edu] Executing task 'trace_route'
+[planetlab4.mini.pw.edu.pl] Executing task 'trace_route'
+[planetlab2.inf.ethz.ch] Executing task 'trace_route'
+[planetlab5.ie.cuhk.edu.hk] Executing task 'trace_route'
+[planetlab2.cesnet.cz] Executing task 'trace_route'
+[planetlab1.cesnet.cz] Executing task 'trace_route'
+[planetlab04.cs.washington.edu] Executing task 'trace_route'
+[planetlab02.cs.washington.edu] Executing task 'trace_route'
+[planetlab2.pop-mg.rnp.br] Executing task 'trace_route'
+[planetlab1.pop-mg.rnp.br] Executing task 'trace_route'
+[planetlab2.cs.purdue.edu] Executing task 'trace_route'
+[planetlab2.koganei.itrc.net] Executing task 'trace_route'
+[planetlab1.koganei.itrc.net] Executing task 'trace_route'
+[plink.cs.uwaterloo.ca] Executing task 'trace_route'
+[lefthand.eecs.harvard.edu] Executing task 'trace_route'
+[planetlab1.dtc.umn.edu] Executing task 'trace_route'
+[planetlab-5.eecs.cwru.edu] Executing task 'trace_route'
+[planetlab1.postel.org] Executing task 'trace_route'
+[planetlab1.cs.ubc.ca] Executing task 'trace_route'
+[ple2.cesnet.cz] Executing task 'trace_route'
+[nuc1.planet-lab.eu] Executing task 'trace_route'
+[planetlab-1.ing.unimo.it] Executing task 'trace_route'
+[iraplab1.iralab.uni-karlsruhe.de] Executing task 'trace_route'
+[iraplab2.iralab.uni-karlsruhe.de] Executing task 'trace_route'
+[dschinni.planetlab.extranet.uni-passau.de] Executing task 'trace_route'
+[ple2.planet-lab.eu] Executing task 'trace_route'
+[ple2.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[ple2.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple2.planet-lab.eu] out:  1  132.227.123.1  3.515 ms  3.482 ms  3.480 ms
+[ple2.planet-lab.eu] out:  2  134.157.167.125  0.343 ms  0.337 ms  0.369 ms
+[ple2.planet-lab.eu] out:  3  134.157.254.124  0.414 ms  0.421 ms  0.470 ms
+[ple2.planet-lab.eu] out:  4  195.221.127.181  0.288 ms  0.293 ms  0.296 ms
+[ple2.planet-lab.eu] out:  5  193.51.181.102  0.848 ms  0.866 ms  0.888 ms
+[ple2.planet-lab.eu] out:  6  193.51.177.114  1.115 ms  1.096 ms  1.152 ms
+[ple2.planet-lab.eu] out:  7  * * *
+[ple2.planet-lab.eu] out:  8  72.14.214.160  1.230 ms  1.099 ms  1.180 ms
+[ple2.planet-lab.eu] out:  9  108.170.244.193  0.931 ms 108.170.244.161  1.103 ms  1.097 ms
+[ple2.planet-lab.eu] out: 10  209.85.254.113  0.988 ms 209.85.255.19  0.947 ms 66.249.94.175  0.933 ms
+[ple2.planet-lab.eu] out: 11  8.8.8.8  1.332 ms  1.130 ms  1.203 ms
+[ple2.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  132.227.123.1  3.515 ms  3.482 ms  3.480 ms
+ 2  134.157.167.125  0.343 ms  0.337 ms  0.369 ms
+ 3  134.157.254.124  0.414 ms  0.421 ms  0.470 ms
+ 4  195.221.127.181  0.288 ms  0.293 ms  0.296 ms
+ 5  193.51.181.102  0.848 ms  0.866 ms  0.888 ms
+ 6  193.51.177.114  1.115 ms  1.096 ms  1.152 ms
+ 7  * * *
+ 8  72.14.214.160  1.230 ms  1.099 ms  1.180 ms
+ 9  108.170.244.193  0.931 ms 108.170.244.161  1.103 ms  1.097 ms
+10  209.85.254.113  0.988 ms 209.85.255.19  0.947 ms 66.249.94.175  0.933 ms
+11  8.8.8.8  1.332 ms  1.130 ms  1.203 ms
+193.51.177.114
+Nantes
+[dschinni.planetlab.extranet.uni-passau.de] sudo: traceroute -n 8.8.8.8
+[dschinni.planetlab.extranet.uni-passau.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[dschinni.planetlab.extranet.uni-passau.de] out:  1  195.37.16.126  0.690 ms  0.695 ms  0.740 ms
+[dschinni.planetlab.extranet.uni-passau.de] out:  2  188.1.241.253  5.686 ms  5.671 ms 188.1.230.245  6.797 ms
+[dschinni.planetlab.extranet.uni-passau.de] out:  3  188.1.144.222  8.803 ms  9.355 ms  9.360 ms
+[dschinni.planetlab.extranet.uni-passau.de] out:  4  72.14.194.58  26.447 ms  8.680 ms  8.739 ms
+[dschinni.planetlab.extranet.uni-passau.de] out:  5  * * 108.170.251.193  8.647 ms
+[dschinni.planetlab.extranet.uni-passau.de] out:  6  216.239.59.189  10.612 ms 72.14.239.109  8.962 ms 108.170.233.37  10.436 ms
+[dschinni.planetlab.extranet.uni-passau.de] out:  7  8.8.8.8  8.625 ms  10.326 ms  8.883 ms
+[dschinni.planetlab.extranet.uni-passau.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  195.37.16.126  0.690 ms  0.695 ms  0.740 ms
+ 2  188.1.241.253  5.686 ms  5.671 ms 188.1.230.245  6.797 ms
+ 3  188.1.144.222  8.803 ms  9.355 ms  9.360 ms
+ 4  72.14.194.58  26.447 ms  8.680 ms  8.739 ms
+ 5  * * 108.170.251.193  8.647 ms
+ 6  216.239.59.189  10.612 ms 72.14.239.109  8.962 ms 108.170.233.37  10.436 ms
+ 7  8.8.8.8  8.625 ms  10.326 ms  8.883 ms
+188.1.144.222
+Berlin (Bezirk Mitte)
+[nuc1.planet-lab.eu] sudo: traceroute -n 8.8.8.8
+[nuc1.planet-lab.eu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[nuc1.planet-lab.eu] out:  1  132.227.123.1  6.660 ms  6.650 ms  6.634 ms
+[nuc1.planet-lab.eu] out:  2  134.157.167.125  0.351 ms  0.385 ms  0.419 ms
+[nuc1.planet-lab.eu] out:  3  134.157.254.124  6.694 ms  6.725 ms  6.773 ms
+[nuc1.planet-lab.eu] out:  4  195.221.127.181  0.352 ms  0.383 ms  0.369 ms
+[nuc1.planet-lab.eu] out:  5  193.51.181.102  0.977 ms  0.992 ms  1.047 ms
+[nuc1.planet-lab.eu] out:  6  193.51.177.114  9.752 ms  9.606 ms  9.577 ms
+[nuc1.planet-lab.eu] out:  7  * * *
+[nuc1.planet-lab.eu] out:  8  72.14.214.160  0.950 ms  0.968 ms  0.938 ms
+[nuc1.planet-lab.eu] out:  9  108.170.244.225  1.162 ms 108.170.245.1  0.970 ms 108.170.244.193  1.054 ms
+[nuc1.planet-lab.eu] out: 10  66.249.94.177  1.030 ms 209.85.254.147  1.033 ms 216.239.47.157  1.202 ms
+[nuc1.planet-lab.eu] out: 11  8.8.8.8  1.737 ms  1.525 ms  1.466 ms
+[nuc1.planet-lab.eu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  132.227.123.1  6.660 ms  6.650 ms  6.634 ms
+ 2  134.157.167.125  0.351 ms  0.385 ms  0.419 ms
+ 3  134.157.254.124  6.694 ms  6.725 ms  6.773 ms
+ 4  195.221.127.181  0.352 ms  0.383 ms  0.369 ms
+ 5  193.51.181.102  0.977 ms  0.992 ms  1.047 ms
+ 6  193.51.177.114  9.752 ms  9.606 ms  9.577 ms
+ 7  * * *
+ 8  72.14.214.160  0.950 ms  0.968 ms  0.938 ms
+ 9  108.170.244.225  1.162 ms 108.170.245.1  0.970 ms 108.170.244.193  1.054 ms
+10  66.249.94.177  1.030 ms 209.85.254.147  1.033 ms 216.239.47.157  1.202 ms
+11  8.8.8.8  1.737 ms  1.525 ms  1.466 ms
+193.51.177.114
+Nantes
+[ple2.cesnet.cz] sudo: traceroute -n 8.8.8.8
+[ple2.cesnet.cz] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[ple2.cesnet.cz] out:  1  195.113.161.1  1.136 ms  1.237 ms  1.341 ms
+[ple2.cesnet.cz] out:  2  195.113.235.109  3.035 ms  3.012 ms  2.997 ms
+[ple2.cesnet.cz] out:  3  195.113.157.70  0.796 ms  0.782 ms  0.769 ms
+[ple2.cesnet.cz] out:  4  108.170.245.33  0.674 ms  0.698 ms 108.170.245.49  0.668 ms
+[ple2.cesnet.cz] out:  5  108.170.237.177  0.746 ms 216.239.62.183  1.416 ms 216.239.43.75  0.701 ms
+[ple2.cesnet.cz] out:  6  8.8.8.8  0.613 ms  0.620 ms  0.624 ms
+[ple2.cesnet.cz] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  195.113.161.1  1.136 ms  1.237 ms  1.341 ms
+ 2  195.113.235.109  3.035 ms  3.012 ms  2.997 ms
+ 3  195.113.157.70  0.796 ms  0.782 ms  0.769 ms
+ 4  108.170.245.33  0.674 ms  0.698 ms 108.170.245.49  0.668 ms
+ 5  108.170.237.177  0.746 ms 216.239.62.183  1.416 ms 216.239.43.75  0.701 ms
+ 6  8.8.8.8  0.613 ms  0.620 ms  0.624 ms
+195.113.157.70
+Prague
+[iraplab1.iralab.uni-karlsruhe.de] sudo: traceroute -n 8.8.8.8
+[iraplab1.iralab.uni-karlsruhe.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[iraplab1.iralab.uni-karlsruhe.de] out:  1  129.13.100.14  0.748 ms  0.932 ms  1.230 ms
+[iraplab1.iralab.uni-karlsruhe.de] out:  2  * * *
+[iraplab1.iralab.uni-karlsruhe.de] out:  3  141.52.249.254  1.390 ms  1.515 ms  1.660 ms
+[iraplab1.iralab.uni-karlsruhe.de] out:  4  141.52.249.226  5.739 ms 141.52.249.227  1.780 ms  1.935 ms
+[iraplab1.iralab.uni-karlsruhe.de] out:  5  193.197.63.6  22.989 ms 188.1.244.197  14.339 ms 193.197.63.6  23.203 ms
+[iraplab1.iralab.uni-karlsruhe.de] out:  6  188.1.144.222  15.916 ms  15.846 ms  16.040 ms
+[iraplab1.iralab.uni-karlsruhe.de] out:  7  72.14.194.58  16.519 ms  16.413 ms  30.489 ms
+[iraplab1.iralab.uni-karlsruhe.de] out:  8  * 108.170.251.129  4.012 ms *
+[iraplab1.iralab.uni-karlsruhe.de] out:  9  209.85.248.157  7.666 ms 74.125.252.103  11.054 ms 108.170.236.83  10.112 ms
+[iraplab1.iralab.uni-karlsruhe.de] out: 10  8.8.8.8  16.467 ms  10.310 ms  10.978 ms
+[iraplab1.iralab.uni-karlsruhe.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.13.100.14  0.748 ms  0.932 ms  1.230 ms
+ 2  * * *
+ 3  141.52.249.254  1.390 ms  1.515 ms  1.660 ms
+ 4  141.52.249.226  5.739 ms 141.52.249.227  1.780 ms  1.935 ms
+ 5  193.197.63.6  22.989 ms 188.1.244.197  14.339 ms 193.197.63.6  23.203 ms
+ 6  188.1.144.222  15.916 ms  15.846 ms  16.040 ms
+ 7  72.14.194.58  16.519 ms  16.413 ms  30.489 ms
+ 8  * 108.170.251.129  4.012 ms *
+ 9  209.85.248.157  7.666 ms 74.125.252.103  11.054 ms 108.170.236.83  10.112 ms
+10  8.8.8.8  16.467 ms  10.310 ms  10.978 ms
+188.1.144.222
+Berlin (Bezirk Mitte)
+[iraplab2.iralab.uni-karlsruhe.de] sudo: traceroute -n 8.8.8.8
+[iraplab2.iralab.uni-karlsruhe.de] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[iraplab2.iralab.uni-karlsruhe.de] out:  1  129.13.100.14  0.765 ms  0.989 ms  1.119 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  2  129.13.70.201  24.951 ms  24.954 ms  25.020 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  3  141.52.249.254  1.517 ms  1.679 ms  1.847 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  4  141.52.249.226  1.849 ms 141.52.249.227  2.632 ms 141.52.249.226  1.526 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  5  193.197.63.6  2.209 ms 188.1.244.197  12.229 ms 193.197.63.6  2.323 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  6  129.143.60.115  4.197 ms  12.214 ms  4.132 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  7  72.14.194.58  9.809 ms 129.143.200.61  7.803 ms  8.178 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  8  108.170.251.193  3.815 ms 108.170.251.129  15.965 ms 108.170.251.193  21.148 ms
+[iraplab2.iralab.uni-karlsruhe.de] out:  9  209.85.240.233  4.811 ms 216.239.59.117  17.047 ms *
+[iraplab2.iralab.uni-karlsruhe.de] out: 10  8.8.8.8  10.547 ms *  26.982 ms
+[iraplab2.iralab.uni-karlsruhe.de] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.13.100.14  0.765 ms  0.989 ms  1.119 ms
+ 2  129.13.70.201  24.951 ms  24.954 ms  25.020 ms
+ 3  141.52.249.254  1.517 ms  1.679 ms  1.847 ms
+ 4  141.52.249.226  1.849 ms 141.52.249.227  2.632 ms 141.52.249.226  1.526 ms
+ 5  193.197.63.6  2.209 ms 188.1.244.197  12.229 ms 193.197.63.6  2.323 ms
+ 6  129.143.60.115  4.197 ms  12.214 ms  4.132 ms
+ 7  72.14.194.58  9.809 ms 129.143.200.61  7.803 ms  8.178 ms
+ 8  108.170.251.193  3.815 ms 108.170.251.129  15.965 ms 108.170.251.193  21.148 ms
+ 9  209.85.240.233  4.811 ms 216.239.59.117  17.047 ms *
+10  8.8.8.8  10.547 ms *  26.982 ms
+129.143.60.115
+Stuttgart
+[planetlab-1.ing.unimo.it] sudo: traceroute -n 8.8.8.8
+[planetlab-1.ing.unimo.it] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-1.ing.unimo.it] out:  1  155.185.54.254  0.234 ms  0.235 ms  0.199 ms
+[planetlab-1.ing.unimo.it] out:  2  155.185.255.252  13.987 ms  13.951 ms  14.028 ms
+[planetlab-1.ing.unimo.it] out:  3  155.185.255.1  23.419 ms  23.898 ms  23.711 ms
+[planetlab-1.ing.unimo.it] out:  4  193.204.219.81  24.369 ms  24.305 ms  24.152 ms
+[planetlab-1.ing.unimo.it] out:  5  90.147.80.5  25.808 ms  25.759 ms  25.625 ms
+[planetlab-1.ing.unimo.it] out:  6  90.147.80.17  29.925 ms  29.815 ms  29.720 ms
+[planetlab-1.ing.unimo.it] out:  7  72.14.214.105  26.675 ms  17.960 ms  22.657 ms
+[planetlab-1.ing.unimo.it] out:  8  * * *
+[planetlab-1.ing.unimo.it] out:  9  108.170.233.137  16.919 ms 74.125.251.247  23.568 ms 209.85.248.201  12.237 ms
+[planetlab-1.ing.unimo.it] out: 10  8.8.8.8  16.662 ms  10.639 ms  10.596 ms
+[planetlab-1.ing.unimo.it] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  155.185.54.254  0.234 ms  0.235 ms  0.199 ms
+ 2  155.185.255.252  13.987 ms  13.951 ms  14.028 ms
+ 3  155.185.255.1  23.419 ms  23.898 ms  23.711 ms
+ 4  193.204.219.81  24.369 ms  24.305 ms  24.152 ms
+ 5  90.147.80.5  25.808 ms  25.759 ms  25.625 ms
+ 6  90.147.80.17  29.925 ms  29.815 ms  29.720 ms
+ 7  72.14.214.105  26.675 ms  17.960 ms  22.657 ms
+ 8  * * *
+ 9  108.170.233.137  16.919 ms 74.125.251.247  23.568 ms 209.85.248.201  12.237 ms
+10  8.8.8.8  16.662 ms  10.639 ms  10.596 ms
+90.147.80.17
+Rome
+[planetlab-5.eecs.cwru.edu] sudo: traceroute -n 8.8.8.8
+[planetlab-5.eecs.cwru.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab-5.eecs.cwru.edu] out:  1  129.22.150.2  0.218 ms  0.256 ms  0.246 ms
+[planetlab-5.eecs.cwru.edu] out:  2  10.2.0.98  0.374 ms  0.468 ms  0.401 ms
+[planetlab-5.eecs.cwru.edu] out:  3  10.2.0.241  0.448 ms  0.503 ms  0.534 ms
+[planetlab-5.eecs.cwru.edu] out:  4  199.18.156.65  0.799 ms  0.785 ms  0.771 ms
+[planetlab-5.eecs.cwru.edu] out:  5  199.218.39.198  0.758 ms  0.741 ms  0.896 ms
+[planetlab-5.eecs.cwru.edu] out:  6  199.218.20.94  0.889 ms  0.812 ms  0.787 ms
+[planetlab-5.eecs.cwru.edu] out:  7  199.218.39.253  4.490 ms  4.482 ms  4.457 ms
+[planetlab-5.eecs.cwru.edu] out:  8  199.218.39.242  7.048 ms  7.240 ms  7.256 ms
+[planetlab-5.eecs.cwru.edu] out:  9  64.57.29.65  11.664 ms  11.642 ms  11.590 ms
+[planetlab-5.eecs.cwru.edu] out: 10  162.252.70.87  11.872 ms  11.813 ms  11.934 ms
+[planetlab-5.eecs.cwru.edu] out: 11  162.252.70.78  11.768 ms  11.768 ms  11.837 ms
+[planetlab-5.eecs.cwru.edu] out: 12  64.57.29.130  11.728 ms  12.067 ms  12.259 ms
+[planetlab-5.eecs.cwru.edu] out: 13  72.14.220.117  11.513 ms 74.125.49.146  11.675 ms  11.651 ms
+[planetlab-5.eecs.cwru.edu] out: 14  * * 108.170.244.1  11.742 ms
+[planetlab-5.eecs.cwru.edu] out: 15  74.125.37.7  11.913 ms 209.85.254.181  11.585 ms 72.14.233.105  11.856 ms
+[planetlab-5.eecs.cwru.edu] out: 16  8.8.8.8  11.716 ms  11.649 ms  11.643 ms
+[planetlab-5.eecs.cwru.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.22.150.2  0.218 ms  0.256 ms  0.246 ms
+ 2  10.2.0.98  0.374 ms  0.468 ms  0.401 ms
+ 3  10.2.0.241  0.448 ms  0.503 ms  0.534 ms
+ 4  199.18.156.65  0.799 ms  0.785 ms  0.771 ms
+ 5  199.218.39.198  0.758 ms  0.741 ms  0.896 ms
+ 6  199.218.20.94  0.889 ms  0.812 ms  0.787 ms
+ 7  199.218.39.253  4.490 ms  4.482 ms  4.457 ms
+ 8  199.218.39.242  7.048 ms  7.240 ms  7.256 ms
+ 9  64.57.29.65  11.664 ms  11.642 ms  11.590 ms
+10  162.252.70.87  11.872 ms  11.813 ms  11.934 ms
+11  162.252.70.78  11.768 ms  11.768 ms  11.837 ms
+12  64.57.29.130  11.728 ms  12.067 ms  12.259 ms
+13  72.14.220.117  11.513 ms 74.125.49.146  11.675 ms  11.651 ms
+14  * * 108.170.244.1  11.742 ms
+15  74.125.37.7  11.913 ms 209.85.254.181  11.585 ms 72.14.233.105  11.856 ms
+16  8.8.8.8  11.716 ms  11.649 ms  11.643 ms
+64.57.29.130
+Ann Arbor
+[planetlab1.cs.ubc.ca] sudo: traceroute -n 8.8.8.8
+[planetlab1.cs.ubc.ca] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.cs.ubc.ca] out:  1  142.103.2.253  3.388 ms  5.096 ms  3.390 ms
+[planetlab1.cs.ubc.ca] out:  2  142.103.78.250  5.042 ms  5.058 ms  5.104 ms
+[planetlab1.cs.ubc.ca] out:  3  137.82.123.137  4.591 ms  4.069 ms  3.561 ms
+[planetlab1.cs.ubc.ca] out:  4  134.87.0.58  5.137 ms  4.599 ms  4.158 ms
+[planetlab1.cs.ubc.ca] out:  5  199.212.24.64  4.112 ms  3.583 ms  5.113 ms
+[planetlab1.cs.ubc.ca] out:  6  206.81.82.189  6.773 ms  8.286 ms  7.770 ms
+[planetlab1.cs.ubc.ca] out:  7  207.231.242.20  7.146 ms  6.951 ms  6.465 ms
+[planetlab1.cs.ubc.ca] out:  8  108.170.245.113  7.218 ms  7.970 ms *
+[planetlab1.cs.ubc.ca] out:  9  209.85.250.57  6.915 ms 209.85.249.155  8.706 ms 209.85.254.93  8.502 ms
+[planetlab1.cs.ubc.ca] out: 10  8.8.8.8  8.371 ms  8.274 ms  8.068 ms
+[planetlab1.cs.ubc.ca] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  142.103.2.253  3.388 ms  5.096 ms  3.390 ms
+ 2  142.103.78.250  5.042 ms  5.058 ms  5.104 ms
+ 3  137.82.123.137  4.591 ms  4.069 ms  3.561 ms
+ 4  134.87.0.58  5.137 ms  4.599 ms  4.158 ms
+ 5  199.212.24.64  4.112 ms  3.583 ms  5.113 ms
+ 6  206.81.82.189  6.773 ms  8.286 ms  7.770 ms
+ 7  207.231.242.20  7.146 ms  6.951 ms  6.465 ms
+ 8  108.170.245.113  7.218 ms  7.970 ms *
+ 9  209.85.250.57  6.915 ms 209.85.249.155  8.706 ms 209.85.254.93  8.502 ms
+10  8.8.8.8  8.371 ms  8.274 ms  8.068 ms
+207.231.242.20
+Seattle
+[planetlab1.pop-mg.rnp.br] sudo: traceroute -n 8.8.8.8
+[planetlab1.pop-mg.rnp.br] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.pop-mg.rnp.br] out:  1  200.19.159.33  1.116 ms  1.117 ms  1.148 ms
+[planetlab1.pop-mg.rnp.br] out:  2  200.131.0.2  0.252 ms  0.403 ms  0.460 ms
+[planetlab1.pop-mg.rnp.br] out:  3  200.143.253.161  0.208 ms  0.199 ms  0.194 ms
+[planetlab1.pop-mg.rnp.br] out:  4  200.143.252.73  9.179 ms  9.194 ms  9.185 ms
+[planetlab1.pop-mg.rnp.br] out:  5  187.16.216.55  9.948 ms  9.957 ms 187.16.218.58  10.160 ms
+[planetlab1.pop-mg.rnp.br] out:  6  108.170.245.129  10.474 ms  10.629 ms  10.621 ms
+[planetlab1.pop-mg.rnp.br] out:  7  72.14.236.157  10.579 ms 216.239.56.55  11.380 ms 108.170.232.43  10.210 ms
+[planetlab1.pop-mg.rnp.br] out:  8  8.8.8.8  10.107 ms  10.186 ms  10.167 ms
+[planetlab1.pop-mg.rnp.br] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  200.19.159.33  1.116 ms  1.117 ms  1.148 ms
+ 2  200.131.0.2  0.252 ms  0.403 ms  0.460 ms
+ 3  200.143.253.161  0.208 ms  0.199 ms  0.194 ms
+ 4  200.143.252.73  9.179 ms  9.194 ms  9.185 ms
+ 5  187.16.216.55  9.948 ms  9.957 ms 187.16.218.58  10.160 ms
+ 6  108.170.245.129  10.474 ms  10.629 ms  10.621 ms
+ 7  72.14.236.157  10.579 ms 216.239.56.55  11.380 ms 108.170.232.43  10.210 ms
+ 8  8.8.8.8  10.107 ms  10.186 ms  10.167 ms
+187.16.216.55
+São João del Rei
+[planetlab1.dtc.umn.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.dtc.umn.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.dtc.umn.edu] out:  1  146.57.249.126  0.524 ms  0.526 ms  0.543 ms
+[planetlab1.dtc.umn.edu] out:  2  192.168.255.106  0.573 ms 192.168.255.34  0.504 ms  0.497 ms
+[planetlab1.dtc.umn.edu] out:  3  128.101.236.62  0.685 ms 128.101.236.60  0.659 ms 128.101.236.62  0.600 ms
+[planetlab1.dtc.umn.edu] out:  4  128.101.236.61  0.579 ms 146.57.255.164  0.619 ms 128.101.236.63  0.616 ms
+[planetlab1.dtc.umn.edu] out:  5  146.57.255.161  0.758 ms  0.775 ms 146.57.255.169  0.808 ms
+[planetlab1.dtc.umn.edu] out:  6  146.57.255.243  0.519 ms 146.57.252.193  1.154 ms  1.208 ms
+[planetlab1.dtc.umn.edu] out:  7  146.57.255.243  0.556 ms 162.252.70.106  8.689 ms 146.57.255.243  0.533 ms
+[planetlab1.dtc.umn.edu] out:  8  64.57.29.130  8.618 ms 162.252.70.106  8.678 ms 64.57.29.130  8.669 ms
+[planetlab1.dtc.umn.edu] out:  9  72.14.220.117  9.068 ms 64.57.29.130  8.640 ms  8.675 ms
+[planetlab1.dtc.umn.edu] out: 10  * 108.170.244.1  9.926 ms 72.14.220.117  8.954 ms
+[planetlab1.dtc.umn.edu] out: 11  * * 72.14.237.39  8.604 ms
+[planetlab1.dtc.umn.edu] out: 12  74.125.37.7  9.967 ms 8.8.8.8  9.845 ms  9.932 ms
+[planetlab1.dtc.umn.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  146.57.249.126  0.524 ms  0.526 ms  0.543 ms
+ 2  192.168.255.106  0.573 ms 192.168.255.34  0.504 ms  0.497 ms
+ 3  128.101.236.62  0.685 ms 128.101.236.60  0.659 ms 128.101.236.62  0.600 ms
+ 4  128.101.236.61  0.579 ms 146.57.255.164  0.619 ms 128.101.236.63  0.616 ms
+ 5  146.57.255.161  0.758 ms  0.775 ms 146.57.255.169  0.808 ms
+ 6  146.57.255.243  0.519 ms 146.57.252.193  1.154 ms  1.208 ms
+ 7  146.57.255.243  0.556 ms 162.252.70.106  8.689 ms 146.57.255.243  0.533 ms
+ 8  64.57.29.130  8.618 ms 162.252.70.106  8.678 ms 64.57.29.130  8.669 ms
+ 9  72.14.220.117  9.068 ms 64.57.29.130  8.640 ms  8.675 ms
+10  * 108.170.244.1  9.926 ms 72.14.220.117  8.954 ms
+11  * * 72.14.237.39  8.604 ms
+12  74.125.37.7  9.967 ms 8.8.8.8  9.845 ms  9.932 ms
+64.57.29.130
+Ann Arbor
+[plink.cs.uwaterloo.ca] sudo: traceroute -n 8.8.8.8
+[plink.cs.uwaterloo.ca] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[plink.cs.uwaterloo.ca] out:  1  129.97.74.1  4.922 ms  4.977 ms *
+[plink.cs.uwaterloo.ca] out:  2  172.16.3.5  0.721 ms  0.757 ms  0.725 ms
+[plink.cs.uwaterloo.ca] out:  3  172.31.0.149  0.622 ms  0.593 ms  0.501 ms
+[plink.cs.uwaterloo.ca] out:  4  172.31.0.161  1.270 ms  1.265 ms  1.261 ms
+[plink.cs.uwaterloo.ca] out:  5  172.16.31.117  8.533 ms  8.520 ms  8.503 ms
+[plink.cs.uwaterloo.ca] out:  6  172.16.32.149  1.420 ms  1.560 ms  1.578 ms
+[plink.cs.uwaterloo.ca] out:  7  66.97.28.65  1.548 ms  1.506 ms  1.527 ms
+[plink.cs.uwaterloo.ca] out:  8  66.97.16.109  5.117 ms  5.101 ms  5.089 ms
+[plink.cs.uwaterloo.ca] out:  9  66.97.16.26  5.073 ms  5.005 ms  4.853 ms
+[plink.cs.uwaterloo.ca] out: 10  74.125.48.230  4.594 ms  4.663 ms  4.545 ms
+[plink.cs.uwaterloo.ca] out: 11  108.170.250.225  4.694 ms 108.170.250.241  5.116 ms  5.080 ms
+[plink.cs.uwaterloo.ca] out: 12  108.170.227.37  4.557 ms 108.170.227.31  3.760 ms 108.170.236.11  4.970 ms
+[plink.cs.uwaterloo.ca] out: 13  8.8.8.8  4.538 ms  4.393 ms  4.587 ms
+[plink.cs.uwaterloo.ca] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.97.74.1  4.922 ms  4.977 ms *
+ 2  172.16.3.5  0.721 ms  0.757 ms  0.725 ms
+ 3  172.31.0.149  0.622 ms  0.593 ms  0.501 ms
+ 4  172.31.0.161  1.270 ms  1.265 ms  1.261 ms
+ 5  172.16.31.117  8.533 ms  8.520 ms  8.503 ms
+ 6  172.16.32.149  1.420 ms  1.560 ms  1.578 ms
+ 7  66.97.28.65  1.548 ms  1.506 ms  1.527 ms
+ 8  66.97.16.109  5.117 ms  5.101 ms  5.089 ms
+ 9  66.97.16.26  5.073 ms  5.005 ms  4.853 ms
+10  74.125.48.230  4.594 ms  4.663 ms  4.545 ms
+11  108.170.250.225  4.694 ms 108.170.250.241  5.116 ms  5.080 ms
+12  108.170.227.37  4.557 ms 108.170.227.31  3.760 ms 108.170.236.11  4.970 ms
+13  8.8.8.8  4.538 ms  4.393 ms  4.587 ms
+66.97.16.26
+Bowmanville
+[planetlab1.koganei.itrc.net] sudo: traceroute -n 8.8.8.8
+[planetlab1.koganei.itrc.net] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.koganei.itrc.net] out:  1  133.69.32.129  0.945 ms  1.122 ms  1.229 ms
+[planetlab1.koganei.itrc.net] out:  2  203.181.248.134  1.680 ms  1.794 ms  1.912 ms
+[planetlab1.koganei.itrc.net] out:  3  * * *
+[planetlab1.koganei.itrc.net] out:  4  202.249.2.189  2.169 ms  2.184 ms  2.302 ms
+[planetlab1.koganei.itrc.net] out:  5  108.170.242.97  2.288 ms 108.170.242.161  2.118 ms *
+[planetlab1.koganei.itrc.net] out:  6  108.170.238.81  2.252 ms 209.85.143.49  2.337 ms 209.85.143.45  2.215 ms
+[planetlab1.koganei.itrc.net] out:  7  8.8.8.8  1.991 ms  1.682 ms  1.787 ms
+[planetlab1.koganei.itrc.net] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  133.69.32.129  0.945 ms  1.122 ms  1.229 ms
+ 2  203.181.248.134  1.680 ms  1.794 ms  1.912 ms
+ 3  * * *
+ 4  202.249.2.189  2.169 ms  2.184 ms  2.302 ms
+ 5  108.170.242.97  2.288 ms 108.170.242.161  2.118 ms *
+ 6  108.170.238.81  2.252 ms 209.85.143.49  2.337 ms 209.85.143.45  2.215 ms
+ 7  8.8.8.8  1.991 ms  1.682 ms  1.787 ms
+202.249.2.189
+Sagamihara
+[planetlab2.koganei.itrc.net] sudo: traceroute -n 8.8.8.8
+[planetlab2.koganei.itrc.net] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.koganei.itrc.net] out:  1  133.69.32.129  0.805 ms  1.051 ms  1.246 ms
+[planetlab2.koganei.itrc.net] out:  2  203.181.248.134  1.725 ms  1.744 ms  1.767 ms
+[planetlab2.koganei.itrc.net] out:  3  * * *
+[planetlab2.koganei.itrc.net] out:  4  202.249.2.189  2.058 ms  2.215 ms  2.254 ms
+[planetlab2.koganei.itrc.net] out:  5  * * 108.170.242.97  2.766 ms
+[planetlab2.koganei.itrc.net] out:  6  209.85.250.27  2.589 ms 108.170.238.85  2.198 ms 74.125.37.227  2.044 ms
+[planetlab2.koganei.itrc.net] out:  7  8.8.8.8  2.252 ms  1.735 ms  1.703 ms
+[planetlab2.koganei.itrc.net] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  133.69.32.129  0.805 ms  1.051 ms  1.246 ms
+ 2  203.181.248.134  1.725 ms  1.744 ms  1.767 ms
+ 3  * * *
+ 4  202.249.2.189  2.058 ms  2.215 ms  2.254 ms
+ 5  * * 108.170.242.97  2.766 ms
+ 6  209.85.250.27  2.589 ms 108.170.238.85  2.198 ms 74.125.37.227  2.044 ms
+ 7  8.8.8.8  2.252 ms  1.735 ms  1.703 ms
+202.249.2.189
+Sagamihara
+[planetlab2.cesnet.cz] sudo: traceroute -n 8.8.8.8
+[planetlab2.cesnet.cz] out: 'vserver ... suexec' is supported for running vservers only; aborting...
+[planetlab2.cesnet.cz] out: 
+
+'vserver ... suexec' is supported for running vservers only; aborting...
+
+
+[planetlab1.cesnet.cz] sudo: traceroute -n 8.8.8.8
+[planetlab1.cesnet.cz] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.cesnet.cz] out:  1  195.113.161.65  3.054 ms  3.152 ms  3.283 ms
+[planetlab1.cesnet.cz] out:  2  195.113.235.109  3.057 ms  3.036 ms  2.943 ms
+[planetlab1.cesnet.cz] out:  3  195.113.157.70  0.744 ms  0.745 ms  0.720 ms
+[planetlab1.cesnet.cz] out:  4  108.170.245.33  0.700 ms  0.722 ms  0.696 ms
+[planetlab1.cesnet.cz] out:  5  108.170.237.193  0.676 ms 216.239.43.73  0.726 ms 216.239.43.75  0.702 ms
+[planetlab1.cesnet.cz] out:  6  8.8.8.8  0.608 ms  0.620 ms  0.648 ms
+[planetlab1.cesnet.cz] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  195.113.161.65  3.054 ms  3.152 ms  3.283 ms
+ 2  195.113.235.109  3.057 ms  3.036 ms  2.943 ms
+ 3  195.113.157.70  0.744 ms  0.745 ms  0.720 ms
+ 4  108.170.245.33  0.700 ms  0.722 ms  0.696 ms
+ 5  108.170.237.193  0.676 ms 216.239.43.73  0.726 ms 216.239.43.75  0.702 ms
+ 6  8.8.8.8  0.608 ms  0.620 ms  0.648 ms
+195.113.157.70
+Prague
+[lefthand.eecs.harvard.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.postel.org] sudo: traceroute -n 8.8.8.8
+[planetlab1.postel.org] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.postel.org] out:  1  206.117.37.1  10.880 ms  10.823 ms  15.591 ms
+[planetlab1.postel.org] out:  2  198.32.16.81  10.968 ms  11.111 ms  17.795 ms
+[planetlab1.postel.org] out:  3  137.164.23.225  23.413 ms  23.423 ms  12.788 ms
+[planetlab1.postel.org] out:  4  74.125.49.165  12.316 ms  12.123 ms  12.109 ms
+[planetlab1.postel.org] out:  5  * 108.170.247.161  12.105 ms  12.102 ms
+[planetlab1.postel.org] out:  6  216.239.41.25  12.871 ms 209.85.240.65  12.884 ms 108.170.238.5  12.233 ms
+[planetlab1.postel.org] out:  7  8.8.8.8  11.830 ms  12.077 ms  11.996 ms
+[planetlab1.postel.org] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  206.117.37.1  10.880 ms  10.823 ms  15.591 ms
+ 2  198.32.16.81  10.968 ms  11.111 ms  17.795 ms
+ 3  137.164.23.225  23.413 ms  23.423 ms  12.788 ms
+ 4  74.125.49.165  12.316 ms  12.123 ms  12.109 ms
+ 5  * 108.170.247.161  12.105 ms  12.102 ms
+ 6  216.239.41.25  12.871 ms 209.85.240.65  12.884 ms 108.170.238.5  12.233 ms
+ 7  8.8.8.8  11.830 ms  12.077 ms  11.996 ms
+137.164.23.225
+Cypress
+[planetlab02.cs.washington.edu] sudo: traceroute -n 8.8.8.8
+[planetlab02.cs.washington.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab02.cs.washington.edu] out:  1  128.208.4.102  0.269 ms  0.238 ms  0.215 ms
+[planetlab02.cs.washington.edu] out:  2  198.48.66.1  1.803 ms  1.829 ms  1.859 ms
+[planetlab02.cs.washington.edu] out:  3  10.132.1.75  0.491 ms  0.468 ms  2.378 ms
+[planetlab02.cs.washington.edu] out:  4  209.124.190.134  1.149 ms  1.108 ms  1.085 ms
+[planetlab02.cs.washington.edu] out:  5  72.14.223.77  2.276 ms  0.813 ms  0.803 ms
+[planetlab02.cs.washington.edu] out:  6  * 108.170.245.113  1.040 ms  1.022 ms
+[planetlab02.cs.washington.edu] out:  7  209.85.250.123  1.873 ms 209.85.253.127  0.745 ms 216.239.63.91  1.761 ms
+[planetlab02.cs.washington.edu] out:  8  8.8.8.8  2.076 ms  1.233 ms  1.202 ms
+[planetlab02.cs.washington.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  128.208.4.102  0.269 ms  0.238 ms  0.215 ms
+ 2  198.48.66.1  1.803 ms  1.829 ms  1.859 ms
+ 3  10.132.1.75  0.491 ms  0.468 ms  2.378 ms
+ 4  209.124.190.134  1.149 ms  1.108 ms  1.085 ms
+ 5  72.14.223.77  2.276 ms  0.813 ms  0.803 ms
+ 6  * 108.170.245.113  1.040 ms  1.022 ms
+ 7  209.85.250.123  1.873 ms 209.85.253.127  0.745 ms 216.239.63.91  1.761 ms
+ 8  8.8.8.8  2.076 ms  1.233 ms  1.202 ms
+209.124.190.134
+Seattle
+[planetlab2.pop-mg.rnp.br] sudo: traceroute -n 8.8.8.8
+[planetlab2.pop-mg.rnp.br] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.pop-mg.rnp.br] out:  1  200.19.159.33  0.990 ms * *
+[planetlab2.pop-mg.rnp.br] out:  2  200.131.0.2  0.592 ms  0.672 ms  0.772 ms
+[planetlab2.pop-mg.rnp.br] out:  3  200.143.253.161  10.217 ms  0.244 ms  0.242 ms
+[planetlab2.pop-mg.rnp.br] out:  4  200.143.252.73  9.182 ms  9.197 ms  9.190 ms
+[planetlab2.pop-mg.rnp.br] out:  5  187.16.218.58  10.134 ms  10.127 ms  10.119 ms
+[planetlab2.pop-mg.rnp.br] out:  6  108.170.245.129  10.066 ms  10.093 ms  10.070 ms
+[planetlab2.pop-mg.rnp.br] out:  7  66.249.94.255  10.564 ms 216.239.56.47  10.087 ms 216.239.56.57  10.559 ms
+[planetlab2.pop-mg.rnp.br] out:  8  8.8.8.8  10.044 ms  10.133 ms  9.973 ms
+[planetlab2.pop-mg.rnp.br] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  200.19.159.33  0.990 ms * *
+ 2  200.131.0.2  0.592 ms  0.672 ms  0.772 ms
+ 3  200.143.253.161  10.217 ms  0.244 ms  0.242 ms
+ 4  200.143.252.73  9.182 ms  9.197 ms  9.190 ms
+ 5  187.16.218.58  10.134 ms  10.127 ms  10.119 ms
+ 6  108.170.245.129  10.066 ms  10.093 ms  10.070 ms
+ 7  66.249.94.255  10.564 ms 216.239.56.47  10.087 ms 216.239.56.57  10.559 ms
+ 8  8.8.8.8  10.044 ms  10.133 ms  9.973 ms
+187.16.218.58
+São João del Rei
+[planetlab04.cs.washington.edu] sudo: traceroute -n 8.8.8.8
+[planetlab04.cs.washington.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab04.cs.washington.edu] out:  1  128.208.4.102  0.318 ms  0.286 ms  0.269 ms
+[planetlab04.cs.washington.edu] out:  2  198.48.66.1  10.826 ms  10.828 ms  10.875 ms
+[planetlab04.cs.washington.edu] out:  3  10.132.1.75  3.526 ms  4.117 ms  2.605 ms
+[planetlab04.cs.washington.edu] out:  4  209.124.190.134  8.887 ms  11.006 ms  15.628 ms
+[planetlab04.cs.washington.edu] out:  5  72.14.223.77  8.389 ms  11.699 ms  15.635 ms
+[planetlab04.cs.washington.edu] out:  6  108.170.245.113  9.251 ms * *
+[planetlab04.cs.washington.edu] out:  7  209.85.249.109  4.097 ms 209.85.248.137  13.972 ms 108.170.231.27  7.111 ms
+[planetlab04.cs.washington.edu] out:  8  8.8.8.8  5.180 ms  20.553 ms  5.831 ms
+[planetlab04.cs.washington.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  128.208.4.102  0.318 ms  0.286 ms  0.269 ms
+ 2  198.48.66.1  10.826 ms  10.828 ms  10.875 ms
+ 3  10.132.1.75  3.526 ms  4.117 ms  2.605 ms
+ 4  209.124.190.134  8.887 ms  11.006 ms  15.628 ms
+ 5  72.14.223.77  8.389 ms  11.699 ms  15.635 ms
+ 6  108.170.245.113  9.251 ms * *
+ 7  209.85.249.109  4.097 ms 209.85.248.137  13.972 ms 108.170.231.27  7.111 ms
+ 8  8.8.8.8  5.180 ms  20.553 ms  5.831 ms
+209.124.190.134
+Seattle
+[planetlab2.inf.ethz.ch] sudo: traceroute -n 8.8.8.8
+[planetlab2.inf.ethz.ch] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.inf.ethz.ch] out:  1  192.33.90.65  0.509 ms  0.781 ms  0.973 ms
+[planetlab2.inf.ethz.ch] out:  2  192.33.92.166  0.294 ms  0.311 ms  0.327 ms
+[planetlab2.inf.ethz.ch] out:  3  130.59.36.34  0.753 ms  1.002 ms  1.051 ms
+[planetlab2.inf.ethz.ch] out:  4  130.59.38.110  0.624 ms  0.639 ms  0.653 ms
+[planetlab2.inf.ethz.ch] out:  5  72.14.195.4  1.075 ms  1.080 ms  1.109 ms
+[planetlab2.inf.ethz.ch] out:  6  209.85.247.131  1.213 ms 209.85.243.127  1.257 ms 209.85.243.125  1.272 ms
+[planetlab2.inf.ethz.ch] out:  7  8.8.8.8  0.922 ms  0.894 ms  0.911 ms
+[planetlab2.inf.ethz.ch] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  192.33.90.65  0.509 ms  0.781 ms  0.973 ms
+ 2  192.33.92.166  0.294 ms  0.311 ms  0.327 ms
+ 3  130.59.36.34  0.753 ms  1.002 ms  1.051 ms
+ 4  130.59.38.110  0.624 ms  0.639 ms  0.653 ms
+ 5  72.14.195.4  1.075 ms  1.080 ms  1.109 ms
+ 6  209.85.247.131  1.213 ms 209.85.243.127  1.257 ms 209.85.243.125  1.272 ms
+ 7  8.8.8.8  0.922 ms  0.894 ms  0.911 ms
+130.59.38.110
+Zurich
+[planetlab4.mini.pw.edu.pl] sudo: traceroute -n 8.8.8.8
+[planetlab4.mini.pw.edu.pl] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab4.mini.pw.edu.pl] out:  1  194.29.178.254  1.057 ms  1.500 ms  1.953 ms
+[planetlab4.mini.pw.edu.pl] out:  2  194.29.132.1  0.306 ms  0.299 ms  0.287 ms
+[planetlab4.mini.pw.edu.pl] out:  3  194.29.132.164  0.242 ms  0.225 ms  0.214 ms
+[planetlab4.mini.pw.edu.pl] out:  4  148.81.253.69  0.477 ms  0.464 ms  0.447 ms
+[planetlab4.mini.pw.edu.pl] out:  5  195.187.255.52  0.428 ms  0.414 ms  0.396 ms
+[planetlab4.mini.pw.edu.pl] out:  6  195.187.255.201  0.693 ms  0.601 ms  0.587 ms
+[planetlab4.mini.pw.edu.pl] out:  7  212.91.0.250  0.560 ms  0.592 ms  0.583 ms
+[planetlab4.mini.pw.edu.pl] out:  8  108.170.250.209  0.553 ms 108.170.250.193  0.914 ms 108.170.250.209  0.990 ms
+[planetlab4.mini.pw.edu.pl] out:  9  108.170.233.121  1.174 ms 209.85.255.235  2.226 ms 108.170.233.149  1.079 ms
+[planetlab4.mini.pw.edu.pl] out: 10  8.8.8.8  0.967 ms  0.983 ms  0.968 ms
+[planetlab4.mini.pw.edu.pl] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  194.29.178.254  1.057 ms  1.500 ms  1.953 ms
+ 2  194.29.132.1  0.306 ms  0.299 ms  0.287 ms
+ 3  194.29.132.164  0.242 ms  0.225 ms  0.214 ms
+ 4  148.81.253.69  0.477 ms  0.464 ms  0.447 ms
+ 5  195.187.255.52  0.428 ms  0.414 ms  0.396 ms
+ 6  195.187.255.201  0.693 ms  0.601 ms  0.587 ms
+ 7  212.91.0.250  0.560 ms  0.592 ms  0.583 ms
+ 8  108.170.250.209  0.553 ms 108.170.250.193  0.914 ms 108.170.250.209  0.990 ms
+ 9  108.170.233.121  1.174 ms 209.85.255.235  2.226 ms 108.170.233.149  1.079 ms
+10  8.8.8.8  0.967 ms  0.983 ms  0.968 ms
+212.91.0.250
+Warsaw
+[planetlab3.williams.edu] sudo: traceroute -n 8.8.8.8
+[planetlab3.williams.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab3.williams.edu] out:  1  137.165.1.65  2.835 ms  3.917 ms  4.703 ms
+[planetlab3.williams.edu] out:  2  137.165.1.61  1.184 ms  1.292 ms  1.285 ms
+[planetlab3.williams.edu] out:  3  137.165.1.130  1.213 ms  1.202 ms  1.254 ms
+[planetlab3.williams.edu] out:  4  209.51.184.201  10.106 ms  10.225 ms  10.389 ms
+[planetlab3.williams.edu] out:  5  206.130.10.41  10.383 ms  10.440 ms 198.32.160.130  10.526 ms
+[planetlab3.williams.edu] out:  6  * * *
+[planetlab3.williams.edu] out:  7  108.170.238.199  10.813 ms 209.85.240.107  10.909 ms 209.85.240.227  10.903 ms
+[planetlab3.williams.edu] out:  8  8.8.8.8  10.891 ms  10.051 ms  10.286 ms
+[planetlab3.williams.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  137.165.1.65  2.835 ms  3.917 ms  4.703 ms
+ 2  137.165.1.61  1.184 ms  1.292 ms  1.285 ms
+ 3  137.165.1.130  1.213 ms  1.202 ms  1.254 ms
+ 4  209.51.184.201  10.106 ms  10.225 ms  10.389 ms
+ 5  206.130.10.41  10.383 ms  10.440 ms 198.32.160.130  10.526 ms
+ 6  * * *
+ 7  108.170.238.199  10.813 ms 209.85.240.107  10.909 ms 209.85.240.227  10.903 ms
+ 8  8.8.8.8  10.891 ms  10.051 ms  10.286 ms
+206.130.10.41
+New York
+[planetlabone.ccs.neu.edu] sudo: traceroute -n 8.8.8.8
+[planetlabone.ccs.neu.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlabone.ccs.neu.edu] out:  1  129.10.120.2  0.350 ms  2.796 ms  2.956 ms
+[planetlabone.ccs.neu.edu] out:  2  10.2.29.52  0.325 ms  0.283 ms  0.299 ms
+[planetlabone.ccs.neu.edu] out:  3  10.2.29.33  0.836 ms  0.891 ms  0.928 ms
+[planetlabone.ccs.neu.edu] out:  4  10.2.29.230  0.908 ms  0.859 ms  0.917 ms
+[planetlabone.ccs.neu.edu] out:  5  18.122.48.45  1.717 ms  1.767 ms  1.746 ms
+[planetlabone.ccs.neu.edu] out:  6  198.71.47.61  1.254 ms  1.323 ms  1.353 ms
+[planetlabone.ccs.neu.edu] out:  7  162.252.70.99  3.773 ms  3.890 ms  3.834 ms
+[planetlabone.ccs.neu.edu] out:  8  162.252.70.101  6.547 ms  6.489 ms  6.520 ms
+[planetlabone.ccs.neu.edu] out:  9  64.57.20.215  6.503 ms  6.639 ms  6.505 ms
+[planetlabone.ccs.neu.edu] out: 10  162.252.69.201  6.317 ms  6.182 ms 162.252.69.199  6.317 ms
+[planetlabone.ccs.neu.edu] out: 11  * * *
+[planetlabone.ccs.neu.edu] out: 12  209.85.245.119  6.628 ms 209.85.243.191  6.530 ms 209.85.240.101  7.008 ms
+[planetlabone.ccs.neu.edu] out: 13  8.8.8.8  6.810 ms  6.754 ms  6.860 ms
+[planetlabone.ccs.neu.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  129.10.120.2  0.350 ms  2.796 ms  2.956 ms
+ 2  10.2.29.52  0.325 ms  0.283 ms  0.299 ms
+ 3  10.2.29.33  0.836 ms  0.891 ms  0.928 ms
+ 4  10.2.29.230  0.908 ms  0.859 ms  0.917 ms
+ 5  18.122.48.45  1.717 ms  1.767 ms  1.746 ms
+ 6  198.71.47.61  1.254 ms  1.323 ms  1.353 ms
+ 7  162.252.70.99  3.773 ms  3.890 ms  3.834 ms
+ 8  162.252.70.101  6.547 ms  6.489 ms  6.520 ms
+ 9  64.57.20.215  6.503 ms  6.639 ms  6.505 ms
+10  162.252.69.201  6.317 ms  6.182 ms 162.252.69.199  6.317 ms
+11  * * *
+12  209.85.245.119  6.628 ms 209.85.243.191  6.530 ms 209.85.240.101  7.008 ms
+13  8.8.8.8  6.810 ms  6.754 ms  6.860 ms
+162.252.69.201
+Ann Arbor (Bryant Pattengill East)
+[planetlab1.cs.uoregon.edu] sudo: traceroute -n 8.8.8.8
+[planetlab1.cs.uoregon.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.cs.uoregon.edu] out:  1  * * *
+[planetlab1.cs.uoregon.edu] out:  2  * * *
+[planetlab1.cs.uoregon.edu] out:  3  10.252.253.129  1.009 ms 10.252.253.130  0.966 ms 10.252.253.129  0.974 ms
+[planetlab1.cs.uoregon.edu] out:  4  128.223.3.10  0.958 ms 128.223.3.9  0.944 ms  1.400 ms
+[planetlab1.cs.uoregon.edu] out:  5  198.32.165.254  3.601 ms  3.481 ms  4.216 ms
+[planetlab1.cs.uoregon.edu] out:  6  64.57.20.253  6.797 ms  7.313 ms  7.307 ms
+[planetlab1.cs.uoregon.edu] out:  7  * * *
+[planetlab1.cs.uoregon.edu] out:  8  108.170.245.113  6.727 ms  6.743 ms *
+[planetlab1.cs.uoregon.edu] out:  9  209.85.250.19  6.885 ms 108.170.237.191  7.216 ms 209.85.249.111  6.976 ms
+[planetlab1.cs.uoregon.edu] out: 10  8.8.8.8  6.418 ms  6.891 ms  6.529 ms
+[planetlab1.cs.uoregon.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  * * *
+ 3  10.252.253.129  1.009 ms 10.252.253.130  0.966 ms 10.252.253.129  0.974 ms
+ 4  128.223.3.10  0.958 ms 128.223.3.9  0.944 ms  1.400 ms
+ 5  198.32.165.254  3.601 ms  3.481 ms  4.216 ms
+ 6  64.57.20.253  6.797 ms  7.313 ms  7.307 ms
+ 7  * * *
+ 8  108.170.245.113  6.727 ms  6.743 ms *
+ 9  209.85.250.19  6.885 ms 108.170.237.191  7.216 ms 209.85.249.111  6.976 ms
+10  8.8.8.8  6.418 ms  6.891 ms  6.529 ms
+64.57.20.253
+Ann Arbor
+[planetlab1.comp.nus.edu.sg] sudo: traceroute -n 8.8.8.8
+[planetlab1.comp.nus.edu.sg] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab1.comp.nus.edu.sg] out:  1  137.132.80.98  0.435 ms  0.458 ms  0.512 ms
+[planetlab1.comp.nus.edu.sg] out:  2  172.18.176.129  0.380 ms  0.455 ms  0.525 ms
+[planetlab1.comp.nus.edu.sg] out:  3  172.18.176.180  0.128 ms * *
+[planetlab1.comp.nus.edu.sg] out:  4  172.18.176.35  0.629 ms  0.685 ms  0.753 ms
+[planetlab1.comp.nus.edu.sg] out:  5  172.18.187.9  0.511 ms  0.582 ms  0.638 ms
+[planetlab1.comp.nus.edu.sg] out:  6  172.18.21.74  0.576 ms  0.640 ms  0.582 ms
+[planetlab1.comp.nus.edu.sg] out:  7  172.18.20.102  0.684 ms  0.799 ms  0.915 ms
+[planetlab1.comp.nus.edu.sg] out:  8  137.132.3.130  2.052 ms  1.995 ms  1.986 ms
+[planetlab1.comp.nus.edu.sg] out:  9  202.51.241.13  1.929 ms  1.936 ms  2.143 ms
+[planetlab1.comp.nus.edu.sg] out: 10  202.51.240.86  2.810 ms  2.983 ms  3.003 ms
+[planetlab1.comp.nus.edu.sg] out: 11  198.32.141.140  3.324 ms  3.519 ms  3.480 ms
+[planetlab1.comp.nus.edu.sg] out: 12  108.170.240.225  3.616 ms 108.170.240.161  3.750 ms 108.170.254.225  3.564 ms
+[planetlab1.comp.nus.edu.sg] out: 13  216.239.48.253  3.300 ms 64.233.175.69  2.918 ms 64.233.175.213  3.032 ms
+[planetlab1.comp.nus.edu.sg] out: 14  8.8.8.8  2.781 ms  2.659 ms  2.515 ms
+[planetlab1.comp.nus.edu.sg] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  137.132.80.98  0.435 ms  0.458 ms  0.512 ms
+ 2  172.18.176.129  0.380 ms  0.455 ms  0.525 ms
+ 3  172.18.176.180  0.128 ms * *
+ 4  172.18.176.35  0.629 ms  0.685 ms  0.753 ms
+ 5  172.18.187.9  0.511 ms  0.582 ms  0.638 ms
+ 6  172.18.21.74  0.576 ms  0.640 ms  0.582 ms
+ 7  172.18.20.102  0.684 ms  0.799 ms  0.915 ms
+ 8  137.132.3.130  2.052 ms  1.995 ms  1.986 ms
+ 9  202.51.241.13  1.929 ms  1.936 ms  2.143 ms
+10  202.51.240.86  2.810 ms  2.983 ms  3.003 ms
+11  198.32.141.140  3.324 ms  3.519 ms  3.480 ms
+12  108.170.240.225  3.616 ms 108.170.240.161  3.750 ms 108.170.254.225  3.564 ms
+13  216.239.48.253  3.300 ms 64.233.175.69  2.918 ms 64.233.175.213  3.032 ms
+14  8.8.8.8  2.781 ms  2.659 ms  2.515 ms
+198.32.141.140
+Houston
+[planetlab5.ie.cuhk.edu.hk] sudo: traceroute -n 8.8.8.8
+[planetlab5.ie.cuhk.edu.hk] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab5.ie.cuhk.edu.hk] out:  1  103.49.160.140  0.648 ms  0.742 ms  0.873 ms
+[planetlab5.ie.cuhk.edu.hk] out:  2  137.189.192.233  0.311 ms  0.309 ms  0.472 ms
+[planetlab5.ie.cuhk.edu.hk] out:  3  137.189.192.232  0.408 ms  0.404 ms  0.560 ms
+[planetlab5.ie.cuhk.edu.hk] out:  4  123.255.91.10  4.555 ms  4.544 ms  4.542 ms
+[planetlab5.ie.cuhk.edu.hk] out:  5  108.170.241.108  1.062 ms 108.170.241.79  1.236 ms 108.170.241.16  1.716 ms
+[planetlab5.ie.cuhk.edu.hk] out:  6  108.170.232.210  4.315 ms 209.85.249.156  9.650 ms 209.85.250.133  3.326 ms
+[planetlab5.ie.cuhk.edu.hk] out:  7  216.239.41.7  14.208 ms 216.239.46.119  12.984 ms 216.239.41.7  14.157 ms
+[planetlab5.ie.cuhk.edu.hk] out:  8  209.85.245.68  13.260 ms 209.85.247.53  16.152 ms 209.85.252.13  17.089 ms
+[planetlab5.ie.cuhk.edu.hk] out:  9  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 10  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 11  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 12  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 13  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 14  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 15  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 16  * * *
+[planetlab5.ie.cuhk.edu.hk] out: 17  8.8.8.8  12.759 ms  12.726 ms  13.165 ms
+[planetlab5.ie.cuhk.edu.hk] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  103.49.160.140  0.648 ms  0.742 ms  0.873 ms
+ 2  137.189.192.233  0.311 ms  0.309 ms  0.472 ms
+ 3  137.189.192.232  0.408 ms  0.404 ms  0.560 ms
+ 4  123.255.91.10  4.555 ms  4.544 ms  4.542 ms
+ 5  108.170.241.108  1.062 ms 108.170.241.79  1.236 ms 108.170.241.16  1.716 ms
+ 6  108.170.232.210  4.315 ms 209.85.249.156  9.650 ms 209.85.250.133  3.326 ms
+ 7  216.239.41.7  14.208 ms 216.239.46.119  12.984 ms 216.239.41.7  14.157 ms
+ 8  209.85.245.68  13.260 ms 209.85.247.53  16.152 ms 209.85.252.13  17.089 ms
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  8.8.8.8  12.759 ms  12.726 ms  13.165 ms
+123.255.91.10
+City of Victoria
+[planetlab2.cs.purdue.edu] sudo: traceroute -n 8.8.8.8
+[planetlab2.cs.purdue.edu] out: traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+[planetlab2.cs.purdue.edu] out:  1  * * *
+[planetlab2.cs.purdue.edu] out:  2  128.10.127.251  161.026 ms  83.058 ms  143.701 ms
+[planetlab2.cs.purdue.edu] out:  3  192.5.40.8  74.332 ms  73.090 ms  25.089 ms
+[planetlab2.cs.purdue.edu] out:  4  192.5.40.82  28.757 ms  21.764 ms  19.128 ms
+[planetlab2.cs.purdue.edu] out:  5  149.165.255.6  43.807 ms  30.203 ms  30.365 ms
+[planetlab2.cs.purdue.edu] out:  6  149.165.183.82  46.776 ms  30.891 ms  26.404 ms
+[planetlab2.cs.purdue.edu] out:  7  74.125.49.37  35.603 ms  30.709 ms  29.443 ms
+[planetlab2.cs.purdue.edu] out:  8  * 108.170.243.193  29.577 ms *
+[planetlab2.cs.purdue.edu] out:  9  66.249.94.35  48.969 ms 216.239.58.189  22.233 ms 74.125.37.43  34.150 ms
+[planetlab2.cs.purdue.edu] out: 10  * * *
+[planetlab2.cs.purdue.edu] out: 11  * * *
+[planetlab2.cs.purdue.edu] out: 12  * * *
+[planetlab2.cs.purdue.edu] out: 13  * * *
+[planetlab2.cs.purdue.edu] out: 14  * * *
+[planetlab2.cs.purdue.edu] out: 15  * * *
+[planetlab2.cs.purdue.edu] out: 16  * * *
+[planetlab2.cs.purdue.edu] out: 17  * * *
+[planetlab2.cs.purdue.edu] out: 18  * * *
+[planetlab2.cs.purdue.edu] out: 19  * * *
+[planetlab2.cs.purdue.edu] out: 20  * * *
+[planetlab2.cs.purdue.edu] out: 21  * * *
+[planetlab2.cs.purdue.edu] out: 22  * * *
+[planetlab2.cs.purdue.edu] out: 23  * * *
+[planetlab2.cs.purdue.edu] out: 24  * * *
+[planetlab2.cs.purdue.edu] out: 25  * * *
+[planetlab2.cs.purdue.edu] out: 26  * * *
+[planetlab2.cs.purdue.edu] out: 27  * * *
+[planetlab2.cs.purdue.edu] out: 28  * * *
+[planetlab2.cs.purdue.edu] out: 29  * * *
+[planetlab2.cs.purdue.edu] out: 30  * * *
+[planetlab2.cs.purdue.edu] out: 
+
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  128.10.127.251  161.026 ms  83.058 ms  143.701 ms
+ 3  192.5.40.8  74.332 ms  73.090 ms  25.089 ms
+ 4  192.5.40.82  28.757 ms  21.764 ms  19.128 ms
+ 5  149.165.255.6  43.807 ms  30.203 ms  30.365 ms
+ 6  149.165.183.82  46.776 ms  30.891 ms  26.404 ms
+ 7  74.125.49.37  35.603 ms  30.709 ms  29.443 ms
+ 8  * 108.170.243.193  29.577 ms *
+ 9  66.249.94.35  48.969 ms 216.239.58.189  22.233 ms 74.125.37.43  34.150 ms
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+149.165.183.82
+Bloomington
+
+Done.

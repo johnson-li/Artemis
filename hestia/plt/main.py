@@ -11,7 +11,7 @@ import hestia.experiment.main
 HOST_FILE = hestia.RESOURCE_PATH + '/hosts/hosts_plt'
 DB_FILE = hestia.RESOURCE_PATH + '/db/sip.db'
 USER_NAME = 'goettingenple_txp1'
-pool = ThreadPool(20)
+pool = ThreadPool(8)
 SSH_CLIENTS = {}
 PROGRAMME = ['direct', 'hit', 'miss', 'sid'][0]
 

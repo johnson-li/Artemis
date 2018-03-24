@@ -1,32 +1,40 @@
 import os
+import re
+import json
 
+import urllib2
 from fabric.api import *
+
+import sys
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
 
 env.warn_only = True
 env.skip_bad_hosts = True
 env.use_ssh_config = True
 env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config_planetlab'
 
-env.hosts = ['planetlab13.net.in.tum.de', 'planetlab1.informatik.uni-goettingen.de', 'planetlab1.upm.ro',
-             'planetlab2.informatik.uni-goettingen.de', 'planetlab-2.cs.ucy.ac.cy', 'planet4.cs.huji.ac.il',
-             'netissime2.planet-lab.eu', 'puri.mimuw.edu.pl', 'planetlab2.upm.ro', 'planetlab-2.ing.unimo.it',
-             'vicky.planetlab.ntua.gr', 'planetlab1.cs.uit.no', 'dplanet1.uoc.edu',
-             'planetvs2.informatik.uni-stuttgart.de', 'planetlab11.net.in.tum.de',
-             'planet-lab-node2.netgroup.uniroma2.it', 'kulcha.mimuw.edu.pl', 'planet3.cs.huji.ac.il',
-             'stella.planetlab.ntua.gr', 'ple44.planet-lab.eu', 'onelab2.pl.sophia.inria.fr', 'ple1.planet-lab.eu',
-             'aladdin.planetlab.extranet.uni-passau.de', 'netissime1.planet-lab.eu', 'ple1.cesnet.cz',
-             'ple42.planet-lab.eu', 'ple43.planet-lab.eu', 'ple41.planet-lab.eu', 'planetlab3.cs.uoregon.edu',
-             'planetlab3.eecs.umich.edu', 'planetlab1.utdallas.edu', 'planetlab1.cs.purdue.edu',
-             'planetlab-n1.wand.net.nz', 'planetlab3.cesnet.cz', 'planetlab-1.scie.uestc.edu.cn',
-             'planetlab-js1.cert.org.cn', 'planetlab1.temple.edu', 'saturn.planetlab.carleton.ca', 'planetlab1.unr.edu',
-             'planet-lab4.uba.ar', 'planetlab3.rutgers.edu', 'planetlab1.pop-pa.rnp.br', 'planetlab2.pop-pa.rnp.br',
-             'pl2.eng.monash.edu.au', 'pl1.eng.monash.edu.au', 'planetlab5.eecs.umich.edu', 'planetlab4.cs.uoregon.edu',
-             'planetlab03.cs.washington.edu', 'pl1.rcc.uottawa.ca', 'planetlab01.cs.washington.edu',
-             'planetlab-04.cs.princeton.edu', 'whitefall.planetlab.cs.umd.edu', 'node1.planetlab.albany.edu',
-             'planetlab2.c3sl.ufpr.br', 'planetlab4.postel.org', 'planetlab-2.calpoly-netlab.net',
-             'planetlab3.comp.nus.edu.sg', 'planetlab3.wail.wisc.edu', 'planetlab2.utdallas.edu',
-             'node2.planetlab.mathcs.emory.edu', 'planetlab5.williams.edu', 'planetlab4.williams.edu',
-             'node1.planetlab.mathcs.emory.edu', 'cs-planetlab3.cs.surrey.sfu.ca', 'planetlab2.dtc.umn.edu',
+env.hosts = [
+             #'planetlab13.net.in.tum.de', 'planetlab1.informatik.uni-goettingen.de', 'planetlab1.upm.ro',
+             #'planetlab2.informatik.uni-goettingen.de', 'planetlab-2.cs.ucy.ac.cy', 'planet4.cs.huji.ac.il',
+             #'netissime2.planet-lab.eu', 'puri.mimuw.edu.pl', 'planetlab2.upm.ro', 'planetlab-2.ing.unimo.it',
+             #'vicky.planetlab.ntua.gr', 'planetlab1.cs.uit.no', 'dplanet1.uoc.edu',
+             #'planetvs2.informatik.uni-stuttgart.de', 'planetlab11.net.in.tum.de',
+             #'planet-lab-node2.netgroup.uniroma2.it', 'kulcha.mimuw.edu.pl', 'planet3.cs.huji.ac.il',
+             #'stella.planetlab.ntua.gr', 'ple44.planet-lab.eu', 'onelab2.pl.sophia.inria.fr', 'ple1.planet-lab.eu',
+             #'aladdin.planetlab.extranet.uni-passau.de', 'netissime1.planet-lab.eu', 'ple1.cesnet.cz',
+             #'ple42.planet-lab.eu', 'ple43.planet-lab.eu', 'ple41.planet-lab.eu', 'planetlab3.cs.uoregon.edu',
+             #'planetlab3.eecs.umich.edu', 'planetlab1.utdallas.edu', 'planetlab1.cs.purdue.edu',
+             #'planetlab-n1.wand.net.nz', 'planetlab3.cesnet.cz', 'planetlab-1.scie.uestc.edu.cn',
+             #'planetlab-js1.cert.org.cn', 'planetlab1.temple.edu', 'saturn.planetlab.carleton.ca', 'planetlab1.unr.edu',
+             #'planet-lab4.uba.ar', 'planetlab3.rutgers.edu', 'planetlab1.pop-pa.rnp.br', 'planetlab2.pop-pa.rnp.br',
+             #'pl2.eng.monash.edu.au', 'pl1.eng.monash.edu.au', 'planetlab5.eecs.umich.edu', 'planetlab4.cs.uoregon.edu',
+             #'planetlab03.cs.washington.edu', 'pl1.rcc.uottawa.ca', 'planetlab01.cs.washington.edu',
+             #'planetlab-04.cs.princeton.edu', 'whitefall.planetlab.cs.umd.edu', 'node1.planetlab.albany.edu',
+             #'planetlab2.c3sl.ufpr.br', 'planetlab4.postel.org', 'planetlab-2.calpoly-netlab.net',
+             #'planetlab3.comp.nus.edu.sg', 'planetlab3.wail.wisc.edu', 'planetlab2.utdallas.edu',
+             #'node2.planetlab.mathcs.emory.edu', 'planetlab5.williams.edu', 'planetlab4.williams.edu',
+             #'node1.planetlab.mathcs.emory.edu', 'cs-planetlab3.cs.surrey.sfu.ca', 'planetlab2.dtc.umn.edu',
              'planetlab1.cs.uoregon.edu', 'planetlabone.ccs.neu.edu', 'planetlab1.comp.nus.edu.sg',
              'planetlab3.williams.edu', 'planetlab4.mini.pw.edu.pl', 'planetlab2.inf.ethz.ch',
              'planetlab5.ie.cuhk.edu.hk', 'planetlab2.cesnet.cz', 'planetlab1.cesnet.cz',
@@ -35,7 +43,8 @@ env.hosts = ['planetlab13.net.in.tum.de', 'planetlab1.informatik.uni-goettingen.
              'planetlab1.koganei.itrc.net', 'plink.cs.uwaterloo.ca', 'lefthand.eecs.harvard.edu',
              'planetlab1.dtc.umn.edu', 'planetlab-5.eecs.cwru.edu', 'planetlab1.postel.org', 'planetlab1.cs.ubc.ca',
              'ple2.cesnet.cz', 'nuc1.planet-lab.eu', 'planetlab-1.ing.unimo.it', 'iraplab1.iralab.uni-karlsruhe.de',
-             'iraplab2.iralab.uni-karlsruhe.de', 'dschinni.planetlab.extranet.uni-passau.de', 'ple2.planet-lab.eu']
+             'iraplab2.iralab.uni-karlsruhe.de', 'dschinni.planetlab.extranet.uni-passau.de', 'ple2.planet-lab.eu'
+            ]
 
 
 @parallel(pool_size=6)
@@ -81,9 +90,34 @@ def test_dns_delay():
 
 
 @parallel(pool_size=10)
-def traceroute():
-    output = sudo('traceroute 8.8.8.8')
+def trace_route():
+    result = sudo('traceroute -n 8.8.8.8')
+    fo = open("traceroute.csv", "a")
+    fo.write(env.host)
     ip = ''
     location = ''
-    gcp_ip = ''
-    print(output)
+    asn = ''
+    print(result)
+
+    lines = result.split("\n")
+    lines.reverse()
+    for line in lines:
+        s = re.search(r'\d+\.\d+\.\d+\.\d+', line)
+        if s is not None:
+            dns = s.group()
+            url = 'http://ip-api.com/json/' + dns
+            info = json.loads(urllib2.urlopen(url).read())
+            if 'isp' in info and info['isp'] != 'Google':
+                ip = dns
+                location = info['city']
+                asn= info['as']
+                break
+    fo.write(',' + ip + ',' + location + ',' + asn + '\n')
+    fo.close()
+    print(ip)
+    print(location)
+
+
+@parallel(pool_size=4)
+def host():
+    print(env.host)
