@@ -84,9 +84,6 @@ def start_servers():
     self_host = dict(zip([d[0] for d in c.description], c.fetchone()))
     if self_host['name'] == 'server':
         run('tmux ls || tmux new-session -d -s server')
-        #run('tmux new-window -t server:1')
-        #run('tmux send-keys -t server:0 "sudo /home/%s/Workspace/server/dns_server" ENTER' % (
-        #    'ubuntu' if AWS else 'johnsonli1993'))
         run('tmux send-keys -t server:0 "sudo /home/%s/Workspace/server/serviceid_server" ENTER' % (
             'ubuntu' if AWS else 'johnsonli1993'))
 
@@ -98,7 +95,6 @@ def stop_servers():
     c.execute("select * from instances where primaryIpv4Pub = '{}'".format(env.host))
     self_host = dict(zip([d[0] for d in c.description], c.fetchone()))
     if self_host['name'] == 'server':
-        #sudo('killall dns_server')
         sudo('killall serviceid_server')
 
 
