@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     ssize_t result;
     int fd;                         /* our socket */
     unsigned char buf[BUFSIZE];     /* receive buffer */
-    unsigned char send_buf[] = {'a', 'b', 'c'};     /* receive buffer */
+    unsigned char send_buf[1200];     /* receive buffer */
     inet_pton(AF_INET, "10.10.10.10", &(sa_gre.sin_addr));
     struct ifreq ifr;
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     }
 
     memset(&ifr, 0, sizeof(ifr));
-    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "br1");
+    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "lo");
     if (setsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, (void *) &ifr, sizeof(ifr)) < 0) {
         perror("bind to interface failed\n");
         return 0;
