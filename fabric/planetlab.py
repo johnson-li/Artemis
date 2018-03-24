@@ -6,7 +6,7 @@ import sys
 import urllib2
 from fabric.api import *
 
-from hestia.tools.available_plt_hosts import HOSTS_FILE
+from hestia import RESOURCE_PATH
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -17,6 +17,7 @@ env.use_ssh_config = True
 env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config_planetlab'
 
 env.hosts = []
+HOSTS_FILE = RESOURCE_PATH + '/hosts/hosts_plt'
 
 with open(HOSTS_FILE) as f:
     for line in f.readlines():
