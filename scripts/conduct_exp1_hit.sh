@@ -6,6 +6,7 @@ then
 fi
 echo repeat: ${repeat}
 
+sudo ping cdn.xuebing.name -c3 -W 4
 for i in `seq ${repeat}`
 do
     output=`./server/client cdn.xuebing.name`
