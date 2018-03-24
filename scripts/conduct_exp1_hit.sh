@@ -2,7 +2,7 @@
 
 if [ -z ${repeat+x} ]
 then
-    repeat=10
+    repeat=30
 fi
 echo repeat: ${repeat}
 
