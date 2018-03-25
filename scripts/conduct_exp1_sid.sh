@@ -8,7 +8,7 @@ sid_server=$1
 
 if [ -z ${repeat+x} ]
 then
-    repeat=30
+    repeat=20
 fi
 echo repeat: ${repeat}
 
