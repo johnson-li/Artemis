@@ -30,6 +30,7 @@ int main(int argc, char **argv) {
     char read_buf[BUFSIZE];
     struct sockaddr_in router_addr, local_addr2;
     socklen_t addrlen;
+    char name[INET_ADDRSTRLEN];
 
     char *router_ip = argv[1];
     bzero((char *) &router_addr, sizeof(router_addr));
@@ -57,6 +58,7 @@ int main(int argc, char **argv) {
         struct in_addr **addr_list;
         addr_list = (struct in_addr **) he->h_addr_list;
         router_addr.sin_addr = *addr_list[0];
+        inet_ntop(AF_INET, &(router_addr.sin_addr), name, INET_ADDRSTRLEN);
     } else {
         inet_pton(AF_INET, router_ip, &(router_addr.sin_addr));
     }
@@ -79,9 +81,9 @@ int main(int argc, char **argv) {
             return 1;
         }
     }
-    printf("got %zd bytes from the server\n", recv);
     gettimeofday(&end, NULL);
-
+    printf("got %zd bytes from the server\n", recv);
+    printf("server ip by DNS %s\n", name);
     printf("cost %f ms\n", (double) (end.tv_usec - start.tv_usec) / 1000 + (end.tv_sec - start.tv_sec) * 1000);
     return 0;
 }
