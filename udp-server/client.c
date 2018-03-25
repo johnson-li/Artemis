@@ -8,6 +8,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <sys/time.h>
+#include <fcntl.h>
 
 #define BUFSIZE 1024000
 #define PORT 8081
@@ -40,6 +41,7 @@ int main(int argc, char **argv) {
 
     // Bind src port to 12345
     router_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    fcntl(router_fd, F_SETFL, O_NONBLOCK);
     local_addr2.sin_family = AF_INET;
     local_addr2.sin_addr.s_addr = htonl(INADDR_ANY);
     local_addr2.sin_port = htons(12346);
