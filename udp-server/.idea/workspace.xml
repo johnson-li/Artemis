@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="271ba1b4-13a5-4232-80d2-e0e3e62e4c65" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/client.c" afterPath="$PROJECT_DIR$/client.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="client.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+            <state relative-caret-position="161">
+              <caret line="61" column="44" lean-forward="false" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
               <folding>
                 <element signature="e#0#2#0" expanded="false" />
               </folding>
@@ -266,11 +265,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521995507681</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="do not print in for loop">
+      <created>1521995601636</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1521995601636</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82571000" />
+    <option name="totallyTimeSpent" value="83820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -337,7 +343,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="print server address in client" />
     <MESSAGE value="async router fd" />
-    <option name="LAST_COMMIT_MESSAGE" value="async router fd" />
+    <MESSAGE value="do not print in for loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="do not print in for loop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -645,8 +652,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+        <state relative-caret-position="161">
+          <caret line="61" column="44" lean-forward="false" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
           <folding>
             <element signature="e#0#2#0" expanded="false" />
           </folding>

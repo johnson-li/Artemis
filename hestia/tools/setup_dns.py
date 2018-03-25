@@ -11,11 +11,14 @@ DB_FILE = DB_PATH + '/instances.db'
 
 def clear_cdn():
     client = boto3.client('route53')
-    sets = client.list_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2")['ResourceRecordSets']
-    sets = list(filter(lambda a: a['Type'] == 'A' and a['Name'].endswith('.xuebing.name.'), sets))
-    if sets:
-        client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={
-            'Changes': [{'Action': 'DELETE', "ResourceRecordSet": se} for se in sets]})
+    while True:
+        sets = client.list_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2")['ResourceRecordSets']
+        sets = list(filter(lambda a: a['Type'] == 'A' and a['Name'].endswith('.xuebing.name.'), sets))
+        if sets:
+            client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={
+                'Changes': [{'Action': 'DELETE', "ResourceRecordSet": se} for se in sets]})
+        else:
+            break
 
 
 def add_cdn():
