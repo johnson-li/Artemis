@@ -141,6 +141,7 @@ def show_ovs():
     sudo("ovs-vsctl show")
 
 
+# This are some bugs for gre in AWS Ohio, so we use vxlan now
 @parallel(pool_size=4)
 def setup_gre():
     conn = sqlite3.connect(DB_FILE)
@@ -151,7 +152,7 @@ def setup_gre():
         # connect to the router
         c.execute("select * from instances where region = '{}' and name = '{}'".format(self_host['region'], 'router'))
         router_host = dict(zip([d[0] for d in c.description], c.fetchone()))
-        sudo('ovs-vsctl add-port br1 gre_router -- set interface gre_router type=gre, options:remote_ip={}'.format(
+        sudo('ovs-vsctl add-port br1 gre_router -- set interface gre_router type=vxlan, options:remote_ip={}'.format(
             router_host['primaryIpv4']))
         sudo('ifconfig br1 10.10.10.10/24 up')
         sudo('ip route add default dev br1 tab 2')
@@ -160,7 +161,7 @@ def setup_gre():
         # connect to the server
         c.execute("select * from instances where region = '{}' and name = '{}'".format(self_host['region'], 'server'))
         server_host = dict(zip([d[0] for d in c.description], c.fetchone()))
-        sudo('ovs-vsctl add-port br1 gre_server -- set interface gre_server type=gre, options:remote_ip={}'.format(
+        sudo('ovs-vsctl add-port br1 gre_server -- set interface gre_server type=vxlan, options:remote_ip={}'.format(
             server_host['primaryIpv4']))
         commands = []
         for region in (REGIONS if AWS else ZONES):
@@ -172,7 +173,7 @@ def setup_gre():
                 c.execute("SELECT * FROM instances WHERE region = '{}' and name = '{}'".format(region, 'router'))
                 record = dict(zip([d[0] for d in c.description], c.fetchone()))
                 remote_ip = record['primaryIpv4Pub']
-                commands.append('add-port br1 {} -- set interface {} type=gre, options:remote_ip={}'.format(
+                commands.append('add-port br1 {} -- set interface {} type=vxlan, options:remote_ip={}'.format(
                     shrink(region_name), shrink(region_name), remote_ip))
         sudo('ovs-vsctl ' + ' -- '.join(commands))
 
