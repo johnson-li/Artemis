@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     }
 
     memset(&ifr, 0, sizeof(ifr));
-    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "lo");
+    snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "br1");
     if (setsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, (void *) &ifr, sizeof(ifr)) < 0) {
         perror("bind to interface failed\n");
         return 0;
