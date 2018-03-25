@@ -51,10 +51,10 @@ def sync_files(host):
         scp.put(hestia.SCRIPT_PATH + '/' + f, '~/' + f)
     arch = execute(ssh, 'uname -m')
     if arch == 'x86_64':
-        for f in ['client', 'simple_client']:
+        for f in ['client']:
             scp.put(hestia.SERVER_PATH + '/' + f, '~/server/' + f)
     elif arch == 'i686':
-        for f in ['client', 'simple_client']:
+        for f in ['client']:
             scp.put(hestia.SERVER_PATH + '/i686/' + f, '~/server/' + f)
     else:
         raise Exception("Unknown arch: " + arch)
