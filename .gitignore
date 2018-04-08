@@ -183,3 +183,5 @@ crashlytics-build.properties
 fabric.properties
 
 ansible/provision.retry
+
+.idea
