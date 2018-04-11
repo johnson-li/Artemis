@@ -67,6 +67,11 @@ def show_mac():
 
 
 @parallel(pool_size=8)
+def trace_route():
+    sudo('traceroute -nw 1 -q 10 205.251.192.202')
+
+
+@parallel(pool_size=8)
 def ping_mesh():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()

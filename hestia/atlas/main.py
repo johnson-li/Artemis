@@ -363,9 +363,11 @@ def main_last_ip():
     for data in anycast_data:
         ip = (data['ip_trace'][-2] if len(data['ip_trace']) > 1 else [])
         if ip:
-            ips.add(ip[0])
+            ip = ip[0]
+            ips.add(ip[:ip.rfind('.')])
     ips = sorted(list(ips))
     print(ips)
+    print(len(ips))
 
 
 def main():
