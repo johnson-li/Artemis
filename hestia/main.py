@@ -246,8 +246,6 @@ def enable_subnet_with_ipv6(session):
     vpc = session.resource('vpc')
 
 
-
-
 def main():
     sessions = get_sessions()
     # parameters = create_interfaces(sessions.us_east_1)

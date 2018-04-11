@@ -85,7 +85,7 @@ def trace_route():
             dns = s.group()
             url = 'http://ip-api.com/json/' + dns
             info = json.loads(urllib2.urlopen(url).read())
-            if 'isp' in info and info['isp'] != 'Google':
+            if 'isp' not in info or info['isp'] != 'Google':
                 ip = dns
                 location = info['city']
                 asn = info['as']

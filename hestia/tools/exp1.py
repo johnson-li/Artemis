@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 import numpy
 
 from hestia.aws.regions import REGIONS
+from hestia.plt.anycast import ANYCAST_DATA
 
-PATH = '/Users/johnson/huawei-data/exp4'
+PATH = '/Users/johnson/huawei-data/exp6'
 INSTANCES_DB = PATH + '/instances.db'
 REPEAT = 10
 PERCENTILE = 0
@@ -31,8 +32,8 @@ def parse():
     :return:
     """
     records = {}
-    for file in ['direct.log', 'hit.log', 'miss.log', 'sid-sudo.log']:
-        file = PATH + '/' + file
+    for file in ['direct', 'hit', 'miss', 'sid']:
+        file = PATH + '/' + file + '-12347.log'
         with open(file) as f:
             for line in f.readlines():
                 if line.startswith('Host: '):
@@ -123,16 +124,17 @@ def compare(records):
     # pprint(records_median)
     # print(records_median)
     fig = plt.figure(figsize=(8, 6), dpi=320)
-    # plot(fig, records_median, 'direct_data')
-    # plot(fig, records_median, 'dns_hit_data')
-    # plot(fig, records_median, 'dns_data')
-    # plot(fig, records_median, 'sid_data')
+    plot(fig, records_median, 'direct_data')
+    plot(fig, records_median, 'dns_hit_data')
+    plot(fig, records_median, 'dns_data')
+    plot(fig, records_median, 'sid_data')
     # plot(fig, records_median, 'dns_delay')
     # plot(fig, latency_map, 'latency')
     # plot(fig, records_median, 'hit_increment')
-    plot(fig, records_median, 'sid_increment')
+    # plot(fig, records_median, 'sid_increment')
     # plot(fig, records_median, 'sid_hit_incr')
     # fig.suptitle('Latencies diff (group2-90)')
+    plt.savefig('demo.eps', format='eps', dpi=1000, bbox_inches='tight')
     fig.show()
 
 
@@ -144,15 +146,21 @@ def sid_region(records):
     for key, val in records.items():
         router = val['sid_router']
         server = val['sid_server']
+        anycast = ANYCAST_DATA.get(key, '')
+        if key not in ANYCAST_DATA:
+            print('No anycast data: ' + key)
         c.execute("select region from instances where secondaryIpv4Pub = '{}'".format(server))
         server_region = c.fetchone()[0]
         c.execute("select region from instances where secondaryIpv4Pub = '{}'".format(router))
         router_region = c.fetchone()[0]
-        if router_region != server_region:
-            exceptions.append(key)
+        if key in ANYCAST_DATA and ANYCAST_DATA[key] != server_region:
             count += 1
-            print('{} -> {}'.format(REGIONS[router_region], REGIONS[server_region]))
-            # print(val['ping'])
+            print(key + ': {} -> {}'.format(REGIONS[ANYCAST_DATA[key]], REGIONS[server_region]))
+        # if router_region != server_region:
+        #     exceptions.append(key)
+        #     count += 1
+        #     print('{} -> {}'.format(REGIONS[router_region], REGIONS[server_region]))
+        # print(val['ping'])
     print("region change: {}/{}".format(count, len(records.keys())))
     print("exceptions = " + str(exceptions))
 
@@ -167,8 +175,6 @@ def main():
                      all(not x for x in val['dns_servers']) or 'direct_data' not in val or all(
         not x for x in val['direct_data'])]
     print('Invalid data: {}/{}'.format(len(invalid_hosts), len(records.keys())))
-    invalid_hosts.append('planetlab-js1.cert.org.cn')
-    invalid_hosts.append('planetlab1.postel.org')
     for host in invalid_hosts:
         records.pop(host)
     # print(json.dumps(records, indent=4))
@@ -181,7 +187,7 @@ def main():
                   'planetlab02.cs.washington.edu', 'planetlab-1.ing.unimo.it']
     exceptions = ['planetlab4.mini.pw.edu.pl', 'pl1.rcc.uottawa.ca', 'planetlab5.eecs.umich.edu',
                   'planetlab02.cs.washington.edu', 'planetlab-1.ing.unimo.it']
-    # exceptions = []
+    exceptions = []
     compare({key: val for key, val in records.items() if key not in exceptions})
     # compare({key: val for key, val in records.items() if key in exceptions})
     # print(len(records))
