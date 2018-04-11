@@ -1,85 +1,83 @@
-netissime1.planet-lab.eu,37.49.236.2,Paris,
-ple41.planet-lab.eu,,,
-ple42.planet-lab.eu,,,
-ple1.cesnet.cz,195.113.157.70,Prague,AS2852 CESNET z.s.p.o.
-ple43.planet-lab.eu,193.51.177.114,Nantes,AS2200 Renater
-aladdin.planetlab.extranet.uni-passau.de,188.1.144.222,Berlin (Bezirk Mitte),AS680 Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.
-ple1.planet-lab.eu,193.51.177.114,Nantes,AS2200 Renater
-ple44.planet-lab.eu,193.51.177.114,Nantes,AS2200 Renater
-kulcha.mimuw.edu.pl,,,
-onelab2.pl.sophia.inria.fr,,,
-planetlab3.eecs.umich.edu,192.35.170.50,Ann Arbor,
-planet3.cs.huji.ac.il,,,
-planetlab3.cs.uoregon.edu,64.57.20.253,Ann Arbor,AS11164 Internet2
-stella.planetlab.ntua.gr,,,
-planetlab11.net.in.tum.de,188.1.144.253,Berlin (Bezirk Mitte),AS680 Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.
-planetvs2.informatik.uni-stuttgart.de,129.143.200.61,Stuttgart,AS553 Universitaet Stuttgart
-dplanet1.uoc.edu,84.88.19.165,Barcelona,AS13041 Consorci de Serveis Universitaris de Catalunya
-planetlab-2.ing.unimo.it,90.147.80.17,Rome,AS137 Consortium GARR
-planetlab1.cs.uit.no,,,
-planetlab2.upm.ro,217.156.113.94,Bucharest (Sector 5),AS20530 Asociatia Nationala a Internet Service Providerilor din Romania ANISP
-netissime2.planet-lab.eu,37.49.236.2,Paris,
-puri.mimuw.edu.pl,,,
-vicky.planetlab.ntua.gr,,,
-planetlab2.informatik.uni-goettingen.de,,,
-planet4.cs.huji.ac.il,62.40.98.81,Cambridge (City House),AS20965 GEANT Limited
-planetlab-2.cs.ucy.ac.cy,62.40.125.202,Cambridge,AS20965 GEANT Limited
-planetlab13.net.in.tum.de,188.1.37.89,Berlin (Bezirk Mitte),AS680 Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.
-planetlab1.utdallas.edu,74.200.189.114,Lubbock,AS13359 North Texas GigaPOP
-planet-lab-node2.netgroup.uniroma2.it,,,
-planetlab1.cs.purdue.edu,149.165.183.82,Bloomington,AS19782 Indiana University
-planetlab3.comp.nus.edu.sg,198.32.141.140,Houston,
-planetlab2.dtc.umn.edu,64.57.29.130,Ann Arbor,AS11164 Internet2
-planetlab-2.calpoly-netlab.net,206.72.210.41,Denver (Central),
-planetlab3.wail.wisc.edu,205.213.119.62,Middleton,AS2381 WiscNet
-node1.planetlab.mathcs.emory.edu,198.32.132.41,New York,
-node2.planetlab.mathcs.emory.edu,198.32.132.41,New York,
-planetlab5.williams.edu,206.130.10.41,New York,AS42473 ANEXIA Internetdienstleistungs GmbH
-planetlab4.williams.edu,198.32.160.130,Staten Island,AS9304 Hutchison Global Communications
-pl1.rcc.uottawa.ca,66.97.16.22,Bowmanville,AS26677 ORANO
-planetlab4.postel.org,137.164.23.225,Cypress,AS226 Los Nettos
-whitefall.planetlab.cs.umd.edu,206.196.178.80,Kingsville,AS10886 University of Maryland
-planetlab-04.cs.princeton.edu,66.110.96.5,New York,AS6453 TATA COMMUNICATIONS (AMERICA) INC
-planetlab03.cs.washington.edu,209.124.190.134,Seattle,AS101 University of Washington
-planetlab01.cs.washington.edu,209.124.190.134,Seattle,AS101 University of Washington
-planetlab2.c3sl.ufpr.brplanetlab5.eecs.umich.edu,192.35.170.50,Ann Arbor,
-planetlab1.unr.edu,4.69.209.177,Dallas,AS3356 Level 3 Communications, Inc.
-saturn.planetlab.carleton.ca,66.97.16.22,Bowmanville,AS26677 ORANO
-pl1.eng.monash.edu.au,202.158.210.41,Canberra,AS7575 Australian Academic and Reasearch Network (AARNet)
-planetlab2.utdallas.edu,74.200.189.114,Lubbock,AS13359 North Texas GigaPOP
-planetlab2.pop-pa.rnp.brplanetlab1.pop-pa.rnp.brplanetlab3.rutgers.edu,128.6.1.114,Piscataway,AS46 Rutgers University
-pl2.eng.monash.edu.au,202.158.210.41,Canberra,AS7575 Australian Academic and Reasearch Network (AARNet)
-planetlab3.cesnet.cz,195.113.157.70,Prague,AS2852 CESNET z.s.p.o.
-planetlab4.cs.uoregon.edu,64.57.20.253,Ann Arbor,AS11164 Internet2
-planet-lab4.uba.arplanetlab1.temple.edu,162.252.69.201,Ann Arbor (Bryant Pattengill East),
-planetlab-n1.wand.net.nz,202.158.205.150,Wodonga,AS7575 Australian Academic and Reasearch Network (AARNet)
-planetlab-js1.cert.org.cn,202.97.62.214,Beijing (Haidian Qu),AS4134 No.31,Jin-rong Street
+nuc1.planet-lab.eu,185.6.36.50,Dublin,AS2128 Internet Neutral Exchange Association Limited
+planetlab-1.ing.unimo.it,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab1.cs.uit.no,63.217.254.74,Herndon,AS3491 PCCW Global, Inc.
+iraplab1.iralab.uni-karlsruhe.de,80.81.194.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab2.cs.ucla.edu,137.164.11.21,San Diego,AS2152 California State University, Office of the Chancellor
+stella.planetlab.ntua.gr,91.210.16.120,Prague,
+vicky.planetlab.ntua.gr,91.210.16.120,Prague,
+planetlab-01.bu.edu,4.14.156.166,New York,AS3356 Level 3 Parent, LLC
+aladdin.planetlab.extranet.uni-passau.de,193.178.185.95,Berlin (Moabit),
+planetlab3.cs.uoregon.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+planetlab1.utdallas.edu,162.252.69.215,Ann Arbor (Bryant Pattengill East),
+dplanet1.uoc.edu,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab-n1.wand.net.nz,63.217.254.74,Herndon,AS3491 PCCW Global, Inc.
+ple43.planet-lab.eu,185.6.36.50,Dublin,AS2128 Internet Neutral Exchange Association Limited
+planet3.cs.huji.ac.il,94.100.252.88,London,AS34086 T-Systems International GmbH
+kulcha.mimuw.edu.pl,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab1.cs.purdue.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+dschinni.planetlab.extranet.uni-passau.de,193.178.185.95,Berlin (Moabit),
+ple1.cesnet.cz,91.210.16.120,Prague,
+planet4.cs.huji.ac.il,94.100.252.88,London,AS34086 T-Systems International GmbH
+ple41.planet-lab.eu,185.6.36.50,Dublin,AS2128 Internet Neutral Exchange Association Limited
+ple44.planet-lab.eu,185.6.36.50,Dublin,AS2128 Internet Neutral Exchange Association Limited
+planetlab-2.ing.unimo.it,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+ple2.cesnet.cz,91.210.16.120,Prague,
+iraplab2.iralab.uni-karlsruhe.de,193.178.185.95,Berlin (Moabit),
+planetlab2.informatik.uni-goettingen.de,188.1.144.138,Berlin (Bezirk Mitte),AS680 Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.
+onelab2.pl.sophia.inria.fr,62.40.98.109,Saint Neots,AS20965 GEANT Limited
+planetvs2.informatik.uni-stuttgart.de,80.81.194.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab1.temple.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab-2.cs.ucy.ac.cy,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab3.eecs.umich.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+planetlab2.pop-pa.rnp.br,64.214.62.142,Southampton,AS3549 Level 3 Parent, LLC
+planetlab3.cesnet.cz,91.210.16.120,Prague,
+planetlab1.cs.unc.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab1.pop-pa.rnp.br,64.214.62.142,Southampton,AS3549 Level 3 Parent, LLC
+planetlab4.cs.uoregon.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+saturn.planetlab.carleton.ca,69.63.249.26,Richmond Hill,AS812 Rogers Communications Canada Inc.
+planetlab1.unr.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+planetlab2.cs.okstate.edu,139.78.1.72,Stillwater,AS395421 Oklahoma State University
+planetlab-js1.cert.org.cn,218.30.53.6,Mingzhou,AS4134 No.31,Jin-rong Street
+pl2.eng.monash.edu.au,63.217.254.74,Herndon,AS3491 PCCW Global, Inc.
 planetlab-1.scie.uestc.edu.cn,222.197.180.129,Chengdu,AS4538 China Education and Research Network Center
-ple2.planet-lab.eu,193.51.177.114,Nantes,AS2200 Renater
-dschinni.planetlab.extranet.uni-passau.de,188.1.144.222,Berlin (Bezirk Mitte),AS680 Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.
-nuc1.planet-lab.eu,193.51.177.114,Nantes,AS2200 Renater
-ple2.cesnet.cz,195.113.157.70,Prague,AS2852 CESNET z.s.p.o.
-iraplab1.iralab.uni-karlsruhe.de,188.1.144.222,Berlin (Bezirk Mitte),AS680 Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.
-iraplab2.iralab.uni-karlsruhe.de,129.143.60.115,Stuttgart,AS553 Universitaet Stuttgart
-planetlab-1.ing.unimo.it,90.147.80.17,Rome,AS137 Consortium GARR
-planetlab-5.eecs.cwru.edu,64.57.29.130,Ann Arbor,AS11164 Internet2
-planetlab1.cs.ubc.ca,207.231.242.20,Seattle,AS226 Los Nettos
-planetlab1.pop-mg.rnp.br,187.16.216.55,São João del Rei,
-planetlab1.dtc.umn.edu,64.57.29.130,Ann Arbor,AS11164 Internet2
-plink.cs.uwaterloo.ca,66.97.16.26,Bowmanville,AS26677 ORANO
-planetlab1.koganei.itrc.net,202.249.2.189,Sagamihara,AS2500 WIDE Project
-planetlab2.koganei.itrc.net,202.249.2.189,Sagamihara,AS2500 WIDE Project
-planetlab2.cesnet.cz,,,
-planetlab1.cesnet.cz,195.113.157.70,Prague,AS2852 CESNET z.s.p.o.
-planetlab1.postel.org,137.164.23.225,Cypress,AS226 Los Nettos
-planetlab02.cs.washington.edu,209.124.190.134,Seattle,AS101 University of Washington
-planetlab2.pop-mg.rnp.br,187.16.218.58,São João del Rei,
-planetlab04.cs.washington.edu,209.124.190.134,Seattle,AS101 University of Washington
-planetlab2.inf.ethz.ch,130.59.38.110,Zurich,AS559 SWITCH
-planetlab4.mini.pw.edu.pl,212.91.0.250,Warsaw,AS24748 ATM S.A.
-planetlab3.williams.edu,206.130.10.41,New York,AS42473 ANEXIA Internetdienstleistungs GmbH
-planetlabone.ccs.neu.edu,162.252.69.201,Ann Arbor (Bryant Pattengill East),
-planetlab1.cs.uoregon.edu,64.57.20.253,Ann Arbor,AS11164 Internet2
-planetlab1.comp.nus.edu.sg,198.32.141.140,Houston,
-planetlab5.ie.cuhk.edu.hk,123.255.91.10,City of Victoria,
-planetlab2.cs.purdue.edu,149.165.183.82,Bloomington,AS19782 Indiana University
+planetlab3.rutgers.edu,152.179.50.58,Garland,AS701 MCI Communications Services, Inc. d/b/a Verizon Business
+planetlab01.cs.washington.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+pl1.eng.monash.edu.au,63.218.174.85,Athens,AS3491 PCCW Global, Inc.
+pl1.rcc.uottawa.ca,38.140.106.162,Brooklyn,AS174 Cogent Communications
+planetlab3.comp.nus.edu.sg,106.187.28.90,Tokyo,AS2516 KDDI CORPORATION
+planetlab2.utdallas.edu,162.252.69.215,Ann Arbor (Bryant Pattengill East),
+netapp7.cs.kookmin.ac.kr,211.60.88.170,Seoul,AS3786 LG DACOM Corporation
+planetlab3.wail.wisc.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab2.dtc.umn.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab1.cs.ucla.edu,137.164.11.21,San Diego,AS2152 California State University, Office of the Chancellor
+planetlab2.c3sl.ufpr.br,64.214.62.142,Southampton,AS3549 Level 3 Parent, LLC
+planetlab5.eecs.umich.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+planet-lab1.uba.ar,195.22.219.137,Fortaleza (Papicu),AS6762 TELECOM ITALIA SPARKLE S.p.A.
+planetlab4.postel.org,198.32.176.217,Houston,
+planetlab03.cs.washington.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+node2.planetlab.mathcs.emory.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab1.dtc.umn.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab1.comp.nus.edu.sg,106.187.28.90,Tokyo,AS2516 KDDI CORPORATION
+planetlab-04.cs.princeton.edu,204.153.48.10,Princeton,AS88 Princeton University
+planetlab1.cs.uoregon.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+whitefall.planetlab.cs.umd.edu,128.8.7.185,Rockville,AS27 University of Maryland
+node1.planetlab.mathcs.emory.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+planetlab2.cs.ubc.ca,216.218.230.134,Placerville,AS6939 Hurricane Electric LLC
+planetlab2.inf.ethz.ch,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+planetlab1.cesnet.cz,91.210.16.120,Prague,
+planetlab1.cs.ubc.ca,216.218.230.134,Placerville,AS6939 Hurricane Electric LLC
+planetlab2.pop-mg.rnp.br,64.214.62.142,Southampton,AS3549 Level 3 Parent, LLC
+planetlab-02.bu.edu,4.14.156.166,New York,AS3356 Level 3 Parent, LLC
+planetlab-5.eecs.cwru.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab1.pop-mg.rnp.br,64.214.62.142,Southampton,AS3549 Level 3 Parent, LLC
+planetlab2.cs.purdue.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+plink.cs.uwaterloo.ca,64.71.241.110,Toronto (Old Toronto),AS812 Rogers Communications Canada Inc.
+planetlab02.cs.washington.edu,64.57.30.39,Ann Arbor,AS11537 Internet2
+planetlab5.ie.cuhk.edu.hk,14.136.129.214,Central,AS9269 Hong Kong Broadband Network Ltd.
+planet-lab-node2.netgroup.uniroma2.it,80.81.195.152,Frankfurt am Main,AS47872 Sofia Connect EAD
+ple1.planet-lab.eu,185.6.36.50,Dublin,AS2128 Internet Neutral Exchange Association Limited
+ple2.planet-lab.eu,185.6.36.50,Dublin,AS2128 Internet Neutral Exchange Association Limited
+planetlab4.mini.pw.edu.pl,62.40.98.130,Saint Neots,AS20965 GEANT Limited
+planetlab04.cs.washington.edu,64.57.30.3,Ann Arbor,AS11537 Internet2
+planetlab1.postel.org,198.32.176.217,Houston,
+planetlab1.cs.okstate.edu,,,
