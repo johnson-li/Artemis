@@ -68,6 +68,8 @@ def show_mac():
 
 @parallel(pool_size=8)
 def trace_route():
+    sudo('apt update')
+    sudo('apt install -y traceroute')
     sudo('traceroute -nw 1 -q 10 205.251.192.202')
 
 
