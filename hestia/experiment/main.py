@@ -60,14 +60,14 @@ def get_router_secondary_ipv4(region, pub=False):
     return res
 
 
-def store_result(host, server):
+def store_result(host, server, region):
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     c.execute("select * from sip where host = '{}'".format(host))
     if c.fetchone():
-        c.execute("UPDATE sip set server = '{}' where host = '{}'".format(server, host))
+        c.execute("UPDATE sip set server = '{}', region = '{}' where host = '{}'".format(server, region, host))
     else:
-        c.execute("insert into sip (host, server) VALUES ('{}', '{}')".format(host, server))
+        c.execute("insert into sip (host, server, region) VALUES ('{}', '{}', '{}')".format(host, server, region))
     conn.commit()
     c.close()
     conn.close()
@@ -300,15 +300,15 @@ def run(peer, platform='AWS', enable_sid=False):
     if peer == DEFAULT_PEER:
         add_default_flows(regions)
     peer = socket.gethostbyname(peer)
-    results = []
+    # results = []
     pairs = [(region, peer) for region in regions]
     results = pool1.starmap(get_latency, pairs)
     results.sort(key=lambda pair: pair[1])
     # results = [('tokyo', 126.537), ('sydney', 173.48), ('singapore', 189.041)]
-    print(results)
     get_ssh(results[0][0] + '-router')
-    store_result(peer, get_router_secondary_ipv4(REVERSE_REGIONS[results[0][0]], pub=True))
-    add_flows(results[0][0], [i[0] for i in results[1:]], peer)
+    store_result(peer, get_router_secondary_ipv4(REVERSE_REGIONS[results[0][0]], pub=True),
+                 REVERSE_REGIONS[results[0][0]])
+    # add_flows(results[0][0], [i[0] for i in results[1:]], peer)
 
 
 def init(clear_db=False):

@@ -23,11 +23,11 @@ def read(ssh_stdin):
     return lines.strip()
 
 
-def get_sid_server(host):
+def get_region(host):
     ip = socket.gethostbyname(host)
     conn = sqlite3.connect(hestia.experiment.main.DB_FILE)
     c = conn.cursor()
-    c.execute("select server from sip where host = '%s'" % ip)
+    c.execute("select region from sip where host = '%s'" % ip)
     for line in c.fetchall():
         return line[0]
     return None
@@ -69,12 +69,12 @@ def execute(ssh, command):
 def conduct_experiment(host):
     print('Conduct experiment with client: ' + host)
     ssh = get_ssh(host)
-    sid_server = get_sid_server(host)
-    if not sid_server:
+    region = get_region(host)
+    if not region:
         hestia.experiment.main.run(host, enable_sid=PROGRAMME == 'sid')
-        sid_server = get_sid_server(host)
+        region = get_region(host)
     sync_files(host)
-    output = execute(ssh, './conduct_exp1_%s.sh %s' % (PROGRAMME, sid_server if PROGRAMME == 'sid' else ''))
+    output = execute(ssh, './conduct_exp1_%s.sh %s' % (PROGRAMME, region))
     print('Host: {}\n'.format(host) + output)
 
 
