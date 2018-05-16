@@ -19,6 +19,8 @@ then
 fi
 
 if [ "$arch" = "32" ]; then
+    cp ../udp-server/i686/client server-i386
+    cp ../udp-server/i686/simple_client server-i386
     ./sync_planetlab_i386.sh ${host}
 else
     cp ../udp-server/client server

@@ -1,6 +1,7 @@
 import concurrent.futures
 import functools
 import json
+import pprint
 import re
 import sqlite3
 from math import radians, sin, cos, acos
@@ -8,6 +9,7 @@ from urllib import request
 from urllib.parse import urlencode
 
 import numpy
+import radix
 
 from hestia import OUTPUT_PATH, RESOURCE_PATH
 from hestia.atlas.secret import SECRET
@@ -21,6 +23,7 @@ ASN_INFO_PATH = OUTPUT_PATH + '/asn-info.data'
 MEASUREMENT_ASN_PATH = OUTPUT_PATH + '/measurement-asn.data'
 NEAREST_PATH = OUTPUT_PATH + '/measurement-nearest.data'
 INSTANCES_DB = RESOURCE_PATH + '/db/instances.db'
+IP_RANGES = RESOURCE_PATH + '/ip-ranges.json'
 
 executor = concurrent.futures.ThreadPoolExecutor(max_workers=8)
 
@@ -307,6 +310,15 @@ def asn_info():
     json.dump(result, open(ASN_INFO_PATH, 'w'))
 
 
+def load_ip_ranges():
+    rtree = radix.Radix()
+    data = json.load(open(IP_RANGES))
+    prefixes = data['prefixes']
+    for prefix in prefixes:
+        rtree.add(prefix['ip_prefix']).data['prefix'] = prefix
+    return rtree
+
+
 def main_probe():
     """
     Analysis data of tracerouting probe to EC2 zones
@@ -315,6 +327,21 @@ def main_probe():
     # probe_add_asn()
     # asn_info()
     probe_analyse_traceroute()
+
+
+def full_latency():
+    region_data = json.load(open(REGION_PATH))
+    latencies = {}
+    for _, regions in region_data.items():
+        for region in regions:
+            probe = region['prb_id']
+            last = region['result'][-1]
+            rtts = [item['rtt'] for item in last['result'] if 'rtt' in item]
+            if not rtts:
+                continue
+            med = numpy.median(rtts)
+            latencies.setdefault(probe, {})[get_region(region['dst_addr'])] = med
+    return latencies
 
 
 def main_latency():
@@ -358,16 +385,115 @@ def main_latency():
 
 
 def main_last_ip():
-    anycast_data = json.load(open(MEASUREMENT_ASN_PATH))
-    ips = set()
-    for data in anycast_data:
-        ip = (data['ip_trace'][-2] if len(data['ip_trace']) > 1 else [])
-        if ip:
-            ip = ip[0]
-            ips.add(ip[:ip.rfind('.')])
-    ips = sorted(list(ips))
-    print(ips)
-    print(len(ips))
+    traceroute_anycast = json.load(open('/Users/johnson/Downloads/traceroute-anycast0.json'))
+    valid = {}
+    invalid = []
+    regions = {}
+    latencies = full_latency()
+    traceroute_anycast = list(
+        filter(lambda x: filter(lambda y: y.get('from', '') == '205.251.192.202', x['result'][-1]), traceroute_anycast))
+    traceroute_anycast = list(filter(lambda x: x['prb_id'] in latencies, traceroute_anycast))
+    print('all: %s' % len(traceroute_anycast))
+    last_ip = {}
+    for data in traceroute_anycast:
+        probe = data['prb_id']
+        hops = data['result']
+        success = False
+        last = True
+        sub = False
+        for hop in list(reversed(hops))[1:]:
+            hop_result = hop['result']
+            ips = [h['from'] for h in hop_result if 'from' in h]
+            if ips:
+                ip = ips[0]
+                if sub:
+                    print('sub last: %s' % ip)
+                    break
+                if last:
+                    last_ip[ip] = last_ip.get(ip, 0) + 1
+                    if ip in ['178.236.3.47', '178.236.3.49']:
+                        sub = True
+                    last = False
+                # print(probe)
+                # print(ip)
+                node = rtree.search_best(ip)
+                if node:
+                    region = node.data['prefix']['region']
+                    regions[region] = regions.get(region, 0) + 1
+                    valid[probe] = region
+                    success = True
+                    if not sub:
+                        break
+                # break
+        if not success:
+            invalid.append(probe)
+            # print('invalid record: %s' % [hop['result'][0].get('from', '') for hop in hops if 'result' in hop])
+    print('Valid number: %s' % len(valid))
+    print('Available regions: %s' % regions)
+    mesh = ping_mesh()
+    non_optimal = 0
+    diff = []
+    diff_triangle = []
+    for probe, region in valid.items():
+        if probe not in latencies:
+            continue
+        rtt_anycast = latencies[probe][region]
+        smallest = 0xffff
+        smallest_region = ''
+        for other_region in regions:
+            if other_region in latencies[probe] and latencies[probe][other_region] < smallest:
+                smallest = latencies[probe][other_region]
+                smallest_region = other_region
+        if rtt_anycast - smallest > 50:
+            print(
+                'probe: %s, anycast: %s, best: %s, diff: %s' % (probe, region, smallest_region, rtt_anycast - smallest))
+            non_optimal += 1
+        diff.append(rtt_anycast - smallest)
+        diff_triangle.append(rtt_anycast - smallest - float(mesh[region].get(smallest_region, 0) if region != smallest_region else 0))
+    print('large diff: %s' % len([d for d in diff if d > 60]))
+    print('diff1 = %s;' % diff)
+    print('diff2 = %s;' % diff_triangle)
+    print(len([d for d in diff_triangle if d < 0 and d >= -20]))
+    print(len([d for d in diff_triangle if d < 0]))
+    print(len([d for d in diff_triangle if d == 0]))
+    print('Non optimal: %s' % non_optimal)
+    pprint.pprint(
+        {key + ' ' + rtree.search_best(key).data['prefix']['region'] if rtree.search_best(key) else key: val for
+         key, val in last_ip.items()})
+
+
+def main_ec2_traceroute():
+    data = {}
+    lines = {}
+    with open(OUTPUT_PATH + '/traceroute') as f:
+        for line in f.readlines():
+            line = line.strip()
+            match = re.match('\[([a-z]+)-server\] out: +(\d+)( +[0-9.*]( ms)*)+', line)
+            if match:
+                zone = match.group(1)
+                sequence = int(match.group(2))
+                search = re.findall('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', line)
+                search = sorted(list(set(search)))
+                if search:
+                    data.setdefault(zone, []).append(search)
+                    lines.setdefault(zone, []).append(line)
+    last = {key: val[-1] for key, val in data.items()}
+    last_line = {key: val[-1] for key, val in lines.items()}
+    ips = [val for val in last.values() if val[0]]
+
+    # print(ips)
+    global known
+    known = []
+    for a in ips:
+        for b in a:
+            known.append(b)
+    # pprint.pprint(last_line)
+
+
+known = ['52.95.55', '176.32.124', '52.95.55', '52.95.63', '176.32.124', '178.236.3', '178.236.3', '176.32.124',
+         '176.32.124', '52.93.128', '54.239.123', '54.239.123', '54.239.123', '52.95.67', '176.32.124']
+
+rtree = load_ip_ranges()
 
 
 def main():
@@ -377,7 +503,12 @@ def main():
     # main_experiment_probe()
     # main_probe()
     # main_latency()
+    # main_ec2_traceroute()
     main_last_ip()
+    # node = rtree.search_best('205.251.176.0')
+    # if node:
+    #     print(node.data)
+    #     print(node.data['prefix']['region'])
 
 
 if __name__ == '__main__':

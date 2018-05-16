@@ -4,13 +4,15 @@ USER_DIR=$PWD
 BASE_DIR=$(dirname "$0")
 cd ${BASE_DIR}
 
+region=$1
+
 if [ -z ${repeat+x} ]
 then
     repeat=20
 fi
 echo repeat: ${repeat}
 
-direct_server=`sudo ping cdn.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
+direct_server=`sudo ping cdn-${region}.xuebing.name -c3 -W 4|grep icmp_seq| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
 for i in `seq ${repeat}`
 do
     output=`sudo ./server/client ${direct_server}| grep cost| egrep -o '[0-9.]+'`
