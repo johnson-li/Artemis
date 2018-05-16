@@ -239,6 +239,7 @@ def add_flows(target, other_regions, peer_ip):
     pairs = [(region, peer_ip) for region in other_regions]
     pairs.append((target, peer_ip))
     pool3.starmap(set_arp, pairs)
+    return
 
     # router -> router forwarding
     if ENABLE_SID:
@@ -308,7 +309,7 @@ def run(peer, platform='AWS', enable_sid=False):
     get_ssh(results[0][0] + '-router')
     store_result(peer, get_router_secondary_ipv4(REVERSE_REGIONS[results[0][0]], pub=True),
                  REVERSE_REGIONS[results[0][0]])
-    # add_flows(results[0][0], [i[0] for i in results[1:]], peer)
+    add_flows(results[0][0], [i[0] for i in results[1:]], peer)
 
 
 def init(clear_db=False):
