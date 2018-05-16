@@ -14,7 +14,9 @@ sys.setdefaultencoding("utf-8")
 env.warn_only = True
 env.skip_bad_hosts = True
 env.use_ssh_config = True
-env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config_planetlab'
+env.ssh_config_path = os.path.dirname(os.path.dirname(__file__)) + '/resources/ssh/config_planetlab_available'
+env.timeout = 30
+env.command_timeout = 300
 
 env.hosts = []
 HOSTS_FILE = RESOURCE_PATH + '/hosts/hosts_plt'
@@ -24,7 +26,7 @@ with open(HOSTS_FILE) as f:
         env.hosts.append(line)
 
 
-@parallel(pool_size=6)
+@parallel(pool_size=8)
 def host_type():
     run('uname -a')
 
