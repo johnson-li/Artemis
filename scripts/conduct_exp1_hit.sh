@@ -7,7 +7,7 @@ fi
 region=$1
 echo repeat: ${repeat}
 
-sudo ping cdn-${region}.xuebing.name -c3 -W 4
+sudo ping cdn${region}.xuebingli.com -c3 -W 4
 for i in `seq ${repeat}`
 do
     output=`sudo ./server/client cdn-${region}.xuebing.name`

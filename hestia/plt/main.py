@@ -74,7 +74,7 @@ def conduct_experiment(host):
         hestia.experiment.main.run(host, enable_sid=PROGRAMME == 'sid')
         region = get_region(host)
     sync_files(host)
-    output = execute(ssh, './conduct_exp1_%s.sh %s' % (PROGRAMME, region))
+    output = execute(ssh, './conduct_exp1_%s.sh %s' % (PROGRAMME, region.replace('-', '')))
     print('Host: {}\n'.format(host) + output)
 
 

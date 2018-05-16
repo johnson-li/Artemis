@@ -12,7 +12,7 @@ then
 fi
 echo repeat: ${repeat}
 
-direct_server=`sudo ping cdn-${region}.xuebing.name -c3 -W 4|grep PING| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
+direct_server=`sudo ping cdn${region}.xuebingli.com -c3 -W 4|grep PING| head -n1| egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
 for i in `seq ${repeat}`
 do
     output=`sudo ./server/client ${direct_server}| grep cost| egrep -o '[0-9.]+'`
