@@ -10,7 +10,7 @@ echo repeat: ${repeat}
 sudo ping cdn${region}.xuebingli.com -c3 -W 4
 for i in `seq ${repeat}`
 do
-    output=`sudo ./server/client cdn-${region}.xuebing.name`
+    output=`sudo ./server/client cdn${region}.xuebing.name`
     cost=`echo "${output}"| grep cost| egrep -o '[0-9.]+'`
     dns_cost=`echo "${output}"| grep 'DNS delay'| egrep -o '[0-9.]+'`
     dns_hit_delay=${dns_hit_delay},${dns_cost}
