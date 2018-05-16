@@ -11,10 +11,10 @@ DB_FILE = DB_PATH + '/instances.db'
 def clear_cdn():
     client = boto3.client('route53')
     while True:
-        sets = client.list_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2")['ResourceRecordSets']
+        sets = client.list_resource_record_sets(HostedZoneId="ID:Z1698DP7F9XEFJ")['ResourceRecordSets']
         sets = list(filter(lambda a: a['Type'] == 'A' and a['Name'].endswith('.xuebingli.com.'), sets))
         if sets:
-            client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={
+            client.change_resource_record_sets(HostedZoneId="ID:Z1698DP7F9XEFJ", ChangeBatch={
                 'Changes': [{'Action': 'DELETE', "ResourceRecordSet": se} for se in sets]})
         else:
             break
@@ -36,7 +36,7 @@ def add_cdn():
                           'TTL': 60, 'ResourceRecords': [{'Value': host['secondaryIpv4Pub']}]}
                 sets.append(record)
     client = boto3.client('route53')
-    client.change_resource_record_sets(HostedZoneId="Z2JGUQXL1NZ1A2", ChangeBatch={
+    client.change_resource_record_sets(HostedZoneId="ID:Z1698DP7F9XEFJ", ChangeBatch={
         'Changes': [{'Action': 'UPSERT', "ResourceRecordSet": se} for se in sets]})
 
 
