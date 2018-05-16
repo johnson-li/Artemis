@@ -4,8 +4,8 @@ ANYCAST_DATA = {}
 
 
 def parse():
-    # f = open(FABRIC_PATH + '/traceroute2.csv', encoding="utf-8")
-    f = open(FABRIC_PATH + '/traceroute2.csv')
+    # f = open(FABRIC_PATH + '/traceroute.csv', encoding="utf-8")
+    f = open(FABRIC_PATH + '/traceroute.csv')
     for line in f:
         parsed = line.split(',')
         host = parsed[0]
