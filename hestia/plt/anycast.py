@@ -74,4 +74,4 @@ def parse():
     print('Anycast record: ' + str(ANYCAST_DATA))
 
 
-parse()
+# parse()

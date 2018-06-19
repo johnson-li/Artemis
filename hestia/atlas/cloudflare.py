@@ -336,26 +336,53 @@ def parse_traceroute_local(ids):
     print(sorted(routers.keys()))
 
 
+def get_solutions(n, limit):
+    if n == 1:
+        return [[l] for l in list(range(limit))]
+    pre = get_solutions(n - 1, limit)
+    solutions = []
+    for i in range(limit):
+        for pp in pre:
+            if i not in pp:
+                solutions.append([i] + pp)
+    return solutions
+
+
 def best_deployment(keys):
     candidates = [r[0] for r in routers.values()]
-    for number in range(1, 11):
-        solutions = set()
-        count = 0
-        while count < number:
-            index = random.randint(1, len(candidates) - 1)
-            if index not in solutions:
-                solutions.add(index)
-                count += 1
-        data = []
-        for key in keys:
-            minimal_latency = 1000
-            for index in solutions:
-                latency = get_by_subnet(unicast_mesh[key], candidates[index])
-                if 0 < latency < minimal_latency:
-                    minimal_latency = latency
-            if minimal_latency != 1000:
-                data.append(minimal_latency)
-        print('%d: avg %d, med %d' % (number, statistics.mean(data), statistics.median(data)))
+
+    mean = {}
+    median = {}
+    for i in range(1, 26):
+        mean[i] = 500
+        median[i] = 500
+    for i in range(100):
+        print('iter: %d' % i)
+        for number in range(1, 26):
+            solutions = set()
+            count = 0
+            while count < number:
+                index = random.randint(1, len(candidates) - 1)
+                if index not in solutions:
+                    solutions.add(index)
+                    count += 1
+            data = []
+            for key in keys:
+                minimal_latency = 1000
+                for index in solutions:
+                    latency = get_by_subnet(unicast_mesh[key], candidates[index])
+                    if 0 < latency < minimal_latency:
+                        minimal_latency = latency
+                if minimal_latency != 1000:
+                    data.append(minimal_latency)
+            if len(data) > 10:
+                mea = statistics.mean(data)
+                med = statistics.median(data)
+                if mea < mean[number]:
+                    mean[number] = mea
+                if med < median[number]:
+                    median[number] = med
+        print('avg: %s, med: %s' % (str(mean), str(median)))
 
 
 def main():
@@ -403,9 +430,9 @@ def main():
                 get_city(optimal_target)))
             nonmatched[key] = (anycast[key], optimal[key])
     print("non optimal len: " + str(len(list(filter(lambda x: x > 0, diff_fixed.values())))))
-    print('anycast: ' + str(sorted(anycast.values())))
-    print('optimal: ' + str(sorted(optimal.values())))
-    print('diff_fixed: ' + str(sorted(diff_fixed.values())))
+    print('anycast: ' + str(statistics.mean(sorted(anycast.values()))))
+    print('optimal: ' + str(statistics.mean(sorted(optimal.values()))))
+    print('diff_fixed: ' + str(statistics.mean(sorted(diff_fixed.values()))))
     print(len(anycast))
     distances = {key: get_distance(anycast_match[key], optimal_match[key]) for key in nonmatched}
     print("distances: " + str(sorted(distances.values())))
@@ -418,7 +445,9 @@ def main():
     print('nonmatched num: ' + str(len(nonmatched)))
     print('nonmatched anycast: ' + str(sorted([p[0] for p in nonmatched.values()])))
     print('nonmatched optimal: ' + str(sorted([p[1] for p in nonmatched.values()])))
-    print('nonmatched diff: ' + str(sorted([p[0] - p[1] for p in nonmatched.values()])))
+    print('nonmatched diff: ' + str(statistics.mean(sorted([p[0] - p[1] for p in nonmatched.values()]))))
+    print('nonmatched saved: ' + str(statistics.mean(sorted([(p[0] - p[1]) / p[0] for p in nonmatched.values()]))))
+    print('nonmatched saved: ' + str(sorted([(p[0] - p[1]) / p[0] for p in nonmatched.values()])))
     print('nonmatched diff: ' + str(len([p[0] - p[1] for p in nonmatched.values() if p[0] - p[1] > 20])))
 
     ds = []
