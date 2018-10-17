@@ -12,7 +12,7 @@ from hestia.plt.anycast import ANYCAST_DATA
 PATH = '/Users/johnson/huawei-data/exp7'
 INSTANCES_DB = PATH + '/instances.db'
 REPEAT = 6
-PERCENTILE = 50
+PERCENTILE = 90
 
 
 def parse_local_dns_latency():
@@ -129,6 +129,8 @@ def compare(records):
     # pprint(records_median)
     # print(records_median)
     fig = plt.figure(figsize=(8, 6), dpi=320)
+    print(123123)
+    print([v['sid_data'] for v in records_median.values()])
     plot(fig, records_median, 'direct_data')
     plot(fig, records_median, 'dns_hit_data')
     plot(fig, records_median, 'dns_data')

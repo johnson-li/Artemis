@@ -3,6 +3,7 @@ import json
 import random
 import re
 import statistics
+import numpy
 from urllib import request
 from urllib.parse import urlencode
 
@@ -353,12 +354,14 @@ def best_deployment(keys):
 
     mean = {}
     median = {}
-    for i in range(1, 26):
+    pp10 = {}
+    pp90 = {}
+    for i in range(1, 61):
         mean[i] = 500
         median[i] = 500
     for i in range(100):
         print('iter: %d' % i)
-        for number in range(1, 26):
+        for number in range(1, 61):
             solutions = set()
             count = 0
             while count < number:
@@ -377,12 +380,16 @@ def best_deployment(keys):
                     data.append(minimal_latency)
             if len(data) > 10:
                 mea = statistics.mean(data)
+                p10 = numpy.percentile(data, 10)
+                p90 = numpy.percentile(data, 90)
                 med = statistics.median(data)
-                if mea < mean[number]:
-                    mean[number] = mea
+                # if mea < mean[number]:
+                #     mean[number] = mea
                 if med < median[number]:
                     median[number] = med
-        print('avg: %s, med: %s' % (str(mean), str(median)))
+                    pp10[number] = p10
+                    pp90[number] = p90
+        print(str({'avg': mean, 'p10': pp10, 'p90': pp90, 'med': median}))
 
 
 def main():
@@ -419,6 +426,7 @@ def main():
     optimal = {key: val for key, val in optimal.items() if key in anycast}
     diff_fixed = {key: anycast[key] - optimal[key] for key in anycast}
     nonmatched = {}
+    matched = {}
     for key in diff:
         anycast_target = anycast_match[key]
         optimal_target = optimal_match[key]
@@ -429,6 +437,8 @@ def main():
                 routers_reverse[anycast_target], routers_reverse[optimal_target], get_city(anycast_target),
                 get_city(optimal_target)))
             nonmatched[key] = (anycast[key], optimal[key])
+        else:
+            matched[key] = (anycast[key], optimal[key])
     print("non optimal len: " + str(len(list(filter(lambda x: x > 0, diff_fixed.values())))))
     print('anycast: ' + str(statistics.mean(sorted(anycast.values()))))
     print('optimal: ' + str(statistics.mean(sorted(optimal.values()))))
@@ -442,9 +452,11 @@ def main():
     #     key: (
     #         get_by_subnet(unicast_mesh[key], anycast_match[key]), get_by_subnet(unicast_mesh[key], optimal_match[key]))
     #     for key in diff_match}
+    print('matched anycast: ' + str(statistics.mean(sorted([p[0] for p in matched.values()]))))
+    print('matched anycast: ' + str(statistics.mean(sorted([p[1] for p in matched.values()]))))
     print('nonmatched num: ' + str(len(nonmatched)))
-    print('nonmatched anycast: ' + str(sorted([p[0] for p in nonmatched.values()])))
-    print('nonmatched optimal: ' + str(sorted([p[1] for p in nonmatched.values()])))
+    print('nonmatched anycast: ' + str(statistics.mean(sorted([p[0] for p in nonmatched.values()]))))
+    print('nonmatched optimal: ' + str(statistics.mean(sorted([p[1] for p in nonmatched.values()]))))
     print('nonmatched diff: ' + str(statistics.mean(sorted([p[0] - p[1] for p in nonmatched.values()]))))
     print('nonmatched saved: ' + str(statistics.mean(sorted([(p[0] - p[1]) / p[0] for p in nonmatched.values()]))))
     print('nonmatched saved: ' + str(sorted([(p[0] - p[1]) / p[0] for p in nonmatched.values()])))
@@ -453,13 +465,17 @@ def main():
     ds = []
     saved = []
     wasted = []
+    latency = []
     for key in distances:
         ds.append(distances[key])
         saved.append(diff_fixed[key])
         wasted.append(diff_fixed[key] / 2 - get_latency(anycast_match[key], optimal_match[key]) / 2)
+        latency.append(optimal[key] - (anycast[key] / 2 + optimal[key] / 2 + get_latency(anycast_match[key], optimal_match[key]) * 2.3))
+    print('percentile: ' + str(len(matched) / len(diff)))
     print('ds: ' + str(ds))
     print('saved: ' + str(saved))
     print('wasted: ' + str(wasted))
+    print('latency: ' + str(latency))
 
 
 if __name__ == '__main__':
