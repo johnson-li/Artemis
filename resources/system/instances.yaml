@@ -1,0 +1,3 @@
+datacenter: 1
+platform: docker-local
+replica: 2
