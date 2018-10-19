@@ -1,3 +1,9 @@
-datacenter: 1
-platform: docker-local
-replica: 2
+username: johnson
+password: welcOme0!
+datacenters:
+- location: local
+  loadbalancers:
+  - 172.16.156.100
+  servers:
+  - 172.16.156.101
+  - 172.16.156.102
