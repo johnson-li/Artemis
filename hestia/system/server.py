@@ -7,6 +7,16 @@ from hestia import RESOURCE_PATH
 from hestia.system.main import logging
 
 
+def read_file(path):
+    with open(RESOURCE_PATH + '/system/%s' % path, 'r') as stream:
+        return ' '.join([line.strip() for line in stream.readlines()])
+
+
+def read_file_lines(path):
+    with open(RESOURCE_PATH + '/system/%s' % path, 'r') as stream:
+        return [line.strip() for line in stream.readlines()]
+
+
 def load_config():
     with open(RESOURCE_PATH + "/system/remote-config.yaml", 'r') as stream:
         return yaml.load(stream)
@@ -55,20 +65,92 @@ def execute(client, cmd):
     if result_code != 0:
         for line in stderr:
             if line.strip():
-                logging.warning('[%s] %s' % (ip, line.strip()))
+                logging.warning('[%s] %s' % (client.get_transport().sock.getpeername()[0], line.strip()))
         for line in stdout:
             if line.strip():
-                logging.debug('[%s] %s' % (ip, line.strip()))
+                logging.warning('[%s] %s' % (client.get_transport().sock.getpeername()[0], line.strip()))
     return result_code == 0
+
+
+def get_datacenter(ip):
+    instances = load_server_info()
+    for datacenter in instances['datacenters']:
+        if ip in datacenter['loadbalancers'] or ip in datacenter['servers']:
+            return datacenter
+
+
+def is_balancer(ip):
+    datacenter = get_datacenter(ip)
+    return ip in datacenter['loadbalancers']
 
 
 def init_system(user, passwd, ip):
     # client = paramiko.SSHClient()
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.get_transport()
     client.connect(ip, username=user, password=passwd)
     config = load_config()
-    execute(client, 'sudo apt install -yq %s' % ' '.join(config['apt']))
+
+    # apt install
+    def init_apt():
+        for cmd in config['balancer']['pre']:
+            execute(client, cmd)
+        execute(client, 'sudo apt install -yq %s' % ' '.join(config['all']['apt']))
+        if is_balancer(ip):
+            for cmd in config['balancer']['pre']:
+                execute(client, cmd)
+            execute(client, 'sudo apt install -yq %s' % ' '.join(config['balancer']['apt']))
+        else:
+            for cmd in config['balancer']['pre']:
+                execute(client, cmd)
+            execute(client, 'sudo apt install -yq %s' % ' '.join(config['balancer']['apt']))
+
+    # gre tunnels
+    def init_ovs():
+        execute(client, """
+                for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`; 
+                do sudo ovs-vsctl del-br $bridge; 
+                done
+        """)
+        datacenter = get_datacenter(ip)
+        if is_balancer(ip):
+            # cross balancer tunnel
+            for index, dc in enumerate(load_server_info()['datacenters']):
+                if dc != datacenter:
+                    execute(client, 'sudo ovs-vsctl add-br balancer%d; sudo ovs-vsctl add-port balancer%d tunnel%d -- '
+                                    'set interface tunnel%d type=gre, options:remote_ip=%s' %
+                            (index, index, index + 1000, index + 1000, dc['loadbalaners'][0]))
+            # balancer to server tunnel
+            for index, server in enumerate(datacenter['servers']):
+                execute(client, 'sudo ovs-vsctl add-br server%d; sudo ovs-vsctl add-port server%d tunnel%d -- '
+                                'set interface tunnel%d type=gre, options:remote_ip=%s' %
+                        (index, index, index, index, server))
+                execute(client, 'sudo ovs-ofctl del-flows server%d' % index)
+                # execute(client, 'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (index, index))
+                execute(client, 'echo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`; return -1' % (index, index))
+                execute(client, 'sudo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (index, index))
+        else:
+            # server to balancer tunnel
+            for index, balancer in enumerate(datacenter['loadbalancers']):
+                execute(client, 'sudo ovs-vsctl add-br balancer%d; sudo ovs-vsctl add-port balancer%d tunnel%d -- '
+                                'set interface tunnel%d type=gre, options:remote_ip=%s' %
+                        (index, index, index, index, balancer))
+                execute(client, 'sudo ifconfig balancer%d %s/32 up' % (index, balancer))
+
+    # delete content and create tables
+    def init_db():
+        if is_balancer(ip):
+            execute(client, 'echo drop database sid | mysql -uroot --password=root')
+            execute(client, 'echo create database sid | mysql -uroot --password=root')
+            execute(client, 'mysql -uroot --password=root sid -e "%s"' % read_file('init_inter.sql'))
+            execute(client, 'mysql -uroot --password=root sid -e "%s"' % read_file('init_intra.sql'))
+            for line in read_file_lines('init.sql'):
+                execute(client, 'mysql -uroot --password=root sid -e "%s"' % line)
+
+    init_apt()
+    init_ovs()
+    init_db()
 
 
 def init_systems():

@@ -1,3 +1,16 @@
-apt:
+all:
+  pre:
+  apt:
   - tmux
   - vim
+  - openvswitch-switch
+balancer:
+  pre:
+  - sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+  - sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+  apt:
+  - mysql-server
+  - libmysqlclient-dev
+server:
+  pre:
+  apt:
