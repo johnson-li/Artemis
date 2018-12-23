@@ -85,7 +85,6 @@ def is_balancer(ip):
 
 
 def init_system(user, passwd, ip):
-    # client = paramiko.SSHClient()
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.get_transport()

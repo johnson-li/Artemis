@@ -5,6 +5,7 @@ all:
   - vim
   - openvswitch-switch
   - pkg-config
+  - iputils-ping
 balancer:
   pre:
   - sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
