@@ -1,5 +1,5 @@
 username: johnson
-password: welcOme0!
+password: johnson
 datacenters:
 - location: local
   loadbalancers:
