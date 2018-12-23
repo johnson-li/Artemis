@@ -93,17 +93,11 @@ def init_system(user, passwd, ip):
 
     # apt install
     def init_apt():
-        for cmd in config['balancer']['pre']:
-            execute(client, cmd)
-        execute(client, 'sudo apt install -yq %s' % ' '.join(config['all']['apt']))
-        if is_balancer(ip):
-            for cmd in config['balancer']['pre']:
-                execute(client, cmd)
-            execute(client, 'sudo apt install -yq %s' % ' '.join(config['balancer']['apt']))
-        else:
-            for cmd in config['balancer']['pre']:
-                execute(client, cmd)
-            execute(client, 'sudo apt install -yq %s' % ' '.join(config['balancer']['apt']))
+        role = 'balancer' if is_balancer(ip) else 'server'
+        for prefix in ['all', role]:
+            [execute(client, cmd) for cmd in config[prefix]['pre']]
+            execute(client, 'sudo apt install -yq %s' % ' '.join(config[prefix]['apt']))
+            [execute(client, cmd) for cmd in config[prefix]['post']]
 
     # gre tunnels
     def init_ovs():
@@ -127,8 +121,12 @@ def init_system(user, passwd, ip):
                         (index, index, index, index, server))
                 execute(client, 'sudo ovs-ofctl del-flows server%d' % index)
                 # execute(client, 'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (index, index))
-                execute(client, 'echo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`; return -1' % (index, index))
-                execute(client, 'sudo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (index, index))
+                execute(client,
+                        'echo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`; return -1' % (
+                            index, index))
+                execute(client,
+                        'sudo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (
+                            index, index))
         else:
             # server to balancer tunnel
             for index, balancer in enumerate(datacenter['loadbalancers']):
