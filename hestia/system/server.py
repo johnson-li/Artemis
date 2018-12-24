@@ -91,7 +91,7 @@ def init_system(user, passwd, ip):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.get_transport()
     client.connect(ip, username=user, password=passwd)
-    logging.info("connected to: " + ip)
+    logging.debug("connected to: " + ip)
     config = load_config()
 
     # apt install
@@ -124,9 +124,8 @@ def init_system(user, passwd, ip):
                                 'set interface tunnel%d type=gre, options:remote_ip=%s' %
                         (index, index, index, index, server))
                 execute(client, 'sudo ovs-ofctl del-flows server%d' % index)
-                # execute(client, 'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (index, index))
                 execute(client,
-                        'echo ovs-ofctl add-flow server%d in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`; return -1' % (
+                        'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
                             index, index))
                 execute(client,
                         'sudo ovs-ofctl add-flow server%d in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (
