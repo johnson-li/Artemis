@@ -126,10 +126,10 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo ovs-ofctl del-flows server%d' % index)
                 # execute(client, 'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (index, index))
                 execute(client,
-                        'echo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`; return -1' % (
+                        'echo ovs-ofctl add-flow server%d in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`; return -1' % (
                             index, index))
                 execute(client,
-                        'sudo ovs-ofctl add-flow server%d in_port=local,acitons=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (
+                        'sudo ovs-ofctl add-flow server%d in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (
                             index, index))
         else:
             # server to balancer tunnel
