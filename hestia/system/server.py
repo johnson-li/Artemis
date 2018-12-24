@@ -60,9 +60,11 @@ def init_servers():
 
 
 def execute(client, cmd):
+    client.exec_command("echo `date` '%s' >> ~/hestia.log" % cmd)
     stdin, stdout, stderr = client.exec_command(cmd)
     result_code = stdout.channel.recv_exit_status()
     if result_code != 0:
+        logging.warning('[%s] %s' % (client.get_transport().sock.getpeername()[0], cmd))
         for line in stderr:
             if line.strip():
                 logging.warning('[%s] %s' % (client.get_transport().sock.getpeername()[0], line.strip()))
@@ -89,15 +91,17 @@ def init_system(user, passwd, ip):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.get_transport()
     client.connect(ip, username=user, password=passwd)
+    logging.info("connected to: " + ip)
     config = load_config()
 
     # apt install
     def init_apt():
         role = 'balancer' if is_balancer(ip) else 'server'
-        for prefix in ['all', role]:
-            [execute(client, cmd) for cmd in config[prefix]['pre']]
-            execute(client, 'sudo apt install -yq %s' % ' '.join(config[prefix]['apt']))
-            [execute(client, cmd) for cmd in config[prefix]['post']]
+        prefixes = ['all', role]
+        [[execute(client, cmd) for cmd in config[prefix]['pre']] for prefix in prefixes if config[prefix]['pre']]
+        [execute(client, 'sudo apt install -yq %s' % ' '.join(config[prefix]['apt'])) for prefix in prefixes if
+         config[prefix]['apt']]
+        [[execute(client, cmd) for cmd in config[prefix]['post']] for prefix in prefixes if config[prefix]['post']]
 
     # gre tunnels
     def init_ovs():

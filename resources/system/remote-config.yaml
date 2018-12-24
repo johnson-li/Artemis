@@ -7,6 +7,7 @@ all:
   - pkg-config
   - iputils-ping
   post:
+  - sudo service openvswitch-switch start
 balancer:
   pre:
   - sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
