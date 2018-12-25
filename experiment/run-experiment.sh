@@ -15,8 +15,8 @@ cp ../openssl/libcrypto.so.1.1 bin
 
 ./experiment/build-images.sh
 
-#python3 -m venv .venv
-virtualenv .venv
+python3 -m venv .venv
+#virtualenv .venv
 
 source ./.venv/bin/activate
 pip install --upgrade pip
