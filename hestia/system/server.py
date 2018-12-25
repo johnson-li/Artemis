@@ -86,12 +86,17 @@ def is_balancer(ip):
     return ip in datacenter['loadbalancers']
 
 
-def init_system(user, passwd, ip):
+def connect(user, passwd, ip):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.get_transport()
     client.connect(ip, username=user, password=passwd)
     logging.debug("connected to: " + ip)
+    return client
+
+
+def init_system(user, passwd, ip):
+    client = connect(user, passwd, ip)
     config = load_config()
 
     # apt install
@@ -151,6 +156,7 @@ def init_system(user, passwd, ip):
     init_apt()
     init_ovs()
     init_db()
+    client.close()
 
 
 def init_systems():
@@ -163,8 +169,17 @@ def init_systems():
         pool.starmap(init_system, [(account['user'], account['passwd'], ip) for ip in ips])
 
 
+def start_application(user, passwd, ip):
+    client = connect(user, passwd, ip)
+    config = load_config()
+    execute(client, '~/app/scripts/start.sh')
+
+
 def start_applications():
     """
         Run application code
     """
-    pass
+    ips = load_server_ips()
+    account = load_account()
+    with Pool() as pool:
+        pool.starmap(start_application, [(account['user'], account['passwd'], ip) for ip in ips])

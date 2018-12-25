@@ -23,5 +23,3 @@ server:
   - echo 'ROLE=server' >> ~/env
   apt:
   post:
-execute:
-  - ~/app/scripts/start.sh
