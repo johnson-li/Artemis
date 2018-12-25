@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 RUN apt-get update
-RUN apt-get install -y net-tools openssh-server sudo zsh git vim
+RUN apt-get install -y net-tools openssh-server sudo zsh git vim libev-dev
 
 # Configure user
 RUN useradd -m johnson && echo "johnson:johnson" | chpasswd && adduser johnson sudo
@@ -8,8 +8,9 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN chsh -s `which zsh` johnson
 
 # Copy files
-COPY --chown=johnson:johnson cpp/balancer /home/johnson/app/bin/balancer
 COPY --chown=johnson:johnson scripts /home/johnson/app/scripts
+COPY --chown=johnson:johnson bin /home/johnson/app/bin
+COPY --chown=johnson:johnson keys /home/johnson/app/keys
 
 # configure ssh
 RUN mkdir /var/run/sshd
