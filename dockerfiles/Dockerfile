@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 RUN apt-get update
-RUN apt-get install -y net-tools openssh-server sudo zsh git vim libev-dev
+RUN apt-get install -y net-tools openssh-server sudo zsh git vim libev-dev tmux
 
 # Configure user
 RUN useradd -m johnson && echo "johnson:johnson" | chpasswd && adduser johnson sudo
