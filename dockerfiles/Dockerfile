@@ -25,5 +25,6 @@ USER johnson
 
 RUN wget -q https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
-EXPOSE 22
+EXPOSE 22 4433
 CMD ["/home/johnson/app/scripts/entrypoint.sh"]
+
