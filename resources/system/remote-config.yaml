@@ -10,6 +10,7 @@ all:
   - sudo service openvswitch-switch start
 balancer:
   pre:
+  - echo 'ROLE=balancer' >> ~/env
   - sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
   - sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
   apt:
@@ -19,5 +20,8 @@ balancer:
   - sudo service mysql start
 server:
   pre:
+  - echo 'ROLE=server' >> ~/env
   apt:
   post:
+execute:
+  - ~/app/scripts/start.sh

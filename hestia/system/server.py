@@ -141,7 +141,7 @@ def init_system(user, passwd, ip):
     # delete content and create tables
     def init_db():
         if is_balancer(ip):
-            execute(client, 'echo drop database sid | mysql -uroot --password=root')
+            execute(client, 'echo drop database sid if exists| mysql -uroot --password=root')
             execute(client, 'echo create database sid | mysql -uroot --password=root')
             execute(client, 'mysql -uroot --password=root sid -e "%s"' % read_file('init_inter.sql'))
             execute(client, 'mysql -uroot --password=root sid -e "%s"' % read_file('init_intra.sql'))
