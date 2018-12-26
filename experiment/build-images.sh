@@ -18,7 +18,7 @@ if [[ -z `docker network ls|grep hestianet` ]]
 then
     docker network create --subnet=172.16.156.0/24 hestianet
 fi
-docker build -t hestia:v1 -f dockerfiles/Dockerfile .
+docker build --no-cache -t hestia:v1 -f dockerfiles/Dockerfile .
 docker run --privileged -dP --net hestianet --ip 172.16.156.100 -e ROLE=balancer --name balancer1 hestia:v1
 docker run --privileged -dP --net hestianet --ip 172.16.156.101 -e ROLE=server --name server11 hestia:v1
 docker run --privileged -dP --net hestianet --ip 172.16.156.102 -e ROLE=server --name server12 hestia:v1
