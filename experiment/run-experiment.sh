@@ -4,8 +4,12 @@ old_dir=`pwd`
 cd "$(dirname "$0")"/..
 
 cd ../ngtcp2
+git checkout -- .
+git pull
 make -j$(nproc) > /dev/null
 cd ../Hestia
+git checkout -- .
+git pull
 cp ../ngtcp2/examples/balancer bin
 cp ../ngtcp2/examples/client bin
 cp ../ngtcp2/examples/server bin
