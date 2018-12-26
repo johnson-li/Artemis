@@ -152,7 +152,7 @@ def init_system(user, passwd, ip):
             execute(client, '%s sid -e "%s"' % (mysql, read_file('init_inter.sql')))
             execute(client, '%s sid -e "%s"' % (mysql, read_file('init_intra.sql')))
             for line in read_file_lines('init.sql'):
-                execute(client, 'mysql -uroot --password=root sid -e "%s"' % line)
+                execute(client, '%s sid -e "%s"' % (mysql, line))
 
     init_apt()
     init_ovs()
