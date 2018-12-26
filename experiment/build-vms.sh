@@ -5,7 +5,6 @@ cd "$(dirname "$0")"/..
 
 cd resources/vagrant
 vagrant destroy -f
-vagrant up
+vagrant up --parallel
 
-cd $old_dir
-
+cd ${old_dir}

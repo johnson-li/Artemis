@@ -112,7 +112,7 @@ def init_system(user, passwd, ip):
     def init_ovs():
         execute(client, """
                 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`; 
-                do sudo ovs-vsctl del-br $bridge; 
+                    do sudo ovs-vsctl del-br $bridge; 
                 done
         """)
         datacenter = get_datacenter(ip)
@@ -128,6 +128,7 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo ovs-vsctl add-br server%d; sudo ovs-vsctl add-port server%d tunnel%d -- '
                                 'set interface tunnel%d type=gre, options:remote_ip=%s' %
                         (index, index, index, index, server))
+                execute(client, 'sudo ifconfig server%d 12.12.12.12/32 up' % index)
                 execute(client, 'sudo ovs-ofctl del-flows server%d' % index)
                 execute(client,
                         'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
@@ -154,9 +155,15 @@ def init_system(user, passwd, ip):
             for line in read_file_lines('init.sql'):
                 execute(client, '%s sid -e "%s"' % (mysql, line))
 
+    def init_arp():
+        if is_balancer(ip):
+            execute(client, 'sudo arp -s 172.16.156.100 00:00:00:00:00:00 -i server0')
+            execute(client, 'sudo arp -s 172.16.156.100 00:00:00:00:00:00 -i server1')
+
     init_apt()
     init_ovs()
     init_db()
+    init_arp()
     client.close()
 
 
