@@ -17,7 +17,8 @@ cp ../ngtcp2/lib/.libs/libngtcp2.so.0 bin
 cp ../openssl/libssl.so.1.1 bin
 cp ../openssl/libcrypto.so.1.1 bin
 
-./experiment/build-images.sh
+# ./experiment/build-images.sh
+./experiment/build-vms.sh
 
 python3 -m venv .venv
 #virtualenv .venv
