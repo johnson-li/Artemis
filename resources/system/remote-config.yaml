@@ -6,6 +6,7 @@ all:
   - openvswitch-switch
   - pkg-config
   - iputils-ping
+  - libev-dev
   post:
   - sudo service openvswitch-switch start
 balancer:
