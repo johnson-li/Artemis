@@ -52,9 +52,9 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "../../scripts", "$HOME/app/scripts"
-  config.vm.synced_folder "../../bin", "$HOME/app/bin"
-  config.vm.synced_folder "../../keys", "$HOME/app/keys"
+  config.vm.synced_folder "../../scripts", "/home/vagrant/app/scripts"
+  config.vm.synced_folder "../../bin", "/home/vagrant/app/bin"
+  config.vm.synced_folder "../../keys", "/home/vagrant/app/keys"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
