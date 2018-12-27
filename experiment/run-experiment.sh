@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 old_dir=`pwd`
-cd "$(dirname "$0")"
+cd "$(dirname "$0")"/..
 
-./build.sh
+./experiment/build.sh
 
 # ./experiment/build-images.sh
 ./experiment/build-vms.sh
