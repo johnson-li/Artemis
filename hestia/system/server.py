@@ -36,8 +36,8 @@ def load_server_ips():
     instances = load_server_info()
     ips = []
     for datacenter in instances['datacenters']:
-        ips += datacenter['loadbalancers']['phy']
-        ips += datacenter['servers']['phy']
+        ips += [b['phy'] for b in datacenter['loadbalancers']]
+        ips += [s['phy'] for s in datacenter['servers']]
     return ips
 
 
