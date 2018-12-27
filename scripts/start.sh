@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 source ~/env
-interface=`route |grep default| head -n1| tr -s ' '| cut -d' ' -f8`
+
+if [[ -z "$interface" ]]
+then
+    interface=`route |grep default| head -n1| tr -s ' '| cut -d' ' -f8`
+fi
 
 case ${ROLE} in
     "balancer")

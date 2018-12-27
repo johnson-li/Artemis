@@ -77,13 +77,13 @@ def execute(client, cmd):
 def get_datacenter(ip):
     instances = load_server_info()
     for datacenter in instances['datacenters']:
-        if ip in datacenter['loadbalancers'] or ip in datacenter['servers']:
+        if ip in [b['phy'] for b in datacenter['loadbalancers']] or ip in [s['phy'] for s in datacenter['servers']]:
             return datacenter
 
 
 def is_balancer(ip):
     datacenter = get_datacenter(ip)
-    return ip in datacenter['loadbalancers']
+    return ip in [b['phy'] for b in datacenter['loadbalancers']]
 
 
 def connect(user, passwd, ip):
@@ -124,25 +124,26 @@ def init_system(user, passwd, ip):
                                     'set interface tunnel%d type=gre, options:remote_ip=%s' %
                             (index, index, index + 1000, index + 1000, dc['loadbalaners'][0]))
             # balancer to server tunnel
-            for index, server in enumerate(datacenter['servers']):
-                execute(client, 'sudo ovs-vsctl add-br server%d; sudo ovs-vsctl add-port server%d tunnel%d -- '
-                                'set interface tunnel%d type=gre, options:remote_ip=%s' %
-                        (index, index, index, index, server))
-                execute(client, 'sudo ifconfig server%d 12.12.12.12/32 up' % index)
-                execute(client, 'sudo ovs-ofctl del-flows server%d' % index)
+            for server in datacenter['servers']:
+                execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
+                                'set interface tunnel%s type=gre, options:remote_ip=%s' %
+                        (server['name'], server['name'], server['name'][6:], server['name'][6:], server['phy']))
+                execute(client, 'sudo ifconfig %s 12.12.12.12/32 up' % server['name'])
+                execute(client, 'sudo ovs-ofctl del-flows %s' % server['name'])
                 execute(client,
-                        'sudo ovs-ofctl add-flow server%d in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
-                            index, index))
+                        'sudo ovs-ofctl add-flow %s in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
+                            server['name'], server['name'][6:]))
                 execute(client,
-                        'sudo ovs-ofctl add-flow server%d in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%d| tail -n1| egrep -o "[0-9]+"`' % (
-                            index, index))
+                        'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
+                            server['name'], server['name'][6:]))
         else:
             # server to balancer tunnel
-            for index, balancer in enumerate(datacenter['loadbalancers']):
-                execute(client, 'sudo ovs-vsctl add-br balancer%d; sudo ovs-vsctl add-port balancer%d tunnel%d -- '
-                                'set interface tunnel%d type=gre, options:remote_ip=%s' %
-                        (index, index, index, index, balancer))
-                execute(client, 'sudo ifconfig balancer%d %s/32 up' % (index, balancer))
+            for balancer in datacenter['loadbalancers']:
+                execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
+                                'set interface tunnel%s type=gre, options:remote_ip=%s' %
+                        (balancer['name'], balancer['name'], balancer['name'][8:], balancer['name'][8:],
+                         balancer['phy']))
+                execute(client, 'sudo ifconfig %s %s/32 up' % (balancer['name'], balancer['sid']))
 
     # delete content and create tables
     def init_db():
@@ -158,8 +159,9 @@ def init_system(user, passwd, ip):
 
     def init_arp():
         if is_balancer(ip):
-            execute(client, 'sudo arp -s 172.16.156.100 00:00:00:00:00:00 -i server0')
-            execute(client, 'sudo arp -s 172.16.156.100 00:00:00:00:00:00 -i server1')
+            datacenter = get_datacenter(ip)
+            for server in datacenter['servers']:
+                execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, server['name']))
 
     init_apt()
     init_ovs()

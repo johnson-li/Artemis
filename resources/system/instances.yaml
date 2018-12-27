@@ -3,7 +3,11 @@ password: johnson
 datacenters:
 - location: local
   loadbalancers:
-  - 172.16.156.100
+  - name: 'balancer0'
+    phy: 173.16.156.100
+    sid: 172.16.156.100
   servers:
-  - 172.16.156.101
-  - 172.16.156.102
+  - name: 'server0'
+    phy: 173.16.156.101
+  - name: 'server1'
+    phy: 173.16.156.102
