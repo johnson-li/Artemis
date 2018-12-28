@@ -30,6 +30,7 @@ def main():
     server.init_systems()
     logging.info('start applications')
     server.start_applications()
+    logging.info('finished')
 
 
 if __name__ == '__main__':

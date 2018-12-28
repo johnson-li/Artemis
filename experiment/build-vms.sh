@@ -4,8 +4,14 @@ old_dir=`pwd`
 cd "$(dirname "$0")"/..
 
 cd resources/vagrant
-# vagrant destroy -f
-# vagrant up --parallel
-vagrant reload
+if [[ ! -z "$destroy" ]]
+then
+    echo 'full reload'
+    vagrant destroy -f
+    vagrant up --parallel
+else
+    echo 'partial reload'
+    vagrant reload
+fi
 
 cd ${old_dir}

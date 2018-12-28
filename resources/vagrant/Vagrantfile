@@ -88,6 +88,6 @@ Vagrant.configure(2) do |config|
     sudo su johnson -c 'wget -q https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true'
     sudo su johnson -c 'ln -s /home/vagrant/app /home/johnson/app'
     sudo su johnson -c "echo 'export PATH=$PATH:/sbin' >> /home/johnson/.zshrc"
-    sudo su johnson -c "echo 'export interface=enp0s8' >> /home/johnson/.zshrc"
+    sudo su johnson -c "echo 'export interface=enp0s9' >> /home/johnson/.zshrc"
   SHELL
 end
