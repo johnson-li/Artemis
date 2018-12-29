@@ -6,6 +6,7 @@ cd "$(dirname "$0")"/..
 cd ../ngtcp2
 git checkout -- .
 git pull
+autoreconf -i
 make -j$(nproc) > /dev/null
 cd ../Hestia
 git pull
