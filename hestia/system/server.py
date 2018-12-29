@@ -144,6 +144,13 @@ def init_system(user, passwd, ip):
                         (balancer['name'], balancer['name'], balancer['name'][8:], balancer['name'][8:],
                          balancer['phy']))
                 execute(client, 'sudo ifconfig %s %s/32 up' % (balancer['name'], balancer['sid']))
+                execute(client, 'sudo ovs-ofctl del-flows %s' % balancer['name'])
+                execute(client,
+                        'sudo ovs-ofctl add-flow %s in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
+                            balancer['name'], balancer['name'][8:]))
+                execute(client,
+                        'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
+                            balancer['name'], balancer['name'][8:]))
 
     # delete content and create tables
     def init_db():
