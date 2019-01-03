@@ -25,3 +25,7 @@ server:
   - echo 'ROLE=server' >> ~/env
   apt:
   post:
+db:
+  pre:
+  - echo 123
+

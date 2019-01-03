@@ -1,7 +1,12 @@
 username: johnson
 password: johnson
+database:
+  ip: '35.228.52.213'
+  username: johnson
+  password: welcOme0!
 datacenters:
 - location: local
+  name: dc1
   loadbalancers:
   - name: 'bal0'
     phy: 173.16.156.100
@@ -11,3 +16,14 @@ datacenters:
     phy: 173.16.156.101
   - name: 'ser1'
     phy: 173.16.156.102
+- location: local
+  name: dc2
+  loadbalancers:
+  - name: 'bal5'
+    phy: 174.16.156.100
+    sid: 172.16.156.100
+  servers:
+  - name: 'ser5'
+    phy: 174.16.156.101
+  - name: 'ser6'
+    phy: 174.16.156.102

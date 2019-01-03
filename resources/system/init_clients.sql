@@ -1,6 +1,6 @@
-create table mapping (
+create table clients (
     id int NOT NULL AUTO_INCREMENT,
-    subnet varchar(255),
-    peer varchar(255),
-    primary key (id)
+    ip varchar(255),
+    primary key (id),
+    unique key (ip)
 );
