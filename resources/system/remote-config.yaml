@@ -17,9 +17,12 @@ balancer:
   apt:
   - mysql-client
   - mysql-server
+  - python3-dev
+  - python3-pip
   - libmysqlclient-dev
   post:
   - sudo service mysql start
+  - sudo pip3 install mysqlclient
 server:
   pre:
   - echo 'ROLE=server' >> ~/env

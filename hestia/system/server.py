@@ -166,6 +166,11 @@ def init_system(user, passwd, ip):
             for server in datacenter['servers']:
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, server['name']))
 
+    def init_env():
+        dc = get_datacenter(ip)
+        execute(client, 'echo "datacenter=%s" >> ~/env ' % dc['ip'])
+
+    init_env()
     init_apt()
     init_ovs()
     init_arp()

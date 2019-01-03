@@ -48,6 +48,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "../../scripts", "/home/vagrant/app/scripts"
   config.vm.synced_folder "../../bin", "/home/vagrant/app/bin"
   config.vm.synced_folder "../../keys", "/home/vagrant/app/keys"
+  config.vm.synced_folder "../../hestia/exec", "/home/vagrant/app/hestia/exec"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
