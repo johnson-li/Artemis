@@ -126,11 +126,18 @@ def init_system(user, passwd, ip):
             # cross balancer tunnel
             for index, dc in enumerate(load_server_info()['datacenters']):
                 if dc != datacenter:
+                    remote = dc['loadbalancers'][0]['name']
                     execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
                                     'set interface tunnel%s type=gre, options:remote_ip=%s' %
-                            (dc['loadbalancers'][0]['name'], dc['loadbalancers'][0]['name'],
-                             dc['loadbalancers'][0]['name'][3:], dc['loadbalancers'][0]['name'][3:],
-                             dc['loadbalancers'][0]['phy']))
+                            (remote, remote, remote[3:], remote[3:], dc['loadbalancers'][0]['phy']))
+                    execute(client, 'sudo ifconfig %s 12.12.12.12/32 up' % remote)
+                    execute(client, 'sudo ovs-ofctl del-flows %s' % remote)
+                    execute(client,
+                            'sudo ovs-ofctl add-flow %s in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
+                                remote, remote[3:]))
+                    execute(client,
+                            'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
+                                remote['name'], remote[3:]))
             # balancer to server tunnel
             for server in datacenter['servers']:
                 execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
