@@ -41,9 +41,9 @@ def measure():
 def main():
     if len(sys.argv) > 2:
         global dc
-        global db
+        global db_ip
         dc = sys.argv[1]
-        db = sys.argv[2]
+        db_ip = sys.argv[2]
     global db
     db = MySQLdb.connect(host=db_ip, user='johnson', passwd='welcOme0!', db='sid')
     db.autocommit(on=True)
