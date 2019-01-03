@@ -197,7 +197,7 @@ def init_database():
     cursor.execute('drop database if exists sid')
     cursor.execute('create database sid')
     cursor.execute('use sid')
-    for f in ['init_inter.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
+    for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
         cursor.execute(read_file(f))
     for line in read_file_lines('init.sql'):
