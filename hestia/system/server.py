@@ -174,8 +174,10 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, server['name']))
 
     def init_env():
-        dc = load_server_info()['database']
-        execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['ip'])
+        dc = get_datacenter(ip)
+        info = load_server_info()
+        execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['name'])
+        execute(client, 'echo "DATABASE=%s" >> ~/env ' % info['database']['ip'])
 
     init_env()
     init_apt()
