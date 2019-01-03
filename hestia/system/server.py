@@ -128,9 +128,9 @@ def init_system(user, passwd, ip):
                 if dc != datacenter:
                     execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
                                     'set interface tunnel%s type=gre, options:remote_ip=%s' %
-                            (dc['loadbalaners'][0]['name'], dc['loadbalaners'][0]['name'],
-                             dc['loadbalaners'][0]['name'][3:], dc['loadbalaners'][0]['name'][3:],
-                             dc['loadbalaners'][0]['phy']))
+                            (dc['loadbalancers'][0]['name'], dc['loadbalancers'][0]['name'],
+                             dc['loadbalancers'][0]['name'][3:], dc['loadbalancers'][0]['name'][3:],
+                             dc['loadbalancers'][0]['phy']))
             # balancer to server tunnel
             for server in datacenter['servers']:
                 execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
