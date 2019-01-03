@@ -160,12 +160,6 @@ def init_system(user, passwd, ip):
                         'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
                             balancer['name'], balancer['name'][3:]))
 
-    # delete content and create tables
-    def init_db():
-        if is_database(ip):
-            # mysql = 'mysql -ujohnson -pwelcOme0! -h35.228.52.213'
-            mysql = 'mysql -uroot -proot'
-
     def init_arp():
         if is_balancer(ip):
             datacenter = get_datacenter(ip)
@@ -174,7 +168,6 @@ def init_system(user, passwd, ip):
 
     init_apt()
     init_ovs()
-    # init_db()
     init_arp()
     client.close()
 
@@ -223,7 +216,3 @@ def start_applications():
     account = load_account()
     with Pool() as pool:
         pool.starmap(start_application, [(account['user'], account['passwd'], ip) for ip in ips])
-
-
-if __name__ == '__main__':
-    init_database()
