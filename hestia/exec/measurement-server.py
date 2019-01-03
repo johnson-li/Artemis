@@ -20,8 +20,9 @@ def millis():
 
 def ping(client):
     res = os.popen("ping -c 5 %s | tail -1| awk '{print $4}' | cut -d '/' -f 2" % client).read()
-    res = int(float(res))
+    res = int(float(res) * 1000)
     cursor = db.cursor()
+    logging.warning('latency to %s: %d' % (client, res))
     cursor.execute(
         "insert into measurements (dc, client, latency, ts) values ('%s', '%s', %d, %d)" % (dc, client, res, millis()))
     cursor.close()
