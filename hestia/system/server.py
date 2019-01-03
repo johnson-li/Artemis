@@ -137,7 +137,7 @@ def init_system(user, passwd, ip):
                                 remote, remote[3:]))
                     execute(client,
                             'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
-                                remote['name'], remote[3:]))
+                                remote, remote[3:]))
             # balancer to server tunnel
             for server in datacenter['servers']:
                 execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
