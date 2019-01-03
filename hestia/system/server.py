@@ -174,7 +174,7 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, server['name']))
 
     def init_env():
-        dc = get_datacenter(ip)
+        dc = load_server_info()['database']
         execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['ip'])
 
     init_env()
