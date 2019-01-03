@@ -9,9 +9,9 @@ import MySQLdb
 
 pool = ThreadPool(4)
 
-db = MySQLdb.connect(host="35.228.52.213", user='johnson', passwd='welcOme0!', db='sid')
-db.autocommit(on=True)
+db = None
 dc = 'test'
+db_ip = '35.228.52.213'
 
 
 def millis():
@@ -39,10 +39,14 @@ def measure():
 
 
 def main():
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 2:
         global dc
+        global db
         dc = sys.argv[1]
-        logging.warning("dc: %s" % dc)
+        db = sys.argv[2]
+    global db
+    db = MySQLdb.connect(host=db_ip, user='johnson', passwd='welcOme0!', db='sid')
+    db.autocommit(on=True)
     measure()
 
 
