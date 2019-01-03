@@ -192,6 +192,7 @@ def init_database():
     user = db['username']
     passwd = db['password']
     mysqldb = MySQLdb.connect(host=ip, user=user, passwd=passwd, db='sid')
+    mysqldb.autocommit(True)
     cursor = mysqldb.cursor()
     cursor.execute('drop database if exists sid')
     cursor.execute('create database sid')
