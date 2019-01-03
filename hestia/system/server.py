@@ -168,7 +168,7 @@ def init_system(user, passwd, ip):
 
     def init_env():
         dc = get_datacenter(ip)
-        execute(client, 'echo "datacenter=%s" >> ~/env ' % dc['ip'])
+        execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['ip'])
 
     init_env()
     init_apt()
