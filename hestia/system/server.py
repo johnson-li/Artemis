@@ -87,6 +87,11 @@ def is_balancer(ip):
     return ip in [b['phy'] for b in datacenter['loadbalancers']]
 
 
+def is_server(ip):
+    datacenter = get_datacenter(ip)
+    return ip in [b['phy'] for b in datacenter['servers']]
+
+
 def is_database(ip):
     instances = load_server_info()
     return ip == instances['database']['ip']
@@ -167,11 +172,17 @@ def init_system(user, passwd, ip):
                         'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
                             balancer['name'], balancer['name'][3:]))
 
-    def init_arp():
+    def init_routing():
         if is_balancer(ip):
             datacenter = get_datacenter(ip)
             for server in datacenter['servers']:
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, server['name']))
+        if is_server(ip):
+            datacenter = get_datacenter(ip)
+            for index, balancer in enumerate(datacenter['loadbalancers']):
+                execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, balancer['name']))
+                execute(client,
+                        'sudo ip route add default via %s dev %s tab %d' % (balancer['sid'], balancer['name'], ++index))
 
     def init_env():
         dc = get_datacenter(ip)
@@ -182,7 +193,7 @@ def init_system(user, passwd, ip):
     init_env()
     init_apt()
     init_ovs()
-    init_arp()
+    init_routing()
     client.close()
 
 
