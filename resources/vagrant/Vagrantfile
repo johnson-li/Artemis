@@ -23,25 +23,21 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "server11" do |server11|
     server11.vm.hostname = "server11"
-    server11.vm.network "private_network", ip: "172.16.156.101"
     server11.vm.network "private_network", ip: "173.16.156.101"
   end
 
   config.vm.define "server51" do |server51|
     server51.vm.hostname = "server51"
-    server51.vm.network "private_network", ip: "172.16.156.101"
     server51.vm.network "private_network", ip: "174.16.156.101"
   end
 
   config.vm.define "server12" do |server12|
     server12.vm.hostname = "server12"
-    server12.vm.network "private_network", ip: "172.16.156.102"
     server12.vm.network "private_network", ip: "173.16.156.102"
   end
 
   config.vm.define "server52" do |server52|
     server52.vm.hostname = "server52"
-    server52.vm.network "private_network", ip: "172.16.156.102"
     server52.vm.network "private_network", ip: "174.16.156.102"
   end
 
