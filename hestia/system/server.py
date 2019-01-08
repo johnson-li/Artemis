@@ -182,7 +182,7 @@ def init_system(user, passwd, ip):
             for index, balancer in enumerate(datacenter['loadbalancers']):
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (ip, balancer['name']))
                 execute(client,
-                        'sudo ip route add default via %s dev %s tab %d' % (balancer['sid'], balancer['name'], ++index))
+                        'sudo ip route add default via %s dev %s tab %d' % (balancer['sid'], balancer['name'], index + 1))
 
     def init_env():
         dc = get_datacenter(ip)
