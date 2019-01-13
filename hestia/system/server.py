@@ -84,8 +84,8 @@ def get_datacenter(ip):
 
 def get_balancer(ip):
     datacenter = get_datacenter(ip)
-    candidates = filter(lambda x: x['phy'] == ip, datacenter['loadbalancers'])
-    return list(candidates)[0] if candidates else None
+    candidates = list(filter(lambda x: x['phy'] == ip, datacenter['loadbalancers']))
+    return candidates[0] if candidates else None
 
 
 def sid(ip):
