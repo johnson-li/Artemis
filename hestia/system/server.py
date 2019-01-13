@@ -144,7 +144,7 @@ def init_system(user, passwd, ip):
                     balancer['anycast'])
             execute(client, 'sudo ovs-vsctl add-port bridge ac -- set interface ac type=internal')
             execute(client, 'sudo ifconfig ac %s/24 up' % balancer['sid'])
-            query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface t%s| tail -n1| egrep -o "[0-9]+"`'
+            query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface %s| tail -n1| egrep -o "[0-9]+"`'
             execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
                 query_port % 'ac', query_port % balancer['anycast']))
             execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
