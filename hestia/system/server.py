@@ -178,7 +178,7 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo ifconfig %s 12.12.12.12/32 up' % server['name'])
                 execute(client,
                         'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
-                            query_port % 't%s' % server_name, balancer['anycast']))
+                            query_port % 't%s' % server_name, query_port % balancer['anycast']))
                 execute(client,
                         'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
                             query_port % server['name'], query_port % 't%s' % server['name']))
