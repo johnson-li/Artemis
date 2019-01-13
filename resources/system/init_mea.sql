@@ -5,4 +5,4 @@ create table measurements (
     latency int,
     ts int,
     primary key (id)
-)
+);

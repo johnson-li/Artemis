@@ -8,22 +8,24 @@ datacenters:
 - location: local
   name: dc1
   loadbalancers:
-  - name: 'bal0'
+  - name: 'bl0'
+    anycast: 'enp0s8'
     phy: 173.16.156.100
     sid: 172.16.156.100
   servers:
-  - name: 'ser0'
+  - name: 'sv0'
     phy: 173.16.156.101
-  - name: 'ser1'
+  - name: 'sv1'
     phy: 173.16.156.102
 - location: local
   name: dc2
   loadbalancers:
-  - name: 'bal5'
+  - name: 'bl5'
+    anycast: 'enp0s8'
     phy: 174.16.156.100
     sid: 172.16.156.100
   servers:
-  - name: 'ser5'
+  - name: 'sv5'
     phy: 174.16.156.101
-  - name: 'ser6'
+  - name: 'sv6'
     phy: 174.16.156.102
