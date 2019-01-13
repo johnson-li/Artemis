@@ -138,7 +138,7 @@ def init_system(user, passwd, ip):
             execute(client,
                     'sudo ovs-vsctl add-br bridge; sudo ovs-vsctl add-port bridge %s; sudo ovs-ofctl del-flows bridge' %
                     balancer['anycast'])
-            query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface tb%s| tail -n1| egrep -o "[0-9]+"`'
+            query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface t%s| tail -n1| egrep -o "[0-9]+"`'
             # cross balancer tunnel
             for index, dc in enumerate(load_server_info()['datacenters']):
                 if dc != datacenter:
