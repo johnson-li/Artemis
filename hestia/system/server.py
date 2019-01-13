@@ -142,7 +142,7 @@ def init_system(user, passwd, ip):
             execute(client,
                     'sudo ovs-vsctl add-br bridge; sudo ovs-vsctl add-port bridge %s; sudo ovs-ofctl del-flows bridge' %
                     balancer['anycast'])
-            execute(client, 'sudo ovs-vsctl add-port ac -- set interface ac type=internal')
+            execute(client, 'sudo ovs-vsctl add-port bridge ac -- set interface ac type=internal')
             execute(client, 'sudo ifconfig ac %s/24 up' % balancer['sid'])
             query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface t%s| tail -n1| egrep -o "[0-9]+"`'
             execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
@@ -150,7 +150,7 @@ def init_system(user, passwd, ip):
             execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
                 query_port % balancer['anycast'], query_port % 'ac'))
             execute(client, 'sudo ip route add default via %s dev ac tab 1' % router(balancer['sid']))
-            execute(client, 'sudo ip route add from %s/32 tab 1 priority 500' % balancer['sid'])
+            execute(client, 'sudo ip rule add from %s/32 tab 1 priority 500' % balancer['sid'])
             # cross balancer tunnel
             for index, dc in enumerate(load_server_info()['datacenters']):
                 if dc != datacenter:
