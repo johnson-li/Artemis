@@ -149,6 +149,7 @@ def init_system(user, passwd, ip):
                 query_port % 'ac', query_port % balancer['anycast']))
             execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
                 query_port % balancer['anycast'], query_port % 'ac'))
+            execute(client, 'sudo ifconfig %s 0' % balancer['anycast'])
             execute(client, 'sudo ip route add default via %s dev ac tab 1' % router(balancer['sid']))
             execute(client, 'sudo ip rule add from %s/32 tab 1 priority 500' % balancer['sid'])
             # cross balancer tunnel

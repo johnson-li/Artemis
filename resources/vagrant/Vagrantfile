@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "balancer1" do |balancer1|
     balancer1.vm.hostname = "balancer1"
-    balancer1.vm.network "private_network", ip: "172.16.156.100"
+    balancer1.vm.network "private_network", ip: "170.16.156.100"
     balancer1.vm.network "private_network", ip: "173.16.156.100"
   end
 

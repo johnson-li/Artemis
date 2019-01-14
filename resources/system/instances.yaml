@@ -11,7 +11,7 @@ datacenters:
   - name: 'bl0'
     anycast: 'enp0s8'
     phy: 173.16.156.100
-    sid: 172.16.156.100
+    sid: 170.16.156.100
   servers:
   - name: 'sv0'
     phy: 173.16.156.101
