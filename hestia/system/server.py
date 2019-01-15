@@ -180,7 +180,8 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo ifconfig %s 12.12.12.12/32 up' % server['name'])
                 execute(client,
                         'sudo ovs-ofctl add-flow bridge in_port=%s,actions=mod_dl_dst:%s,%s' % (
-                            query_port % 't%s' % server_name, query_router_mac % router(balancer['sid']),
+                            query_port % 't%s' % server_name,
+                            query_router_mac % (router(balancer['sid']), router(balancer['sid'])),
                             query_port % balancer['anycast']))
                 execute(client,
                         'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
