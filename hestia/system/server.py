@@ -142,16 +142,15 @@ def init_system(user, passwd, ip):
             execute(client,
                     'sudo ovs-vsctl add-br bridge; sudo ovs-vsctl add-port bridge %s; sudo ovs-ofctl del-flows bridge' %
                     balancer['anycast'])
-            execute(client, 'sudo ovs-vsctl add-port bridge ac -- set interface ac type=internal')
-            execute(client, 'sudo ifconfig ac %s/24 up' % balancer['sid'])
+            execute(client, 'sudo ifconfig bridge %s/24 up' % balancer['sid'])
             query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface %s| tail -n1| egrep -o "[0-9]+"`'
-            execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
-                query_port % 'ac', query_port % balancer['anycast']))
-            execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
-                query_port % balancer['anycast'], query_port % 'ac'))
+            execute(client,
+                    'sudo ovs-ofctl add-flow bridge in_port=local,actions=%s' % (query_port % balancer['anycast']))
+            execute(client,
+                    'sudo ovs-ofctl add-flow bridge in_port=%s,actions=local' % (query_port % balancer['anycast']))
             execute(client, 'sudo ifconfig %s 0' % balancer['anycast'])
-            execute(client, 'sudo ip route add default via %s dev ac tab 1' % router(balancer['sid']))
-            execute(client, 'sudo ip rule add from %s/32 tab 1 priority 500' % balancer['sid'])
+            # execute(client, 'sudo ip route add default via %s dev ac tab 1' % router(balancer['sid']))
+            # execute(client, 'sudo ip rule add from %s/32 tab 1 priority 500' % balancer['sid'])
             # cross balancer tunnel
             for index, dc in enumerate(load_server_info()['datacenters']):
                 if dc != datacenter:
@@ -218,6 +217,8 @@ def init_system(user, passwd, ip):
         info = load_server_info()
         execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['name'])
         execute(client, 'echo "DATABASE=%s" >> ~/env ' % info['database']['ip'])
+        if get_balancer(ip):
+            execute(client, 'echo "interface=bridge" >> ~/env')
 
     init_env()
     init_apt()

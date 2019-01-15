@@ -7,8 +7,11 @@ all:
   - pkg-config
   - iputils-ping
   - libev-dev
+  - zsh
   post:
   - sudo service openvswitch-switch start
+  - chsh -s `which zsh` johnson
+  - wget -q https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 balancer:
   pre:
   - echo 'ROLE=balancer' >> ~/env
