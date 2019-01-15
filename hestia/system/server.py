@@ -145,7 +145,7 @@ def init_system(user, passwd, ip):
                     balancer['anycast'])
             execute(client, 'sudo ifconfig bridge %s/24 up' % balancer['sid'])
             query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface %s| tail -n1| egrep -o "[0-9]+"`'
-            query_router_mac = '`ping -c1 %s; arp| grep "%s"| egrep -o "[0-9a-z:]{12,}"`'
+            query_router_mac = '`ping -c1 %s > /dev/null; arp| grep "%s "| egrep -o "[0-9a-z:]{12,}"`'
             execute(client,
                     'sudo ovs-ofctl add-flow bridge in_port=local,actions=%s' % (query_port % balancer['anycast']))
             execute(client,
