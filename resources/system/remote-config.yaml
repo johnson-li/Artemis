@@ -10,7 +10,7 @@ all:
   - zsh
   post:
   - sudo service openvswitch-switch start
-  - chsh -s `which zsh` johnson
+  - sudo chsh -s `which zsh` johnson
   - wget -q https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 balancer:
   pre:
