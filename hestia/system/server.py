@@ -131,6 +131,7 @@ def init_system(user, passwd, ip):
 
     # gre tunnels
     def init_ovs():
+        execute(client, "sudo iptables -I OUTPUT -p icmp --icmp-type destination-unreachable -j DROP")
         execute(client, """
                 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`; 
                     do sudo ovs-vsctl del-br $bridge; 
@@ -144,6 +145,7 @@ def init_system(user, passwd, ip):
                     balancer['anycast'])
             execute(client, 'sudo ifconfig bridge %s/24 up' % balancer['sid'])
             query_port = '`sudo ovs-vsctl -- --columns=name,ofport list Interface %s| tail -n1| egrep -o "[0-9]+"`'
+            query_router_mac = '`arp| grep bridge| egrep -o "[0-9a-z:]{12,}"`'
             execute(client,
                     'sudo ovs-ofctl add-flow bridge in_port=local,actions=%s' % (query_port % balancer['anycast']))
             execute(client,
@@ -177,8 +179,8 @@ def init_system(user, passwd, ip):
                             server_name, server_name, server['phy']))
                 execute(client, 'sudo ifconfig %s 12.12.12.12/32 up' % server['name'])
                 execute(client,
-                        'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
-                            query_port % 't%s' % server_name, query_port % balancer['anycast']))
+                        'sudo ovs-ofctl add-flow bridge in_port=%s,actions=mod_dl_dst:%s,%s' % (
+                            query_port % 't%s' % server_name, query_router_mac, query_port % balancer['anycast']))
                 execute(client,
                         'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
                             query_port % server['name'], query_port % 't%s' % server['name']))
