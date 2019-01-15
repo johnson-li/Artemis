@@ -184,19 +184,20 @@ def init_system(user, passwd, ip):
                             query_port % server['name'], query_port % 't%s' % server['name']))
         else:
             # server to balancer tunnel
+            query_mac = '`ifconfig %s|grep HWaddr| egrep -o "[0-9a-z:]{12,}"`'
             for balancer in datacenter['loadbalancers']:
                 execute(client, 'sudo ovs-vsctl add-br %s; sudo ovs-vsctl add-port %s tunnel%s -- '
                                 'set interface tunnel%s type=gre, options:remote_ip=%s' %
-                        (balancer['name'], balancer['name'], balancer['name'][3:], balancer['name'][3:],
+                        (balancer['name'], balancer['name'], balancer['name'][2:], balancer['name'][2:],
                          balancer['phy']))
                 execute(client, 'sudo ifconfig %s %s/32 up' % (balancer['name'], balancer['sid']))
                 execute(client, 'sudo ovs-ofctl del-flows %s' % balancer['name'])
                 execute(client,
-                        'sudo ovs-ofctl add-flow %s in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`,actions=local' % (
-                            balancer['name'], balancer['name'][3:]))
+                        'sudo ovs-ofctl add-flow %s in_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`,actions=mod_dl_dst:%s,local' % (
+                            balancer['name'], balancer['name'][2:], query_mac % balancer['name']))
                 execute(client,
                         'sudo ovs-ofctl add-flow %s in_port=local,actions=`sudo ovs-vsctl -- --columns=name,ofport list Interface tunnel%s| tail -n1| egrep -o "[0-9]+"`' % (
-                            balancer['name'], balancer['name'][3:]))
+                            balancer['name'], balancer['name'][2:]))
 
     def init_routing():
         if get_balancer(ip):
