@@ -20,6 +20,6 @@ case ${ROLE} in
         sudo -b PYTHONPATH="$HOME/app/" python3 -m hestia.exec.measurement-server ${DATACENTER} ${DATABASE} > $HOME/measurement.log 2>&1
         ;;
     "server")
-        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/server --interface=${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/server.log 2>&1
+        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/server --interface=${interface} --unicast=${unicast} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/server.log 2>&1
    ;;
 esac

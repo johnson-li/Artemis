@@ -224,6 +224,8 @@ def init_system(user, passwd, ip):
         execute(client, 'echo "DATABASE=%s" >> ~/env ' % info['database']['ip'])
         if get_balancer(ip):
             execute(client, 'echo "interface=bridge" >> ~/env')
+        else:
+            execute(client, 'echo "unicast=%s" >> ~/env' % ip)
 
     init_env()
     init_apt()
