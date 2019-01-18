@@ -8,18 +8,24 @@ then
 fi
 
 sudo killall balancer 2> /dev/null
-sudo killall proxy 2> /dev/null
 sudo killall server 2> /dev/null
 sudo killall python3 2> /dev/null
 
+tmux has-session -t main 2> /dev/null; if [[ $? == 0 ]]; then tmux kill-session -t main; fi
+tmux new-session -ds main
+for i in `seq 2`
+do
+    tmux new-window -t main:${i}
+done
+
 case ${ROLE} in
     "balancer")
-        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/balancer --datacenter=${DATACENTER} --mysql=${DATABASE} --user='johnson' --password='welcOme0!' ${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/balancer.log 2>&1
+        tmux send-key -t main:0 'sudo LD_LIBRARY_PATH=$HOME/app/bin ~/app/bin/balancer --datacenter=${DATACENTER} --mysql=${DATABASE} --user=johnson --password="welcOme0!" ${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert' Enter
 #        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/balancer ${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/balancer.log 2>&1
 #        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/proxy ${interface} > $HOME/proxy.log 2>&1
-        sudo -b PYTHONPATH="$HOME/app/" python3 -m hestia.exec.measurement-server ${DATACENTER} ${DATABASE} > $HOME/measurement.log 2>&1
+        tmux send-key -t main:1 'sudo PYTHONPATH="$HOME/app/" python3 -m hestia.exec.measurement-server ${DATACENTER} ${DATABASE}' Enter
         ;;
     "server")
-        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/server --interface=${interface} --unicast=${unicast} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/server.log 2>&1
+        tmux sned-key -t main:0 'sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/server --interface=${interface} --unicast=${unicast} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/server.log 2>&1' Enter
    ;;
 esac
