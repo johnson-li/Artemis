@@ -14,8 +14,10 @@ datacenters:
     sid: 170.16.156.100
   servers:
   - name: 'sv0'
+    unicast: 'enp0s8'
     phy: 173.16.156.101
   - name: 'sv1'
+    unicast: 'enp0s8'
     phy: 173.16.156.102
 - location: local
   name: dc2
@@ -26,6 +28,8 @@ datacenters:
     sid: 171.16.156.100
   servers:
   - name: 'sv5'
+    unicast: 'enp0s8'
     phy: 174.16.156.101
   - name: 'sv6'
+    unicast: 'enp0s8'
     phy: 174.16.156.102

@@ -82,6 +82,12 @@ def get_datacenter(ip):
             return datacenter
 
 
+def get_server(ip):
+    datacenter = get_datacenter(ip)
+    candidates = list(filter(lambda x: x['phy'] == ip, datacenter['servers']))
+    return candidates[0] if candidates else None
+
+
 def get_balancer(ip):
     datacenter = get_datacenter(ip)
     candidates = list(filter(lambda x: x['phy'] == ip, datacenter['loadbalancers']))
@@ -219,12 +225,14 @@ def init_system(user, passwd, ip):
 
     def init_env():
         dc = get_datacenter(ip)
+        server = get_server(ip)
         info = load_server_info()
         execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['name'])
         execute(client, 'echo "DATABASE=%s" >> ~/env ' % info['database']['ip'])
         if get_balancer(ip):
             execute(client, 'echo "interface=bridge" >> ~/env')
         else:
+            execute(client, 'echo "interface=%s" >> ~/env' % server['unicast'])
             execute(client, 'echo "unicast=%s" >> ~/env' % ip)
 
     init_env()
