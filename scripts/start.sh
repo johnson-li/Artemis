@@ -20,12 +20,13 @@ done
 
 case ${ROLE} in
     "balancer")
+        tmux send-key -t main:0 'source ~/env'
         tmux send-key -t main:0 'sudo LD_LIBRARY_PATH=$HOME/app/bin ~/app/bin/balancer --datacenter=${DATACENTER} --mysql=${DATABASE} --user=johnson --password="welcOme0\!" ${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert' Enter
-#        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/balancer ${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert > $HOME/balancer.log 2>&1
-#        sudo -b LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/proxy ${interface} > $HOME/proxy.log 2>&1
+        tmux send-key -t main:1 'source ~/env'
         tmux send-key -t main:1 'sudo PYTHONPATH="$HOME/app/" python3 -m hestia.exec.measurement-server ${DATACENTER} ${DATABASE}' Enter
         ;;
     "server")
+        tmux send-key -t main:0 'source ~/env'
         tmux send-key -t main:0 'sudo LD_LIBRARY_PATH="$HOME/app/bin" ~/app/bin/server --interface=${interface} --unicast=${unicast} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert' Enter
    ;;
 esac
