@@ -7,6 +7,8 @@ import yaml
 from hestia import RESOURCE_PATH
 from hestia.system.main import logging
 
+private_key = paramiko.RSAKey.from_private_key_file('/home/lix16/.ssh/id_rsa')
+
 
 def read_file(path):
     with open(RESOURCE_PATH + '/system/%s' % path, 'r') as stream:
@@ -26,11 +28,6 @@ def load_config():
 def load_server_info():
     with open(RESOURCE_PATH + "/system/instances.yaml", 'r') as stream:
         return yaml.load(stream)
-
-
-def load_account():
-    instances = load_server_info()
-    return {'user': instances['username'], 'passwd': instances['password']}
 
 
 def load_server_ips():
@@ -124,7 +121,7 @@ def connect(user, passwd, ip):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.get_transport()
-    client.connect(ip, username=user, password=passwd)
+    client.connect(ip, username=user, password=passwd, pkey=private_key)
     logging.debug("connected to: " + ip)
     return client
 
@@ -288,7 +285,6 @@ def configure_db_master_slave():
 
 
 def init_database():
-    account = load_account()
     master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
     slaves = [d for d in load_server_info()['databases'] if d['role'] == 'slave']
     client = connect(master['ssh-user'], None, master['ip'])
