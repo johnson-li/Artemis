@@ -278,7 +278,7 @@ def configure_db_master_slave():
                         'log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo service mysql restart')
-        execute(client, 'echo "STOP SLAVE IO_THREAD FOR CHANNEL \'\';" | mysql -uroot -proot')
+        execute(client, 'echo "reset slave;" | mysql -uroot -proot')
         execute(client,
                 'echo "CHANGE MASTER TO MASTER_HOST=\'%s\',MASTER_USER=\'slave_user\', MASTER_PASSWORD=\'password\', '
                 'MASTER_LOG_FILE=\'mysql-bin.000001\', MASTER_LOG_POS = 1;" | mysql -uroot -proot' % master['ip'])
@@ -305,6 +305,7 @@ def init_database():
         execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
                 (slave['username'], slave['password'], slave['ip']))
         client.close()
+    configure_db_master_slave()
     mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'])
     slave_mysqldbs = [MySQLdb.connect(host=s['ip'], user=s['username'], passwd=s['password']) for s in
                       load_server_info()['databases'] if s['role'] == 'slave']
@@ -312,10 +313,14 @@ def init_database():
     [slave.autocommit(True) for slave in slave_mysqldbs]
     configure_db_master_slave()
     cursor = mysqldb.cursor()
+    slave_cursors = [s.cursor() for s in slave_mysqldbs]
     cursor.execute('use sid')
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
-        cursor.execute(read_file(f))
+        content = read_file(f)
+        cursor.execute(content)
+        [s.execute(content) for s in slave_cursors]
+    [s.close() for s in slave_cursors]
     for line in read_file_lines('init.sql'):
         if line:
             cursor.execute(line)
