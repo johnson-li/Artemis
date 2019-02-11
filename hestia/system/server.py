@@ -283,7 +283,7 @@ def configure_db_master_slave():
                 'echo "CHANGE MASTER TO MASTER_HOST=\'%s\',MASTER_USER=\'slave_user\', MASTER_PASSWORD=\'password\', '
                 'MASTER_LOG_FILE=\'mysql-bin.000001\', MASTER_LOG_POS = 1;" | mysql -uroot -proot' % master['ip'])
         execute(client, 'echo "reset slave;" | mysql -uroot -proot')
-        execute(client, 'echo \'START SLAVE;\' | mysql -uroot -proot')
+        # execute(client, 'echo \'START SLAVE;\' | mysql -uroot -proot')
         client.close()
 
 
@@ -322,10 +322,11 @@ def init_database():
         content = read_file(f)
         cursor.execute(content)
         [s.execute(content) for s in slave_cursors]
-    [s.close() for s in slave_cursors]
     for line in read_file_lines('init.sql'):
         if line:
             cursor.execute(line)
+            [s.execute(line) for s in slave_cursors]
+    [s.close() for s in slave_cursors]
     cursor.close()
 
 
