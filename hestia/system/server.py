@@ -296,6 +296,7 @@ def init_database():
         client = connect(user, passwd, slave['ip'])
         execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
                         'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -uroot -proot')
+        execute(client, 'sudo sed -i \'/bind-address/c\\bind-address = 0.0.0.0\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo service mysql restart')
     mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
     slave_mysqldbs = [MySQLdb.connect(s['ip'], s['username'], s['password']) for s in load_server_info()['databases'] if

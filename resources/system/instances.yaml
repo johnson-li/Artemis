@@ -13,14 +13,14 @@ databases:
     server-id: 2
     username: johnson
     password: welcOme0!
-    type: local
+    type: global
     role: slave
   - name: db2
     ip: 174.16.156.100
     server-id: 3
     username: johnson
     password: welcOme0!
-    type: local
+    type: global
     role: slave
 datacenters:
 - location: local
