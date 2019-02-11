@@ -267,10 +267,10 @@ def configure_db_master_slave():
     execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
     execute(client, 'sudo service mysql restart')
     execute(client, 'echo "GRANT REPLICATION SLAVE ON *.* TO \'slave_user\'@\'%\' IDENTIFIED BY \'password\';" |'
-                    'mysql -u root -p root')
+                    'mysql -uroot -proot')
     execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
-                    'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -u root -p root')
-    execute(client, 'echo "FLUSH PRIVILEGES;" | mysql -u root -p root')
+                    'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -uroot -proot')
+    execute(client, 'echo "FLUSH PRIVILEGES;" | mysql -uroot -proot')
     for slave in slaves:
         client = connect(user, passwd, slave['ip'])
         execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
@@ -279,11 +279,11 @@ def configure_db_master_slave():
                         'log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo service mysql restart')
-        execute(client, 'echo "STOP SLAVE IO_THREAD FOR CHANNEL \'\';" | mysql -u root -p root')
+        execute(client, 'echo "STOP SLAVE IO_THREAD FOR CHANNEL \'\';" | mysql -uroot -proot')
         execute(client,
                 'echo "CHANGE MASTER TO MASTER_HOST=\'%s\',MASTER_USER=\'slave_user\', MASTER_PASSWORD=\'password\', '
-                'MASTER_LOG_FILE=\'mysql-bin.000001\', MASTER_LOG_POS = 1;" | mysql -u root -p root' % master['ip'])
-        execute(client, 'echo \'START SLAVE;\' | mysql -u root -p root')
+                'MASTER_LOG_FILE=\'mysql-bin.000001\', MASTER_LOG_POS = 1;" | mysql -uroot -proot' % master['ip'])
+        execute(client, 'echo \'START SLAVE;\' | mysql -uroot -proot')
 
 
 def init_database():
@@ -295,7 +295,7 @@ def init_database():
     for slave in slaves:
         client = connect(user, passwd, slave['ip'])
         execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
-                        'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -u root -p root')
+                        'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -uroot -proot')
         execute(client, 'sudo service mysql restart')
     mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
     slave_mysqldbs = [MySQLdb.connect(s['ip'], s['username'], s['password']) for s in load_server_info()['databases'] if
