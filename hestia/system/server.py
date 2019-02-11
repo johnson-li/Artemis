@@ -284,6 +284,7 @@ def configure_db_master_slave():
                 'echo "CHANGE MASTER TO MASTER_HOST=\'%s\',MASTER_USER=\'slave_user\', MASTER_PASSWORD=\'password\', '
                 'MASTER_LOG_FILE=\'mysql-bin.000001\', MASTER_LOG_POS = 1;" | mysql -uroot -proot' % master['ip'])
         execute(client, 'echo \'START SLAVE;\' | mysql -uroot -proot')
+        client.close()
 
 
 def init_database():
@@ -298,6 +299,11 @@ def init_database():
                         'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -uroot -proot')
         execute(client, 'sudo sed -i \'/bind-address/c\\bind-address = 0.0.0.0\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo service mysql restart')
+        execute(client, 'echo "drop database if exists sid;" | mysql -u%s -p\'%s\' -h%s' %
+                (slave['username'], slave['password'], slave['ip']))
+        execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
+                (slave['username'], slave['password'], slave['ip']))
+        client.close()
     mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
     slave_mysqldbs = [MySQLdb.connect(s['ip'], s['username'], s['password']) for s in load_server_info()['databases'] if
                       s['role'] == 'slave']
@@ -305,10 +311,10 @@ def init_database():
     [slave.autocommit(True) for slave in slave_mysqldbs]
     cursor = mysqldb.cursor()
     slave_cursors = [slave.cursor() for slave in slave_mysqldbs]
-    cursor.execute('drop database if exists sid')
-    [c.execute('drop database if exists sid') for c in slave_cursors]
-    cursor.execute('create database sid')
-    [c.execute('create database sid') for c in slave_cursors]
+    cursor.execute('drop database if exists sid;')
+    # [c.execute('drop database if exists sid;') for c in slave_cursors]
+    cursor.execute('create database sid;')
+    # [c.execute('create database sid;') for c in slave_cursors]
     cursor.execute('use sid')
     configure_db_master_slave()
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
