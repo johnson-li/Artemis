@@ -293,6 +293,11 @@ def init_database():
     passwd = account['passwd']
     master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
     slaves = [d for d in load_server_info()['databases'] if d['role'] == 'slave']
+    client = connect(user, passwd, master['ip'])
+    execute(client, 'echo "drop database if exists sid;" | mysql -u%s -p\'%s\' -h%s' %
+            (master['username'], master['password'], master['ip']))
+    execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
+            (master['username'], master['password'], master['ip']))
     for slave in slaves:
         client = connect(user, passwd, slave['ip'])
         execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
@@ -311,9 +316,9 @@ def init_database():
     [slave.autocommit(True) for slave in slave_mysqldbs]
     cursor = mysqldb.cursor()
     slave_cursors = [slave.cursor() for slave in slave_mysqldbs]
-    cursor.execute('drop database if exists sid;')
+    # cursor.execute('drop database if exists sid;')
     # [c.execute('drop database if exists sid;') for c in slave_cursors]
-    cursor.execute('create database sid;')
+    # cursor.execute('create database sid;')
     # [c.execute('create database sid;') for c in slave_cursors]
     cursor.execute('use sid')
     configure_db_master_slave()
