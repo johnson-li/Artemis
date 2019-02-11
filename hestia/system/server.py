@@ -261,7 +261,7 @@ def configure_db_master_slave():
     account = load_account()
     user = account['user']
     passwd = account['passwd']
-    client = connect(user, passwd, master['ip'])
+    client = connect(master['ssh-user'], None, master['ip'])
     execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
             master['server-id'])
     execute(client,
@@ -274,7 +274,7 @@ def configure_db_master_slave():
                     'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -uroot -proot')
     execute(client, 'echo "FLUSH PRIVILEGES;" | mysql -uroot -proot')
     for slave in slaves:
-        client = connect(user, passwd, slave['ip'])
+        client = connect(slave['ssh-user'], None, slave['ip'])
         execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
                 slave['server-id'])
         execute(client, 'sudo sed -i \'/#log_bin/c\\relay-log = /var/log/mysql/mysql-relay-bin.log\n'
