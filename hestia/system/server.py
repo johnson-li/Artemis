@@ -289,17 +289,15 @@ def configure_db_master_slave():
 
 def init_database():
     account = load_account()
-    user = account['user']
-    passwd = account['passwd']
     master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
     slaves = [d for d in load_server_info()['databases'] if d['role'] == 'slave']
-    client = connect(user, passwd, master['ip'])
+    client = connect(master['ssh-user'], None, master['ip'])
     execute(client, 'echo "drop database if exists sid;" | mysql -u%s -p\'%s\' -h%s' %
             (master['username'], master['password'], master['ip']))
     execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
             (master['username'], master['password'], master['ip']))
     for slave in slaves:
-        client = connect(user, passwd, slave['ip'])
+        client = connect(slave['ssh-user'], None, slave['ip'])
         execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
                         'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -uroot -proot')
         execute(client, 'sudo sed -i \'/bind-address/c\\bind-address = 0.0.0.0\' /etc/mysql/mysql.conf.d/mysqld.cnf')

@@ -8,6 +8,7 @@ databases:
     password: welcOme0!
     type: global
     role: master
+    ssh-user: johnsonli1993
   - name: db1
     ip: 173.16.156.100
     server-id: 2
@@ -15,6 +16,7 @@ databases:
     password: welcOme0!
     type: global
     role: slave
+    ssh-user: johnson
   - name: db2
     ip: 174.16.156.100
     server-id: 3
@@ -22,6 +24,7 @@ databases:
     password: welcOme0!
     type: global
     role: slave
+    ssh-user: johnson
 datacenters:
 - location: local
   name: dc1
