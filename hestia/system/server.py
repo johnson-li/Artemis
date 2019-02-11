@@ -106,7 +106,18 @@ def is_server(ip):
 
 def is_database(ip):
     instances = load_server_info()
-    return ip == instances['database']['ip']
+    for d in instances['databases']:
+        if d['ip'] == ip:
+            return d
+    return None
+
+
+def get_database(name):
+    instances = load_server_info()
+    for d in instances['databases']:
+        if d['name'] == name:
+            return d
+    return None
 
 
 def connect(user, passwd, ip):
@@ -242,17 +253,52 @@ def init_system(user, passwd, ip):
     client.close()
 
 
+def configure_db_master_slave():
+    master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
+    slaves = [d for d in load_server_info()['databases'] if d['role'] == 'slave']
+    account = load_account()
+    user = account['user']
+    passwd = account['passwd']
+    client = connect(user, passwd, master['ip'])
+    execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
+            master['server-id'])
+    execute(client,
+            'sudo sed -i \'/#log_bin/c\\log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
+    execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
+    execute(client, 'sudo service mysql restart')
+    execute(client, 'echo "GRANT REPLICATION SLAVE ON *.* TO \'slave_user\'@\'%\' IDENTIFIED BY \'password\';" |'
+                    'mysql -u root -p root')
+    execute(client, 'echo "FLUSH PRIVILEGES;" | mysql -u root -p root')
+    for slave in slaves:
+        client = connect(user, passwd, slave['ip'])
+        execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
+                slave['server-id'])
+        execute(client, 'sudo sed -i \'/#log_bin/c\\relay-log = /var/log/mysql/mysql-relay-bin.log\n'
+                        'log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
+        execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
+        execute(client, 'sudo service mysql restart')
+        execute(client, 'echo "STOP SLAVE IO_THREAD FOR CHANNEL \'\';" | mysql -u root -p root')
+        execute(client,
+                'echo "CHANGE MASTER TO MASTER_HOST=\'%s\',MASTER_USER=\'slave_user\', MASTER_PASSWORD=\'password\', '
+                'MASTER_LOG_FILE=\'mysql-bin.000001\', MASTER_LOG_POS = 1;" | mysql -u root -p root' % master['ip'])
+        execute(client, 'echo \'START SLAVE;\' | mysql -u root -p root')
+
+
 def init_database():
-    db = load_server_info()['database']
-    ip = db['ip']
-    user = db['username']
-    passwd = db['password']
-    mysqldb = MySQLdb.connect(host=ip, user=user, passwd=passwd, db='sid')
+    master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
+    mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
+    slave_mysqldbs = [MySQLdb.connect(s['ip'], s['username'], s['password']) for s in load_server_info()['databases'] if
+                      s['role'] == 'slave']
     mysqldb.autocommit(True)
+    [slave.autocommit(True) for slave in slave_mysqldbs]
     cursor = mysqldb.cursor()
+    slave_cursors = [slave.cursor() for slave in slave_mysqldbs]
     cursor.execute('drop database if exists sid')
+    [c.execute('drop database if exists sid') for c in slave_cursors]
     cursor.execute('create database sid')
+    [c.execute('create database sid') for c in slave_cursors]
     cursor.execute('use sid')
+    configure_db_master_slave()
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
         cursor.execute(read_file(f))
@@ -260,6 +306,7 @@ def init_database():
         if line:
             cursor.execute(line)
     cursor.close()
+    [c.close() for c in slave_cursors]
 
 
 def init_systems():
