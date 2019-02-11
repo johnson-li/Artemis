@@ -323,7 +323,7 @@ def init_database():
     [s.close() for s in slave_cursors]
     cursor.close()
     configure_db_master_slave()
-    mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'])
+    mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
     mysqldb.autocommit(True)
     cursor = mysqldb.cursor()
     for line in read_file_lines('init.sql'):
