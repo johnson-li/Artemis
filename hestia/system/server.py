@@ -304,9 +304,9 @@ def init_database():
         execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
                 (slave['username'], slave['password'], slave['ip']))
         client.close()
-    mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
-    slave_mysqldbs = [MySQLdb.connect(s['ip'], s['username'], s['password']) for s in load_server_info()['databases'] if
-                      s['role'] == 'slave']
+    mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'])
+    slave_mysqldbs = [MySQLdb.connect(host=s['ip'], user=s['username'], passwd=s['password']) for s in
+                      load_server_info()['databases'] if s['role'] == 'slave']
     mysqldb.autocommit(True)
     [slave.autocommit(True) for slave in slave_mysqldbs]
     cursor = mysqldb.cursor()
