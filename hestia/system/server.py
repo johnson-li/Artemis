@@ -278,8 +278,6 @@ def configure_db_master_slave():
         execute(client, 'sudo sed -i \'/#log_bin/c\\relay-log = /var/log/mysql/mysql-relay-bin.log\n'
                         'log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
-        execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
-                        'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -u root -p root')
         execute(client, 'sudo service mysql restart')
         execute(client, 'echo "STOP SLAVE IO_THREAD FOR CHANNEL \'\';" | mysql -u root -p root')
         execute(client,
@@ -289,7 +287,16 @@ def configure_db_master_slave():
 
 
 def init_database():
+    account = load_account()
+    user = account['user']
+    passwd = account['passwd']
     master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
+    slaves = [d for d in load_server_info()['databases'] if d['role'] == 'slave']
+    for slave in slaves:
+        client = connect(user, passwd, slave['ip'])
+        execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
+                        'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -u root -p root')
+        execute(client, 'sudo service mysql restart')
     mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
     slave_mysqldbs = [MySQLdb.connect(s['ip'], s['username'], s['password']) for s in load_server_info()['databases'] if
                       s['role'] == 'slave']
