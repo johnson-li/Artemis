@@ -11,15 +11,15 @@ databases:
   - name: db1
     ip: 173.16.156.100
     server-id: 2
-    username: root
-    password: root
+    username: johnson
+    password: welcOme0!
     type: local
     role: slave
   - name: db2
     ip: 174.16.156.100
     server-id: 3
-    username: root
-    password: root
+    username: johnson
+    password: welcOme0!
     type: local
     role: slave
 datacenters:
