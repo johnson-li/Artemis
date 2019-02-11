@@ -30,6 +30,11 @@ def load_server_info():
         return yaml.load(stream)
 
 
+def load_account():
+    instances = load_server_info()
+    return {'user': instances['username'], 'passwd': instances['password']}
+
+
 def load_server_ips():
     instances = load_server_info()
     ips = []
