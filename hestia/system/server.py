@@ -295,6 +295,7 @@ def init_database():
             (master['username'], master['password'], master['ip']))
     execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
             (master['username'], master['password'], master['ip']))
+    client.close()
     for slave in slaves:
         client = connect(slave['ssh-user'], None, slave['ip'])
         execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
@@ -306,26 +307,28 @@ def init_database():
         execute(client, 'echo "create database sid;" | mysql -u%s -p\'%s\' -h%s' %
                 (slave['username'], slave['password'], slave['ip']))
         client.close()
+    configure_db_master_slave()
     mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'])
     slave_mysqldbs = [MySQLdb.connect(host=s['ip'], user=s['username'], passwd=s['password']) for s in
                       load_server_info()['databases'] if s['role'] == 'slave']
     mysqldb.autocommit(True)
     [slave.autocommit(True) for slave in slave_mysqldbs]
     cursor = mysqldb.cursor()
-    slave_cursors = [s.cursor() for s in slave_mysqldbs]
+    # slave_cursors = [s.cursor() for s in slave_mysqldbs]
     cursor.execute('use sid')
-    [s.execute('use sid') for s in slave_cursors]
+    # [s.execute('use sid') for s in slave_cursors]
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
         content = read_file(f)
         cursor.execute(content)
-        [s.execute(content) for s in slave_cursors]
-    [s.close() for s in slave_cursors]
-    cursor.close()
-    configure_db_master_slave()
-    mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
-    mysqldb.autocommit(True)
-    cursor = mysqldb.cursor()
+        # for cur in slave_cursors:
+        #     cur.execute(content)
+        # [s.execute(content) for s in slave_cursors]
+    # [s.close() for s in slave_cursors]
+    # cursor.close()
+    # mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
+    # mysqldb.autocommit(True)
+    # cursor = mysqldb.cursor()
     for line in read_file_lines('init.sql'):
         if line:
             cursor.execute(line)

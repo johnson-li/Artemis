@@ -2,7 +2,7 @@ username: johnson
 password: johnson
 databases:
   - name: central
-    ip: '35.228.52.213'
+    ip: 35.228.52.213
     server-id: 1
     username: johnson
     password: welcOme0!
