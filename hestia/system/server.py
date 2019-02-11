@@ -258,9 +258,6 @@ def init_system(user, passwd, ip):
 def configure_db_master_slave():
     master = [d for d in load_server_info()['databases'] if d['role'] == 'master'][0]
     slaves = [d for d in load_server_info()['databases'] if d['role'] == 'slave']
-    account = load_account()
-    user = account['user']
-    passwd = account['passwd']
     client = connect(master['ssh-user'], None, master['ip'])
     execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
             master['server-id'])
@@ -277,7 +274,7 @@ def configure_db_master_slave():
         client = connect(slave['ssh-user'], None, slave['ip'])
         execute(client, 'sudo sed -i \'/#server-id/c\\server-id = %d\' /etc/mysql/mysql.conf.d/mysqld.cnf' %
                 slave['server-id'])
-        execute(client, 'sudo sed -i \'/#log_bin/c\\relay-log = /var/log/mysql/mysql-relay-bin.log\n'
+        execute(client, 'sudo sed -i \'/#log_bin/c\\relay-log = /var/log/mysql/mysql-relay-bin.log\\n'
                         'log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo service mysql restart')
@@ -313,14 +310,9 @@ def init_database():
                       load_server_info()['databases'] if s['role'] == 'slave']
     mysqldb.autocommit(True)
     [slave.autocommit(True) for slave in slave_mysqldbs]
-    cursor = mysqldb.cursor()
-    slave_cursors = [slave.cursor() for slave in slave_mysqldbs]
-    # cursor.execute('drop database if exists sid;')
-    # [c.execute('drop database if exists sid;') for c in slave_cursors]
-    # cursor.execute('create database sid;')
-    # [c.execute('create database sid;') for c in slave_cursors]
-    cursor.execute('use sid')
     configure_db_master_slave()
+    cursor = mysqldb.cursor()
+    cursor.execute('use sid')
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
         cursor.execute(read_file(f))
@@ -328,7 +320,6 @@ def init_database():
         if line:
             cursor.execute(line)
     cursor.close()
-    [c.close() for c in slave_cursors]
 
 
 def init_systems():
