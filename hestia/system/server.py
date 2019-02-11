@@ -241,7 +241,7 @@ def init_system(user, passwd, ip):
         server = get_server(ip)
         info = load_server_info()
         execute(client, 'echo "DATACENTER=%s" >> ~/env ' % dc['name'])
-        execute(client, 'echo "DATABASE=%s" >> ~/env ' % info['database']['ip'])
+        # execute(client, 'echo "DATABASE=%s" >> ~/env ' % info['database']['ip'])
         if get_balancer(ip):
             execute(client, 'echo "interface=bridge" >> ~/env')
         else:
@@ -314,21 +314,11 @@ def init_database():
     mysqldb.autocommit(True)
     [slave.autocommit(True) for slave in slave_mysqldbs]
     cursor = mysqldb.cursor()
-    # slave_cursors = [s.cursor() for s in slave_mysqldbs]
     cursor.execute('use sid')
-    # [s.execute('use sid') for s in slave_cursors]
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
         content = read_file(f)
         cursor.execute(content)
-        # for cur in slave_cursors:
-        #     cur.execute(content)
-        # [s.execute(content) for s in slave_cursors]
-    # [s.close() for s in slave_cursors]
-    # cursor.close()
-    # mysqldb = MySQLdb.connect(host=master['ip'], user=master['username'], passwd=master['password'], db='sid')
-    # mysqldb.autocommit(True)
-    # cursor = mysqldb.cursor()
     for line in read_file_lines('init.sql'):
         if line:
             cursor.execute(line)
