@@ -314,6 +314,7 @@ def init_database():
     cursor = mysqldb.cursor()
     slave_cursors = [s.cursor() for s in slave_mysqldbs]
     cursor.execute('use sid')
+    [s.execute('use sid') for s in slave_cursors]
     for f in ['init_deployment.sql', 'init_intra.sql', 'init_clients.sql', 'init_mea.sql']:
         print('execute %s' % f)
         content = read_file(f)
