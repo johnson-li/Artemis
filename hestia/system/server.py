@@ -268,6 +268,8 @@ def configure_db_master_slave():
     execute(client, 'sudo service mysql restart')
     execute(client, 'echo "GRANT REPLICATION SLAVE ON *.* TO \'slave_user\'@\'%\' IDENTIFIED BY \'password\';" |'
                     'mysql -u root -p root')
+    execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
+                    'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -u root -p root')
     execute(client, 'echo "FLUSH PRIVILEGES;" | mysql -u root -p root')
     for slave in slaves:
         client = connect(user, passwd, slave['ip'])
@@ -276,6 +278,8 @@ def configure_db_master_slave():
         execute(client, 'sudo sed -i \'/#log_bin/c\\relay-log = /var/log/mysql/mysql-relay-bin.log\n'
                         'log_bin = /var/log/mysql/mysql-bin.log\' /etc/mysql/mysql.conf.d/mysqld.cnf')
         execute(client, 'sudo sed -i \'/#binlog_do_db/c\\binlog_do_db = sid\' /etc/mysql/mysql.conf.d/mysqld.cnf')
+        execute(client, 'echo "GRANT ALL PRIVILEGES ON *.* TO \'johnson\'@\'%\' IDENTIFIED BY \'welcOme0!\' '
+                        'WITH GRANT OPTION; FLUSH PRIVILEGES;" | mysql -u root -p root')
         execute(client, 'sudo service mysql restart')
         execute(client, 'echo "STOP SLAVE IO_THREAD FOR CHANNEL \'\';" | mysql -u root -p root')
         execute(client,
