@@ -8,8 +8,7 @@ pid=`pidof ${programme}`
 
 ts=`echo $(($(date +%s%N)/1000000))`
 
-sudo pmap ${pid}
-
 memory=`sudo pmap ${pid}| tail -n1| egrep -o '[0-9]+'`
 
-echo ${memory} >> "data/${programme}-${ts}"
+echo "memory ${memory}" >> "data/${programme}-memory"
+
