@@ -6,7 +6,8 @@ programme="$1"
 
 pid=`pidof ${programme}`
 
-while 1; do
+while true
+do
     ts=`echo $(($(date +%s%N)/1000000))`
     memory=`sudo pmap ${pid}| tail -n1| egrep -o '[0-9]+'`
     cpu=`ps -eo pcpu,args -q ${pid}| tail -n1 | cut -d' ' -f2`
