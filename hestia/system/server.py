@@ -323,7 +323,7 @@ def init_database():
         cursor.execute(content)
         [s.execute(content) for s in slave_cursors]
     for line in read_file_lines('init.sql'):
-        if line:
+        if not line.startswith('--'):
             cursor.execute(line)
             [s.execute(line) for s in slave_cursors]
     [s.close() for s in slave_cursors]
