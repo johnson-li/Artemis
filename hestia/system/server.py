@@ -84,6 +84,11 @@ def get_datacenter(ip):
             return datacenter
 
 
+def get_other_datacenter(ip):
+    instances = load_server_info()
+    return [dc for dc in instances['datacenters'] if dc != get_datacenter(ip)]
+
+
 def get_server(ip):
     datacenter = get_datacenter(ip)
     candidates = list(filter(lambda x: x['phy'] == ip, datacenter['servers']))
@@ -227,6 +232,10 @@ def init_system(user, passwd, ip):
             datacenter = get_datacenter(ip)
             for server in datacenter['servers']:
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (sid(ip), server['name']))
+            for dc in get_other_datacenter(ip):
+                for lb in dc['loadbalancers']:
+                    if sid(ip) == lb['sid']:
+                        execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (sid(ip), lb['name']))
         if is_server(ip):
             datacenter = get_datacenter(ip)
             for index, balancer in enumerate(datacenter['loadbalancers']):
