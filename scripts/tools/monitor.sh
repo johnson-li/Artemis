@@ -14,5 +14,4 @@ do
     cpu=`ps -eo pcpu,args -q ${pid}| tail -n1 | cut -d' ' -f2`
     echo "${ts} ${memory}" >> "data/${programme}-memory"
     echo "${ts} ${cpu}" >> "data/${programme}-cpu"
-    sleep .01
 done

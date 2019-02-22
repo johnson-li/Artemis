@@ -7,8 +7,8 @@ set(gca,'FontSize',20)
 legend('handshake latency', 'transport latency');
 print('figures/direct-latency','-depsc');
 
-cpu_cli = [1 2];
-cpu_ser = [1 2];
+cpu_cli = [2 ];
+cpu_ser = [2 ];
 bar([cpu_cli; cpu_ser]');
 xlabel('Number of connections');
 ylabel('CPU usage (%)')
