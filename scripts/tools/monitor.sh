@@ -15,3 +15,5 @@ do
     echo "${ts} ${memory}" >> "data/${programme}-memory"
     echo "${ts} ${cpu}" >> "data/${programme}-cpu"
 done
+
+ps -eo pcpu,args -q `pidof client`| tail -n1 | cut -d' ' -f2

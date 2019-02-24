@@ -7,13 +7,15 @@ set(gca,'FontSize',20)
 legend('handshake latency', 'transport latency');
 print('figures/direct-latency','-depsc');
 
-cpu_cli = [2 ];
-cpu_ser = [2 ];
+% 100 200 300 ...
+cpu_cli = [6 8 6.5 8.5 9.5 9.5 6.6 7 8.6 8];
+cpu_ser = [0 0 0 0 0 0 0 0 0 0];
 bar([cpu_cli; cpu_ser]');
 xlabel('Number of connections');
 ylabel('CPU usage (%)')
 set(gca,'FontSize',20)
-% ylim([27 31])
+ylim([0 20])
+set(gca,'xticklabel',{'100'; '200'; '300'; '400'; '500'; '600'; '700'; '800'; '900'; '1000'})
 legend('client', 'server');
 print('figures/direct-cpu','-depsc');
 
