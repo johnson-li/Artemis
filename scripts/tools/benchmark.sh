@@ -12,7 +12,7 @@ tmux send-key -t benchmark:1 'cd /home/lix16/Workspace/Hestia' Enter
 
 tmux send-key -t benchmark:1 'source ./.venv/bin/activate; pip install --upgrade pip; pip install -qr requirements.txt; python -m hestia.system.main' Enter
 
-sleep 10
+sleep 60
 
 echo 'benchmark for direct connections'
 tmux send-key -t benchmark:0 'rm -rf ~/data/sid' Enter
