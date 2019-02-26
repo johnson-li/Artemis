@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+git pull
+
 tmux has-session -t benchmark 2> /dev/null; if [[ $? == 0 ]]; then tmux kill-session -t benchmark; fi
 tmux new-session -ds benchmark
 for i in `seq 5`
