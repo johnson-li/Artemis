@@ -28,17 +28,18 @@ for i in `seq 2`
 do
     echo "concurrency: $i"
     tmux send-key -t benchmark:3 "tmux send-key -t main:0 C-c" Enter
-    tmux send-key -t benchmark:3 "tmux send-key -t main:1 'while true; do ps -eo pcpu,args -q `pidof client`| tail -n1 | cut -d\" \" -f2 >> ~/data/sid/dir-s$i.cpu; done'" Enter
+    tmux send-key -t benchmark:3 "tmux send-key -t main:1 'while true; do ps -eo pcpu,args -q `pidof server`| tail -n1 | cut -d\" \" -f2 >> ~/data/sid/dir-s$i.cpu; done' Enter" Enter
     tmux send-key -t benchmark:3 'tmux send-key -t main:0 "sudo LD_LIBRARY_PATH=$HOME/app/bin ~/app/bin/server --interface=${interface} --unicast=${unicast} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert" Enter' Enter
     sleep 1
     tmux send-key -t benchmark:2 "while true; do ps -eo pcpu,args -q `pidof client`| tail -n1 | cut -d' ' -f2 >> ~/data/sid/dir-c$i.cpu; done" Enter
+    tmux send-key -t benchmark:0 C-c
     tmux send-key -t benchmark:0 "./examples/client --concurrency=$i --timeout=1 --remote=173.16.156.101 site1.xuebingli.com 4433 2>&1|stdbuf -o0 grep 'time: ' >> ~/data/sid/dir-c$i.log" Enter
-    sleep 10
+    sleep 5
     tmux send-key -t benchmark:2 C-c
-    tmux send-key -t benchmark:3 "tmux send-key -t main:0 C-c" Enter
     tmux send-key -t benchmark:2 "sudo pmap `pidof client`| tail -n1| egrep -o '[0-9]+' > ~/data/sid/dir-c$i.mem" Enter
     tmux send-key -t benchmark:3 "tmux send-key -t main:1 C-c" Enter
     tmux send-key -t benchmark:3 "tmux send-key -t main:1 \"sudo pmap `pidof server`| tail -n1| egrep -o '[0-9]+' > ~/data/sid/dir-s$i.mem\"" Enter
+#    tmux send-key -t benchmark:3 "tmux send-key -t main:0 C-c" Enter
 done
 
 echo 'benchmark for artemis connections with one hop'
