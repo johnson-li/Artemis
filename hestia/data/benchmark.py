@@ -13,7 +13,6 @@ def latency():
     client_cpus = [0 for _ in range(end)]
     server_mems = [0 for _ in range(end)]
     server_cpus = [0 for _ in range(end)]
-    print('hold on;')
     for i in range(1, end):
         filename = '/dir-c%d.log' % i
         with open(SID_PATH + filename) as f:
@@ -34,16 +33,16 @@ def latency():
             mem = int(f.read())
             server_mems[i] = mem
         with open(SID_PATH + '/dir-c%d.cpu' % i) as f:
+            max_cpu = 0
             for line in f.readlines():
-                max_cpu = 0
                 if line.strip():
                     cpu = float(line.strip())
                     if cpu > max_cpu:
                         max_cpu = cpu
             client_cpus[i] = max_cpu
         with open(SID_PATH + '/dir-s%d.cpu' % i) as f:
+            max_cpu = 0
             for line in f.readlines():
-                max_cpu = 0
                 if line.strip():
                     cpu = float(line.strip())
                     if cpu > max_cpu:
