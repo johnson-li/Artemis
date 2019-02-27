@@ -38,9 +38,9 @@ do
     tmux send-key -t benchmark:0 "./examples/client --concurrency=$i --timeout=1 --remote=173.16.156.101 site1.xuebingli.com 4433 2>&1|stdbuf -o0 grep 'time: ' >> ~/data/sid/dir-c$i.log" Enter
     sleep 5
     tmux send-key -t benchmark:2 C-c
-    tmux send-key -t benchmark:2 'sudo pmap `pidof client`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-c$i.mem' Enter
+    tmux send-key -t benchmark:2 'sudo pmap `pidof client`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-c'${i}'.mem' Enter
     tmux send-key -t benchmark:3 "tmux send-key -t main:1 C-c" Enter
-    tmux send-key -t benchmark:3 'tmux send-key -t main:1 '"'"'sudo pmap `pidof server`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-s$i.mem'"'"' Enter' Enter
+    tmux send-key -t benchmark:3 'tmux send-key -t main:1 '"'"'sudo pmap `pidof server`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-s'${i}'.mem'"'"' Enter' Enter
 done
 
 echo 'benchmark for artemis connections with one hop'
