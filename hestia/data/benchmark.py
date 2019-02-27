@@ -1,8 +1,9 @@
 from numpy import percentile
 
-from hestia import RESOURCE_PATH
+from hestia import RESOURCE_PATH, MATLAB_PATH
 
 SID_PATH = RESOURCE_PATH + '/data/sid'
+OUTPUT_PATH = MATLAB_PATH + '/benchmark.m'
 
 
 def latency():
@@ -55,6 +56,8 @@ def latency():
     print('server mems = %s' % client_mems[1:])
     print('server cpus = %s' % client_cpus[1:])
     print('bar([hs; tf]\');')
+    with open(OUTPUT_PATH, 'w') as f:
+        f.write('0')
 
 
 def main():

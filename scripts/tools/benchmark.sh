@@ -26,7 +26,7 @@ sleep 0.5
 
 tmux send-key -t benchmark:3 "tmux send-key -t main:1 'rm -rf ~/data/sid; mkdir -p ~/data/sid' Enter" Enter
 
-for i in `seq 10`
+for i in `seq 100`
 do
     echo "concurrency: $i"
     tmux send-key -t benchmark:3 "tmux send-key -t main:0 C-c" Enter
