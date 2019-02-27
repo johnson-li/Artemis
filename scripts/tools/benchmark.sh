@@ -40,7 +40,7 @@ do
     tmux send-key -t benchmark:2 C-c
     tmux send-key -t benchmark:2 'sudo pmap `pidof client`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-c'${i}'.mem' Enter
     tmux send-key -t benchmark:3 "tmux send-key -t main:1 C-c" Enter
-    tmux send-key -t benchmark:3 'tmux send-key -t main:1 '"'"'sudo pmap `pidof server`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-s'${i}'.mem'"'"' Enter' Enter
+    tmux send-key -t benchmark:3 'tmux send-key -t main:2 '"'"'sudo pmap `pidof server`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/dir-s'${i}'.mem'"'"' Enter' Enter
 done
 
 echo 'benchmark for artemis connections with one hop'

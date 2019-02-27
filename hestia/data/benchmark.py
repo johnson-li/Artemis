@@ -1,5 +1,6 @@
-from hestia import RESOURCE_PATH
 from numpy import percentile
+
+from hestia import RESOURCE_PATH
 
 SID_PATH = RESOURCE_PATH + '/data/sid'
 
@@ -8,6 +9,10 @@ def latency():
     end = 11
     handshake_latencies = [[] for _ in range(end)]
     transfer_latencies = [[] for _ in range(end)]
+    client_mems = [0 for _ in range(end)]
+    client_cpus = [0 for _ in range(end)]
+    server_mems = [0 for _ in range(end)]
+    server_cpus = [0 for _ in range(end)]
     print('hold on;')
     for i in range(1, end):
         filename = '/dir-c%d.log' % i
@@ -22,21 +27,34 @@ def latency():
                         transfer_latencies[i].append(l)
                     else:
                         print("Unexpected line: " + line)
-            # print('hs' + str(i) + " = " + str(handshake_latencies[i]) + ";")
-            # print('tf' + str(i) + " = " + str(transfer_latencies[i]) + ";")
-    # print("hs = [%s] / 1000;" % ", ".join(["hs" + str(i) for i in range(1, end)]))
-    # print("tf = [%s] / 1000;" % ", ".join(["tf" + str(i) for i in range(1, end)]))
-    # print(
-    #     'groups1 = [%s];' % ", ".join(["zeros(1, %d) + %d" % (len(handshake_latencies[i]), i) for i in range(1, end)]))
-    # print('groups2 = [%s];' % ", ".join(
-    #     ["zeros(1, %d) + %d" % (len(handshake_latencies[i]), i + end) for i in range(1, end)]))
-    # print('positions = [%s];' % str((list(range(1, end)) + [i + 0.25 for i in range(1, end)])))
-    # print("f = boxplot([hs tf], [groups1 groups2], 'positions', positions);")
-    # print("set(f, 'xtick', %s)" % ([i + 0.125 for i in range(1, end)]))
-    # print("set(f, 'xticklabel', %s)" % ([str(i) for i in range(1, end)]))
-    # # print("print('figures/direct-latency','-depsc');")
+        with open(SID_PATH + '/dir-c%d.mem' % i) as f:
+            mem = int(f.read())
+            client_mems[i] = mem
+        with open(SID_PATH + '/dir-s%d.mem' % i) as f:
+            mem = int(f.read())
+            server_mems[i] = mem
+        with open(SID_PATH + '/dir-c%d.cpu' % i) as f:
+            for line in f.readlines():
+                max_cpu = 0
+                if line.strip():
+                    cpu = float(line.strip())
+                    if cpu > max_cpu:
+                        max_cpu = cpu
+            client_cpus[i] = max_cpu
+        with open(SID_PATH + '/dir-s%d.cpu' % i) as f:
+            for line in f.readlines():
+                max_cpu = 0
+                if line.strip():
+                    cpu = float(line.strip())
+                    if cpu > max_cpu:
+                        max_cpu = cpu
+            server_cpus[i] = max_cpu
     print('hs = %s / 1000;' % str([percentile(handshake_latencies[i], 50) for i in range(1, end)]))
     print('tf = %s / 1000;' % str([percentile(transfer_latencies[i], 50) for i in range(1, end)]))
+    print('client mems = %s' % client_mems[1:])
+    print('client cpus = %s' % client_cpus[1:])
+    print('server mems = %s' % client_mems[1:])
+    print('server cpus = %s' % client_cpus[1:])
     print('bar([hs; tf]\');')
 
 
