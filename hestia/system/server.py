@@ -236,7 +236,9 @@ def init_system(user, passwd, ip):
                 execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (sid(ip), server['name']))
             for dc in get_other_datacenter(ip):
                 for lb in dc['loadbalancers']:
-                    if sid(ip) == lb['sid']:
+                    # TODO: temporary fix
+                    # if sid(ip) == lb['sid']:
+                    if True:
                         execute(client, 'sudo arp -s %s 00:00:00:00:00:00 -i %s' % (sid(ip), lb['name']))
         if is_server(ip):
             datacenter = get_datacenter(ip)
