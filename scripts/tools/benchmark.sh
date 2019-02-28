@@ -61,7 +61,7 @@ do
     sleep 1
     tmux send-key -t benchmark:2 'while true; do ps -eo pcpu,args -q `pidof client` 2> /dev/null| tail -n1 | cut -d" " -f2 >> ~/data/sid/ar1-c'${i}'.cpu; done' Enter
     tmux send-key -t benchmark:0 C-c
-    tmux send-key -t benchmark:0 "./examples/client --concurrency=$i --timeout=1 --remote=173.16.156.101 site1.xuebingli.com 4433 2>&1|stdbuf -o0 grep 'time: ' >> ~/data/sid/ar1-c$i.log" Enter
+    tmux send-key -t benchmark:0 "./examples/client --concurrency=$i --timeout=1 --remote=173.16.156.100 site1.xuebingli.com 4433 2>&1|stdbuf -o0 grep 'time: ' >> ~/data/sid/ar1-c$i.log" Enter
     sleep 3
     tmux send-key -t benchmark:2 C-c
     tmux send-key -t benchmark:2 'sudo pmap `pidof client`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/ar1-c'${i}'.mem' Enter
