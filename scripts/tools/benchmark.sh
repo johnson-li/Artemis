@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-concurrency=10
+concurrency=100
 
 git pull
 

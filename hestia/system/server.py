@@ -189,10 +189,10 @@ def init_system(user, passwd, ip):
                                     'set interface t%s type=gre, options:remote_ip=%s' % (
                                 remote_name, remote_name, remote['phy']))
                     execute(client, 'sudo ifconfig %s 12.12.12.12/32 up' % remote_name)
-                    execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
-                        query_port % 't%s' % remote_name, query_port % remote_name))
                     # TODO: temporary set mod_nw_dst
                     # remove it after test
+                    execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=%s' % (
+                        query_port % 't%s' % remote_name, query_port % remote_name))
                     execute(client, 'sudo ovs-ofctl add-flow bridge in_port=%s,actions=mod_nw_dst:170.16.156.100,%s' % (
                         query_port % remote_name, query_port % 't%s' % remote_name))
             # balancer to server tunnel
