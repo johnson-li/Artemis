@@ -18,7 +18,7 @@ databases:
     role: slave
     ssh-user: johnson
   - name: db2
-    ip: 174.16.156.100
+    ip: 173.16.156.150
     server-id: 3
     username: johnson
     password: welcOme0!
@@ -46,13 +46,13 @@ datacenters:
   loadbalancers:
   - name: 'bl5'
     anycast: 'enp0s8'
-    phy: 174.16.156.100
+    phy: 173.16.156.150
     sid: 171.16.156.100
     db: db1
   servers:
   - name: 'sv5'
     unicast: 'enp0s8'
-    phy: 174.16.156.101
+    phy: 173.16.156.151
   - name: 'sv6'
     unicast: 'enp0s8'
-    phy: 174.16.156.102
+    phy: 173.16.156.152
