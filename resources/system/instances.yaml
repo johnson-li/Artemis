@@ -47,7 +47,7 @@ datacenters:
   - name: 'bl5'
     anycast: 'enp0s8'
     phy: 173.16.156.150
-    sid: 171.16.156.100
+    sid: 170.16.156.150
     db: db2
   servers:
   - name: 'sv5'
