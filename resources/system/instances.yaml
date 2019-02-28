@@ -48,7 +48,7 @@ datacenters:
     anycast: 'enp0s8'
     phy: 173.16.156.150
     sid: 171.16.156.100
-    db: db1
+    db: db2
   servers:
   - name: 'sv5'
     unicast: 'enp0s8'
