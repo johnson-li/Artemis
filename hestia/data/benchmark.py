@@ -35,11 +35,19 @@ def parse(prefix):
                         print("Unexpected line: " + line)
         if os.path.isfile(SID_PATH + '/%s-c%d.mem' % (prefix, i)):
             with open(SID_PATH + '/%s-c%d.mem' % (prefix, i)) as f:
-                mem = int(f.read())
-                client_mems[i] = mem / 1024
+                data = f.read()
+                if data:
+                    mem = int(data)
+                    client_mems[i] = mem / 1024
         with open(SID_PATH + '/%s-s%d.mem' % (prefix, i)) as f:
             mem = int(f.read())
             server_mems[i] = mem / 1024
+        if os.path.isfile(SID_PATH + '/%s-c%d.mem' % (prefix, i)):
+            with open(SID_PATH + '/%s-c%d.mem' % (prefix, i)) as f:
+                data = f.read()
+                if data:
+                    mem = int(data)
+                    client_mems[i] = mem / 1024
         if os.path.isfile(SID_PATH + '/%s-c%d.cpu' % (prefix, i)):
             with open(SID_PATH + '/%s-c%d.cpu' % (prefix, i)) as f:
                 max_cpu = 0
@@ -76,7 +84,7 @@ def parse(prefix):
 
 
 def latency():
-    handshake_latencies, transfer_latencies, client_mems, client_cpus, server_mems, server_cpus, _, _, _, _ = parse('ar1')
+    handshake_latencies, transfer_latencies, client_mems, client_cpus, server_mems, server_cpus, _, _, _, _ = parse('dir')
     with open(OUTPUT_PATH, 'w') as f:
         lines = [
             # =====latencies=====

@@ -3,12 +3,12 @@ import json
 import random
 import re
 import statistics
-import numpy
 from urllib import request
 from urllib.parse import urlencode
 
 import geopy.distance
 import grequests
+import numpy
 
 import hestia.tools.location
 from hestia.atlas.secret import SECRET
@@ -420,8 +420,7 @@ def main():
     print('diff: ' + str(diff))
     print('diff values: ' + str(sorted(diff.values())))
     print("valid: " + str(len(diff)))
-    best_deployment(diff.keys())
-    return
+    # best_deployment(diff.keys())
     anycast = {key: get_by_subnet(unicast_mesh[key], anycast_match[key]) for key in diff}
     optimal = {key: val for key, val in optimal.items() if key in anycast}
     diff_fixed = {key: anycast[key] - optimal[key] for key in anycast}
@@ -470,12 +469,16 @@ def main():
         ds.append(distances[key])
         saved.append(diff_fixed[key])
         wasted.append(diff_fixed[key] / 2 - get_latency(anycast_match[key], optimal_match[key]) / 2)
-        latency.append(optimal[key] - (anycast[key] / 2 + optimal[key] / 2 + get_latency(anycast_match[key], optimal_match[key]) * 2.3))
+        latency.append(
+            (anycast[key] / 2 + optimal[key] / 2 + get_latency(anycast_match[key], optimal_match[key]) * 2.3))
     print('percentile: ' + str(len(matched) / len(diff)))
     print('ds: ' + str(ds))
     print('saved: ' + str(saved))
     print('wasted: ' + str(wasted))
     print('latency: ' + str(latency))
+    print(max(latency))
+    print(statistics.mean(latency))
+    print(statistics.mean([optimal[k] for k in distances]))
 
 
 if __name__ == '__main__':

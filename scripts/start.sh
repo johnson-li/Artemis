@@ -13,7 +13,7 @@ sudo killall python3 2> /dev/null
 
 tmux has-session -t main 2> /dev/null; if [[ $? == 0 ]]; then tmux kill-session -t main; fi
 tmux new-session -ds main
-for i in `seq 2`
+for i in `seq 4`
 do
     tmux new-window -t main:${i}
 done
@@ -23,7 +23,7 @@ case ${ROLE} in
         tmux send-key -t main:0 'source ~/env' Enter
         tmux send-key -t main:0 'sudo LD_LIBRARY_PATH=$HOME/app/bin ~/app/bin/balancer --datacenter=${DATACENTER} ${interface} 0.0.0.0 4433 ~/app/keys/server.key ~/app/keys/server.cert' Enter
         tmux send-key -t main:1 'source ~/env' Enter
-        tmux send-key -t main:1 'sudo PYTHONPATH="$HOME/app/" python3 -m hestia.exec.measurement-server ${DATACENTER} ${DATABASE}' Enter
+#        tmux send-key -t main:1 'sudo PYTHONPATH="$HOME/app/" python3 -m hestia.exec.measurement-server ${DATACENTER} ${DATABASE}' Enter
         ;;
     "server")
         tmux send-key -t main:0 'source ~/env' Enter
