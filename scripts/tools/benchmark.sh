@@ -120,7 +120,7 @@ do
     sleep .1
     tmux send-key -t benchmark:0 C-c
     sleep .1
-    tmux send-key -t benchmark:0 "./examples/client --concurrency=$i --timeout=1 --remote=171.16.156.100 site1.xuebingli.com 4433 2>&1|stdbuf -o0 grep 'time: ' >> ~/data/sid/ar2-c$i.log" Enter
+    tmux send-key -t benchmark:0 "./examples/client --concurrency=$i --timeout=1 --remote=170.16.156.150 site1.xuebingli.com 4433 2>&1|stdbuf -o0 grep 'time: ' >> ~/data/sid/ar2-c$i.log" Enter
     sleep 3
     tmux send-key -t benchmark:2 C-c
     sleep .1
