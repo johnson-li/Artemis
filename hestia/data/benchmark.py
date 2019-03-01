@@ -6,18 +6,22 @@ from hestia import RESOURCE_PATH, MATLAB_PATH
 
 SID_PATH = RESOURCE_PATH + '/data/sid'
 OUTPUT_PATH = MATLAB_PATH + '/benchmark.m'
+end = 101
 
 
-def latency():
-    end = 101
+def parse(prefix):
     handshake_latencies = [[] for _ in range(end)]
     transfer_latencies = [[] for _ in range(end)]
     client_mems = [0 for _ in range(end)]
     client_cpus = [0 for _ in range(end)]
     server_mems = [0 for _ in range(end)]
     server_cpus = [0 for _ in range(end)]
+    balancer1_mems = [0 for _ in range(end)]
+    balancer1_cpus = [0 for _ in range(end)]
+    balancer2_mems = [0 for _ in range(end)]
+    balancer2_cpus = [0 for _ in range(end)]
     for i in range(1, end):
-        filename = '/dir-c%d.log' % i
+        filename = '/%s-c%d.log' % (prefix, i)
         with open(SID_PATH + filename) as f:
             for line in f.readlines():
                 if line.strip():
@@ -29,15 +33,15 @@ def latency():
                         transfer_latencies[i].append(l)
                     else:
                         print("Unexpected line: " + line)
-        if os.path.isfile(SID_PATH + '/dir-c%d.mem' % i):
-            with open(SID_PATH + '/dir-c%d.mem' % i) as f:
+        if os.path.isfile(SID_PATH + '/%s-c%d.mem' % (prefix, i)):
+            with open(SID_PATH + '/%s-c%d.mem' % (prefix, i)) as f:
                 mem = int(f.read())
                 client_mems[i] = mem / 1024
-        with open(SID_PATH + '/dir-s%d.mem' % i) as f:
+        with open(SID_PATH + '/%s-s%d.mem' % (prefix, i)) as f:
             mem = int(f.read())
             server_mems[i] = mem / 1024
-        if os.path.isfile(SID_PATH + '/dir-c%d.cpu' % i):
-            with open(SID_PATH + '/dir-c%d.cpu' % i) as f:
+        if os.path.isfile(SID_PATH + '/%s-c%d.cpu' % (prefix, i)):
+            with open(SID_PATH + '/%s-c%d.cpu' % (prefix, i)) as f:
                 max_cpu = 0
                 for line in f.readlines():
                     line = line.strip()
@@ -49,8 +53,8 @@ def latency():
                         except Exception:
                             pass
                 client_cpus[i] = max_cpu
-        if os.path.isfile(SID_PATH + '/dir-s%d.cpu' % i):
-            with open(SID_PATH + '/dir-s%d.cpu' % i) as f:
+        if os.path.isfile(SID_PATH + '/%s-s%d.cpu' % (prefix, i)):
+            with open(SID_PATH + '/%s-s%d.cpu' % (prefix, i)) as f:
                 max_cpu = 0
                 for line in f.readlines():
                     line = line.strip()
@@ -68,7 +72,11 @@ def latency():
     print('client cpus = %s' % client_cpus[1:])
     print('server mems = %s' % client_mems[1:])
     print('server cpus = %s' % client_cpus[1:])
-    print('bar([hs; tf]\');')
+    return handshake_latencies, transfer_latencies, client_mems, client_cpus, server_mems, server_cpus, balancer1_mems, balancer1_cpus, balancer2_mems, balancer2_cpus
+
+
+def latency():
+    handshake_latencies, transfer_latencies, client_mems, client_cpus, server_mems, server_cpus, _, _, _, _ = parse('ar1')
     with open(OUTPUT_PATH, 'w') as f:
         lines = [
             # =====latencies=====
