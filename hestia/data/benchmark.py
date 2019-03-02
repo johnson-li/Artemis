@@ -22,26 +22,28 @@ def parse(prefix):
     balancer2_cpus = [0 for _ in range(end)]
     for i in range(1, end):
         filename = '/%s-c%d.log' % (prefix, i)
-        with open(SID_PATH + filename) as f:
-            for line in f.readlines():
-                if line.strip():
-                    if line.startswith('handshake'):
-                        l = int(line[16:])
-                        handshake_latencies[i].append(l)
-                    elif line.startswith('transfer'):
-                        l = int(line[15:])
-                        transfer_latencies[i].append(l)
-                    else:
-                        print("Unexpected line: " + line)
+        if os.path.isfile(SID_PATH + filename):
+            with open(SID_PATH + filename) as f:
+                for line in f.readlines():
+                    if line.strip():
+                        if line.startswith('handshake'):
+                            l = int(line[16:])
+                            handshake_latencies[i].append(l)
+                        elif line.startswith('transfer'):
+                            l = int(line[15:])
+                            transfer_latencies[i].append(l)
+                        else:
+                            print("Unexpected line: " + line)
         if os.path.isfile(SID_PATH + '/%s-c%d.mem' % (prefix, i)):
             with open(SID_PATH + '/%s-c%d.mem' % (prefix, i)) as f:
                 data = f.read()
                 if data:
                     mem = int(data)
                     client_mems[i] = mem / 1024
-        with open(SID_PATH + '/%s-s%d.mem' % (prefix, i)) as f:
-            mem = int(f.read())
-            server_mems[i] = mem / 1024
+        if os.path.isfile(SID_PATH + '/%s-s%d.mem' % (prefix, i)):
+            with open(SID_PATH + '/%s-s%d.mem' % (prefix, i)) as f:
+                mem = int(f.read())
+                server_mems[i] = mem / 1024
         if os.path.isfile(SID_PATH + '/%s-c%d.mem' % (prefix, i)):
             with open(SID_PATH + '/%s-c%d.mem' % (prefix, i)) as f:
                 data = f.read()
@@ -74,6 +76,7 @@ def parse(prefix):
                         except Exception:
                             pass
                 server_cpus[i] = max_cpu
+    print(handshake_latencies)
     print('hs = %s / 1000;' % str([percentile(handshake_latencies[i], 50) for i in range(1, end)]))
     print('tf = %s / 1000;' % str([percentile(transfer_latencies[i], 50) for i in range(1, end)]))
     print('client mems = %s' % client_mems[1:])
@@ -84,7 +87,11 @@ def parse(prefix):
 
 
 def latency():
-    handshake_latencies, transfer_latencies, client_mems, client_cpus, server_mems, server_cpus, _, _, _, _ = parse('dir')
+    handshake_latencies, transfer_latencies, client_mems, client_cpus, server_mems, server_cpus, _, _, _, _ = parse(
+        'dir')
+    handshake_latencies1, transfer_latencies1, client_mems1, client_cpus1, server_mems1, server_cpus1, balancer1_mems1, balancer1_cpus1, _, _ = parse(
+        'ar1')
+    print(balancer1_cpus1)
     with open(OUTPUT_PATH, 'w') as f:
         lines = [
             # =====latencies=====
@@ -101,6 +108,42 @@ def latency():
             # =====cpu=====
             "cpu_cli = %s;" % client_cpus[1:],
             "cpu_ser = %s;" % server_cpus[1:],
+            "cpu_bal = %s;" % balancer1_cpus1[1:],
+            "bar([cpu_cli; cpu_ser; cpu_bal]');",
+            "xlabel('Number of connections');",
+            "ylabel('CPU usage (%)')",
+            "set(gca,'FontSize',20)",
+            "pbaspect([2 1 1])",
+            "axis([1 100 0 13])",
+            "legend('client', 'server', 'Service Dispatcher');",
+            "print('figures/direct-cpu','-depsc');",
+            # =====memory=====
+            "mem_cli = %s;" % client_mems[1:],
+            "mem_ser = %s;" % server_mems[1:],
+            "mem_bal = %s;" % balancer1_mems1[1:],
+            "bar([mem_cli; mem_ser; mem_bal]');",
+            "xlabel('Number of connections');",
+            "ylabel('Memory (MB)')",
+            "pbaspect([2 1 1])",
+            "axis([1 100 25 42])",
+            "set(gca,'FontSize',20)",
+            "legend('client', 'server', 'Service Dispatcher');",
+            "print('figures/direct-memory','-depsc');",
+
+            # =====latencies=====
+            'hs = %s / 1000;' % str([percentile(handshake_latencies1[i], 50) for i in range(1, end)]),
+            'tf = %s / 1000;' % str([percentile(transfer_latencies1[i], 50) for i in range(1, end)]),
+            "bar([hs; tf]');",
+            "xlabel('Number of connections');",
+            "ylabel('Latency (ms)')",
+            "set(gca,'FontSize',20)",
+            "pbaspect([2 1 1])",
+            "axis([1 100 0 600])",
+            "legend('handshake latency', 'transport latency');",
+            "print('figures/art1-latency','-depsc');",
+            # =====cpu=====
+            "cpu_cli = %s;" % client_cpus1[1:],
+            "cpu_ser = %s;" % server_cpus1[1:],
             "bar([cpu_cli; cpu_ser]');",
             "xlabel('Number of connections');",
             "ylabel('CPU usage (%)')",
@@ -108,10 +151,10 @@ def latency():
             "pbaspect([2 1 1])",
             "axis([1 100 0 13])",
             "legend('client', 'server');",
-            "print('figures/direct-cpu','-depsc');",
+            "print('figures/art1-cpu','-depsc');",
             # =====memory=====
-            "mem_cli = %s;" % client_mems[1:],
-            "mem_ser = %s;" % server_mems[1:],
+            "mem_cli = %s;" % client_mems1[1:],
+            "mem_ser = %s;" % server_mems1[1:],
             "bar([mem_cli; mem_ser]');",
             "xlabel('Number of connections');",
             "ylabel('Memory (MB)')",
@@ -119,7 +162,7 @@ def latency():
             "axis([1 100 25 42])",
             "set(gca,'FontSize',20)",
             "legend('client', 'server');",
-            "print('figures/direct-memory','-depsc');",
+            "print('figures/art1-memory','-depsc');",
         ]
         f.writelines([l + '\n' for l in lines])
 

@@ -130,6 +130,8 @@ do
     sleep .1
     tmux send-key -t benchmark:4 "tmux send-key -t main:1 C-c" Enter
     sleep .1
+    tmux send-key -t benchmark:5 "tmux send-key -t main:1 C-c" Enter
+    sleep .1
     tmux send-key -t benchmark:3 'tmux send-key -t main:2 '"'"'sudo pmap `pidof server`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/ar2-s'${i}'.mem'"'"' Enter' Enter
     sleep .1
     tmux send-key -t benchmark:4 'tmux send-key -t main:2 '"'"'sudo pmap `pidof balancer`| tail -n1| egrep -o "[0-9]+" > ~/data/sid/ar2-ba'${i}'.mem'"'"' Enter' Enter

@@ -476,9 +476,8 @@ def main():
     print('saved: ' + str(saved))
     print('wasted: ' + str(wasted))
     print('latency: ' + str(latency))
-    print(max(latency))
     print(statistics.mean(latency))
-    print(statistics.mean([optimal[k] for k in distances]))
+    print(statistics.mean([optimal[k] for k in distances]) / 2)
 
 
 if __name__ == '__main__':
