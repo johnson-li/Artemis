@@ -53,7 +53,7 @@ set(gca,'FontSize',24)
 set(f1, 'LineWidth', 1.8, 'LineStyle', '--');
 set(f2, 'LineWidth', 1.8, 'LineStyle', '-');
 legend('cache hit', 'cache miss', 'Location','southeast')
-pbaspect([3 2 1])
+pbaspect([2 1 1])
 print('figures/latency_cmp_50','-depsc')
 
 
