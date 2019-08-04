@@ -453,6 +453,8 @@ def main():
     #     for key in diff_match}
     print('matched anycast: ' + str(statistics.mean(sorted([p[0] for p in matched.values()]))))
     print('matched anycast: ' + str(statistics.mean(sorted([p[1] for p in matched.values()]))))
+    print('all anycast: ' + str(statistics.mean([p[0] for p in (list(matched.values()) + list(nonmatched.values()))])))
+    print('all optimal: ' + str(statistics.mean([p[1] for p in (list(matched.values()) + list(nonmatched.values()))])))
     print('nonmatched num: ' + str(len(nonmatched)))
     print('nonmatched anycast: ' + str(statistics.mean(sorted([p[0] for p in nonmatched.values()]))))
     print('nonmatched optimal: ' + str(statistics.mean(sorted([p[1] for p in nonmatched.values()]))))
