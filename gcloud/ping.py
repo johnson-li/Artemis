@@ -1,6 +1,5 @@
 import paramiko
 from google.auth import compute_engine
-from google.cloud import storage
 
 f = open("list.txt", "r")
 
@@ -35,7 +34,7 @@ for i in range(0,len(list)):
     for j in range(0,len(list)):
         print('instance-'+str(i+1)+' -> instance-'+str(j+1)+'\n')
         f.write('instance-'+str(i+1)+' -> instance-'+str(j+1)+'\n');
-        command = 'ping -c 5 ' + list[j] + '\n'
+        command = 'ping -c 15 ' + list[j] + '\n'
         stdin, stdout, stderr = ssh.exec_command(command)
         result = stdout.read().decode()
         print(result)
