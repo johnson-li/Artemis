@@ -1,8 +1,11 @@
 import paramiko
+import re
 from google.auth import compute_engine
 
 f = open("list.txt", "r")
 
+a = []
+num = []
 list = []
 while True:
     x = f.readline()
@@ -10,9 +13,15 @@ while True:
        break
     y = x.split()
     if y[0][0]=='i':
-        list.append(y[4])
+        number = re.findall(r"\d+\.?\d*",y[0])
+        num.append(int(number[0])-1)
+        a.append(y[4])
+for i in range(len(a)):
+    for j in range(len(a)):
+        if num[j]==i:
+            list.append(a[j])
 f.close()
-
+print(list)
 f = open("output.txt", "w") 
 f.truncate()
 
@@ -37,7 +46,6 @@ for i in range(0,len(list)):
         command = 'ping -c 15 ' + list[j] + '\n'
         stdin, stdout, stderr = ssh.exec_command(command)
         result = stdout.read().decode()
-        print(result)
         f.write(result)
         f.write('\n')
         
