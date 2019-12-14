@@ -15,10 +15,26 @@ def get_gce_client():
     return compute
 
 
-def get_instances_from_zone(zone):
+def delete_instance(instance):
+    client = get_gce_client()
+    res = client.instances().delete(project=PROJECT_ID, zone=instance['zone'].split('/')[-1], instance=instance['name']).execute()
+    return res
+
+
+def is_hestia_project(instance):
+    for item in instance['metadata']['items']:
+        if item['key'] == 'hestia_exp' and item['value'] == 'true':
+            return True
+    return False
+
+
+def get_instances_from_zone(zone, hestia_only=True):
     client = get_gce_client()
     result = client.instances().list(project=PROJECT_ID, zone=zone).execute()
-    return result['items'] if 'items' in result else None
+    res = result['items'] if 'items' in result else []
+    if hestia_only:
+        res = list(filter(is_hestia_project, res))
+    return res
 
 
 def create_instance(zone, name):
