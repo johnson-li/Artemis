@@ -1,3 +1,4 @@
+import uuid
 from multiprocessing import Pool
 
 from experiment.gcloud import gce_utils
@@ -18,7 +19,7 @@ class GceUtilMul(object):
     def create_instances(self):
         with Pool(self.concurrency) as pool:
             result = pool.starmap(gce_utils.create_instance,
-                                  [(zone, 'machine in %s' % zone) for zone in self.zones])
+                                  [(zone, str(uuid.uuid4()).replace('-', '')) for zone in self.zones])
             res = list(filter(lambda x: x is not None, result))
             return res
 
