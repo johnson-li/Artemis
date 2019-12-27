@@ -18,7 +18,7 @@ class GceUtilMul(object):
     def create_instances(self):
         with Pool(self.concurrency) as pool:
             result = pool.starmap(gce_utils.create_instance,
-                                  [(zone, 'machine in $s'.format(zone)) for zone in self.zones])
+                                  [(zone, 'machine in %s' % zone) for zone in self.zones])
             res = list(filter(lambda x: x is not None, result))
             return res
 
