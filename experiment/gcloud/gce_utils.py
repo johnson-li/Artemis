@@ -17,7 +17,8 @@ def get_gce_client():
 
 def delete_instance(instance):
     client = get_gce_client()
-    res = client.instances().delete(project=PROJECT_ID, zone=instance['zone'].split('/')[-1], instance=instance['name']).execute()
+    res = client.instances().delete(project=PROJECT_ID, zone=instance['zone'].split('/')[-1],
+                                    instance=instance['name']).execute()
     return res
 
 
@@ -77,3 +78,25 @@ def create_instance(zone, name):
     }
     gce_instance = client.instances().insert(project=PROJECT_ID, zone=zone, body=config).execute()
     return gce_instance
+
+
+def stop_instance(zone):
+    pass
+
+
+def start_instance(zone):
+    pass
+
+
+def init_instance():
+    pass
+
+
+def init_experiment():
+    pass
+
+
+def instances_already_created(instances):
+    return False
+
+

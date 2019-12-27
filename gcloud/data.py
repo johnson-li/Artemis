@@ -4,7 +4,7 @@ import re
 sz = 21
 
 #handle the data
-f = open("result/output1.txt", "r")
+f = open("result/output2.txt", "r")
 x = 0
 y = 0
 dis = [[0 for i in range(23)] for j in range(23)]
@@ -29,11 +29,11 @@ while True:
 f.close()
 
 #get the cities/countries
-f = open("address.txt", "r")
+#f = open("address.txt", "r")
 addr = [0 for i in range(sz)]
 for i in range(1,sz):
-    s = f.readline()
-    addr[i] = s[4:len(s)-1]
+    #s = f.readline()
+    addr[i] = 'dc-%d' % i
 f.close()
 
 for i in range(1,sz):
@@ -56,7 +56,7 @@ for i in range(1,sz):
             if i!=k and j!=k:
                 if dis[i][k]+dis[k][j]-dis[i][j]<dmin:
                     dmin = dis[i][k]+dis[k][j]-dis[i][j]
-                    tmp = k                   
+                    tmp = k
         dx.append(dmin)
         diff[i][j] = dmin
         if dmin<0:
@@ -64,18 +64,18 @@ for i in range(1,sz):
             print(addr[i],'->',addr[tmp],'->',addr[j])
             print('%.2f'%(dis[i][tmp]+dis[tmp][j]),'%.2f'%dis[i][j])
             p.append([dmin,str(addr[i])+' -> '+str(addr[tmp])+' -> '+str(addr[j])])
-            cnt[tmp] = cnt[tmp]+1    
-print() 
-  
+            cnt[tmp] = cnt[tmp]+1
+print()
+
 '''
-#print  
+#print
 for i in range(1,sz):
     for j in range(i+1,sz):
         if abs(dis[i][j]-dis[j][i])>=4:
             #print('%.2f'%(dis[i][j]-dis[j][i]),end=' ')
             print(addr[i],'|',addr[j],' ','%.2f'%dis[i][j],' ','%.2f'%dis[j][i])
 print()
-'''  
+'''
 
 #print
 p.sort()
