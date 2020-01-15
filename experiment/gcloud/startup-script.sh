@@ -1,1 +1,0 @@
-echo "$(date)" >> ~/test.txt

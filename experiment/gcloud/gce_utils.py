@@ -2,6 +2,7 @@ import os
 from functools import lru_cache
 
 import googleapiclient.discovery
+import paramiko
 from google.oauth2 import service_account
 
 from experiment.gcloud.config import *
@@ -22,20 +23,18 @@ def delete_instance(instance):
     return res
 
 
+def get_external_ip(instance):
+    for interface in instance['networkInterfaces']:
+        for config in interface['accessConfigs']:
+            if config['name'] == 'External NAT':
+                return config['natIP']
+
+
 def is_hestia_project(instance):
     for item in instance['metadata']['items']:
         if item['key'] == 'hestia_exp' and item['value'] == 'true':
             return True
     return False
-
-
-def get_instances_from_zone(zone, hestia_only=True):
-    client = get_gce_client()
-    result = client.instances().list(project=PROJECT_ID, zone=zone).execute()
-    res = result['items'] if 'items' in result else []
-    if hestia_only:
-        res = list(filter(is_hestia_project, res))
-    return res
 
 
 def create_instance(zone, name):
@@ -80,23 +79,53 @@ def create_instance(zone, name):
     return gce_instance
 
 
-def stop_instance(zone):
-    pass
+def stop_instance(instance):
+    client = get_gce_client()
+    res = client.instances().stop(project=PROJECT_ID, zone=instance['zone'].split('/')[-1],
+                                  instance=instance['name']).execute()
+    return res
 
 
-def start_instance(zone):
-    pass
+def start_instance(instance):
+    client = get_gce_client()
+    res = client.instances().start(project=PROJECT_ID, zone=instance['zone'].split('/')[-1],
+                                   instance=instance['name']).execute()
+    return res
 
 
-def init_instance():
-    pass
+##
+# Transport data and install software
+#
+def init_instance(instance):
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy)
+    ip = get_external_ip(instance)
+    client.connect(ip, username=DEFAULT_USER_NAME)
+    sftp = paramiko.SFTPClient.from_transport(client.get_transport())
+    sftp.put('')
+    stdin, stdout, stderr = client.exec_command('pwd')
+    for line in stdout:
+        print(line.strip('\n'))
+    client.close()
 
 
-def init_experiment():
-    pass
+##
+# Configure environment
+#
+def init_experiment(instance):
+    raise NotImplementedError()
 
 
-def instances_already_created(instances):
-    return False
+def get_instance_zone(instance):
+    return instance['zone'].split('/')[-1]
 
 
+def instances_already_created(zones: list, instances):
+    to_be_deleted = []
+    left = zones.copy()
+    for zone in set([get_instance_zone(i) for i in instances]):
+        if zone in left:
+            left.remove(zone)
+        else:
+            to_be_deleted.append(zone)
+    return len(left) == 0 and len(to_be_deleted) == 0
