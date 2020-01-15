@@ -1,7 +1,7 @@
 import uuid
 
-from experiment.gcloud.constant import *
 from experiment.gcloud.config import *
+from experiment.gcloud.constant import *
 from experiment.gcloud.gce_utils import get_gce_client, create_instance, stop_instance, delete_instance, \
     init_experiment, init_instance, start_instance, is_hestia_project
 
@@ -15,8 +15,9 @@ def get_instances(zone, hestia_only=True):
     return res
 
 
-def create_instances_for_zone(zone):
-    return [create_instance(zone, 'hestia-%s' % str(uuid.uuid4())), ]
+def create_instances(zone):
+    return [create_instance(zone, 'hestia-%s-%s' % (zone, 'router')),
+            create_instance(zone, 'hestia-%s-%s' % (zone, 'server'))]
 
 
 def stop_instances(zone, hestia_only=True):
@@ -42,3 +43,8 @@ def init_experiments(zone, hestia_only=True):
 def instances_started(zone):
     instances = get_instances(zone)
     return all([i['status'] == GCE_MACHINE_STATUS_RUNNING for i in instances])
+
+
+def instances_deleted(zone):
+    instances = get_instances(zone)
+    return not instances

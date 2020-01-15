@@ -6,6 +6,10 @@ import paramiko
 from google.oauth2 import service_account
 
 from experiment.gcloud.config import *
+from experiment.gcloud.logging import logging
+
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+logger = logging.getLogger(__name__)
 
 
 @lru_cache()
@@ -42,7 +46,8 @@ def create_instance(zone, name):
     image_response = client.images().getFromFamily(project='gce-uefi-images', family='ubuntu-1804-lts').execute()
     source_disk_image = image_response['selfLink']
     machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
-    startup_script = open(os.path.join(os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
+    # startup_script = open(os.path.join(os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
+    startup_script = ''
     config = {
         'description': '',
         'name': name,
@@ -50,7 +55,11 @@ def create_instance(zone, name):
         'disks': [{'boot': True, 'autoDelete': True, 'initializeParams': {
             'sourceImage': source_disk_image, 'diskSizeGb': 30}}],
         'networkInterfaces': [{'network': 'global/networks/default',
-                               'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]}],
+                               'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
+                              # TODO: assign a second interface
+                              # {'network': 'global/networks/default2',
+                              #  'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
+                              ],
         'serviceAccounts': [{
             'email': PROJECT_EMAIL,
             'scopes': [
@@ -93,6 +102,18 @@ def start_instance(instance):
     return res
 
 
+def execute_ssh_sync(client, command):
+    stdin, stdout, stderr = client.exec_command(command)
+    for line in stdout:
+        if line.strip('\n'):
+            logger.debug(line.strip('\n'))
+    for line in stderr:
+        if line.strip('\n'):
+            logger.error(line.strip('\n'))
+    exit_status = stdout.channel.recv_exit_status()
+    return exit_status
+
+
 ##
 # Transport data and install software
 #
@@ -101,11 +122,16 @@ def init_instance(instance):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy)
     ip = get_external_ip(instance)
     client.connect(ip, username=DEFAULT_USER_NAME)
-    sftp = paramiko.SFTPClient.from_transport(client.get_transport())
-    sftp.put('')
-    stdin, stdout, stderr = client.exec_command('pwd')
-    for line in stdout:
-        print(line.strip('\n'))
+    # TODO: calculate the md5 of local data.zip and remote data.zip. Re-upload data.zip if the md5 is not matched
+    remote_md5 = 'a'
+    local_md5 = 'b'
+    if remote_md5 != local_md5:
+        sftp = paramiko.SFTPClient.from_transport(client.get_transport())
+        sftp.put('%s/data.zip' % DIR_PATH, 'data.zip')
+        execute_ssh_sync(client, 'sudo apt-get install -yqq unzip; '
+                                 '[ -e data ] && rm -r data; '
+                                 'unzip data.zip')
+    execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
     client.close()
 
 
@@ -121,6 +147,7 @@ def get_instance_zone(instance):
 
 
 def instances_already_created(zones: list, instances):
+    return False
     to_be_deleted = []
     left = zones.copy()
     for zone in set([get_instance_zone(i) for i in instances]):

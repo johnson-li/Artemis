@@ -1,8 +1,7 @@
 import time
-import uuid
 from multiprocessing import Pool
 
-from experiment.gcloud import gce_utils, gce_utils_zone
+from experiment.gcloud import gce_utils_zone
 from experiment.gcloud.config import *
 from experiment.gcloud.logging import logging
 
@@ -29,8 +28,7 @@ class GceUtilMul(object):
 
     def create_instances(self):
         with Pool(self.concurrency) as pool:
-            result = pool.starmap(gce_utils.create_instance,
-                                  [(zone, 'hestia-' + str(uuid.uuid4())) for zone in self.zones])
+            result = pool.starmap(gce_utils_zone.create_instances, [(zone,) for zone in self.zones])
             return combine_result_list(result)
 
     def delete_instances(self):
@@ -60,11 +58,20 @@ class GceUtilMul(object):
             return combine_result_list(result)
 
     def instances_started(self):
-        all([gce_utils_zone.instances_started(zone) for zone in self.zones])
+        return all([gce_utils_zone.instances_started(zone) for zone in self.zones])
+
+    def instances_deleted(self):
+        return all([gce_utils_zone.instances_deleted(zone) for zone in self.zones])
+
+    def wait_for_instances_to_delete(self):
+        logger.info('Wait for instances to be deleted')
+        while not self.instances_deleted():
+            time.sleep(1)
+        logger.info('Instances have all been deleted')
 
     def wait_for_instances_to_start(self):
         logger.info('Wait for instances to start')
-        while self.instances_started():
+        while not self.instances_started():
             time.sleep(1)
         logger.info('Instances have all started')
 
