@@ -66,7 +66,7 @@ class GceUtilMul(object):
     def wait_for_instances_to_delete(self):
         logger.info('Wait for instances to be deleted')
         while not self.instances_deleted():
-            time.sleep(1)
+            time.sleep(5)
         logger.info('Instances have all been deleted')
 
     def wait_for_instances_to_start(self):

@@ -147,7 +147,6 @@ def get_instance_zone(instance):
 
 
 def instances_already_created(zones: list, instances):
-    return False
     to_be_deleted = []
     left = zones.copy()
     for zone in set([get_instance_zone(i) for i in instances]):
