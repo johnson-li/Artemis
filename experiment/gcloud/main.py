@@ -41,6 +41,7 @@ def prepare_instances():
 
     time.sleep(3)
     gce_util_mul.wait_for_instances_to_start()
+    time.sleep(3)
 
     gce_util_mul.init_instances()
     # gce_util_mul.init_experiment()

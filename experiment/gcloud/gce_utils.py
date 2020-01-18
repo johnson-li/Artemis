@@ -48,7 +48,8 @@ def create_instance(zone, name):
     machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
     startup_script = open(os.path.join(os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
     if os.path.isfile(os.path.expanduser('~/.ssh/id_rsa.pub')):
-        startup_script = startup_script + '\n' + open(os.path.expanduser('~/.ssh/id_rsa.pub')).read() + '\n'
+        startup_script = '%s\necho %s >> /home/johnsonli1993/.ssh/authorized_keys' \
+                         % (startup_script, open(os.path.expanduser('~/.ssh/id_rsa.pub')).read())
     config = {
         'description': '',
         'name': name,
