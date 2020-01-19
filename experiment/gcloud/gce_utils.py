@@ -1,5 +1,4 @@
 import os
-from functools import lru_cache
 
 import googleapiclient.discovery
 import paramiko
@@ -12,7 +11,6 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 logger = logging.getLogger(__name__)
 
 
-@lru_cache()
 def get_gce_client():
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE)
     delegated_credentials = credentials.with_subject(PROJECT_EMAIL)
