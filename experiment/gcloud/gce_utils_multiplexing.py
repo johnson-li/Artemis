@@ -72,7 +72,7 @@ class GceUtilMul(object):
     def wait_for_instances_to_start(self):
         logger.info('Wait for instances to start')
         while not self.instances_started():
-            time.sleep(1)
+            time.sleep(5)
         logger.info('Instances have all started')
 
     ##
