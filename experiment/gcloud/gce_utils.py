@@ -104,11 +104,15 @@ def start_instance(instance):
 
 def execute_ssh_sync(client, command):
     stdin, stdout, stderr = client.exec_command(command)
+    first_error = True
     for line in stdout:
         if line.strip('\n'):
             logger.debug(line.strip('\n'))
     for line in stderr:
         if line.strip('\n'):
+            if first_error:
+                logger.error("command: %s" % command)
+                first_error = False
             logger.error(line.strip('\n'))
     exit_status = stdout.channel.recv_exit_status()
     return exit_status
@@ -119,16 +123,17 @@ def execute_ssh_sync(client, command):
 #
 def init_instance(instance):
     client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy)
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
-    client.connect(ip, username=DEFAULT_USER_NAME)
+    key = paramiko.RSAKey.from_private_key_file('/home/wch19990119/.ssh/id_rsa')
+    client.connect(hostname=ip, username='wch19990119', pkey=key, allow_agent=False, look_for_keys=False)
     # TODO: calculate the md5 of local data.zip and remote data.zip. Re-upload data.zip if the md5 is not matched
     remote_md5 = 'a'
     local_md5 = 'b'
     if remote_md5 != local_md5:
         sftp = paramiko.SFTPClient.from_transport(client.get_transport())
         sftp.put('%s/data.zip' % DIR_PATH, 'data.zip')
-        execute_ssh_sync(client, 'sudo apt-get install -yqq unzip; '
+        execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
                                  '[ -e data ] && rm -r data; '
                                  'unzip data.zip')
     execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
