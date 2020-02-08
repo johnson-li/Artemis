@@ -55,10 +55,10 @@ def create_instance(zone, name):
         'disks': [{'boot': True, 'autoDelete': True, 'initializeParams': {
             'sourceImage': source_disk_image, 'diskSizeGb': 30}}],
         'networkInterfaces': [{'network': 'global/networks/default',
+                              'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
+                              {'network': 'global/networks/default2',
+                               'subnetwork': 'regions/us-east1/subnetworks/default2',
                                'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
-                              # TODO: assign a second interface
-                              # {'network': 'global/networks/default2',
-                              #  'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
                               ],
         'serviceAccounts': [{
             'email': PROJECT_EMAIL,
@@ -126,7 +126,7 @@ def init_instance(instance):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file('/home/wch19990119/.ssh/id_rsa')
-    client.connect(hostname=ip, username='wch19990119', pkey=key, allow_agent=False, look_for_keys=False)
+    client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
     # TODO: calculate the md5 of local data.zip and remote data.zip. Re-upload data.zip if the md5 is not matched
     remote_md5 = 'a'
     local_md5 = 'b'

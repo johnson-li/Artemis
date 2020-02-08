@@ -39,11 +39,11 @@ def prepare_instances():
         gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
 
-    time.sleep(3)
-    gce_util_mul.wait_for_instances_to_start()
-    time.sleep(10)
+    #time.sleep(3)
+    #gce_util_mul.wait_for_instances_to_start()
+    #time.sleep(10)
 
-    gce_util_mul.init_instances()
+    #gce_util_mul.init_instances()
     # gce_util_mul.init_experiment()
 
 
