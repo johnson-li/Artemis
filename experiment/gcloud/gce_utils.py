@@ -1,4 +1,5 @@
 import os
+import json
 
 import googleapiclient.discovery
 import paramiko
@@ -44,6 +45,7 @@ def create_instance(zone, name):
     image_response = client.images().getFromFamily(project='gce-uefi-images', family='ubuntu-1804-lts').execute()
     source_disk_image = image_response['selfLink']
     machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
+    subnet = "regions/%s/subnetworks/default2" % zone[:-2]
     startup_script = open(os.path.join(os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
     if os.path.isfile(os.path.expanduser('~/.ssh/id_rsa.pub')):
         startup_script = '%s\necho %s >> /home/johnsonli1993/.ssh/authorized_keys' \
@@ -57,7 +59,7 @@ def create_instance(zone, name):
         'networkInterfaces': [{'network': 'global/networks/default',
                               'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
                               {'network': 'global/networks/default2',
-                               'subnetwork': 'regions/us-east1/subnetworks/default2',
+                               'subnetwork': subnet,
                                'accessConfigs': [{'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}]},
                               ],
         'serviceAccounts': [{
@@ -136,6 +138,10 @@ def init_instance(instance):
         execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
                                  '[ -e data ] && rm -r data; '
                                  'unzip data.zip')
+    f = open('machine.json', encoding='utf-8')
+    lis = json.loads(f.read())
+    lis.insert(0, '{"hostname": "%s"}' % instance['name'])
+    execute_ssh_sync(client, "echo '{}' > machine.json".format(lis))
     execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
     client.close()
 

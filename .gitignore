@@ -185,3 +185,6 @@ fabric.properties
 ansible/provision.retry
 
 .idea
+
+machine.json
+.machine.json.swp
