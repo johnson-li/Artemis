@@ -140,7 +140,8 @@ def init_instance(instance):
                                  'unzip data.zip')
     f = open('machine.json', encoding='utf-8')
     lis = json.loads(f.read())
-    lis['hostname'] = instance['name']
+    name = instance['name']
+    lis['hostname'] = name
     execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)))
     execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
     client.close()
