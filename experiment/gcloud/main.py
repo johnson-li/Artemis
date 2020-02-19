@@ -2,9 +2,10 @@ import os
 import time
 import zipfile
 import json
+import paramiko
 
 from experiment.gcloud.config import *
-from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone
+from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.logging import logging
 
@@ -37,6 +38,21 @@ def get_ip(instance):
     return ex_ip[0], in_ip[0], ex_ip[1], in_ip[1]
 
 
+def get_mac(instance):
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ip = get_external_ip(instance)
+    key = paramiko.RSAKey.from_private_key_file('/home/wch19990119/.ssh/id_rsa')
+    client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
+
+    name = instance['name']
+    stdin, stdout, stderr = client.exec_command("cat /sys/class/net/ens4/address")
+    mac1 = stdout.read().decode()[:-1]
+    stdin, stdout, stderr = client.exec_command("cat /sys/class/net/ens5/address")
+    mac2 = stdout.read().decode()[:-1]
+    return mac1, mac2
+
+
 def prepare_instances():
     instances = get_instances()
     logging.info('existing instances: %s' % [i['name'] for i in instances])
@@ -59,7 +75,8 @@ def prepare_instances():
         name = i['name']
         ex_ip1, in_ip1, ex_ip2, in_ip2 = get_ip(i)
         zone = get_instance_zone(i)
-        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2, 'zone': zone}
+        mac1, mac2 = get_mac(i)
+        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2, 'mac1': mac1, 'mac2': mac2, 'zone': zone}
 
     with open('machine.json','w',encoding='utf-8') as f:
         json.dump(lis,f,ensure_ascii=False)
