@@ -45,30 +45,29 @@ def prepare_instances():
         if restart_for_each_run:
             gce_util_mul.stop_instances()
             gce_util_mul.start_instances()
+            gce_util_mul.wait_for_instances_to_start()
+            time.sleep(5)
     else:
         gce_util_mul.delete_instances()
         gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
+        gce_util_mul.wait_for_instances_to_start()
         time.sleep(10)
 
-    time.sleep(3)
-    gce_util_mul.wait_for_instances_to_start()
-    time.sleep(3)
-    
-    lis = []
+    lis = {}
     for i in instances:
         name = i['name']
         ex_ip1, in_ip1, ex_ip2, in_ip2 = get_ip(i)
         zone = get_instance_zone(i)
-        dic = '{"name":"%s", "external_ip1":"%s", "internal_ip1":"%s", "external_ip2":"%s", "internal_ip2":"%s", "zone":"%s"}' % (name, ex_ip1, in_ip1, ex_ip2, in_ip2, zone)
-        dic = json.loads(dic)
-        lis.append(dic)
-      
+        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2, 'zone': zone}
+
     with open('machine.json','w',encoding='utf-8') as f:
         json.dump(lis,f,ensure_ascii=False)
-    
 
+
+    logger.info('Initiate instances')
     gce_util_mul.init_instances()
+    logger.info('Initiate experiments')
     # gce_util_mul.init_experiment()
 
 
