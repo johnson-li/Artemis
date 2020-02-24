@@ -42,7 +42,7 @@ def get_mac(instance):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
-    key = paramiko.RSAKey.from_private_key_file('/home/wch19990119/.ssh/id_rsa')
+    key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
     client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
 
     name = instance['name']

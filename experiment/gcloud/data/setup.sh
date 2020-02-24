@@ -2,17 +2,18 @@ date > setup.sh.start_ts
 
 iface_primary='ens4'
 iface_secondary='ens5'
-ip_primary=`ifconfig $iface_primary | grep 'inet '| awk '{print $2}'`
-ip_secondary=`ifconfig $iface_secondary | grep 'inet '| awk '{print $2}'`
+ip_primary=`python3 -c 'import json; machines=json.load(open("machine.json")); print(machines[machines["hostname"]]["internal_ip1"])'`
+ip_secondary=`python3 -c 'import json; machines=json.load(open("machine.json")); print(machines[machines["hostname"]]["internal_ip2"])'`
 
 sudo iptables -I OUTPUT -p icmp --icmp-type destination-unreachable -j DROP
 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`;
-	do sudo ovs-vsctl del-br $bridge;
+    do sudo ovs-vsctl del-br $bridge;
 done
 
 machines=`cat machine.json`
 
 hostname=`python3 -c 'import json; machines=json.load(open("machine.json")); print(machines["hostname"])'`
+region=${hostname:0:`expr ${#hostname} - 7`}
 all_hosts=`python3 -c 'import json; machines=json.load(open("machine.json")); machines.pop("hostname", None); print(",".join(machines.keys()))'`
 
 setup_server() {
@@ -35,41 +36,57 @@ setup_server() {
 }
 
 setup_router() {
-	sudo ovs-vsctl add-br bridge
-	sudo ovs-vsctl add-port bridge $iface_secondary
-	sudo ovs-ofctl del-flows bridge
-	sudo ifconfig bridge $ip_secondary/24 up
-    return 0
-	anycast_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $iface_secondary| tail -n1| egrep -o "[0-9]+"`
-	sudo ovs-ofctl add-flow bridge in_port=local,actions=$anycast_port
-	sudo ovs-ofctl add-flow bridge in_port=$anycast_port,actions=local
-    sudo ifconfig $iface_secondary 0
+    bridge_name=bridge
+    sudo ovs-vsctl add-br $bridge_name
+    sudo ovs-vsctl add-port $bridge_name $iface_secondary
+    sudo ovs-ofctl del-flows $bridge_name
+    sudo ifconfig $bridge_name $ip_secondary/24 up
+    anycast_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $iface_secondary| tail -n1| egrep -o "[0-9]+"`
+    sudo ovs-ofctl add-flow $bridge_name in_port=local,actions=$anycast_port
+    sudo ovs-ofctl add-flow $bridge_name in_port=$anycast_port,actions=local
+    sudo ifconfig $iface_secondary down
 
+    echo $all_hosts
     # Setup the gre tunnel among routers
     while IFS=',' read -ra ADDR
     do
-        for host in "${ADDR[@]}"
+        for remote_host in "${ADDR[@]}"
         do
-            echo host
+            dc_region=${remote_host:0:`expr ${#remote_host} - 7`}
+            type=${remote_host:`expr ${#remote_host}` - 6:6}
+            if [[ ${type} == router ]] && [[ ${dc_region} != ${region} ]]
+            then
+                export remote_host
+                remote_ip=`python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["remote_host"]]["external_ip1"])'`
+                local_port_name=$dc_region
+                remote_port_name=tunnel-${dc_region}
+                sudo ovs-vsctl add-port $bridge_name ${dc_region} -- set interface ${dc_region} type=internal
+                sudo ovs-vsctl add-port $bridge_name ${remote_port_name} -- set interface ${remote_port_name} type=gre options:remote_ip=${remote_ip}
+                local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $local_port_name| tail -n1| egrep -o "[0-9]+"`
+                remote_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $remote_port_name| tail -n1| egrep -o "[0-9]+"`
+                sudo ifconfig ${local_port} 12.12.12.12/32 up
+                sudo ovs-vsctl add-flow ${bridge_name} in_port=${local_port},actions=${remote_port}
+                sudo ovs-vsctl add-flow ${bridge_name} in_port=${remote_port},actions=${local_port}
+            fi
         done
     done <<< $all_hosts
 
     # Setup the gre tunnel from router -> server
     export server=${hostname:0:`expr ${#hostname} - 6`}server
     server_ip=`python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["server"]]["internal_ip1"])'`
-	server_local_port_name=$server
-	server_gre_port_name=tunnel-$server
-    sudo ovs-vsctl add-port bridge $server_local_port_name -- set interface $server_local_port_name type=internal
-	sudo ovs-vsctl add-port bridge $server_gre_port_name -- set interface $server_gre_port_name type=gre, option:remote_ip=$server_ip
-	server_gre_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_gre_port_name| tail -n1| egrep -o "[0-9]+"`
-	server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
-	sudo ovs-ofctl add-flow bridge in_port=$server_gre_port,actions=mod_dl_dst:00:00:00:00:00:00,$server_local_port
-	sudo ovs-ofctl add-flow bridge in_port=$server_local_port,actions=$server_gre_port
+    server_local_port_name=server
+    server_gre_port_name=tunnel-server
+    sudo ovs-vsctl add-port $bridge_name $server_local_port_name -- set interface $server_local_port_name type=internal
+    sudo ovs-vsctl add-port $bridge_name $server_gre_port_name -- set interface $server_gre_port_name type=gre, option:remote_ip=$server_ip
+    server_gre_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_gre_port_name| tail -n1| egrep -o "[0-9]+"`
+    server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
+    sudo ovs-ofctl add-flow $bridge_name in_port=$server_gre_port,actions=mod_dl_dst:00:00:00:00:00:00,$server_local_port
+    sudo ovs-ofctl add-flow $bridge_name in_port=$server_local_port,actions=$server_gre_port
 }
 
 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`
 do
-	sudo ovs-vsctl del-br $bridge
+    sudo ovs-vsctl del-br $bridge
 done
 
 if [[ $hostname == *server ]]
