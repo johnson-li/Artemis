@@ -33,6 +33,9 @@ setup_server() {
     sudo ovs-ofctl del-flows $router_bridge_name
     sudo ovs-ofctl add-flow $router_bridge_name in_port=$router_port,actions=mod_dl_dst:$router_anycast_mac,local
     sudo ovs-ofctl add-flow $router_bridge_name in_port=local,actions=$router_port
+    sudo arp -s $router_primary_ip_inner 00:00:00:00:00:00 -i $router_bridge_name
+    sudo ip route add default via $router_primary_ip_inner dev $router_bridge_name tab 2
+    sudo ip rule add from $router_primary_ip_inner/32 tab 2 priority 600
 }
 
 setup_router() {
@@ -67,6 +70,7 @@ setup_router() {
                 sudo ifconfig ${local_port} 12.12.12.12/32 up
                 sudo ovs-vsctl add-flow ${bridge_name} in_port=${local_port},actions=${remote_port}
                 sudo ovs-vsctl add-flow ${bridge_name} in_port=${remote_port},actions=${local_port}
+                sudo arp -s $ip_primary 00:00:00:00:00:00 -i ${local_port}
             fi
         done
     done <<< $all_hosts
@@ -82,6 +86,7 @@ setup_router() {
     server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
     sudo ovs-ofctl add-flow $bridge_name in_port=$server_gre_port,actions=mod_dl_dst:00:00:00:00:00:00,$server_local_port
     sudo ovs-ofctl add-flow $bridge_name in_port=$server_local_port,actions=$server_gre_port
+    sudo arp -s $ip_primary 00:00:00:00:00:00 -i $server_local_port
 }
 
 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`
