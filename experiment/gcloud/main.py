@@ -50,6 +50,7 @@ def get_mac(instance):
     mac1 = stdout.read().decode()[:-1]
     stdin, stdout, stderr = client.exec_command("cat /sys/class/net/ens5/address")
     mac2 = stdout.read().decode()[:-1]
+    client.close()
     return mac1, mac2
 
 
