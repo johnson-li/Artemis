@@ -27,7 +27,7 @@ setup_server() {
     router_anycast_ip=$router_secondary_ip_inner
     router_anycast_mac=00:00:00:00:00:00
     sudo ovs-vsctl add-br $router_bridge_name
-    sudo ovs-vsctl add-port $router_bridge_name $router_port_name -- set interface $router_port_name type=gre, options:remote_ip=$router_ip
+    sudo ovs-vsctl add-port $router_bridge_name $router_port_name -- set interface $router_port_name type=vxlan, options:remote_ip=$router_ip
     router_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $router_port_name| tail -n1| egrep -o "[0-9]+"`
     sudo ifconfig $router_bridge_name $router_anycast_ip/32 up
     sudo ovs-ofctl del-flows $router_bridge_name
@@ -66,7 +66,7 @@ setup_router() {
                 local_port_name=$dc_region_short
                 remote_port_name=tunnel-${dc_region_short}
                 sudo ovs-vsctl add-port $bridge_name ${local_port_name} -- set interface ${local_port_name} type=internal
-                sudo ovs-vsctl add-port $bridge_name ${remote_port_name} -- set interface ${remote_port_name} type=gre options:remote_ip=${remote_ip}
+                sudo ovs-vsctl add-port $bridge_name ${remote_port_name} -- set interface ${remote_port_name} type=vxlan options:remote_ip=${remote_ip}
                 local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $local_port_name| tail -n1| egrep -o "[0-9]+"`
                 remote_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $remote_port_name| tail -n1| egrep -o "[0-9]+"`
                 sudo ifconfig ${local_port_name} 12.12.12.12/32 up
@@ -83,7 +83,7 @@ setup_router() {
     server_local_port_name=server
     server_gre_port_name=tunnel-server
     sudo ovs-vsctl add-port $bridge_name $server_local_port_name -- set interface $server_local_port_name type=internal
-    sudo ovs-vsctl add-port $bridge_name $server_gre_port_name -- set interface $server_gre_port_name type=gre, option:remote_ip=$server_ip
+    sudo ovs-vsctl add-port $bridge_name $server_gre_port_name -- set interface $server_gre_port_name type=vxlan, option:remote_ip=$server_ip
     sudo ifconfig $server_local_port_name 12.12.12.12/32 up
     server_gre_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_gre_port_name| tail -n1| egrep -o "[0-9]+"`
     server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
