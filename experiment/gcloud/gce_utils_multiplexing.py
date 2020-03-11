@@ -75,6 +75,12 @@ class GceUtilMul(object):
             time.sleep(5)
         logger.info('Instances have all started')
 
+    def conduct_experiment(self, instances):
+        logger.info('Conduct experiment')
+        with Pool(self.concurrency) as pool:
+            result = pool.starmap(gce_utils_zone.conduct_experiments, [(zone, instances, ) for zone in self.zones])
+            return combine_result_list(result)
+
     ##
     # Wait for previous operations to finish
     #

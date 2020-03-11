@@ -91,11 +91,11 @@ def prepare_instances():
     gce_util_mul.init_instances()
     logger.info('Initiate experiments')
     # gce_util_mul.init_experiment()
-    return lis
+    return instances
 
 
-def conduct_experiment():
-    pass
+def conduct_experiment(instances):
+    gce_util_mul.conduct_experiment(instances)
 
 
 def prepare_data():
@@ -124,7 +124,7 @@ def main():
     # clean()
     instances = prepare_instances()
     init_database(instances)
-    # conduct_experiment()
+    conduct_experiment(instances)
 
 
 if __name__ == '__main__':
