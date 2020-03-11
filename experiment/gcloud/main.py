@@ -3,11 +3,13 @@ import time
 import zipfile
 import json
 import paramiko
+import subprocess
 
 from experiment.gcloud.config import *
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.logging import logging
+from MySQLdb import _mysql
 from shutil import copyfile
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -89,6 +91,7 @@ def prepare_instances():
     gce_util_mul.init_instances()
     logger.info('Initiate experiments')
     # gce_util_mul.init_experiment()
+    return lis
 
 
 def conduct_experiment():
@@ -110,10 +113,17 @@ def zip_data():
     zipf.close()
 
 
+def init_database(instances):
+    subprocess.call(['%s/data/init_db.sh' % DIR_PATH])
+    #TODO: init database in the routers
+
+
 def main():
+    instances = {}
     prepare_data()
     # clean()
-    prepare_instances()
+    instances = prepare_instances()
+    init_database(instances)
     # conduct_experiment()
 
 
