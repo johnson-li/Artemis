@@ -8,8 +8,10 @@ from experiment.gcloud.config import *
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.logging import logging
+from shutil import copyfile
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
 CONCURRENCY = 10
 zones = ZONES[:2]
 restart_for_each_run = False
@@ -93,6 +95,13 @@ def conduct_experiment():
     pass
 
 
+def prepare_data():
+    copyfile('%s/ngtcp2/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data/client' % DIR_PATH)
+    copyfile('%s/ngtcp2/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data/server' % DIR_PATH)
+    copyfile('%s/ngtcp2/examples/balancer' % os.path.dirname(PROJECT_PATH), '%s/data/balancer' % DIR_PATH)
+    zip_data()
+
+
 def zip_data():
     zipf = zipfile.ZipFile('%s/data.zip' % DIR_PATH, 'w', zipfile.ZIP_DEFLATED)
     for root, dirs, files in os.walk('%s/data' % DIR_PATH):
@@ -102,7 +111,7 @@ def zip_data():
 
 
 def main():
-    zip_data()
+    prepare_data()
     # clean()
     prepare_instances()
     # conduct_experiment()
