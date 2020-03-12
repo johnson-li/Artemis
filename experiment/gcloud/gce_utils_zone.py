@@ -27,28 +27,34 @@ def create_instances(zone):
 
 
 def stop_instances(zone, hestia_only=True):
-    return [stop_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [stop_instance(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def delete_instances(zone, hestia_only=True):
-    return [delete_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [delete_instance(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def start_instances(zone, hestia_only=True):
-    return [start_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [start_instance(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
-def init_instances(zone, hestia_only=True):
-    return [init_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+def init_instances(zone, execute_init_script=True, hestia_only=True):
+    return [init_instance(instance, execute_init_script=execute_init_script)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def init_experiments(zone, hestia_only=True):
-    return [init_experiment(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [init_experiment(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def instances_started(zone):
     instances = get_instances(zone)
-    return all([i['status'] == GCE_MACHINE_STATUS_RUNNING for i in instances])
+    return all([i['status'] == GCE_MACHINE_STATUS_RUNNING
+                for i in instances])
 
 
 def instances_deleted(zone):
@@ -57,5 +63,6 @@ def instances_deleted(zone):
 
 
 def conduct_experiments(zone, instances):
-    return [conduct_experiment(instance) for instance in get_instances(zone, instances=instances, hestia_only=True)]
+    return [conduct_experiment(instance) for instance
+            in get_instances(zone, instances=instances, hestia_only=True)]
 

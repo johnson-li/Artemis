@@ -73,7 +73,7 @@ def prepare_instances():
         gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
         gce_util_mul.wait_for_instances_to_start()
-        time.sleep(10)
+        time.sleep(20)
 
     lis = {}
     for i in instances:
@@ -88,7 +88,7 @@ def prepare_instances():
 
 
     logger.info('Initiate instances')
-    gce_util_mul.init_instances()
+    gce_util_mul.init_instances(execute_init_script=True)
     logger.info('Initiate experiments')
     # gce_util_mul.init_experiment()
     return instances

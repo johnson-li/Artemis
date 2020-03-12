@@ -7,7 +7,7 @@ iname="$(ip -o link show | sed -rn '/^[0-9]+: en/{s/.: ([^:]*):.*/\1/p}')"
 
 id johnson > /dev/null 2>&1 || sudo useradd -m johnson && echo "johnson:johnson" | sudo chpasswd && sudo adduser johnson sudo > /dev/null
 sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq net-tools openssh-server sudo git vim tmux openvswitch-switch pkg-config iputils-ping libev-dev mysql-client mysql-server python3-dev python3-pip libmysqlclient-dev jq libmariadbclient18
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq net-tools openssh-server sudo git vim tmux openvswitch-switch pkg-config iputils-ping libev-dev mysql-client mysql-server python3-dev python3-pip libmysqlclient-dev jq libmariadbclient18 expect
 sudo DEBIAN_FRONTEND=noninteractive apt-get --fix-broken install -y -qq
 sudo pip3 install mysqlclient > /dev/null 2>&1
 echo 'sudo ALL=(ALL) NOPASSWD:ALL' | sudo tee -a /etc/sudoers > /dev/null
@@ -19,4 +19,6 @@ echo "export interface=$iname" | sudo tee -a /etc/environment > /dev/null
 date > ~/init.sh.end_ts
 
 ~/data/setup.sh
+
+~/data/init_db.sh
 

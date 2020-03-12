@@ -1,3 +1,5 @@
+date > ~/start_experiment.sh.start_ts
+
 tmux has-session -t main 2> /dev/null; if [[ $? == 0  ]]; then tmux kill-session -t main; fi
 tmux new-session -ds main
 for i in `seq 4`
@@ -16,3 +18,4 @@ case $role in
         ;;
 esac
 
+date > ~/start_experiment.sh.end_ts
