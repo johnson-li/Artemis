@@ -3,15 +3,21 @@ import uuid
 from experiment.gcloud.config import *
 from experiment.gcloud.constant import *
 from experiment.gcloud.gce_utils import get_gce_client, create_instance, stop_instance, delete_instance, \
-    init_experiment, init_instance, start_instance, is_hestia_project
+    init_experiment, init_instance, start_instance, is_hestia_project, conduct_experiment
 
 
-def get_instances(zone, hestia_only=True):
-    client = get_gce_client()
-    result = client.instances().list(project=PROJECT_ID, zone=zone).execute()
-    res = result['items'] if 'items' in result else []
-    if hestia_only:
-        res = list(filter(is_hestia_project, res))
+def get_instances(zone, instances=None, hestia_only=True):
+    if not instances:
+        client = get_gce_client()
+        result = client.instances().list(project=PROJECT_ID, zone=zone).execute()
+        instances = result['items'] if 'items' in result else []
+        if hestia_only:
+            instances = list(filter(is_hestia_project, instances))
+        return instances
+    res = []
+    for instance in instances:
+        if instance['zone'].split('/')[-1] == zone:
+            res.append(instance)
     return res
 
 
@@ -21,30 +27,42 @@ def create_instances(zone):
 
 
 def stop_instances(zone, hestia_only=True):
-    return [stop_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [stop_instance(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def delete_instances(zone, hestia_only=True):
-    return [delete_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [delete_instance(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def start_instances(zone, hestia_only=True):
-    return [start_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [start_instance(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
-def init_instances(zone, hestia_only=True):
-    return [init_instance(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+def init_instances(zone, execute_init_script=True, hestia_only=True):
+    return [init_instance(instance, execute_init_script=execute_init_script)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def init_experiments(zone, hestia_only=True):
-    return [init_experiment(instance) for instance in get_instances(zone, hestia_only=hestia_only)]
+    return [init_experiment(instance)
+            for instance in get_instances(zone, hestia_only=hestia_only)]
 
 
 def instances_started(zone):
     instances = get_instances(zone)
-    return all([i['status'] == GCE_MACHINE_STATUS_RUNNING for i in instances])
+    return all([i['status'] == GCE_MACHINE_STATUS_RUNNING
+                for i in instances])
 
 
 def instances_deleted(zone):
     instances = get_instances(zone)
     return not instances
+
+
+def conduct_experiments(zone, instances):
+    return [conduct_experiment(instance) for instance
+            in get_instances(zone, instances=instances, hestia_only=True)]
+

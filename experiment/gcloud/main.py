@@ -3,13 +3,17 @@ import time
 import zipfile
 import json
 import paramiko
+import subprocess
 
 from experiment.gcloud.config import *
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.logging import logging
+from MySQLdb import _mysql
+from shutil import copyfile
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
 CONCURRENCY = 10
 zones = ZONES[:2]
 restart_for_each_run = False
@@ -69,7 +73,7 @@ def prepare_instances():
         gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
         gce_util_mul.wait_for_instances_to_start()
-        time.sleep(10)
+        time.sleep(20)
 
     lis = {}
     for i in instances:
@@ -84,13 +88,21 @@ def prepare_instances():
 
 
     logger.info('Initiate instances')
-    gce_util_mul.init_instances()
+    gce_util_mul.init_instances(execute_init_script=True)
     logger.info('Initiate experiments')
     # gce_util_mul.init_experiment()
+    return instances
 
 
-def conduct_experiment():
-    pass
+def conduct_experiment(instances):
+    gce_util_mul.conduct_experiment(instances)
+
+
+def prepare_data():
+    copyfile('%s/ngtcp2/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data/client' % DIR_PATH)
+    copyfile('%s/ngtcp2/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data/server' % DIR_PATH)
+    copyfile('%s/ngtcp2/examples/balancer' % os.path.dirname(PROJECT_PATH), '%s/data/balancer' % DIR_PATH)
+    zip_data()
 
 
 def zip_data():
@@ -101,11 +113,18 @@ def zip_data():
     zipf.close()
 
 
+def init_database(instances):
+    subprocess.call(['%s/data/init_db.sh' % DIR_PATH])
+    #TODO: init database in the routers
+
+
 def main():
-    zip_data()
+    instances = {}
+    prepare_data()
     # clean()
-    prepare_instances()
-    # conduct_experiment()
+    instances = prepare_instances()
+    init_database(instances)
+    conduct_experiment(instances)
 
 
 if __name__ == '__main__':

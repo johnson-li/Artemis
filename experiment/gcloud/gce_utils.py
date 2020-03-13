@@ -123,7 +123,7 @@ def execute_ssh_sync(client, command):
 ##
 # Transport data and install software
 #
-def init_instance(instance):
+def init_instance(instance, execute_init_script=True):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
@@ -143,7 +143,8 @@ def init_instance(instance):
     name = instance['name']
     lis['hostname'] = name
     execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)))
-    execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
+    if execute_init_script:
+        execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
     client.close()
 
 
@@ -167,3 +168,13 @@ def instances_already_created(zones: list, instances):
         else:
             to_be_deleted.append(zone)
     return len(left) == 0 and len(to_be_deleted) == 0
+
+
+def conduct_experiment(instance):
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ip = get_external_ip(instance)
+    key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
+    client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
+    execute_ssh_sync(client, 'chmod +x data/start_experiment.sh && ./data/start_experiment.sh')
+
