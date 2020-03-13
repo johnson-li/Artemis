@@ -16,6 +16,18 @@ sudo su johnson -c 'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVcYOl/Q/TkpxdA4
 sudo su johnson -c "echo 'export PATH=$PATH:/sbin' >> /home/johnson/.bashrc"
 echo "export interface=$iname" | sudo tee -a /etc/environment > /dev/null
 
+sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=2" >> /etc/mysql/my.cnf'
+sudo service mysql restart
+export MYSQL_PWD=root
+mysql -uroot -e "stop slave;"
+mysql -uroot -e 'change master to \
+	master_host="10.146.0.2", \
+	master_user="slave", \
+	master_password="123456", \
+	master_log_file="mysql-bin.000005", \
+	master_log_pos=327;'
+mysql -uroot -e "start slave;"
+
 date > ~/init.sh.end_ts
 
 ~/data/setup.sh
