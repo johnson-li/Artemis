@@ -21,11 +21,11 @@ sudo service mysql restart
 export MYSQL_PWD=root
 mysql -uroot -e "stop slave;"
 mysql -uroot -e 'change master to \
-	master_host="10.146.0.2", \
+	master_host="34.68.107.26", \
 	master_user="slave", \
 	master_password="123456", \
-	master_log_file="mysql-bin.000005", \
-	master_log_pos=327;'
+	master_log_file="mysql-bin.000001", \
+	master_log_pos=313;'
 mysql -uroot -e "start slave;"
 
 date > ~/init.sh.end_ts
