@@ -16,17 +16,28 @@ sudo su johnson -c 'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVcYOl/Q/TkpxdA4
 sudo su johnson -c "echo 'export PATH=$PATH:/sbin' >> /home/johnson/.bashrc"
 echo "export interface=$iname" | sudo tee -a /etc/environment > /dev/null
 
-sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=2" >> /etc/mysql/my.cnf'
-sudo service mysql restart
-export MYSQL_PWD=root
-mysql -uroot -e "stop slave;"
-mysql -uroot -e 'change master to \
-	master_host="34.68.107.26", \
-	master_user="slave", \
-	master_password="123456", \
-	master_log_file="mysql-bin.000001", \
-	master_log_pos=313;'
-mysql -uroot -e "start slave;"
+hostname=`hostname`
+if [[ $hostname == *router ]]
+then
+    server_id=`python3 -c 'import json; machines=json.load(open("machine.json")); split_ip=machines[machines["hostname"]]["internal_ip1"].split('.'); print(split_ip[3]);'`
+
+    grep -q "[mysqld]" /etc/mysql/my.cnf
+    if [$? -eq 1]
+    then
+        sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=$server_id" >> /etc/mysql/my.cnf'
+    fi
+
+    sudo service mysql restart
+    export MYSQL_PWD=root
+    mysql -uroot -e "stop slave;"
+    mysql -uroot -e 'change master to \
+	    master_host="34.68.107.26", \
+    	master_user="slave", \
+	    master_password="123456", \
+    	master_log_file="mysql-bin.000001", \
+	    master_log_pos=8618;'
+    mysql -uroot -e "start slave;"
+fi
 
 date > ~/init.sh.end_ts
 
