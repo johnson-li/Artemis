@@ -19,12 +19,13 @@ echo "export interface=$iname" | sudo tee -a /etc/environment > /dev/null
 hostname=`hostname`
 if [[ $hostname == *router ]]
 then
-    server_id=`python3 -c 'import json; machines=json.load(open("machine.json")); split_ip=machines[machines["hostname"]]["internal_ip1"].split('.'); print(split_ip[3]);'`
+    server_id=`python3 -c 'import json; machines=json.load(open("machine.json")); split_ip=machines[machines["hostname"]]["internal_ip1"].split("."); print(split_ip[3])'`
 
-    grep -q "[mysqld]" /etc/mysql/my.cnf
-    if [$? -eq 1]
+    grep -q "mysqld" /etc/mysql/my.cnf
+    if [ $? -ne 0 ]
     then
-        sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=$server_id" >> /etc/mysql/my.cnf'
+        sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=\c" >> /etc/mysql/my.cnf'
+        sudo sh -c "echo $server_id >> /etc/mysql/my.cnf"
     fi
 
     sudo service mysql restart
@@ -35,7 +36,7 @@ then
     	master_user="slave", \
 	    master_password="123456", \
     	master_log_file="mysql-bin.000001", \
-	    master_log_pos=8618;'
+	    master_log_pos=58720;'
     mysql -uroot -e "start slave;"
 fi
 
