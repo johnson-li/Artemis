@@ -36,7 +36,7 @@ then
     	master_user="slave", \
 	    master_password="123456", \
     	master_log_file="mysql-bin.000001", \
-	    master_log_pos=58720;'
+	    master_log_pos=62574;'
     mysql -uroot -e "start slave;"
 fi
 
