@@ -2,6 +2,7 @@ date > setup.sh.start_ts
 
 iface_primary='ens4'
 iface_secondary='ens5'
+var=$(ifconfig ${iface_secondary}|grep ether); vars=( $var  ); mac_secondary=${vars[1]}
 ip_primary=`python3 -c 'import json; machines=json.load(open("machine.json")); print(machines[machines["hostname"]]["internal_ip1"])'`
 ip_secondary=`python3 -c 'import json; machines=json.load(open("machine.json")); print(machines[machines["hostname"]]["internal_ip2"])'`
 
@@ -26,6 +27,7 @@ setup_server() {
     router_ip=$router_primary_ip_inner
     router_anycast_ip=$router_secondary_ip_inner
     sudo ovs-vsctl add-br $router_bridge_name
+
     sudo ovs-vsctl add-port $router_bridge_name $router_port_name -- set interface $router_port_name type=vxlan, options:remote_ip=$router_ip
     router_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $router_port_name| tail -n1| egrep -o "[0-9]+"`
     sudo ifconfig $router_bridge_name $router_anycast_ip/32 up
@@ -33,7 +35,7 @@ setup_server() {
     vars=( $var )
     router_mac=${vars[1]}
     sudo ovs-ofctl del-flows $router_bridge_name
-    sudo ovs-ofctl add-flow $router_bridge_name in_port=$router_port,actions=mod_dl_dst:${router_mac},local
+    sudo ovs-ofctl add-flow $router_bridge_name in_port=$router_port,actions=mod_dl_dst:${router_mac},mod_nw_dst:${router_anycast_ip},local
     sudo ovs-ofctl add-flow $router_bridge_name in_port=local,actions=$router_port
     sudo arp -s $router_primary_ip_inner 00:00:00:00:00:00 -i $router_bridge_name
     sudo ip route flush table 2
@@ -45,13 +47,14 @@ setup_server() {
 setup_router() {
     bridge_name=bridge
     sudo ovs-vsctl add-br $bridge_name
+    var=$(ifconfig ${bridge_name}|grep ether); vars=( $var  ); mac_bridge=${vars[1]}
     sudo ovs-vsctl add-port $bridge_name $iface_secondary
     sudo ovs-ofctl del-flows $bridge_name
     sudo ifconfig $bridge_name $ip_secondary/24 up
     anycast_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $iface_secondary| tail -n1| egrep -o "[0-9]+"`
     sudo ovs-ofctl add-flow $bridge_name in_port=local,actions=$anycast_port
-    sudo ovs-ofctl add-flow $bridge_name in_port=$anycast_port,actions=local
-    sudo ifconfig $iface_secondary down
+    sudo ovs-ofctl add-flow $bridge_name in_port=$anycast_port,actions=mod_dl_dst=${mac_bridge},local
+    # sudo ifconfig $iface_secondary down
 
     # Setup the gre tunnel among routers
     while IFS=',' read -ra ADDR
@@ -89,9 +92,10 @@ setup_router() {
     sudo ifconfig $server_local_port_name 12.12.12.12/32 up
     server_gre_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_gre_port_name| tail -n1| egrep -o "[0-9]+"`
     server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
-    sudo ovs-ofctl add-flow $bridge_name in_port=$server_gre_port,actions=mod_dl_dst:00:00:00:00:00:00,$server_local_port
+    sudo ovs-ofctl add-flow $bridge_name in_port=$server_gre_port,actions=mod_dl_src:${mac_secondary},$iface_secondary
     sudo ovs-ofctl add-flow $bridge_name in_port=$server_local_port,actions=$server_gre_port
     sudo arp -s $ip_primary 00:00:00:00:00:00 -i $server_local_port_name
+    sudo arp -s $ip_secondary 00:00:00:00:00:00 -i $server_local_port_name
 }
 
 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`

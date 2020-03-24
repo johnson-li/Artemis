@@ -2,6 +2,7 @@
 
 date > ~/init_db.sh.start_ts
 
+test_server_ip="34.68.107.26"
 hostname=`hostname`
 if [[ $hostname == *server  ]]
 then
@@ -68,10 +69,10 @@ then
         unique key (ip)
     )"
 
-    mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast1c', '34.67.46.87', 10, 100);"
-    mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '34.67.46.87', 20, 100);"
+    mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast1c', '${test_server_ip}', 10, 100);"
+    mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '${test_server_ip}', 20, 100);"
     mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'hestiauseast1c', '11.11.11.11', 1)"
-    mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('34.67.46.87')"
+    mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('${test_server_ip}')"
     mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('hestiauseast1c', 'serviceid.xuebing.li', 'bl0')"
 fi
 
