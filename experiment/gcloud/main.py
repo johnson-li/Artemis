@@ -83,9 +83,13 @@ def prepare_instances():
         mac1, mac2 = get_mac(i)
         lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2, 'mac1': mac1, 'mac2': mac2, 'zone': zone}
 
+    s = os.popen('sudo mysql -e "show master status\G" | grep Position')
+    position = s.read()
+    position = position[18:-1]
+    lis['position'] = position
+
     with open('machine.json','w',encoding='utf-8') as f:
         json.dump(lis,f,ensure_ascii=False)
-
 
     logger.info('Initiate instances')
     gce_util_mul.init_instances(execute_init_script=True)

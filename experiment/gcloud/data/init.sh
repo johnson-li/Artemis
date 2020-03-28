@@ -28,15 +28,17 @@ then
         sudo sh -c "echo $server_id >> /etc/mysql/my.cnf"
     fi
 
+    position=`python3 -c 'import json; machines=json.load(open("machine.json"));pos=machines["position"]; print(pos)'`
+
     sudo service mysql restart
     export MYSQL_PWD=root
     mysql -uroot -e "stop slave;"
-    mysql -uroot -e 'change master to \
-	    master_host="34.68.107.26", \
-    	master_user="slave", \
-	    master_password="123456", \
-    	master_log_file="mysql-bin.000001", \
-	    master_log_pos=62574;'
+    mysql -uroot -e "change master to \
+	    master_host='34.68.107.26', \
+    	master_user='slave', \
+	    master_password='123456', \
+    	master_log_file='mysql-bin.000001', \
+	    master_log_pos=$position;"
     mysql -uroot -e "start slave;"
 fi
 
