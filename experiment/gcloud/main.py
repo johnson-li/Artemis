@@ -91,6 +91,16 @@ def prepare_instances():
     with open('machine.json','w',encoding='utf-8') as f:
         json.dump(lis,f,ensure_ascii=False)
 
+    for i in range(len(zones)):
+        command = 'gcloud compute instance-groups unmanaged create '+zones[i][:-2]+' --zone '+zones[i]
+        #os.system(command)
+        command = 'gcloud compute instance-groups set-named-ports '+zones[i][:-2]+' --named-ports tcp110:110 --zone '+zones[i]
+        #os.system(command)
+        command = 'gcloud compute instance-groups unmanaged add-instances '+zones[i][:-2]+' --instances hestia-'+zones[i]+'-router --zone '+zones[i]
+        #os.system(command)
+
+
+
     logger.info('Initiate instances')
     gce_util_mul.init_instances(execute_init_script=True)
     logger.info('Initiate experiments')

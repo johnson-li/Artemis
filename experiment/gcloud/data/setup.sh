@@ -56,6 +56,21 @@ setup_router() {
     sudo ovs-ofctl add-flow $bridge_name in_port=$anycast_port,actions=mod_dl_dst=${mac_bridge},local
     # sudo ifconfig $iface_secondary down
 
+    # Setup the gre tunnel from router -> server
+    export server=${hostname:0:`expr ${#hostname} - 6`}server
+    server_ip=`python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["server"]]["internal_ip1"])'`
+    server_local_port_name=server
+    server_gre_port_name=tunnel-server
+    sudo ovs-vsctl add-port $bridge_name $server_local_port_name -- set interface $server_local_port_name type=internal
+    sudo ovs-vsctl add-port $bridge_name $server_gre_port_name -- set interface $server_gre_port_name type=vxlan, option:remote_ip=$server_ip
+    sudo ifconfig $server_local_port_name 12.12.12.12/32 up
+    server_gre_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_gre_port_name| tail -n1| egrep -o "[0-9]+"`
+    server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
+    sudo ovs-ofctl add-flow $bridge_name in_port=$server_gre_port,actions=mod_dl_src:${mac_secondary},$iface_secondary
+    sudo ovs-ofctl add-flow $bridge_name in_port=$server_local_port,actions=$server_gre_port
+    sudo arp -s $ip_primary 00:00:00:00:00:00 -i $server_local_port_name
+    sudo arp -s $ip_secondary 00:00:00:00:00:00 -i $server_local_port_name
+
     # Setup the gre tunnel among routers
     while IFS=',' read -ra ADDR
     do
@@ -76,26 +91,11 @@ setup_router() {
                 remote_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $remote_port_name| tail -n1| egrep -o "[0-9]+"`
                 sudo ifconfig ${local_port_name} 12.12.12.12/32 up
                 sudo ovs-ofctl add-flow ${bridge_name} in_port=${local_port},actions=${remote_port}
-                sudo ovs-ofctl add-flow ${bridge_name} in_port=${remote_port},actions=${local_port}
-                sudo arp -s $ip_primary 00:00:00:00:00:00 -i ${local_port_name}
+                sudo ovs-ofctl add-flow ${bridge_name} in_port=${remote_port},actions=${server_gre_port}
+                sudo arp -s $ip_secondary 00:00:00:00:00:00 -i ${local_port_name}
             fi
         done
     done <<< $all_hosts
-
-    # Setup the gre tunnel from router -> server
-    export server=${hostname:0:`expr ${#hostname} - 6`}server
-    server_ip=`python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["server"]]["internal_ip1"])'`
-    server_local_port_name=server
-    server_gre_port_name=tunnel-server
-    sudo ovs-vsctl add-port $bridge_name $server_local_port_name -- set interface $server_local_port_name type=internal
-    sudo ovs-vsctl add-port $bridge_name $server_gre_port_name -- set interface $server_gre_port_name type=vxlan, option:remote_ip=$server_ip
-    sudo ifconfig $server_local_port_name 12.12.12.12/32 up
-    server_gre_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_gre_port_name| tail -n1| egrep -o "[0-9]+"`
-    server_local_port=`sudo ovs-vsctl -- --columns=name,ofport list Interface $server_local_port_name| tail -n1| egrep -o "[0-9]+"`
-    sudo ovs-ofctl add-flow $bridge_name in_port=$server_gre_port,actions=mod_dl_src:${mac_secondary},$iface_secondary
-    sudo ovs-ofctl add-flow $bridge_name in_port=$server_local_port,actions=$server_gre_port
-    sudo arp -s $ip_primary 00:00:00:00:00:00 -i $server_local_port_name
-    sudo arp -s $ip_secondary 00:00:00:00:00:00 -i $server_local_port_name
 }
 
 for bridge in `sudo ovs-vsctl show| grep Bridge| sed -E 's/ +Bridge //'| sed -E 's/"//g'`
