@@ -93,13 +93,38 @@ def prepare_instances():
 
     for i in range(len(zones)):
         command = 'gcloud compute instance-groups unmanaged create '+zones[i][:-2]+' --zone '+zones[i]
-        #os.system(command)
+        os.system(command)
         command = 'gcloud compute instance-groups set-named-ports '+zones[i][:-2]+' --named-ports tcp110:110 --zone '+zones[i]
-        #os.system(command)
+        os.system(command)
         command = 'gcloud compute instance-groups unmanaged add-instances '+zones[i][:-2]+' --instances hestia-'+zones[i]+'-router --zone '+zones[i]
-        #os.system(command)
+        os.system(command)
 
+    command = 'gcloud compute health-checks create tcp health-check --port 110'
+    os.system(command)
+    command = 'gcloud compute backend-services create load-balancer --global --protocol TCP --health-checks health-check --timeout 5m --port-name tcp110'
+    os.system(command)
 
+    for i in range(len(zones)):
+        command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group '+zones[i][:-2]+' --instance-group-zone '+zones[i]+' --balancing-mode UTILIZATION --max-utilization 0.8'
+        os.system(command)
+
+    command = 'gcloud compute target-tcp-proxies create load-balancer-target-proxy --backend-service load-balancer --proxy-header NONE'
+    os.system(command)
+    command = 'gcloud compute addresses create load-balancer-static-ipv4 --ip-version=IPV4 --global'
+    os.system(command)
+
+    s = os.popen('gcloud compute addresses list')
+    ad_list = s.read()
+    ad = ad_list.split()
+    lb_ip = ''
+    for i in range(len(ad)):
+        if ad[i]=='load-balancer-static-ipv4':
+            lb_ip = ad[i+1]
+
+    command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global --target-tcp-proxy load-balancer-target-proxy --address '+lb_ip+' --ports 110'
+    os.system(command)
+    command = 'gcloud compute firewall-rules create allow-load-balancer-and-health --source-ranges 0.0.0.0/0 --allow tcp:110'
+    os.system(command)
 
     logger.info('Initiate instances')
     gce_util_mul.init_instances(execute_init_script=True)
