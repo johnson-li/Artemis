@@ -1,0 +1,7 @@
+data.zip
+libssl.so.1.1
+libngtcp2.so.0
+libcrypto.so.1.1
+client 
+server
+balancer
