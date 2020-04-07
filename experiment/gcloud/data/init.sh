@@ -26,6 +26,8 @@ then
     then
         sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=\c" >> /etc/mysql/my.cnf'
         sudo sh -c "echo $server_id >> /etc/mysql/my.cnf"
+    else
+        sudo sed -i "/server-id=/c\server-id=${server_id}" /etc/mysql/my.cnf
     fi
 
     position=`python3 -c 'import json; machines=json.load(open("machine.json"));pos=machines["position"]; print(pos)'`

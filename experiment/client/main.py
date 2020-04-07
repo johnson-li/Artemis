@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def zip_data():
+    copyfile('%s/machine.json' % PROJECT_PATH, '%s/data/machine.json' % DIR_PATH)
     copyfile('%s/ngtcp2/examples/client' % os.path.dirname(PROJECT_PATH),
              '%s/data/client' % DIR_PATH)
     zipf = zipfile.ZipFile(DATA_ZIP_PATH, 'w', zipfile.ZIP_DEFLATED)

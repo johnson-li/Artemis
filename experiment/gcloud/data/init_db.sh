@@ -83,7 +83,8 @@ then
 
     #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast1c', '${test_server_ip}', 10, 100);"
     #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '${test_server_ip}', 20, 100);"
-    #mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'hestiauseast1c', '11.11.11.11', 1)"
+    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'hestiauseast1c', '11.11.11.11', 1)"
+    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'hestiauseast4c', '11.11.11.11', 1)"
     #mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('${test_server_ip}')"
     mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('hestiauseast1c', 'serviceid.xuebing.li', 'hestiauseast1c')"
     mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('hestiauseast4c', 'serviceid.xuebing.li', 'hestiauseast4c')"
