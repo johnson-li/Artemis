@@ -2,6 +2,7 @@ import time
 from multiprocessing import Pool
 
 from experiment.gcloud import gce_utils_zone
+from experiment.gcloud import gce_utils
 from experiment.gcloud.config import *
 from experiment.gcloud.logging import logging
 
@@ -28,7 +29,11 @@ class GceUtilMul(object):
 
     def create_instances(self):
         with Pool(self.concurrency) as pool:
-            result = pool.starmap(gce_utils_zone.create_instances, [(zone,) for zone in self.zones])
+            lis = []
+            for zone in self.zones:
+                lis.append((zone, 'hestia-%s-%s' % (zone, 'router')))
+                lis.append((zone, 'hestia-%s-%s' % (zone, 'server')))
+            result = pool.starmap(gce_utils.create_instance, lis)
             return combine_result_list(result)
 
     def delete_instances(self):
@@ -49,9 +54,9 @@ class GceUtilMul(object):
 
     def init_instances(self, execute_init_script=True):
         with Pool(self.concurrency) as pool:
-            result = pool.starmap(gce_utils_zone.init_instances,
-                                  [(zone, execute_init_script) for zone in self.zones])
-            return combine_result_list(result)
+            instances = self.get_instances()
+            result = pool.starmap(gce_utils.init_instance, [(instance, execute_init_script) for instance in instances])
+            return result
 
     def init_experiment(self):
         with Pool(self.concurrency) as pool:

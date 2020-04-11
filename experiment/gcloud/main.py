@@ -73,8 +73,9 @@ def prepare_instances():
         gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
         gce_util_mul.wait_for_instances_to_start()
-        time.sleep(20)
+        time.sleep(30)
 
+    instances = get_instances()
     lis = {}
     for i in instances:
         name = i['name']
@@ -90,6 +91,7 @@ def prepare_instances():
 
     with open('machine.json','w',encoding='utf-8') as f:
         json.dump(lis,f,ensure_ascii=False)
+
     for i in range(len(zones)):
         command = 'gcloud compute instance-groups unmanaged create '+zones[i][:-2]+' --zone '+zones[i]
         command += ' > /dev/null 2>&1'
@@ -134,6 +136,7 @@ def prepare_instances():
     command = 'gcloud compute firewall-rules create allow-load-balancer-and-health --source-ranges 0.0.0.0/0 --allow tcp:110'
     command += ' > /dev/null 2>&1'
     os.system(command)
+
     logger.info('Initiate instances')
     gce_util_mul.init_instances(execute_init_script=True)
     logger.info('Initiate experiments')
@@ -166,12 +169,15 @@ def init_database(instances):
 
 
 def main():
+    start = time.time()
     instances = {}
     prepare_data()
     # clean()
     instances = prepare_instances()
     init_database(instances)
     conduct_experiment(instances)
+    end = time.time()
+    print("time: ",end-start)
 
 
 if __name__ == '__main__':

@@ -44,7 +44,7 @@ then
     mysql -uroot -e "start slave;"
 fi
 
-sudo apt-get install apache2 -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get install apache2 -y
 sudo sed -i '/Listen 80/c\Listen 110' /etc/apache2/ports.conf
 sudo service apache2 restart
 echo "$hostname" | sudo tee /var/www/html/index.html
