@@ -26,6 +26,8 @@ then
     then
         sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=\c" >> /etc/mysql/my.cnf'
         sudo sh -c "echo $server_id >> /etc/mysql/my.cnf"
+    else
+        sudo sed -i "/server-id=/c\server-id=${server_id}" /etc/mysql/my.cnf
     fi
 
     position=`python3 -c 'import json; machines=json.load(open("machine.json"));pos=machines["position"]; print(pos)'`
@@ -42,7 +44,7 @@ then
     mysql -uroot -e "start slave;"
 fi
 
-sudo apt-get install apache2 -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get install apache2 -y
 sudo sed -i '/Listen 80/c\Listen 110' /etc/apache2/ports.conf
 sudo service apache2 restart
 echo "$hostname" | sudo tee /var/www/html/index.html

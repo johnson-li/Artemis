@@ -38,10 +38,10 @@ setup_server() {
     sudo ovs-ofctl add-flow $router_bridge_name in_port=$router_port,actions=mod_dl_dst:${router_mac},mod_nw_dst:${router_anycast_ip},local
     sudo ovs-ofctl add-flow $router_bridge_name in_port=local,actions=$router_port
     sudo arp -s $router_primary_ip_inner 00:00:00:00:00:00 -i $router_bridge_name
-    sudo ip route flush table 2
-    sudo ip rule delete table 2
-    sudo ip route add default via $router_anycast_ip dev $router_bridge_name tab 2
-    sudo ip rule add from $router_anycast_ip/32 tab 2 priority 600
+    sudo ip route flush table 2 > /dev/null 2>&1
+    sudo ip rule delete table 2 > /dev/null 2>&1
+    sudo ip route add default via $router_anycast_ip dev $router_bridge_name tab 2 > /dev/null 2>&1
+    sudo ip rule add from $router_anycast_ip/32 tab 2 priority 600 > /dev/null 2>&1
 }
 
 setup_router() {

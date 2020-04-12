@@ -130,8 +130,10 @@ def init_instance(instance, execute_init_script=True):
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
     client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
     # TODO: calculate the md5 of local data.zip and remote data.zip. Re-upload data.zip if the md5 is not matched
-    remote_md5 = 'a'
-    local_md5 = 'b'
+    stdin, stdout, stderr = client.exec_command("md5sum data.zip | cut -d ' ' -f1")
+    remote_md5 = stdout.read().decode()
+    s = os.popen("md5sum %s/data.zip | cut -d ' ' -f1" % DIR_PATH)
+    local_md5 = s.read()
     if remote_md5 != local_md5:
         sftp = paramiko.SFTPClient.from_transport(client.get_transport())
         sftp.put('%s/data.zip' % DIR_PATH, 'data.zip')

@@ -1,3 +1,5 @@
+BASEDIR=$(dirname "$0")
+
 target=35.227.98.160
 root=/tmp/hestia/data
 date > ${root}/start.sh.start_ts
@@ -18,7 +20,16 @@ do
     mysql -h34.68.107.26 -ujohnson -pjohnson -Dserviceid_db -e "insert into measurements (dc, client, latency, ts) values ('${dc}', '${client_ip}', ${latency}, ${timestamp})"
 done < ${root}/datacenters.txt
 
+# Simulate anycast routing
+lb_list=$(gcloud compute addresses list)
+lb_list=${lb_list#*ipv4}
+lb_list=${lb_list%%EX*}
+lb_ip=`echo $lb_list | sed 's/ //g'`
+export target_instance=`curl -s $lb_ip:110`
+target=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["target_instance"]]["external_ip2"])'`
+
 # Conduct experiment
+echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client.log &
 sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client.log &
 pid=$!
 sleep 3
