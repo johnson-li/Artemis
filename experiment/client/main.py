@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 cmd='lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
 output, _ = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-lb_ip = output.strip()
+lb_ip = output.decode("utf-8") .strip()
 
 
 def zip_data():
