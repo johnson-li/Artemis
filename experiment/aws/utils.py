@@ -75,12 +75,17 @@ def get_image_id(region=REGION):
 def get_key_pair_name(region=REGION):
     client = boto3.client('ec2', region_name=region)
     key_pairs = client.describe_key_pairs()['KeyPairs']
+    # key = 'mbp'
+    key = 'gcp'
     for key_pair in key_pairs:
-        if key_pair['KeyName'] == 'mbp':
-            return key_pair['KeyName']
-    pub = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
-    key_pair = client.import_key_pair(KeyName='mbp', PublicKeyMaterial=pub)
-    return key_pair['KeyName']
+        if key_pair['KeyName'] == key:
+            return key
+    if key == 'mbp':
+        pub = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
+        client.import_key_pair(KeyName=key, PublicKeyMaterial=pub)
+    elif key == 'gcp':
+        client.import_key_pair(KeyName=key, PublicKeyMaterial='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMHPauPPpAF98nrPnB7b5ACx0W+lbY0bLmXo1bmCHLFYBCCaZsLjt3OzvJp9y+ED8X5vYa8Y+SL+SOIFp91wEIMoFQ+AhmcwvW5chlk+enAKvoDLUr+llpz+Z20JLIsMqh/MdyFpmaDYJOuOgbpsy5zdLhncJgEW20vp1mVC3ndPaImoOv9ov/QsYT78xxSH5dRmYlBguW9J2x8TbiwKxeFIur0OXu6uTzDowZYkXt0LzjQbFQAZoahNJN1t3NcKxjle+ZPoxr0Uc8Z68tBvfStJwd6Zm5WPJ/lmV5HEGnYqT8fpBPlvyxhJ210ZinamkPr1a3sLsh3r8Galm2IR3h wch19990119')
+    return key
 
 
 def get_instance_type(region=REGION):
