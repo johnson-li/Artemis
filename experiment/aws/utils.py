@@ -172,7 +172,8 @@ def run(region):
 
 def export_json(ips):
     hosts_file = os.path.join(PROJECT_PATH, 'experiment/client/data/hosts.json')
-    hosts = json.load(open(hosts_file))
+    # hosts = json.load(open(hosts_file))
+    hosts = []
     for ip in ips:
         hosts.append({'hostname': ip[0], 'username': 'ubuntu', 'region': ip[1]})
     json.dump(hosts, open(hosts_file, 'w'))
