@@ -45,7 +45,7 @@ then
     transfer_time=-1
 fi
 
-sql="insert into transfer_time (client_ip, target_ip, hostname, service_id_transfer_time, dns_query_time, dns_transfer_time, timestamp) values('${client_ip}', '${target}', '${hostname}', ${transfer_time}, ${dns_query_time}, ${dns_transfer_time}, ${timestamp});"
+sql="insert into transfer_time (client_ip, target_ip, hostname, region, service_id_transfer_time, dns_query_time, dns_transfer_time, timestamp) values('${client_ip}', '${target}', '${hostname}', '${region}', ${transfer_time}, ${dns_query_time}, ${dns_transfer_time}, ${timestamp});"
 mysql -h34.68.107.26 -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 
 date > ${root}/start.sh.end_ts

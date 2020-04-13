@@ -43,7 +43,7 @@ def execute_ssh_sync(client, command):
     return exit_status
 
 
-def conduct_experiment(hostname, username, password):
+def conduct_experiment(hostname, username, password, region):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname, username=username, password=password,
@@ -61,7 +61,7 @@ def conduct_experiment(hostname, username, password):
                          'unzip data.zip')
     experiment_script = '%s/data/start.sh' % REMOTE_PROJECT_PATH
     execute_ssh_sync(client,
-                     'chmod +x %s && %s' % (experiment_script, experiment_script))
+                     'export region=%s; chmod +x %s && %s' % (region, experiment_script, experiment_script))
 
 
 def get_datacenters():
@@ -82,7 +82,8 @@ def main():
         hostname = host['hostname']
         username = host.get('username', 'johnsonli1993')
         password = host.get('password', 'johnsonli1993')
-        conduct_experiment(hostname, username, password)
+        region = host.get('region', '')
+        conduct_experiment(hostname, username, password, region)
 
 
 if __name__ == "__main__":

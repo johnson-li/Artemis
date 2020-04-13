@@ -74,6 +74,7 @@ then
         client_ip varchar(32),
         target_ip varchar(32),
         hostname varchar(1024),
+        region varchar(1024),
         service_id_transfer_time integer,
         dns_query_time integer,
         dns_transfer_time integer,
