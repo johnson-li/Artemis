@@ -1,3 +1,1 @@
-[
-    {"hostname": "127.0.0.1"}
-]
+[{"hostname": "127.0.0.1"}, {"hostname": "ip", "username": "ubuntu"}, {"hostname": "ip", "username": "ubuntu"}, {"hostname": "13.53.170.29", "username": "ubuntu", "region": "eu-north-1"}]

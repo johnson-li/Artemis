@@ -1,17 +1,24 @@
+import json
 import os
 import time
+from multiprocessing import Pool
 
 import boto3
 
+from experiment.logging import logging
+
+logger = logging.getLogger(__name__)
+
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
-REGIONS = ['us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap-east-1', 'ap-south-1',
+REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap-east-1', 'ap-south-1',
            'ap-northeast-3', 'ap-northeast-2', 'ap-northeast-1', 'ap-southeast-2', 'ap-southeast-1',
            'ap-northeast-1', 'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2', 'eu-west-3',
-           'eu-north-1', 'me-south-1', 'sa-east-1']
+           'me-south-1', 'sa-east-1']
 REGION = 'eu-north-1'
 REFRESH = False
 REGION_NUMBER = 1
+CONCURRENCY = 4
 
 
 def start_instance(instance_id, region=REGION):
@@ -31,7 +38,7 @@ def list_instances(region=REGION):
     for instance in instances:
         if instance.state['Name'] == 'terminated':
             continue
-        res.append((instance.id, instance.state))
+        res.append((instance.id, instance.state, instance.public_ip_address))
     return res
 
 
@@ -84,6 +91,7 @@ def get_instance_type(region=REGION):
 
 
 def create_instance(image_id=None, instance_type=None, number=1, region=REGION):
+    ec2 = boto3.resource('ec2', region_name=region)
     if not image_id:
         image_id = get_image_id(region=region)
     if not instance_type:
@@ -94,6 +102,7 @@ def create_instance(image_id=None, instance_type=None, number=1, region=REGION):
         MaxCount=number,
         InstanceType=instance_type,
         KeyName=get_key_pair_name(region=region),
+        UserData=region,
     )
     init_security_groups(region=REGION)
     return instances
@@ -106,7 +115,6 @@ def init_security_groups(region=REGION):
         permissions = security_group['IpPermissions']
         permissions_okay = False
         for permission in permissions:
-            print(permission)
             ip_ranges = permission['IpRanges']
             for ip_range in ip_ranges:
                 if ip_range['CidrIp'] == '0.0.0.0/0':
@@ -143,36 +151,49 @@ def remove_instance(instance_id, region=REGION):
 
 def run(region):
     if REFRESH:
-        for instance_id, _ in list_instances(region=region):
+        for instance_id, _, _ in list_instances(region=region):
             remove_instance(instance_id, region=region)
         create_instance(region=region)
         wait_for_instance_initiation(region=region)
+    if len(list_instances(region=region)) == 0:
+        create_instance(region=region)
+        wait_for_instance_initiation(region=region)
     need_to_wait = False
-    for instance_id, state in list_instances(region=region):
+    ans = []
+    for instance_id, state, ip in list_instances(region=region):
         if state != 'running':
             start_instance(instance_id, region=region)
             need_to_wait = True
+        ans.append((ip, region))
     if need_to_wait:
         wait_for_instance_initiation(region=region)
+    return ans
+
+
+def export_json(ips):
+    hosts_file = os.path.join(PROJECT_PATH, 'experiment/client/data/hosts.json')
+    hosts = json.load(open(hosts_file))
+    for ip in ips:
+        hosts.append({'hostname': ip[0], 'username': 'ubuntu', 'region': ip[1]})
+    json.dump(hosts, open(hosts_file, 'w'))
 
 
 def main():
-    if REGION_NUMBER > 1:
-        for region in REGIONS[:REGION_NUMBER]:
-            run(region)
-    else:
-        run(REGION)
+    pool = Pool(CONCURRENCY)
+    logger.info("Conduct experiment in %d regions: %s" % (REGION_NUMBER, REGIONS[:REGION_NUMBER]))
+    # for region in REGIONS[:REGION_NUMBER]:
+    #     run(region)
+    ans = pool.map(run, REGIONS[:REGION_NUMBER])
+    ips = []
+    for a in ans:
+        ips += a
+    export_json(ips)
 
 
 def clean_up():
-    if REGION_NUMBER > 1:
-        for region in REGIONS[:REGION_NUMBER]:
-            for instance_id, _ in list_instances(region=region):
-                remove_instance(instance_id, region=region)
-            run(region)
-    else:
-        for instance_id, _ in list_instances(region=REGION):
-            remove_instance(instance_id, region=REGION)
+    for region in REGIONS[:REGION_NUMBER]:
+        for instance_id, _, _ in list_instances(region=region):
+            remove_instance(instance_id, region=region)
 
 
 if __name__ == '__main__':
