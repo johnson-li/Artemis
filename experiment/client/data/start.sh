@@ -21,10 +21,10 @@ do
 done < ${root}/datacenters.txt
 
 # Simulate anycast routing
-lb_list=$(gcloud compute addresses list)
-lb_list=${lb_list#*ipv4}
-lb_list=${lb_list%%EX*}
-lb_ip=`echo $lb_list | sed 's/ //g'`
+#lb_list=$(gcloud compute addresses list)
+#lb_list=${lb_list#*ipv4}
+#lb_list=${lb_list%%EX*}
+#lb_ip=`echo $lb_list | sed 's/ //g'`
 export target_instance=`curl -s $lb_ip:110`
 target=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["target_instance"]]["external_ip2"])'`
 

@@ -1,10 +1,12 @@
 import json
 import os
-import paramiko
+import subprocess
 import zipfile
-from experiment.gcloud.logging import logging
 from shutil import copyfile
 
+import paramiko
+
+from experiment.gcloud.logging import logging
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
@@ -13,6 +15,10 @@ REMOTE_PROJECT_PATH = '/tmp/hestia'
 DATA_PATH = os.path.join(DIR_PATH, 'data')
 DATA_ZIP_PATH = os.path.join(DIR_PATH, 'data.zip')
 logger = logging.getLogger(__name__)
+
+cmd='lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
+output, _ = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+lb_ip = output.strip()
 
 
 def zip_data():
@@ -61,7 +67,8 @@ def conduct_experiment(hostname, username, password, region):
                          'unzip data.zip')
     experiment_script = '%s/data/start.sh' % REMOTE_PROJECT_PATH
     execute_ssh_sync(client,
-                     'export region=%s; chmod +x %s && %s' % (region, experiment_script, experiment_script))
+                     'export region=%s; export lb_ip=%s; chmod +x %s && %s' % (
+                         region, lb_ip, experiment_script, experiment_script))
 
 
 def get_datacenters():
