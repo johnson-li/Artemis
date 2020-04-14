@@ -34,7 +34,8 @@ def zip_data():
 
 
 def execute_ssh_sync(client, command):
-    stdin, stdout, stderr = client.exec_command(command)
+
+    stdin, stdout, stderr = client.exec_command(command, timeout=30)
     first_error = True
     for line in stdout:
         if line.strip('\n'):

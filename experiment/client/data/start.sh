@@ -9,7 +9,7 @@ timestamp=$(($(date +%s%N)/1000000))
 client_ip=$(curl -s https://api.ipify.org)
 
 # Install softwares
-sudo apt install -y -qq dnsutils mysql-client > /dev/null 2>&1
+sudo apt install -y -qq dnsutils mysql-client libev-dev libmysqlclient-dev libmariadbclient18 > /dev/null 2>&1
 
 # Init database
 while read line
