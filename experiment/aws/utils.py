@@ -184,7 +184,7 @@ def export_json(ips):
     json.dump(hosts, open(hosts_file, 'w'))
 
 
-def main():
+def start():
     pool = Pool(CONCURRENCY)
     logger.info("Conduct experiment in %d regions: %s" % (REGION_NUMBER, REGIONS[:REGION_NUMBER]))
     # for region in REGIONS[:REGION_NUMBER]:
@@ -200,8 +200,3 @@ def clean_up():
     for region in REGIONS[:REGION_NUMBER]:
         for instance_id, _, _ in list_instances(region=region):
             remove_instance(instance_id, region=region)
-
-
-if __name__ == '__main__':
-    main()
-    # clean_up()
