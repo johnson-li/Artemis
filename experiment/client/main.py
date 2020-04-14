@@ -16,9 +16,10 @@ DATA_PATH = os.path.join(DIR_PATH, 'data')
 DATA_ZIP_PATH = os.path.join(DIR_PATH, 'data.zip')
 logger = logging.getLogger(__name__)
 
-cmd='lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
-output, _ = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-lb_ip = output.decode("utf-8") .strip()
+cmd = 'lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
+output, _ = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE).communicate()
+lb_ip = output.decode("utf-8").strip()
 
 
 def zip_data():
@@ -73,8 +74,11 @@ def conduct_experiment(hostname, username, password, region):
 
 def get_datacenters():
     data = json.load(open(os.path.join(DIR_PATH, "../../machine.json")))
-    ans = ['%s %s' % (i[7:-7], data[i]['external_ip1'])
-           for i in data.keys() if i.endswith('router')]
+    prefix = set([d[:-7] for d in data.keys])
+    ans = ['%s %s %s' % (p[7:], data['%s-router' % p]['external_ip1'], data['%s-server' % p]['external_ip2'])
+           for p in prefix]
+    # ans = ['%s %s' % (i[7:-7], data[i]['external_ip1'])
+    #        for i in data.keys() if i.endswith('router')]
     with open(os.path.join(DATA_PATH, 'datacenters.txt'), 'w') as f:
         for a in ans:
             f.write(a)
