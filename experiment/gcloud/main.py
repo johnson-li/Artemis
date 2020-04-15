@@ -15,7 +15,8 @@ from experiment.gcloud.logging import logging
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
 CONCURRENCY = 10
-ZONE_NUMBERS = 22
+ZONE_NUMBERS = len(ZONES)
+ZONE_NUMBERS = 3
 zones = ZONES[:ZONE_NUMBERS]
 restart_for_each_run = False
 gce_util_mul = GceUtilMul(concurrency=CONCURRENCY, zones=zones)

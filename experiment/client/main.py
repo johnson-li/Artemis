@@ -51,6 +51,7 @@ def execute_ssh_sync(client, command):
 
 
 def conduct_experiment(hostname, username, password, region):
+    logger.info('Conduct experiment on %s' % hostname)
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname, username=username, password=password,
@@ -95,7 +96,7 @@ def main():
         hostname = host['hostname']
         username = host.get('username', 'johnsonli1993')
         password = host.get('password', 'johnsonli1993')
-        region = host.get('region', '')
+        region = host.get('region', 'unknown')
         conduct_experiment(hostname, username, password, region)
 
 

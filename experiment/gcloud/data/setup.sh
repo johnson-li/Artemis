@@ -83,6 +83,7 @@ setup_router() {
                 export remote_host
                 remote_ip=`python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["remote_host"]]["external_ip1"])'`
                 dc_region_short=${dc_region//-/}
+                dc_region_short=${dc_region_short:6}
                 local_port_name=$dc_region_short
                 remote_port_name=tunnel-${dc_region_short}
                 sudo ovs-vsctl add-port $bridge_name ${local_port_name} -- set interface ${local_port_name} type=internal

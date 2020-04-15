@@ -12,7 +12,7 @@ client_ip=$(curl -s https://api.ipify.org)
 
 # Install softwares
 sudo apt update > /dev/null 2>&1
-sudo apt install -y -qq dnsutils mysql-client libev-dev libmysqlclient-dev libmariadbclient18 > /dev/null 2>&1
+sudo apt install -y -qq dnsutils bc mysql-client libev-dev libmysqlclient-dev libmariadbclient18 > /dev/null 2>&1
 
 latency_min=1000000
 # Init database
@@ -23,12 +23,13 @@ do
     server_ip=$(echo $line| cut -d' ' -f3)
     latency=$(ping -i.2 -c5 ${dc_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
     cmp=$(awk 'BEGIN{ print "'$latency'"<"'$latency_min'"  }')
-    if [ $(bc <<< "$latency < $latency_min") -eq 1  ];then
+    if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
         latency_min=latency
         target_server=$server_ip
         server_region=$dc
+        echo "min latency: $latency, from server: $server_ip, in region: $dc"
     fi
-    mysql -h34.68.107.26 -ujohnson -pjohnson -Dserviceid_db -e "insert into measurements (dc, client, latency, ts) values ('${dc}', '${client_ip}', ${latency}, ${timestamp})"
+    mysql -h34.68.107.26 -ujohnson -pjohnson -Dserviceid_db -e "insert into measurements (dc, client, latency, ts) values ('${dc:6}', '${client_ip}', ${latency}, ${timestamp})"
 done < ${root}/datacenters.txt
 
 # Anycast probing

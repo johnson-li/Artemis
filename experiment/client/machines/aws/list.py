@@ -1,8 +1,8 @@
-from experiment.aws.utils import list_instances
+from experiment.aws.utils import list
 
 
 def main():
-    instances = list_instances()
+    instances = list()
     print(instances)
 
 
