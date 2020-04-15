@@ -34,7 +34,7 @@ def get_external_ip(instance):
 
 
 def is_hestia_project(instance):
-    for item in instance['metadata']['items']:
+    for item in instance.get('metadata', {}).get('items', []):
         if item['key'] == 'hestia_exp' and item['value'] == 'true':
             return True
     return False

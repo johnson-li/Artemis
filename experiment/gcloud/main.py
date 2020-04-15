@@ -1,16 +1,16 @@
+import json
 import os
+import subprocess
 import time
 import zipfile
-import json
+from shutil import copyfile
+
 import paramiko
-import subprocess
 
 from experiment.gcloud.config import *
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.logging import logging
-from MySQLdb import _mysql
-from shutil import copyfile
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
@@ -31,6 +31,7 @@ def clean():
 
 def get_instances():
     return gce_util_mul.get_instances()
+
 
 def get_ip(instance):
     ex_ip = []
@@ -83,24 +84,28 @@ def prepare_instances():
         ex_ip1, in_ip1, ex_ip2, in_ip2 = get_ip(i)
         zone = get_instance_zone(i)
         mac1, mac2 = get_mac(i)
-        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2, 'mac1': mac1, 'mac2': mac2, 'zone': zone}
+        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2,
+                     'mac1': mac1, 'mac2': mac2, 'zone': zone}
 
     s = os.popen('sudo mysql -e "show master status\G" | grep Position')
     position = s.read()
     position = position[18:-1]
     lis['position'] = position
 
-    with open('machine.json','w',encoding='utf-8') as f:
-        json.dump(lis,f,ensure_ascii=False)
+    with open('machine.json', 'w', encoding='utf-8') as f:
+        json.dump(lis, f, ensure_ascii=False)
 
     for i in range(len(zones)):
-        command = 'gcloud compute instance-groups unmanaged create '+zones[i][:-2]+' --zone '+zones[i]
+        command = 'gcloud compute instance-groups unmanaged create ' + zones[i][:-2] + ' --zone ' + zones[i]
         command += ' > /dev/null 2>&1'
         os.system(command)
-        command = 'gcloud compute instance-groups set-named-ports '+zones[i][:-2]+' --named-ports tcp110:110 --zone '+zones[i]
+        command = 'gcloud compute instance-groups set-named-ports ' + zones[i][
+                                                                      :-2] + ' --named-ports tcp110:110 --zone ' + \
+                  zones[i]
         command += ' > /dev/null 2>&1'
         os.system(command)
-        command = 'gcloud compute instance-groups unmanaged add-instances '+zones[i][:-2]+' --instances hestia-'+zones[i]+'-router --zone '+zones[i]
+        command = 'gcloud compute instance-groups unmanaged add-instances ' + zones[i][:-2] + ' --instances hestia-' + \
+                  zones[i] + '-router --zone ' + zones[i]
         command += ' > /dev/null 2>&1'
         os.system(command)
 
@@ -112,7 +117,9 @@ def prepare_instances():
     os.system(command)
 
     for i in range(len(zones)):
-        command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group '+zones[i][:-2]+' --instance-group-zone '+zones[i]+' --balancing-mode UTILIZATION --max-utilization 0.8'
+        command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group ' + zones[i][
+                                                                                                           :-2] + ' --instance-group-zone ' + \
+                  zones[i] + ' --balancing-mode UTILIZATION --max-utilization 0.8'
         command += ' > /dev/null 2>&1'
         os.system(command)
 
@@ -128,10 +135,10 @@ def prepare_instances():
     ad = ad_list.split()
     lb_ip = ''
     for i in range(len(ad)):
-        if ad[i]=='load-balancer-static-ipv4':
-            lb_ip = ad[i+1]
+        if ad[i] == 'load-balancer-static-ipv4':
+            lb_ip = ad[i + 1]
 
-    command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global --target-tcp-proxy load-balancer-target-proxy --address '+lb_ip+' --ports 110'
+    command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global --target-tcp-proxy load-balancer-target-proxy --address ' + lb_ip + ' --ports 110'
     command += ' > /dev/null 2>&1'
     os.system(command)
     command = 'gcloud compute firewall-rules create allow-load-balancer-and-health --source-ranges 0.0.0.0/0 --allow tcp:110'
@@ -166,7 +173,7 @@ def zip_data():
 
 def init_database(instances):
     subprocess.call(['%s/data/init_db.sh' % DIR_PATH])
-    #TODO: init database in the routers
+    # TODO: init database in the routers
 
 
 def main():
@@ -178,7 +185,7 @@ def main():
     init_database(instances)
     conduct_experiment(instances)
     end = time.time()
-    print("time: ",end-start)
+    print("time: ", end - start)
 
 
 if __name__ == '__main__':
