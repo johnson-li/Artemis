@@ -35,7 +35,6 @@ def zip_data():
 
 
 def execute_ssh_sync(client, command):
-
     stdin, stdout, stderr = client.exec_command(command, timeout=30)
     first_error = True
     for line in stdout:
@@ -67,16 +66,18 @@ def conduct_experiment(hostname, username, password, region):
                          'cd %s; ' % REMOTE_PROJECT_PATH +
                          '[ -e data  ] && rm -r data; ' +
                          'unzip data.zip')
-    experiment_script = '%s/data/start.sh' % REMOTE_PROJECT_PATH
-    execute_ssh_sync(client,
-                     'export region=%s; export lb_ip=%s; chmod +x %s && %s' % (
-                         region, lb_ip, experiment_script, experiment_script))
+    experiment_script = '%s/data/start_wrapper.sh' % REMOTE_PROJECT_PATH
+    command = 'export region=%s; export lb_ip=%s; chmod +x %s && %s' % (
+        region, lb_ip, experiment_script, experiment_script)
+    execute_ssh_sync(client, command)
+
 
 
 def get_datacenters():
     data = json.load(open(os.path.join(DIR_PATH, "../../machine.json")))
-    prefix = set([d[:-7] for d in data.keys])
-    ans = ['%s %s %s' % (p[7:], data['%s-router' % p]['external_ip1'], data['%s-server' % p]['external_ip2'])
+    data.pop('position')
+    prefix = set([d[:-7] for d in data.keys()])
+    ans = ['%s %s %s' % (p[7:], data['%s-router' % p]['external_ip1'], data['%s-server' % p]['external_ip1'])
            for p in prefix]
     # ans = ['%s %s' % (i[7:-7], data[i]['external_ip1'])
     #        for i in data.keys() if i.endswith('router')]
