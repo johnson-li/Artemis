@@ -12,11 +12,16 @@ for z in ZONES_ALL:
     if z not in ZONES:
         zones.append(z)
 
+print(zones)
+zones = ['southamerica-east1-c']
+
 
 def main():
     print('Zones: %s' % zones)
+    instances = []
     for zone in zones:
-        create_instance(zone, 'client-%s' % zone)
+        instances.append(create_instance(zone, 'client-%s' % zone))
+    print(instances)
 
 
 if __name__ == '__main__':
