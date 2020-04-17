@@ -50,8 +50,14 @@ def get_mac(instance):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
-    client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
-
+    success = False
+    while not success:
+        try :
+            client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
+            success = True
+        except :
+            sleep(1)
+    
     name = instance['name']
     stdin, stdout, stderr = client.exec_command("cat /sys/class/net/ens4/address")
     mac1 = stdout.read().decode()[:-1]
@@ -70,31 +76,11 @@ def prepare_instances():
             gce_util_mul.stop_instances()
             gce_util_mul.start_instances()
             gce_util_mul.wait_for_instances_to_start()
-            time.sleep(5)
     else:
         gce_util_mul.delete_instances()
         gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
         gce_util_mul.wait_for_instances_to_start()
-        time.sleep(30)
-
-    instances = get_instances()
-    lis = {}
-    for i in instances:
-        name = i['name']
-        ex_ip1, in_ip1, ex_ip2, in_ip2 = get_ip(i)
-        zone = get_instance_zone(i)
-        mac1, mac2 = get_mac(i)
-        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2,
-                     'mac1': mac1, 'mac2': mac2, 'zone': zone}
-
-    s = os.popen('sudo mysql -e "show master status\G" | grep Position')
-    position = s.read()
-    position = position[18:-1]
-    lis['position'] = position
-
-    with open('machine.json', 'w', encoding='utf-8') as f:
-        json.dump(lis, f, ensure_ascii=False)
 
     for i in range(len(zones)):
         command = 'gcloud compute instance-groups unmanaged create ' + zones[i][:-2] + ' --zone ' + zones[i]
@@ -145,6 +131,24 @@ def prepare_instances():
     command = 'gcloud compute firewall-rules create allow-load-balancer-and-health --source-ranges 0.0.0.0/0 --allow tcp:110'
     command += ' > /dev/null 2>&1'
     os.system(command)
+    
+    instances = get_instances()
+    lis = {}
+    for i in instances:
+        name = i['name']
+        ex_ip1, in_ip1, ex_ip2, in_ip2 = get_ip(i)
+        zone = get_instance_zone(i)
+        mac1, mac2 = get_mac(i)
+        lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2,
+                     'mac1': mac1, 'mac2': mac2, 'zone': zone}
+
+    s = os.popen('sudo mysql -e "show master status\G" | grep Position')
+    position = s.read()
+    position = position[18:-1]
+    lis['position'] = position
+
+    with open('machine.json', 'w', encoding='utf-8') as f:
+        json.dump(lis, f, ensure_ascii=False)
 
     logger.info('Initiate instances')
     gce_util_mul.init_instances(execute_init_script=True)
