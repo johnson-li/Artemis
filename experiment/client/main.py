@@ -16,7 +16,8 @@ DATA_PATH = os.path.join(DIR_PATH, 'data')
 DATA_ZIP_PATH = os.path.join(DIR_PATH, 'data.zip')
 logger = logging.getLogger(__name__)
 
-cmd = 'lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
+# cmd = 'lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
+cmd = 'gcloud compute addresses list| tail -n1| egrep -o "[0-9.]{4,}"'
 output, _ = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE).communicate()
 lb_ip = output.decode("utf-8").strip()
@@ -55,7 +56,7 @@ def conduct_experiment(hostname, username, password, region):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname, username=username, password=password,
-                   pkey=paramiko.RSAKey.from_private_key_file("/home/johnsonli1993/.ssh/id_rsa"))
+                   pkey=paramiko.RSAKey.from_private_key_file("/home/wch19990119/.ssh/id_rsa"))
     execute_ssh_sync(client, 'mkdir -p %s' % REMOTE_PROJECT_PATH)
     remote_md5 = 'a'
     local_md5 = 'b'
@@ -76,8 +77,7 @@ def conduct_experiment(hostname, username, password, region):
 
 def get_datacenters():
     data = json.load(open(os.path.join(DIR_PATH, "../../machine.json")))
-    data.pop('position')
-    prefix = set([d[:-7] for d in data.keys()])
+    prefix = set([d[:-7] for d in data.keys() if d.startswith('hestia')])
     ans = ['%s %s %s' % (p[7:], data['%s-router' % p]['external_ip1'], data['%s-server' % p]['external_ip1'])
            for p in prefix]
     # ans = ['%s %s' % (i[7:-7], data[i]['external_ip1'])

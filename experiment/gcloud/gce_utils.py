@@ -104,7 +104,7 @@ def start_instance(instance):
     return res
 
 
-def execute_ssh_sync(client, command):
+def execute_ssh_sync(client, command, target_ip=None):
     stdin, stdout, stderr = client.exec_command(command)
     first_error = True
     for line in stdout:
@@ -113,7 +113,7 @@ def execute_ssh_sync(client, command):
     for line in stderr:
         if line.strip('\n'):
             if first_error:
-                logger.error("command: %s" % command)
+                logger.error("target_ip: %s, command: %s" % (target_ip, command))
                 first_error = False
             logger.error(line.strip('\n'))
     exit_status = stdout.channel.recv_exit_status()
@@ -139,14 +139,14 @@ def init_instance(instance, execute_init_script=True):
         sftp.put('%s/data.zip' % DIR_PATH, 'data.zip')
         execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
                                  '[ -e data ] && rm -r data; '
-                                 'unzip data.zip')
+                                 'unzip data.zip', ip)
     f = open('machine.json', encoding='utf-8')
     lis = json.loads(f.read())
     name = instance['name']
     lis['hostname'] = name
-    execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)))
+    execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)), ip)
     if execute_init_script:
-        execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh')
+        execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh', ip)
     client.close()
 
 
@@ -178,5 +178,5 @@ def conduct_experiment(instance):
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
     client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
-    execute_ssh_sync(client, 'chmod +x data/start_experiment.sh && ./data/start_experiment.sh')
+    execute_ssh_sync(client, 'chmod +x data/start_experiment.sh && ./data/start_experiment.sh', ip)
 

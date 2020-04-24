@@ -2,7 +2,7 @@
 
 date > ~/init_db.sh.start_ts
 
-test_server_ip="34.68.107.26"
+test_server_ip="35.222.160.69"
 hostname=`hostname`
 if [[ $hostname == *server  ]]
 then
@@ -42,8 +42,8 @@ then
         id int NOT NULL AUTO_INCREMENT,
         dc varchar(32),
         client varchar(32),
-        latency int,
-        ts int,
+        latency FLOAT,
+        ts BIGINT,
         primary key (id)
     )"
     mysql ${auth} -D serviceid_db -e "create table deployment (

@@ -56,8 +56,8 @@ def get_mac(instance):
             client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
             success = True
         except :
-            sleep(1)
-    
+            time.sleep(1)
+
     name = instance['name']
     stdin, stdout, stderr = client.exec_command("cat /sys/class/net/ens4/address")
     mac1 = stdout.read().decode()[:-1]
@@ -131,7 +131,7 @@ def prepare_instances():
     command = 'gcloud compute firewall-rules create allow-load-balancer-and-health --source-ranges 0.0.0.0/0 --allow tcp:110'
     command += ' > /dev/null 2>&1'
     os.system(command)
-    
+
     instances = get_instances()
     lis = {}
     for i in instances:
@@ -144,8 +144,12 @@ def prepare_instances():
 
     s = os.popen('sudo mysql -e "show master status\G" | grep Position')
     position = s.read()
-    position = position[18:-1]
-    lis['position'] = position
+    pos = position.split()
+    lis['position'] = pos[1]
+    s = os.popen('sudo mysql -e "show master status\G" | grep File')
+    f = s.read()
+    fl = f.split()
+    lis['file'] = fl[1]
 
     with open('machine.json', 'w', encoding='utf-8') as f:
         json.dump(lis, f, ensure_ascii=False)

@@ -13,7 +13,7 @@ for z in ZONES_ALL:
         zones.append(z)
 
 print(zones)
-zones = ['southamerica-east1-c']
+zones = ['europe-north1-c']
 
 
 def main():

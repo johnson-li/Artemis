@@ -7,7 +7,7 @@ iname="$(ip -o link show | sed -rn '/^[0-9]+: en/{s/.: ([^:]*):.*/\1/p}')"
 
 id johnson > /dev/null 2>&1 || sudo useradd -m johnson && echo "johnson:johnson" | sudo chpasswd && sudo adduser johnson sudo > /dev/null
 sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq net-tools openssh-server sudo git vim tmux openvswitch-switch pkg-config iputils-ping libev-dev mysql-client mysql-server python3-dev python3-pip libmysqlclient-dev jq libmariadbclient18 expect python-openvswitch python-netifaces
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades -qq net-tools openssh-server git vim tmux openvswitch-switch iputils-ping libev-dev mysql-server libmysqlclient20=5.7.21-1ubuntu1 libmysqlclient-dev=5.7.21-1ubuntu1 jq expect python-openvswitch python-netifaces
 sudo DEBIAN_FRONTEND=noninteractive apt-get --fix-broken install -y -qq
 sudo pip3 install mysqlclient > /dev/null 2>&1
 echo 'sudo ALL=(ALL) NOPASSWD:ALL' | sudo tee -a /etc/sudoers > /dev/null
@@ -31,15 +31,17 @@ then
     fi
 
     position=`python3 -c 'import json; machines=json.load(open("machine.json"));pos=machines["position"]; print(pos)'`
+    fl=`python3 -c 'import json; machines=json.load(open("machine.json"));f=machines["file"]; print(f)'`
+    fl="'"$fl"'"
 
     sudo service mysql restart
     export MYSQL_PWD=root
     mysql -uroot -e "stop slave;"
     mysql -uroot -e "change master to \
-	    master_host='34.68.107.26', \
+	    master_host='35.222.160.69', \
     	master_user='slave', \
 	    master_password='123456', \
-    	master_log_file='mysql-bin.000001', \
+    	master_log_file=$fl, \
 	    master_log_pos=$position;"
     mysql -uroot -e "start slave;"
 fi

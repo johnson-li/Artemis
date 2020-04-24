@@ -2,6 +2,7 @@
 
 BASEDIR=$(dirname "$0")
 
+mysql_ip=35.222.160.69
 target=35.227.98.160
 root=/tmp/hestia/data
 date > ${root}/start.sh.start_ts
@@ -24,12 +25,14 @@ do
     latency=$(ping -i.2 -c5 ${dc_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
     cmp=$(awk 'BEGIN{ print "'$latency'"<"'$latency_min'"  }')
     if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
-        latency_min=latency
+        latency_min=$latency
         target_server=$server_ip
         server_region=$dc
         echo "min latency: $latency, from server: $server_ip, in region: $dc"
     fi
-    mysql -h34.68.107.26 -ujohnson -pjohnson -Dserviceid_db -e "insert into measurements (dc, client, latency, ts) values ('${dc:6}', '${client_ip}', ${latency}, ${timestamp})"
+    sql="insert into measurements (dc, client, latency, ts) values ('${dc:6}', '${client_ip}', ${latency}, ${timestamp})"
+    echo "sql: " $sql
+    mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 done < ${root}/datacenters.txt
 
 # Anycast probing
@@ -65,6 +68,7 @@ then
 fi
 
 sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, dns_query_time, dns_transfer_time, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${dns_query_time}, ${dns_transfer_time}, ${timestamp});"
-mysql -h34.68.107.26 -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
+echo "sql: " $sql
+mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 
 date > ${root}/start.sh.end_ts
