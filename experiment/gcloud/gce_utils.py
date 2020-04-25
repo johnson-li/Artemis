@@ -146,7 +146,17 @@ def init_instance(instance, execute_init_script=True):
     lis['hostname'] = name
     execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)), ip)
     if execute_init_script:
-        execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh', ip)
+        command = 'sudo DEBIAN_FRONTEND=noninteractive apt-get install tmux'
+        execute_ssh_sync(client, command, ip)
+        command = "tmux ls | grep init_sh"
+        stdin, stdout, stderr = client.exec_command(command)
+        command = "tmux new -d -s init_sh"
+        stdout = stdout.read().decode()
+        if stdout=='':
+            execute_ssh_sync(client, command, ip)
+        command = "tmux send -t init_sh 'chmod +x data/init.sh && ./data/init.sh' ENTER"
+        execute_ssh_sync(client, command, ip)
+        #execute_ssh_sync(client, 'chmod +x data/init.sh && ./data/init.sh', ip)
     client.close()
 
 

@@ -2,7 +2,7 @@
 
 date > ~/init_db.sh.start_ts
 
-test_server_ip="35.222.160.69"
+test_server_ip="35.238.99.53"
 hostname=`hostname`
 if [[ $hostname == *server  ]]
 then
@@ -12,31 +12,31 @@ fi
 
 if [[ $hostname == 'test' ]]
 then
-    sudo mysql -e "create database if not exists serviceid_db"
-    sudo mysql -e "create user if not exists 'johnson' identified by 'johnson'"
-    sudo mysql -e "GRANT USAGE ON *.* TO 'johnson'@'%' IDENTIFIED BY 'johnson'"
-    sudo mysql -e "GRANT ALL privileges ON \`serviceid_db\`.* TO 'johnson'"
-    sudo mysql -e "FLUSH PRIVILEGES"
+    sudo mysql -e "create database if not exists serviceid_db" > /dev/null
+    sudo mysql -e "create user if not exists 'johnson' identified by 'johnson'" > /dev/null
+    sudo mysql -e "GRANT USAGE ON *.* TO 'johnson'@'%' IDENTIFIED BY 'johnson'" > /dev/null
+    sudo mysql -e "GRANT ALL privileges ON \`serviceid_db\`.* TO 'johnson'" > /dev/null
+    sudo mysql -e "FLUSH PRIVILEGES" > /dev/null
     auth='-ujohnson -pjohnson'
 elif [[ $hostname == *router  ]]
 then
     echo root | unbuffer -p mysql_config_editor set --login-path=local --host=localhost --user=root --password --warn=false > /dev/null
-    mysql --login-path=local -e "create database if not exists serviceid_db"
-    mysql --login-path=local -e "create user if not exists 'johnson' identified by 'johnson'"
-    mysql --login-path=local -e "GRANT USAGE ON *.* TO 'johnson'@'%' IDENTIFIED BY 'johnson'"
-    mysql --login-path=local -e "GRANT ALL privileges ON \`serviceid_db\`.* TO 'johnson'"
-    mysql --login-path=local -e "FLUSH PRIVILEGES"
+    mysql --login-path=local -e "create database if not exists serviceid_db" > /dev/null
+    mysql --login-path=local -e "create user if not exists 'johnson' identified by 'johnson'" > /dev/null
+    mysql --login-path=local -e "GRANT USAGE ON *.* TO 'johnson'@'%' IDENTIFIED BY 'johnson'" > /dev/null
+    mysql --login-path=local -e "GRANT ALL privileges ON \`serviceid_db\`.* TO 'johnson'" > /dev/null
+    mysql --login-path=local -e "FLUSH PRIVILEGES" > /dev/null
     auth='--login-path=local'
     echo johnson | unbuffer -p mysql_config_editor set --login-path=local --host=localhost --user=johnson --password --warn=false > /dev/null
 fi
 
 if [[ $hostname == 'test' ]]
 then
-    mysql ${auth} -D serviceid_db -e "drop table if exists measurements"
-    mysql ${auth} -D serviceid_db -e "drop table if exists deployment"
-    mysql ${auth} -D serviceid_db -e "drop table if exists intra"
-    mysql ${auth} -D serviceid_db -e "drop table if exists clients"
-    mysql ${auth} -D serviceid_db -e "drop table if exists transfer_time"
+    mysql ${auth} -D serviceid_db -e "drop table if exists measurements" > /dev/null
+    mysql ${auth} -D serviceid_db -e "drop table if exists deployment" > /dev/null
+    mysql ${auth} -D serviceid_db -e "drop table if exists intra" > /dev/null
+    mysql ${auth} -D serviceid_db -e "drop table if exists clients" > /dev/null
+    mysql ${auth} -D serviceid_db -e "drop table if exists transfer_time" > /dev/null
 
     mysql ${auth} -D serviceid_db -e "create table measurements (
         id int NOT NULL AUTO_INCREMENT,
@@ -45,7 +45,7 @@ then
         latency FLOAT,
         ts BIGINT,
         primary key (id)
-    )"
+    )" > /dev/null
     mysql ${auth} -D serviceid_db -e "create table deployment (
         id int NOT NULL AUTO_INCREMENT,
         datacenter varchar(32),
@@ -53,7 +53,7 @@ then
         loadbalancer varchar(32),
         primary key (id),
         unique key (domain, datacenter)
-    )"
+    )" > /dev/null
     mysql ${auth} -D serviceid_db -e "create table intra (
         id int NOT NULL AUTO_INCREMENT,
         domain varchar(32),
@@ -62,13 +62,13 @@ then
         sid varchar(32),
         weight int,
         primary key (id)
-    )"
+    )" > /dev/null
     mysql ${auth} -D serviceid_db -e "create table clients (
         id int NOT NULL AUTO_INCREMENT,
         ip varchar(32),
         primary key (id),
         unique key (ip)
-    )"
+    )" > /dev/null
     mysql ${auth} -D serviceid_db -e "create table transfer_time (
         id int NOT NULL AUTO_INCREMENT,
         client_ip varchar(32),
@@ -83,17 +83,17 @@ then
         dns_transfer_time integer,
         timestamp bigint,
         primary key (id)
-    )"
+    )" > /dev/null
 
-    #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast1c', '${test_server_ip}', 10, 100);"
-    #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '${test_server_ip}', 20, 100);"
-    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'useast1c', '11.11.11.11', 1)"
-    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'useast4c', '11.11.11.11', 1)"
-    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'uscentral1c', '11.11.11.11', 1)"
-    #mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('${test_server_ip}')"
-    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('useast1c', 'serviceid.xuebing.li', 'useast1c')"
-    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('useast4c', 'serviceid.xuebing.li', 'useast4c')"
-    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('uscentral1c', 'serviceid.xuebing.li', 'uscentral1c')"
+    #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast1c', '${test_server_ip}', 10, 100);" > /dev/null
+    #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '${test_server_ip}', 20, 100);" > /dev/null
+    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'useast1c', '11.11.11.11', 1)" > /dev/null
+    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'useast4c', '11.11.11.11', 1)" > /dev/null
+    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'uscentral1c', '11.11.11.11', 1)" > /dev/null
+    #mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('${test_server_ip}')" > /dev/null
+    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('useast1c', 'serviceid.xuebing.li', 'useast1c')" > /dev/null
+    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('useast4c', 'serviceid.xuebing.li', 'useast4c')" > /dev/null
+    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('uscentral1c', 'serviceid.xuebing.li', 'uscentral1c')" > /dev/null
 fi
 
 
