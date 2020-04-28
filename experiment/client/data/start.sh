@@ -2,7 +2,7 @@
 
 BASEDIR=$(dirname "$0")
 
-mysql_ip=35.222.160.69
+mysql_ip=35.238.99.53
 target=35.227.98.160
 root=/tmp/hestia/data
 date > ${root}/start.sh.start_ts
