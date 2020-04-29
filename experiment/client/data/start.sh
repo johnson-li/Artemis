@@ -19,7 +19,7 @@ latency_min=1000000
 # Init database
 while read line
 do
-    dc=hestia$(echo $line| cut -d' ' -f1| sed 's/-//g')
+    dc=$(echo $line| cut -d' ' -f1)
     dc_ip=$(echo $line| cut -d' ' -f2)
     server_ip=$(echo $line| cut -d' ' -f3)
     latency=$(ping -i.2 -c5 ${dc_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
@@ -27,10 +27,10 @@ do
     if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
         latency_min=$latency
         target_server=$server_ip
-        server_region=$dc
-        echo "min latency: $latency, from server: $server_ip, in region: $dc"
+        server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
+        echo "min latency: $latency, from server: $server_ip, in region: $server_region"
     fi
-    sql="insert into measurements (dc, client, latency, ts) values ('${dc:6}', '${client_ip}', ${latency}, ${timestamp})"
+    sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
     echo "sql: " $sql
     mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 done < ${root}/datacenters.txt
@@ -78,13 +78,25 @@ do
     then
         transfer_time=-1
     fi
+    if [ -z "$handshake_time" ]
+    then
+        handshake_time=-1
+    fi
     if [ -z "$dns_transfer_time" ]
     then
         dns_transfer_time=-1
     fi
+    if [ -z "$dns_handshake_time" ]
+    then
+        dns_handshake_time=-1
+    fi
     if [ -z "$anycast_transfer_time" ]
     then
         anycast_transfer_time=-1
+    fi
+    if [ -z "$anycast_handshake_time" ]
+    then
+        anycast_handshake_time=-1
     fi
 
     sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, dns_handshake_time, anycast_transfer_time, anycast_handshake_time, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${handshake_time}, ${dns_query_time}, ${dns_transfer_time},

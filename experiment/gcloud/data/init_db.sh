@@ -91,16 +91,12 @@ then
         primary key (id)
     )" 2> /dev/null
 
-    declare -a arr=("useast1c" "useast4c" "uscentral1c" "uswest1c")
+    declare -a arr=("usus-eat1" "usus-eat4" "usus-cel1" "usus-wet1" "usus-wet2" "usus-wet3" "eupe-wet1" "eupe-wet2" "eupe-wet3" "eupe-wet4" "eupe-wet6" "eupe-noh1" "asia-eat1" "asia-eat2" "asia-sot1" "asia-not1" "asia-not2" "asia-not3" "asia-soh1" "auia-sot1" "soca-eat1" "noca-not1")
     for zone in "${arr[@]}"
     do
         mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', '${zone}', '11.11.11.11', 1)" 2> /dev/null
         mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('${zone}', 'serviceid.xuebing.li', '${zone}')" 2> /dev/null
     done
-    #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast1c', '${test_server_ip}', 10, 100);" > /dev/null
-    #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '${test_server_ip}', 20, 100);" > /dev/null
-    #mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'uscentral1c', '11.11.11.11', 1)" 2> /dev/null
-    #mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('${test_server_ip}')" 2> /dev/null
     #mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('uscentral1c', 'serviceid.xuebing.li', 'uscentral1c')" 2> /dev/null
 fi
 
