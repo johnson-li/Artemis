@@ -38,37 +38,55 @@ done < ${root}/datacenters.txt
 # Anycast probing
 export router_region=`curl -s $lb_ip:110`
 target=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["router_region"]]["external_ip2"])'`
+target_anycast=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["router_region"][:-7] + "-server"]["external_ip1"])'`
 
-# Conduct experiment with Hestia
-echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client_sid.log &
-sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client_sid.log &
-pid=$!
-sleep 5
-sudo kill -9 ${pid}
-transfer_time=`grep 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3`
+sleep 10
 
-# Conduct experiment with DNS
-echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 2> ${root}/client_dns.log &
-sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 2> ${root}/client_dns.log &
-pid=$!
-sleep 5
-sudo kill -9 ${pid}
-dns_transfer_time=`grep 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3`
+for i in `seq 5`
+do
+    # Conduct experiment with Hestia
+    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client_sid.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client_sid.log &
+    pid=$!
+    sleep 5
+    sudo kill -9 ${pid}
+    transfer_time=`grep 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3`
 
-dns_query_time=`dig xuebing.li|grep 'Query time'|cut -d' ' -f4`
-hostname=`hostname`
+    #Conduct experiment with Anycast
+    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 2> ${root}/client_anycast.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 2> ${root}/client_anycast.log &
+    pid=$!
+    sleep 5
+    sudo kill -9 ${pid}
+    anycast_transfer_time=`grep 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3`
 
-if [ -z "$transfer_time" ]
-then
-    transfer_time=-1
-fi
-if [ -z "$dns_transfer_time" ]
-then
-    dns_transfer_time=-1
-fi
+    # Conduct experiment with DNS
+    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 2> ${root}/client_dns.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 2> ${root}/client_dns.log &
+    pid=$!
+    sleep 5
+    sudo kill -9 ${pid}
+    dns_transfer_time=`grep 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3`
 
-sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, dns_query_time, dns_transfer_time, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${dns_query_time}, ${dns_transfer_time}, ${timestamp});"
-echo "sql: " $sql
-mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
+    dns_query_time=`dig xuebing.li|grep 'Query time'|cut -d' ' -f4`
+    hostname=`hostname`
+
+    if [ -z "$transfer_time" ]
+    then
+        transfer_time=-1
+    fi
+    if [ -z "$dns_transfer_time" ]
+    then
+        dns_transfer_time=-1
+    fi
+    if [ -z "$anycast_transfer_time" ]
+    then
+        anycast_transfer_time=-1
+    fi
+
+    sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, dns_query_time, dns_transfer_time, anycast_transfer_time, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${dns_query_time}, ${dns_transfer_time}, ${anycast_transfer_time}, ${timestamp});"
+    echo "sql: " $sql
+    mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
+done
 
 date > ${root}/start.sh.end_ts

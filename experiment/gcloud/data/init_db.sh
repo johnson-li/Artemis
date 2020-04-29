@@ -83,6 +83,7 @@ then
         service_id_transfer_time integer,
         dns_query_time integer,
         dns_transfer_time integer,
+        anycast_transfer_time integer,
         timestamp bigint,
         primary key (id)
     )" 2> /dev/null

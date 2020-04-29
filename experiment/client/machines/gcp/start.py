@@ -14,7 +14,7 @@ zones = []
 for z in ZONES_ALL:
     if z not in ZONES:
         zones.append(z)
-zones = ['europe-west2-c', 'asia-southeast1-c']
+zones = ['us-west3-c', 'us-east1-c']
 print(zones)
 
 CONCURRENCY = 10
@@ -34,11 +34,12 @@ def get_ip(instance):
                     ex_ip.append(config['natIP'])
                 except:
                     pass
-        try:
-            in_ip.append(interface['networkIP'])
-        except:
-            pass
-    return ex_ip[0], in_ip[0], ex_ip[1], in_ip[1]
+    return ex_ip[0], ex_ip[1]
+#        try:
+#            in_ip.append(interface['networkIP'])
+#        except:
+#            pass
+#    return ex_ip[0], in_ip[0], ex_ip[1], in_ip[1]
 
 
 def main():
@@ -54,11 +55,13 @@ def create_hosts():
     lis = []
     for i in instances:
         name = i['name']
+#        print(name)
         if 'client' in name:
             try:
-                ex_ip1, in_ip1, ex_ip2, in_ip2 = get_ip(i)
+                ex_ip1, ex_ip2 = get_ip(i)
                 lis.append ({'hostname': ex_ip1, 'username': 'wch19990119'})
             except:
+                print('some lost in hosts.json, pls check!')
                 pass
 
     with open('experiment/client/data/hosts.json', 'w', encoding='utf-8') as f:

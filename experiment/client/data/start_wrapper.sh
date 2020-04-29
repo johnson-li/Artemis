@@ -13,7 +13,7 @@ done
 
 tmux send-key -t main:0 "export region=$region" Enter
 tmux send-key -t main:0 "export lb_ip=$lb_ip" Enter
-tmux send-key -t main:0 "for i in \`seq 5\`; do ${root}/start.sh; done" Enter
+tmux send-key -t main:0 "${root}/start.sh" Enter
 
 date > ${root}/start_wrapper.sh.end_ts
 
