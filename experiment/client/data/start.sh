@@ -71,7 +71,7 @@ do
     dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3`
     dns_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3`
 
-    dns_query_time=`dig xuebing.li|grep 'Query time'|cut -d' ' -f4`
+    dns_query_time=`dig a.xuebing.li|grep 'Query time'|cut -d' ' -f4`
     hostname=`hostname`
 
     if [ -z "$transfer_time" ]
