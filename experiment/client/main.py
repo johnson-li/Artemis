@@ -17,16 +17,19 @@ DATA_ZIP_PATH = os.path.join(DIR_PATH, 'data.zip')
 logger = logging.getLogger(__name__)
 
 # cmd = 'lb_list=$(gcloud compute addresses list); lb_list=${lb_list#*ipv4}; lb_list=${lb_list%%EX*}; lb_ip=`echo $lb_list | sed \'s/ //g\'`; echo $lb_ip'
-cmd = 'gcloud compute addresses list| tail -n1| egrep -o "[0-9.]{4,}"'
+cmd = 'gcloud compute addresses list| grep load-balancer| egrep -o "[0-9.]{4,}"'
 output, _ = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE).communicate()
 lb_ip = output.decode("utf-8").strip()
 
 
 def zip_data():
+    WORKSPACE_PATH = os.path.dirname(PROJECT_PATH)
     copyfile('%s/machine.json' % PROJECT_PATH, '%s/data/machine.json' % DIR_PATH)
-    copyfile('%s/ngtcp2/examples/client' % os.path.dirname(PROJECT_PATH),
-             '%s/data/client' % DIR_PATH)
+    copyfile('%s/ngtcp2/examples/client' % WORKSPACE_PATH, '%s/data/client' % DIR_PATH)
+    copyfile('%s/ngtcp2/lib/.libs/libngtcp2.so.0' % WORKSPACE_PATH, '%s/data/libngtcp2.so.0' % DIR_PATH)
+    copyfile('%s/openssl/libssl.so.1.1' % WORKSPACE_PATH, '%s/data/libssl.so.1.1' % DIR_PATH)
+    copyfile('%s/openssl/libcrypto.so.1.1' % WORKSPACE_PATH, '%s/data/libcrypto.so.1.1' % DIR_PATH)
     zipf = zipfile.ZipFile(DATA_ZIP_PATH, 'w', zipfile.ZIP_DEFLATED)
     for root, dirs, files in os.walk(DATA_PATH):
         for file in files:

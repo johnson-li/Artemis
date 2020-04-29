@@ -91,11 +91,11 @@ then
     #mysql ${auth} -D serviceid_db -e "insert into measurements (dc, client, latency, ts) values ('hestiauseast4c', '${test_server_ip}', 20, 100);" > /dev/null
     mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'useast1c', '11.11.11.11', 1)" 2> /dev/null
     mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'useast4c', '11.11.11.11', 1)" 2> /dev/null
-    mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'uscentral1c', '11.11.11.11', 1)" 2> /dev/null
+    #mysql ${auth} -D serviceid_db -e "insert into intra (domain, server, datacenter, sid, weight) values ('serviceid.xuebing.li', 'server', 'uscentral1c', '11.11.11.11', 1)" 2> /dev/null
     #mysql ${auth} -D serviceid_db -e "insert into clients (ip) values ('${test_server_ip}')" 2> /dev/null
     mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('useast1c', 'serviceid.xuebing.li', 'useast1c')" 2> /dev/null
     mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('useast4c', 'serviceid.xuebing.li', 'useast4c')" 2> /dev/null
-    mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('uscentral1c', 'serviceid.xuebing.li', 'uscentral1c')" 2> /dev/null
+    #mysql ${auth} -D serviceid_db -e "insert into deployment (datacenter, domain, loadbalancer) values ('uscentral1c', 'serviceid.xuebing.li', 'uscentral1c')" 2> /dev/null
 fi
 
 
