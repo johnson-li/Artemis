@@ -23,7 +23,7 @@ REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1']
 REGION = 'eu-north-1'
 REFRESH = False
 REGION_NUMBER = len(REGIONS)
-CONCURRENCY = 4
+CONCURRENCY = 2
 
 
 def start_instance(instance_id, region=REGION):
@@ -81,7 +81,7 @@ def get_key_pair_name(region=REGION):
     client = boto3.client('ec2', region_name=region)
     key_pairs = client.describe_key_pairs()['KeyPairs']
     # key = 'mbp'
-    key = 'gcp'
+    key = 'gcp2'
     for key_pair in key_pairs:
         if key_pair['KeyName'] == key:
             return key
@@ -91,6 +91,9 @@ def get_key_pair_name(region=REGION):
     elif key == 'gcp':
         client.import_key_pair(KeyName=key,
                                PublicKeyMaterial='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMHPauPPpAF98nrPnB7b5ACx0W+lbY0bLmXo1bmCHLFYBCCaZsLjt3OzvJp9y+ED8X5vYa8Y+SL+SOIFp91wEIMoFQ+AhmcwvW5chlk+enAKvoDLUr+llpz+Z20JLIsMqh/MdyFpmaDYJOuOgbpsy5zdLhncJgEW20vp1mVC3ndPaImoOv9ov/QsYT78xxSH5dRmYlBguW9J2x8TbiwKxeFIur0OXu6uTzDowZYkXt0LzjQbFQAZoahNJN1t3NcKxjle+ZPoxr0Uc8Z68tBvfStJwd6Zm5WPJ/lmV5HEGnYqT8fpBPlvyxhJ210ZinamkPr1a3sLsh3r8Galm2IR3h wch19990119')
+    elif key == 'gcp2':
+        client.import_key_pair(KeyName=key,
+                               PublicKeyMaterial='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6njJSQxc4eunXIOEyfHlNTpeJFQGrtg1jvJ8BsFPX+qUsCEruqNZ1sG0/sL/cFqBcOyuF5debcjFJj3RHffZZoZVky/hC517EKhC5u0oCbz2LRTWMaOo9K6bo65GXbXTqaO/U8r5y16EJfOaRrWaA2eVo2xDy5Y6VQj8jwcvxLkmb8fpxosTKKNYqRvXlRy+hv3DV3+E4buoyDv2QLIWsHBjZIYGhXdWIASsNKCDri8YNWGwhECLLHoqSKAPhxyNGOt03RKH1HPD7sTPKZ6SrKTLyKMBcrYAqvrz2VysdKNjOZamRs9PYjKDbcjcbAdMbjITuWUR1lLmN5wTp/vmf wch19990119@test')
     return key
 
 
@@ -115,7 +118,7 @@ def create_instance(image_id=None, instance_type=None, number=1, region=REGION):
         KeyName=get_key_pair_name(region=region),
         UserData=region,
     )
-    init_security_groups(region=REGION)
+    init_security_groups(region=region)
     return instances
 
 

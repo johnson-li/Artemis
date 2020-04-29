@@ -13,7 +13,7 @@ client_ip=$(curl -s https://api.ipify.org)
 
 # Install softwares
 sudo apt update > /dev/null 2>&1
-sudo apt install -y -qq dnsutils bc mysql-client libev-dev libmysqlclient-dev libmariadbclient18 > /dev/null 2>&1
+sudo apt install -y -qq dnsutils bc mysql-client libev-dev libmysqlclient-dev libmariadbclient18
 
 latency_min=1000000
 # Init database
