@@ -12,6 +12,7 @@ role=${hostname:`expr ${#hostname} - 6`:6}
 case $role in
     "router")
         tmux send-key -t main:0 '~/data/start_balancer.sh' Enter
+        tmux send-key -t main:1 'mysql -ujohnson -pjohnson serviceid_db' Enter
         ;;
     "server")
         tmux send-key -t main:0 '~/data/start_server.sh' Enter
