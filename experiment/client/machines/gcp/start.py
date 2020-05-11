@@ -14,7 +14,7 @@ zones = []
 for z in ZONES_ALL:
     if z not in ZONES:
         zones.append(z)
-zones = ['us-west3-c', 'us-east1-c']
+zones = [zones[0], 'us-west4-c']
 print(zones)
 
 CONCURRENCY = 10
