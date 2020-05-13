@@ -28,6 +28,17 @@ class GceUtilMul(object):
             return combine_result_list(result)
 
     def create_instances(self):
+        existing_instance = gce_utils_zone.get_instances()
+        print(existing_instance)
+        with Pool(self.concurrency) as pool:
+            lis = []
+            for zone in self.zones:
+                lis.append((zone, 'hestia-%s-%s' % (zone, 'router')))
+                lis.append((zone, 'hestia-%s-%s' % (zone, 'server')))
+            result = pool.starmap(gce_utils.create_instance, lis)
+            return combine_result_list(result)
+
+    def create_unboot_instances(self):
         with Pool(self.concurrency) as pool:
             lis = []
             for zone in self.zones:

@@ -77,8 +77,8 @@ def prepare_instances():
             gce_util_mul.start_instances()
             gce_util_mul.wait_for_instances_to_start()
     else:
-        gce_util_mul.delete_instances()
-        gce_util_mul.wait_for_instances_to_delete()
+        # gce_util_mul.delete_instances()
+        # gce_util_mul.wait_for_instances_to_delete()
         gce_util_mul.create_instances()
         gce_util_mul.wait_for_instances_to_start()
 
