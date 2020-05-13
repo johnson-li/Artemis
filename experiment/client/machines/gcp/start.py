@@ -50,6 +50,24 @@ def main():
     print(instances)
 
 
+def check_hosts():
+    instances = get_instances()
+    lis = []
+
+    f_hosts = open('experiment/client/data/hosts.json', 'r', encoding='utf-8')
+    load_dict = json.load(f_hosts)
+    print(load_dict)
+    existing_hosts = [i['hostname'] for i in load_dict]
+
+    for i in instances:
+        name = i['name']
+        if 'client' in name:
+            if name not in existing_hosts:
+                return False
+
+    return True
+
+
 def create_hosts():
     instances = get_instances()
     lis = []
@@ -67,6 +85,8 @@ def create_hosts():
     with open('experiment/client/data/hosts.json', 'w', encoding='utf-8') as f:
         json.dump(lis, f, ensure_ascii=False)
 
+
 if __name__ == '__main__':
     main()
-    create_hosts()
+    while(check_hosts()):
+        create_hosts()
