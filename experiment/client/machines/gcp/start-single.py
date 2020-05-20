@@ -49,15 +49,18 @@ def main():
     print('existing_instances:', instances)
 
     flag_exist = 0
+    existing_client_zone = []
     for i in instances:
         name = i['name']
         if 'client' in name:
             print('existing instances')
+            # TODO, 将instance的zone 添加到existing_client_zone
+            existing_client_zone.append(i['zone'].split('/')[-1])
             flag_exist = 1
 
-    # if flag_exist:
-        # gce_util_mul.delete_instances()
-        # gce_util_mul.wait_for_instances_to_delete()
+    if flag_exist:
+        gce_util_mul.delete_client_instances(client_zone=existing_client_zone)
+        gce_util_mul.wait_for_client_instances_to_delete(client_zone=existing_client_zone)
 
     print('Zones: %s' % zones)
     instances = []
