@@ -2,6 +2,7 @@ from experiment.gcloud.gce_utils import create_instance, ZONES
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 import json
+import sys
 
 ZONES_ALL = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'us-west2-c', 'us-west3-c',
              'europe-west1-c', 'europe-west2-c', 'europe-west3-c', 'europe-west4-c', 'europe-west6-c',
@@ -10,11 +11,12 @@ ZONES_ALL = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'us-west
              'asia-northeast3-c', 'asia-south1-c', 'australia-southeast1-c',
              'southamerica-east1-c', 'northamerica-northeast1-c']
 
-zones = []
-for z in ZONES_ALL:
-    if z not in ZONES:
-        zones.append(z)
-zones = [zones[0]]
+# zones = []
+# for z in ZONES_ALL:
+#     if z not in ZONES:
+#         zones.append(z)
+# zones = ['us-west4-c']
+zones = [ZONES_ALL[sys.argv[0]]]
 print(zones)
 
 CONCURRENCY = 10
@@ -43,6 +45,20 @@ def get_ip(instance):
 
 
 def main():
+    instances = get_instances()
+    print('existing_instances:', instances)
+
+    flag_exist = 0
+    for i in instances:
+        name = i['name']
+        if 'client' in name:
+            print('existing instances')
+            flag_exist = 1
+
+    # if flag_exist:
+        # gce_util_mul.delete_instances()
+        # gce_util_mul.wait_for_instances_to_delete()
+
     print('Zones: %s' % zones)
     instances = []
     for zone in zones:
