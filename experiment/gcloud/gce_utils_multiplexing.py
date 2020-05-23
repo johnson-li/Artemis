@@ -52,6 +52,11 @@ class GceUtilMul(object):
             result = pool.starmap(gce_utils_zone.delete_instances, [(zone,) for zone in self.zones])
             return combine_result_list(result)
 
+    def delete_client_instances(self, client_zone):
+        with Pool(self.concurrency) as pool:
+            result = pool.starmap(gce_utils_zone.delete_client_instances, [(zone,) for zone in client_zone])
+            return combine_result_list(result)
+
     def stop_instances(self):
         with Pool(self.concurrency) as pool:
             result = pool.starmap(gce_utils_zone.stop_instances, [(zone,) for zone in self.zones])
@@ -83,11 +88,21 @@ class GceUtilMul(object):
         return all([gce_utils_zone.instances_deleted(zone)
                     for zone in self.zones])
 
+    def client_instances_deleted(self, client_zone):
+        return all([gce_utils_zone.instances_deleted(zone)
+                    for zone in client_zone])
+
     def wait_for_instances_to_delete(self):
         logger.info('Wait for instances to be deleted')
         while not self.instances_deleted():
             time.sleep(5)
         logger.info('Instances have all been deleted')
+
+    def wait_for_client_instances_to_delete(self, client_zone):
+        logger.info('Wait for client instances to be deleted')
+        while not self.client_instances_deleted(client_zone=client_zone):
+            time.sleep(5)
+        logger.info('Client instances have all been deleted')
 
     def wait_for_instances_to_start(self):
         logger.info('Wait for instances to start')
