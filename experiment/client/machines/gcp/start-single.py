@@ -16,7 +16,8 @@ ZONES_ALL = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'us-west
 #     if z not in ZONES:
 #         zones.append(z)
 # zones = ['us-west4-c']
-zones = [ZONES_ALL[sys.argv[0]]]
+print(sys.argv)
+zones = [ZONES_ALL[int(sys.argv[1])]]
 print(zones)
 
 CONCURRENCY = 10

@@ -3,9 +3,7 @@ import uuid
 from experiment.gcloud.config import *
 from experiment.gcloud.constant import *
 from experiment.gcloud.gce_utils import get_gce_client, create_instance, stop_instance, delete_instance, \
-    init_experiment, init_instance, start_instance, is_hestia_project, conduct_experiment, \
-    delete_client_instance
-
+    init_experiment, init_instance, start_instance, is_hestia_project, conduct_experiment
 
 def get_instances(zone, instances=None, hestia_only=True):
     if not instances:
