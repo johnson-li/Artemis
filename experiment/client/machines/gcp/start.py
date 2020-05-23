@@ -2,6 +2,7 @@ from experiment.gcloud.gce_utils import create_instance, ZONES
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 import json
+import time
 
 ZONES_ALL = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'us-west2-c', 'us-west3-c',
              'europe-west1-c', 'europe-west2-c', 'europe-west3-c', 'europe-west4-c', 'europe-west6-c',
@@ -58,13 +59,19 @@ def check_hosts():
     load_dict = json.load(f_hosts)
     print(load_dict)
     existing_hosts = [i['hostname'] for i in load_dict]
-
+    print('existing_hosts', existing_hosts)
     for i in instances:
         name = i['name']
         if 'client' in name:
-            if name not in existing_hosts:
-                return False
-
+            try:
+                ex_ip1, ex_ip2 = getip(i)
+                print('ex_ip1', ex_ip1)
+                if ex_ip1 not in existing_hosts:
+                    print('000')
+                    return False
+            except:
+                pass
+    print('111')
     return True
 
 
@@ -73,7 +80,6 @@ def create_hosts():
     lis = []
     for i in instances:
         name = i['name']
-#        print(name)
         if 'client' in name:
             try:
                 ex_ip1, ex_ip2 = get_ip(i)
@@ -88,5 +94,6 @@ def create_hosts():
 
 if __name__ == '__main__':
     main()
-    while(check_hosts()):
+    while(check_hosts() == False):
         create_hosts()
+        time.sleep(5)
