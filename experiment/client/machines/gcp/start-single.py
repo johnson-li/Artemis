@@ -2,7 +2,7 @@ from experiment.gcloud.gce_utils import create_instance, ZONES
 from experiment.gcloud.gce_utils_multiplexing import GceUtilMul
 from experiment.gcloud.gce_utils import instances_already_created, get_instance_zone, get_external_ip
 import json
-import time
+import sys
 
 ZONES_ALL = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'us-west2-c', 'us-west3-c',
              'europe-west1-c', 'europe-west2-c', 'europe-west3-c', 'europe-west4-c', 'europe-west6-c',
@@ -11,11 +11,12 @@ ZONES_ALL = ['us-east1-c', 'us-east4-c', 'us-central1-c', 'us-west1-c', 'us-west
              'asia-northeast3-c', 'asia-south1-c', 'australia-southeast1-c',
              'southamerica-east1-c', 'northamerica-northeast1-c']
 
-zones = []
-for z in ZONES_ALL:
-    if z not in ZONES:
-        zones.append(z)
-zones = [zones[0]]
+# zones = []
+# for z in ZONES_ALL:
+#     if z not in ZONES:
+#         zones.append(z)
+# zones = ['us-west4-c']
+zones = [ZONES_ALL[sys.argv[0]]]
 print(zones)
 
 CONCURRENCY = 10
@@ -44,6 +45,23 @@ def get_ip(instance):
 
 
 def main():
+    instances = get_instances()
+    print('existing_instances:', instances)
+
+    flag_exist = 0
+    existing_client_zone = []
+    for i in instances:
+        name = i['name']
+        if 'client' in name:
+            print('existing instances')
+            # TODO, 将instance的zone 添加到existing_client_zone
+            existing_client_zone.append(i['zone'].split('/')[-1])
+            flag_exist = 1
+
+    if flag_exist:
+        gce_util_mul.delete_client_instances(client_zone=existing_client_zone)
+        gce_util_mul.wait_for_client_instances_to_delete(client_zone=existing_client_zone)
+
     print('Zones: %s' % zones)
     instances = []
     for zone in zones:
@@ -59,19 +77,13 @@ def check_hosts():
     load_dict = json.load(f_hosts)
     print(load_dict)
     existing_hosts = [i['hostname'] for i in load_dict]
-    print('existing_hosts', existing_hosts)
+
     for i in instances:
         name = i['name']
         if 'client' in name:
-            try:
-                ex_ip1, ex_ip2 = getip(i)
-                print('ex_ip1', ex_ip1)
-                if ex_ip1 not in existing_hosts:
-                    print('000')
-                    return False
-            except:
-                pass
-    print('111')
+            if name not in existing_hosts:
+                return False
+
     return True
 
 
@@ -94,6 +106,5 @@ def create_hosts():
 
 if __name__ == '__main__':
     main()
-    while(check_hosts() == False):
+    while(check_hosts()):
         create_hosts()
-        time.sleep(5)
