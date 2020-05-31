@@ -23,7 +23,7 @@ REGIONS= ['us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap-northeast-2', 
 
 REGION = 'eu-north-1'
 REFRESH = False
-REGION_NUMBER = len(REGIONS)
+REGION_NUMBER = 1
 CONCURRENCY = 2
 
 

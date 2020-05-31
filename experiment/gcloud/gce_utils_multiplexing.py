@@ -28,7 +28,7 @@ class GceUtilMul(object):
             return combine_result_list(result)
 
     def create_instances(self):
-        existing_instance = gce_utils_zone.get_instances()
+        existing_instance = self.get_instances()
         print(existing_instance)
         with Pool(self.concurrency) as pool:
             lis = []
