@@ -2,7 +2,7 @@ import json
 import os
 import subprocess
 import zipfile
-from shutil import copyfile
+from shutil import copyfile,copytree
 
 import paramiko
 
@@ -30,6 +30,7 @@ def zip_data():
 #    copyfile('%s/ngtcp2/lib/.libs/libngtcp2.so.0' % WORKSPACE_PATH, '%s/data/libngtcp2.so.0' % DIR_PATH)
     copyfile('%s/openssl/libssl.so.1.1' % WORKSPACE_PATH, '%s/data/libssl.so.1.1' % DIR_PATH)
     copyfile('%s/openssl/libcrypto.so.1.1' % WORKSPACE_PATH, '%s/data/libcrypto.so.1.1' % DIR_PATH)
+    copytree('%s/ngtcp2/examples/resource' % WORKSPACE_PATH, '%s/data/examples/resource' % DIR_PATH)
     zipf = zipfile.ZipFile(DATA_ZIP_PATH, 'w', zipfile.ZIP_DEFLATED)
     for root, dirs, files in os.walk(DATA_PATH):
         for file in files:
@@ -71,6 +72,15 @@ def conduct_experiment(hostname, username, password, region):
                          'cd %s; ' % REMOTE_PROJECT_PATH +
                          '[ -e data  ] && rm -r data; ' +
                          'unzip data.zip')
+    execute_ssh_sync(client,
+                     'curl -O https://lexbor.com/keys/lexbor_signing.key;' +
+                     'sudo apt-key add lexbor_signing.key;' +
+                     'sudo sh -c \'echo "deb https://packages.lexbor.com/ubuntu/ bionic liblexbor" > /etc/apt/sources.list.d/lexbor.list\';' +
+                     'sudo sh -c \'echo "deb-src https://packages.lexbor.com/ubuntu/ bionic liblexbor" >> /etc/apt/sources.list.d/lexbor.list\';' +
+                     'sudo apt-get update;' +
+                     'sudo apt-get install liblexbor;' +
+                     'sudo apt-get install liblexbor-dev;')
+
     experiment_script = '%s/data/start_wrapper.sh' % REMOTE_PROJECT_PATH
     command = 'export region=%s; export lb_ip=%s; chmod +x %s && %s' % (
         region, lb_ip, experiment_script, experiment_script)

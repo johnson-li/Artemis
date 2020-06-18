@@ -41,37 +41,39 @@ target=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia
 target_anycast=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["router_region"][:-7] + "-server"]["external_ip1"])'`
 
 sleep 10
-
 for i in `seq 5`
 do
     # Conduct experiment with Hestia
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client_sid.log &
-    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 2> ${root}/client_sid.log &
+    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -q 2> ${root}/client_sid.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -q 2> ${root}/client_sid.log &
     pid=$!
-    sleep 5
+    sleep 15
     sudo kill -9 ${pid}
-    transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3`
-    handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3`
+    transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
+    handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
+    service_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_sid.log| cut -d' ' -f7 | tail -n 1`
 
     #Conduct experiment with Anycast
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 2> ${root}/client_anycast.log &
-    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 2> ${root}/client_anycast.log &
+    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -q 2> ${root}/client_anycast.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -q 2> ${root}/client_anycast.log &
     pid=$!
-    sleep 5
+    sleep 15
     sudo kill -9 ${pid}
-    anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3`
-    anycast_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3`
+    anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
+    anycast_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
+    anycast_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_anycast.log| cut -d' ' -f7 | tail -n 1`
 
     # Conduct experiment with DNS
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 2> ${root}/client_dns.log &
-    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 2> ${root}/client_dns.log &
+    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -q 2> ${root}/client_dns.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -q 2> ${root}/client_dns.log &
     pid=$!
-    sleep 5
+    sleep 15
     sudo kill -9 ${pid}
-    dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3`
-    dns_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3`
+    dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
+    dns_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
+    dns_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_dns.log| cut -d' ' -f7 | tail -n 1`
 
-    dns_query_time=`dig a.xuebing.li|grep 'Query time'|cut -d' ' -f4`
+    dns_query_time=`dig a.xuebing.li|grep 'Query time'|cut -d' ' -f4 | tail -n 1`
     hostname=`hostname`
 
     if [ -z "$transfer_time" ]
@@ -98,11 +100,24 @@ do
     then
         anycast_handshake_time=-1
     fi
+    if [ -z "$service_plt_time" ]
+    then
+        service_plt_time=-1
+    fi
+    if [ -z "$dns_plt_time" ]
+    then
+        dns_plt_time=-1
+    fi
+    if [ -z "$anycast_plt_time" ]
+    then
+        anycast_plt_time=-1
+    fi
 
-    sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, dns_handshake_time, anycast_transfer_time, anycast_handshake_time, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${handshake_time}, ${dns_query_time}, ${dns_transfer_time},
-    ${dns_handshake_time}, ${anycast_transfer_time}, ${anycast_handshake_time}, ${timestamp});"
+    sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, dns_handshake_time, anycast_transfer_time, anycast_handshake_time, service_plt_time, dns_plt_time, anycast_plt_time, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${handshake_time}, ${dns_query_time}, ${dns_transfer_time},
+    ${dns_handshake_time}, ${anycast_transfer_time}, ${anycast_handshake_time}, ${service_plt_time}, ${dns_plt_time}, ${anycast_plt_time}, ${timestamp});"
     echo "sql: " $sql
     mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 done
 
 date > ${root}/start.sh.end_ts
+

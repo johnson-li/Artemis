@@ -87,6 +87,9 @@ then
         dns_handshake_time integer,
         anycast_transfer_time integer,
         anycast_handshake_time integer,
+        service_plt_time integer,
+        dns_plt_time integer,
+        anycast_plt_time integer,
         timestamp bigint,
         primary key (id)
     )" 2> /dev/null
