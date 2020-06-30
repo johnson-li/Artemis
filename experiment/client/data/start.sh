@@ -27,9 +27,10 @@ do
     if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
         latency_min=$latency
         target_server=$server_ip
-        server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
         echo "min latency: $latency, from server: $server_ip, in region: $server_region"
     fi
+    server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
+
     sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
     echo "sql: " $sql
     mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
@@ -39,6 +40,7 @@ done < ${root}/datacenters.txt
 export router_region=`curl -s $lb_ip:110`
 target=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["router_region"]]["external_ip2"])'`
 target_anycast=`python3 -c 'import os; import json; machines=json.load(open("/tmp/hestia/data/machine.json")); print(machines[os.environ["router_region"][:-7] + "-server"]["external_ip1"])'`
+echo "target: " $target
 
 sleep 10
 for i in `seq 5`
@@ -47,7 +49,7 @@ do
     echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -q 2> ${root}/client_sid.log &
     sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -q 2> ${root}/client_sid.log &
     pid=$!
-    sleep 15
+    sleep 25
     sudo kill -9 ${pid}
     transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
     handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
@@ -57,7 +59,7 @@ do
     echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -q 2> ${root}/client_anycast.log &
     sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -q 2> ${root}/client_anycast.log &
     pid=$!
-    sleep 15
+    sleep 25
     sudo kill -9 ${pid}
     anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
     anycast_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
@@ -67,7 +69,7 @@ do
     echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -q 2> ${root}/client_dns.log &
     sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -q 2> ${root}/client_dns.log &
     pid=$!
-    sleep 15
+    sleep 25
     sudo kill -9 ${pid}
     dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
     dns_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`

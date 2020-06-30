@@ -139,7 +139,9 @@ def init_instance(instance, execute_init_script=True):
         sftp.put('%s/data.zip' % DIR_PATH, 'data.zip')
         execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
                                  '[ -e data ] && rm -r data; '
-                                 'unzip data.zip', ip)
+                                 'unzip data.zip;'
+                                 'cp -r data/resource ./;'
+                                 'mkdir examples && cp -r data/resource ./examples/resource', ip)
     f = open('machine.json', encoding='utf-8')
     lis = json.loads(f.read())
     name = instance['name']
