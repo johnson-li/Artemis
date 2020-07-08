@@ -16,7 +16,7 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
 CONCURRENCY = 10
 ZONE_NUMBERS = len(ZONES)
-#ZONE_NUMBERS = 2
+ZONE_NUMBERS = 2
 zones = ZONES[:ZONE_NUMBERS]
 restart_for_each_run = False
 gce_util_mul = GceUtilMul(concurrency=CONCURRENCY, zones=zones)
@@ -169,7 +169,7 @@ def prepare_data():
     copyfile('%s/ngtcp2/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data/client' % DIR_PATH)
     copyfile('%s/ngtcp2/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data/server' % DIR_PATH)
     copyfile('%s/ngtcp2/examples/balancer' % os.path.dirname(PROJECT_PATH), '%s/data/balancer' % DIR_PATH)
-    copytree('%s/ngtcp2/examples/resource' % os.path.dirname(PROJECT_PATH), '%s/data/resource' % DIR_PATH)
+    copytree('%s/ngtcp2/websites' % os.path.dirname(PROJECT_PATH), '%s/websites' % DIR_PATH)
     zip_data()
 
 

@@ -46,31 +46,56 @@ sleep 10
 for i in `seq 5`
 do
     # Conduct experiment with Hestia
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -q 2> ${root}/client_sid.log &
-    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -q 2> ${root}/client_sid.log &
-    pid=$!
-    sleep 25
-    sudo kill -9 ${pid}
+    declare -a pids
+    row_index=0
+    for row in $(cat index.csv); do
+      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -w $row -q 2> ${root}/client_sid.log &
+      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -w $row -q 2> ${root}/client_sid.log &
+      pid=$!
+      pids[row_index]=${pid}
+      let row_index+=1
+    done
+    sleep 60
+    for ((j=0; j<row_index; j++)) do
+      sudo kill -9 ${pids[j]}
+    done
+
     transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
     handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
     service_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_sid.log| cut -d' ' -f7 | tail -n 1`
 
     #Conduct experiment with Anycast
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -q 2> ${root}/client_anycast.log &
-    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -q 2> ${root}/client_anycast.log &
-    pid=$!
-    sleep 25
-    sudo kill -9 ${pid}
+    row_index=0
+    for row in $(cat index.csv); do
+      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log &
+      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log &
+      pid=$!
+      pids[row_index]=${pid}
+      let row_index+=1
+    done
+    sleep 60
+    for ((j=0; j<row_index; j++)) do
+      sudo kill -9 ${pids[j]}
+    done
+
     anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
     anycast_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
     anycast_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_anycast.log| cut -d' ' -f7 | tail -n 1`
 
     # Conduct experiment with DNS
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -q 2> ${root}/client_dns.log &
-    sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -q 2> ${root}/client_dns.log &
-    pid=$!
-    sleep 25
-    sudo kill -9 ${pid}
+    row_index=0
+    for row in $(cat index.csv); do
+      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -w $row -q 2> ${root}/client_dns.log &
+      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -w $row -q 2> ${root}/client_dns.log &
+      pid=$!
+      pids[row_index]=${pid}
+      let row_index+=1
+    done
+    sleep 60
+    for ((j=0; j<row_index; j++)) do
+      sudo kill -9 ${pids[j]}
+    done
+
     dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
     dns_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
     dns_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_dns.log| cut -d' ' -f7 | tail -n 1`

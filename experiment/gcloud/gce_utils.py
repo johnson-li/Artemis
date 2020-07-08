@@ -140,8 +140,7 @@ def init_instance(instance, execute_init_script=True):
         execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
                                  '[ -e data ] && rm -r data; '
                                  'unzip data.zip;'
-                                 'cp -r data/resource ./;'
-                                 'mkdir examples && cp -r data/resource ./examples/resource', ip)
+                                 'cp -r data/websites ./', ip)
     f = open('machine.json', encoding='utf-8')
     lis = json.loads(f.read())
     name = instance['name']
