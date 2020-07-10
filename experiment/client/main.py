@@ -30,6 +30,7 @@ def zip_data():
 #    copyfile('%s/ngtcp2/lib/.libs/libngtcp2.so.0' % WORKSPACE_PATH, '%s/data/libngtcp2.so.0' % DIR_PATH)
     copyfile('%s/openssl/libssl.so.1.1' % WORKSPACE_PATH, '%s/data/libssl.so.1.1' % DIR_PATH)
     copyfile('%s/openssl/libcrypto.so.1.1' % WORKSPACE_PATH, '%s/data/libcrypto.so.1.1' % DIR_PATH)
+    copyfile('%s/ngtcp2/index.csv' % WORKSPACE_PATH, '%s/data/index.csv' % DIR_PATH)
     copytree('%s/ngtcp2/websites' % WORKSPACE_PATH, '%s/data/websites' % DIR_PATH)
     zipf = zipfile.ZipFile(DATA_ZIP_PATH, 'w', zipfile.ZIP_DEFLATED)
     for root, dirs, files in os.walk(DATA_PATH):

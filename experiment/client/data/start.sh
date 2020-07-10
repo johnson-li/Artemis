@@ -29,6 +29,7 @@ do
         target_server=$server_ip
         echo "min latency: $latency, from server: $server_ip, in region: $server_region"
     fi
+    target_server=$server_ip
     server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
 
     sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
@@ -46,18 +47,18 @@ sleep 10
 for i in `seq 5`
 do
     # Conduct experiment with Hestia
-    declare -a pids
     row_index=0
-    for row in $(cat index.csv); do
-      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -w $row -q 2> ${root}/client_sid.log &
-      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -w $row -q 2> ${root}/client_sid.log &
-      pid=$!
-      pids[row_index]=${pid}
+    row_total=$(cat ${root}/index.csv|wc -l)
+    for row in $(cat ${root}/index.csv); do
+      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -w $row -q 2> ${root}/client_sid.log
+      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target} 4433 -i -w $row -q 2> ${root}/client_sid.log
       let row_index+=1
-    done
-    sleep 60
-    for ((j=0; j<row_index; j++)) do
-      sudo kill -9 ${pids[j]}
+      if [ "${row_index}" == "${row_total}" ]
+      then
+        echo "row_index: " ${row_index}
+        sleep 60
+        break
+      fi
     done
 
     transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
@@ -66,17 +67,17 @@ do
 
     #Conduct experiment with Anycast
     row_index=0
-    for row in $(cat index.csv); do
-      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log &
-      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log &
-      pid=$!
-      pids[row_index]=${pid}
-      let row_index+=1
+    for row in $(cat ${root}/index.csv); do
+      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log
+      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log
+      if [ "${row_index}" == "${row_total}" ]
+      then
+        echo "row_index: " ${row_index}
+        sleep 60
+        break
+      fi
     done
-    sleep 60
-    for ((j=0; j<row_index; j++)) do
-      sudo kill -9 ${pids[j]}
-    done
+
 
     anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
     anycast_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
@@ -84,16 +85,16 @@ do
 
     # Conduct experiment with DNS
     row_index=0
-    for row in $(cat index.csv); do
-      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -w $row -q 2> ${root}/client_dns.log &
-      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -w $row -q 2> ${root}/client_dns.log &
-      pid=$!
-      pids[row_index]=${pid}
+    for row in $(cat ${root}/index.csv); do
+      echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -w $row -q 2> ${root}/client_dns.log
+      sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_server} 4433 -i -w $row -q 2> ${root}/client_dns.log
       let row_index+=1
-    done
-    sleep 60
-    for ((j=0; j<row_index; j++)) do
-      sudo kill -9 ${pids[j]}
+      if [ "${row_index}" == "${row_total}" ]
+      then
+        echo "row_index: " ${row_index}
+        sleep 60
+        break
+      fi
     done
 
     dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
@@ -152,5 +153,4 @@ do
 done
 
 date > ${root}/start.sh.end_ts
-
 
