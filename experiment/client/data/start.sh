@@ -72,7 +72,7 @@ do
 
         dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
         dns_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`
-        dns_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_dns.log| cut -d' ' -f7 | tail -n 1`
+        dns_plt_time=`grep -a 'PLT: ' /tmp/hestia/data/client_dns.log| cut -d' ' -f2 | tail -n 1`
 
         dns_query_time=`dig a.xuebing.li|grep 'Query time'|cut -d' ' -f4 | tail -n 1`
         hostname=`hostname`
