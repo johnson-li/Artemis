@@ -55,7 +55,7 @@ do
 
         transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
         handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_sid.log| cut -d' ' -f3 | tail -n 1`
-        service_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_sid.log| cut -d' ' -f7 | tail -n 1`
+        service_plt_time=`grep -a 'PLT: ' /tmp/hestia/data/client_sid.log| cut -d' ' -f2 | tail -n 1`
 
         #Conduct experiment with Anycast
         echo sudo LD_LIBRARY_PATH=${root} ${root}/client ${target_anycast} 4433 -i -w $row -q 2> ${root}/client_anycast.log
@@ -63,7 +63,7 @@ do
 
         anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
         anycast_handshake_time=`grep -a 'handshake time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
-        anycast_plt_time=`grep -a 'PLT(pls use the last print record): ' /tmp/hestia/data/client_anycast.log| cut -d' ' -f7 | tail -n 1`
+        anycast_plt_time=`grep -a 'PLT: ' /tmp/hestia/data/client_anycast.log| cut -d' ' -f2 | tail -n 1`
 
         # Conduct experiment with DNS
 
