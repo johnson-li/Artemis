@@ -91,6 +91,7 @@ then
         dns_plt_time integer,
         anycast_plt_time integer,
         bind_server_ip varchar(32),
+        website varchar(32),
         timestamp bigint,
         primary key (id)
     )" 2> /dev/null
