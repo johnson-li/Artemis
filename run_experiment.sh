@@ -1,3 +1,4 @@
+sleep 60
 rm -r experiment/gcloud/data/websites
 python -m experiment.gcloud.main
 sleep 120

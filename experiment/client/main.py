@@ -26,12 +26,13 @@ lb_ip = output.decode("utf-8").strip()
 def zip_data():
     WORKSPACE_PATH = os.path.dirname(PROJECT_PATH)
     copyfile('%s/machine.json' % PROJECT_PATH, '%s/data/machine.json' % DIR_PATH)
-    copyfile('%s/ngtcp2/examples/client' % WORKSPACE_PATH, '%s/data/client' % DIR_PATH)
+    # copyfile('%s/ngtcp2/examples/client' % WORKSPACE_PATH, '%s/data/client' % DIR_PATH)
+    copyfile('%s/ngtcp2-old/examples/client' % WORKSPACE_PATH, '%s/data/client_transport' % DIR_PATH)
 #    copyfile('%s/ngtcp2/lib/.libs/libngtcp2.so.0' % WORKSPACE_PATH, '%s/data/libngtcp2.so.0' % DIR_PATH)
     copyfile('%s/openssl/libssl.so.1.1' % WORKSPACE_PATH, '%s/data/libssl.so.1.1' % DIR_PATH)
     copyfile('%s/openssl/libcrypto.so.1.1' % WORKSPACE_PATH, '%s/data/libcrypto.so.1.1' % DIR_PATH)
     copyfile('%s/ngtcp2/index.csv' % WORKSPACE_PATH, '%s/data/index.csv' % DIR_PATH)
-    copytree('%s/ngtcp2/websites' % WORKSPACE_PATH, '%s/data/websites' % DIR_PATH)
+    #copytree('%s/ngtcp2/websites' % WORKSPACE_PATH, '%s/data/websites' % DIR_PATH)
     zipf = zipfile.ZipFile(DATA_ZIP_PATH, 'w', zipfile.ZIP_DEFLATED)
     for root, dirs, files in os.walk(DATA_PATH):
         for file in files:
@@ -73,14 +74,14 @@ def conduct_experiment(hostname, username, password, region):
                          'cd %s; ' % REMOTE_PROJECT_PATH +
                          '[ -e data  ] && rm -r data; ' +
                          'unzip data.zip')
-    execute_ssh_sync(client,
-                     'curl -O https://lexbor.com/keys/lexbor_signing.key;' +
-                     'sudo apt-key add lexbor_signing.key;' +
-                     'sudo sh -c \'echo "deb https://packages.lexbor.com/ubuntu/ bionic liblexbor" > /etc/apt/sources.list.d/lexbor.list\';' +
-                     'sudo sh -c \'echo "deb-src https://packages.lexbor.com/ubuntu/ bionic liblexbor" >> /etc/apt/sources.list.d/lexbor.list\';' +
-                     'sudo apt-get update;' +
-                     'sudo apt-get install liblexbor;' +
-                     'sudo apt-get install liblexbor-dev;')
+    # execute_ssh_sync(client,
+    #                  'curl -O https://lexbor.com/keys/lexbor_signing.key;' +
+    #                  'sudo apt-key add lexbor_signing.key;' +
+    #                  'sudo sh -c \'echo "deb https://packages.lexbor.com/ubuntu/ bionic liblexbor" > /etc/apt/sources.list.d/lexbor.list\';' +
+    #                  'sudo sh -c \'echo "deb-src https://packages.lexbor.com/ubuntu/ bionic liblexbor" >> /etc/apt/sources.list.d/lexbor.list\';' +
+    #                  'sudo apt-get update;' +
+    #                  'sudo apt-get install liblexbor;' +
+    #                  'sudo apt-get install liblexbor-dev;')
 
     experiment_script = '%s/data/start_wrapper.sh' % REMOTE_PROJECT_PATH
     command = 'export region=%s; export lb_ip=%s; chmod +x %s && %s' % (

@@ -168,8 +168,10 @@ def conduct_experiment(instances):
 def prepare_data():
     copyfile('%s/ngtcp2/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data/client' % DIR_PATH)
     copyfile('%s/ngtcp2/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data/server' % DIR_PATH)
-    copyfile('%s/ngtcp2/examples/balancer' % os.path.dirname(PROJECT_PATH), '%s/data/balancer' % DIR_PATH)
-    copytree('%s/ngtcp2/websites' % os.path.dirname(PROJECT_PATH), '%s/data/websites' % DIR_PATH)
+    copyfile('%s/ngtcp2-old/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data/client_transport' % DIR_PATH)
+    copyfile('%s/ngtcp2-old/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data/server_transport' % DIR_PATH)
+    copyfile('%s/ngtcp2/examples/balancer2' % os.path.dirname(PROJECT_PATH), '%s/data/balancer2' % DIR_PATH)
+    # copytree('%s/ngtcp2/websites' % os.path.dirname(PROJECT_PATH), '%s/data/websites' % DIR_PATH)
     zip_data()
 
 
