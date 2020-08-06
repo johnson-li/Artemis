@@ -125,7 +125,8 @@ def execute_ssh_sync(client, command, target_ip=None):
 # Transport data and install software
 #
 def init_instance(instance, execute_init_script=True, second_zip=False):
-    zip_file = 'data2.zip' if second_zip else 'data.zip'
+    data = 'data2' if second_zip else 'data'
+    zip_file = f'{data}.zip'
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
@@ -139,25 +140,14 @@ def init_instance(instance, execute_init_script=True, second_zip=False):
         sftp = paramiko.SFTPClient.from_transport(client.get_transport())
         sftp.put(f'{DIR_PATH}/{zip_file}', zip_file)
         execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
-                                 '[ -e data ] && rm -r data; '
-                                 f'unzip {zip_file};'
-                                 'cp -r data/websites ./', ip)
+                                 f'[ -e {data} ] && rm -r {data}; '
+                                 f'unzip {zip_file};', ip)
     f = open('machine.json', encoding='utf-8')
     lis = json.loads(f.read())
     name = instance['name']
     lis['hostname'] = name
     execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)), ip)
     if execute_init_script:
-        #command = 'sudo DEBIAN_FRONTEND=noninteractive apt-get install tmux'
-        #execute_ssh_sync(client, command, ip)
-        #command = "tmux ls | grep init_sh"
-        #stdin, stdout, stderr = client.exec_command(command)
-        #command = "tmux new -d -s init_sh"
-        #stdout = stdout.read().decode()
-        #if stdout=='':
-        #    execute_ssh_sync(client, command, ip)
-        #command = "tmux send -t init_sh 'chmod +x data/init.sh && ./data/init.sh' ENTER"
-        #execute_ssh_sync(client, command, ip)
         execute_ssh_sync(client, 'chmod +x data/init_wrapper.sh && ./data/init_wrapper.sh', ip)
     client.close()
 
