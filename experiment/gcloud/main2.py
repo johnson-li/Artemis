@@ -84,6 +84,7 @@ def prepare_instances():
         gce_util_mul.create_instances(single=True)
         gce_util_mul.wait_for_instances_to_start()
 
+    logger.info('Configure Google load balancing')
     for i in range(len(zones)):
         command = 'gcloud compute instance-groups unmanaged create ' + zones[i][:-2] + ' --zone ' + zones[i]
         command += ' > /dev/null 2>&1'
@@ -138,6 +139,7 @@ def prepare_instances():
     command += ' > /dev/null 2>&1'
     os.system(command)
 
+    logger.info('Initiate database')
     instances = get_instances()
     lis = {}
     for i in instances:
