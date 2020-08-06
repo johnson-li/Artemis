@@ -1,0 +1,13 @@
+https://login.live.com/Me.srf?wa=wsignin1.0&wreply=https://www.office.com/
+https://login.microsoftonline.com/savedusers?wreply=https://www.office.com/&appid=4345a7b9-9a63-4910-a426-35363201d503
+https://web.vortex.data.microsoft.com/collect/v1/t.js?ver='2.1'&name='Ms.Webi.PageView'&time='2020-06-24T05:51:22.921Z'&os='Unix'&appId='JS:www.office.com-unauth'&*baseType='Ms.Content.PageView'&-ver='1.0'&-impressionGuid='d566991d-add1-4c87-a573-f0431e883070'&-pageName='UnauthOhp'&-uri='https://www.office.com/'&-pageTags='{"metaTags":{"expengine":"office.com","expstatus":"prod","ver":"5","ms.lang":"en","ms.loc":"US","ms.ocpub.assetid":"UnauthOhp","ms.env":"prod","ms.sitever":"5","ms.flightid":"csslicensing|bgedgeworth|templatedimecf|templatesmlv3cf|powerbienabled|darktheme|pwafreeconsumerfre|consumersearch"}}'&-behavior=0&-resHeight=600&-resWidth=800&-market='en-US'&*cookieEnabled=true&*flashInstalled=false&*isJs=true&*title='Office 365 Login | Microsoft Office'&*isLoggedIn=false&ext-javascript-ver='1.1'&ext-javascript-libVer='4.1.0'&ext-javascript-domain='www.office.com'&ext-user-localId='t:1D57F822B723680B3F03F6D1B64269BE'
+https://mem.gfx.ms/scripts/me/MeControl/10.20170.2/en-US/meBoot.min.js
+https://logincdn.msauth.net/16.000/content/js/MeControl_n5X-mp_Nabf9-pBjg3QJxw2.js
+https://web.vortex.data.microsoft.com/collect/v1
+https://mem.gfx.ms/scripts/me/MeControl/10.20170.2/en-US/meCore.min.js
+https://web.vortex.data.microsoft.com/collect/v1
+https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2
+https://www.microsoft.com/mwf/_h/v3.54/mwf.app/fonts/mwfmdl2-v3.54.woff
+https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/Semibold/latest.woff2
+https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/Bold/latest.woff2
+https://browser.pipe.aria.microsoft.com/Collector/3.0/?qsp=true&content-type=application/bond-compact-binary&client-id=NO_AUTH&sdk-version=AWT-Web-JS-1.6.1&x-apikey=ea6758984c4b43529f9929667d8d3198-c52d4a8b-47fe-4fdf-99b8-5f897ff4e33b-7365&client-time-epoch-millis=1592977883919&time-delta-to-apply-millis=use-collector-delta

@@ -188,5 +188,3 @@ ansible/provision.retry
 
 machine.json
 .machine.json.swp
-experiment/client/data/websites/
-experiment/gcloud/data/websites/

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>AD</title>
+	<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/tveta/libs/assets/css/pc/common/min/common.min.css?20170222">
+</head>
+<body>
+<script type="text/javascript" src="https://ssl.pstatic.net/tveta/libs/assets/js/pc/main/min/pc.veta.core.min.js?20170222"></script>
+<script>
+	new Nimp(["https://siape.veta.naver.com/fxview?eu=EU10041890&calp=-&oj=ZagUyei1lSjVom0XabBE8zMJzt%2FZkihL1ezlzIopdd%2Fq%2FjPUWcn8IgHidTO5%2FQGm1zPI3xlnlcpsyEy1CZskIQ&ac=8096989&src=4419981&evtcd=NO_EVENT&x_ti=852&tb=&oid=&sid1=&sid2=&rk=52f74061570efcc9ff8081f46f93bc65&eltts=sTkMoPP8SttkRkwuk45eUg%3D%3D&brs=Y&&eid=V800"]).log(1);
+</script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1249652/Naver_HP_750x135_02', [750, 135], 'div-gpt-ad-1575036157289-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+<div id='div-gpt-ad-1575036157289-0' style='width: 750px; height: 135px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1575036157289-0'); });
+  </script>
+</div>
+</body>
+</html>

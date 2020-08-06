@@ -1,0 +1,48 @@
+/* stylelint-disable-next-line max-line-length */
+/* stylelint-disable-next-line max-line-length */
+/* Creates CSS3 Variables and adds them to root
+ * @params
+ *  $map - expects a map that contains 'core', 'on', 'text', and 'state' maps
+ * @output
+ *  --{key}-rgb: {val} - rgb value of the key
+ *  --{key}-color: rgb(var(--{key}-rgb)) - variable meant for css:color use
+ *  --{key}-bg: var(--{key}-color) - bg color meant for css:background use
+ */
+.TmuaKOoDo-QlBHQGmOX1k {
+  display: flex;
+  flex-direction: column; }
+
+.Rwa4i3rwtfq5LpCcukrtG {
+  padding-top: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: var(--ipt-font-family);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.03125em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  -webkit-font-smoothing: auto;
+  /* stylelint-disable */
+  font-smooth: auto;
+  /* stylelint-enable */
+  color: white;
+  color: var(--ipt-on-baseAlt-color);
+  white-space: normal;
+  white-space: initial;
+  max-height: none;
+  height: auto;
+  overflow: hidden;
+  word-break: keep-all;
+  display: flex; }
+  .Rwa4i3rwtfq5LpCcukrtG:hover {
+    opacity: .7; }
+
+._1psrTMhhKoFz6g6w1bifu9 {
+  height: 100%;
+  width: 100%; }
+
+
+/*# sourceMappingURL=imdb.IMDbEditorialCarouselReactFeature.4e90b9f00079a2e94d88.css.map*/

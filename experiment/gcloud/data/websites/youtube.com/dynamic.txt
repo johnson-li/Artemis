@@ -1,0 +1,17 @@
+https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2
+https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4.woff2
+https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic
+https://fonts.googleapis.com/css?family=Roboto+Mono:400,700
+https://www.youtube.com/iframe_api
+https://googleads.g.doubleclick.net/pagead/id
+https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2
+https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2
+https://s.ytimg.com/yts/jsbin/www-widgetapi-vflCYX3kH/www-widgetapi.js
+https://www.youtube.com/embed/?controls=0&enablejsapi=1&iv_load_policy=3&modestbranding=1&mute=1&rel=0&showinfo=0&origin=https://www.youtube.com&widgetid=1
+https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2
+https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4.woff2
+https://www.youtube.com/s/player/5cc7c83f/player_ias.vflset/en_US/base.js
+https://www.youtube.com/s/player/5cc7c83f/www-player-webp.css
+https://googleads.g.doubleclick.net/pagead/id
+https://static.doubleclick.net/instream/ad_status.js
+https://www.youtube.com/s/player/5cc7c83f/player_ias.vflset/en_US/embed.js

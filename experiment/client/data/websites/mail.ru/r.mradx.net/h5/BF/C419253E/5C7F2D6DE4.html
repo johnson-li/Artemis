@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>MKT-21176_ag898_roa_300x300_b01</title>
+<!-- adding size -->
+<meta name="ad.size" content="width=300,height=300">
+<script>var clickTag = "https://r.mail.ru/redir/AADm7QGd4FZGfa0Slox86YFH9FXkcWW3fBoEervHR_jf0LmrPUlbLqK1gYyzvUFu8OeoAgfuX76B2t9XnlygW4_xkLNR1A1ruWkCvkIH2DW0IkD5Ugdmt3pc7pC07lqKzQOq-zGDWd_GT2BbpB3H4c7WPZ652Xu4L7bGPVEAomd3Ko8Lpnw-0DY_AAAAUKfmtKm9HOciVFIqm__BlasGbwQlejCKaYsIXZ3bc_n15aJXIVvFzIzRiQY9EIStihmztov1hsBotXk2ZDjuYA";</script>
+<style> body { margin: 0; } </style>
+<!-- /adding size -->
+<!-- write your code here -->
+<script src="libs/createjs-2015.11.26.min.js"></script>
+<script>
+(function (lib, img, cjs, ss, an) {
+var p; // shortcut to reference prototypes
+lib.webFontTxtInst = {}; 
+var loadedTypekitCount = 0;
+var loadedGoogleCount = 0;
+var gFontsUpdateCacheList = [];
+var tFontsUpdateCacheList = [];
+lib.ssMetadata = [];
+lib.updateListCache = function (cacheList) {		
+	for(var i = 0; i < cacheList.length; i++) {		
+		if(cacheList[i].cacheCanvas)		
+			cacheList[i].updateCache();		
+	}		
+};		
+lib.addElementsToCache = function (textInst, cacheList) {		
+	var cur = textInst;		
+	while(cur != exportRoot) {		
+		if(cacheList.indexOf(cur) != -1)		
+			break;		
+		cur = cur.parent;		
+	}		
+	if(cur != exportRoot) {		
+		var cur2 = textInst;		
+		var index = cacheList.indexOf(cur);		
+		while(cur2 != cur) {		
+			cacheList.splice(index, 0, cur2);		
+			cur2 = cur2.parent;		
+			index++;		
+		}		
+	}		
+	else {		
+		cur = textInst;		
+		while(cur != exportRoot) {		
+			cacheList.push(cur);		
+			cur = cur.parent;		
+		}		
+	}		
+};		
+lib.gfontAvailable = function(family, totalGoogleCount) {		
+	lib.properties.webfonts[family] = true;		
+	var txtInst = lib.webFontTxtInst && lib.webFontTxtInst[family] || [];		
+	for(var f = 0; f < txtInst.length; ++f)		
+		lib.addElementsToCache(txtInst[f], gFontsUpdateCacheList);		
+	loadedGoogleCount++;		
+	if(loadedGoogleCount == totalGoogleCount) {		
+		lib.updateListCache(gFontsUpdateCacheList);		
+	}		
+};		
+lib.tfontAvailable = function(family, totalTypekitCount) {		
+	lib.properties.webfonts[family] = true;		
+	var txtInst = lib.webFontTxtInst && lib.webFontTxtInst[family] || [];		
+	for(var f = 0; f < txtInst.length; ++f)		
+		lib.addElementsToCache(txtInst[f], tFontsUpdateCacheList);		
+	loadedTypekitCount++;		
+	if(loadedTypekitCount == totalTypekitCount) {		
+		lib.updateListCache(tFontsUpdateCacheList);		
+	}		
+};
+// symbols:
+(lib.b01_g = function() {
+	this.initialize(img.b01_g);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b01_m = function() {
+	this.initialize(img.b01_m);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b01_n = function() {
+	this.initialize(img.b01_n);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b02_g = function() {
+	this.initialize(img.b02_g);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b02_m = function() {
+	this.initialize(img.b02_m);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b02_n = function() {
+	this.initialize(img.b02_n);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b03_g = function() {
+	this.initialize(img.b03_g);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b03_m = function() {
+	this.initialize(img.b03_m);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.b03_n = function() {
+	this.initialize(img.b03_n);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,200);
+(lib.bg = function() {
+	this.initialize(img.bg);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,300,300);// helper functions:
+function mc_symbol_clone() {
+	var clone = this._cloneProps(new this.constructor(this.mode, this.startPosition, this.loop));
+	clone.gotoAndStop(this.currentFrame);
+	clone.paused = this.paused;
+	clone.framerate = this.framerate;
+	return clone;
+}
+function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
+	var prototype = cjs.extend(symbol, cjs.MovieClip);
+	prototype.clone = mc_symbol_clone;
+	prototype.nominalBounds = nominalBounds;
+	prototype.frameBounds = frameBounds;
+	return prototype;
+	}
+(lib.hitbox = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("rgba(0,0,0,0.008)").s().p("Ap1KjIAA1FITrAAIAAVFg");
+	this.shape.setTransform(0,0,1,1.037);
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+}).prototype = getMCSymbolPrototype(lib.hitbox, new cjs.Rectangle(-63,-70,126,140), null);
+(lib.b03g = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.b03_g();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b03g, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.b02g = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.b02_g();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b02g, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.b01g = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.b01_g();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b01g, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.fon03 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 3
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#A6A29B").s().p("Eg+fAPoIAA/PMB8/AAAIAAfPg");
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+}).prototype = getMCSymbolPrototype(lib.fon03, new cjs.Rectangle(-400,-100,800,200), null);
+(lib.btnLink = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#000000").s().p("AvnPoIAA/PIfPAAIAAfPg");
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-100,-100,200,200);
+(lib.bgFon = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.bg();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.bgFon, new cjs.Rectangle(-300,-100,300,300), null);
+(lib.b03n = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.b03_n();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b03n, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.b02n = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.b02_n();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b02n, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.b01n = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 1
+	this.instance = new lib.b01_n();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b01n, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.age = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// Layer 3
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#000000").s().p("AgQAbIgIgDIgEgFIgCgGQABgEACgEQADgDAFgCIAAAAQgEgCgCgDQgDgDAAgFQAAgGAGgFQAHgEAJAAQAJAAAGAEQAGAEAAAGQAAAEgCADQgDADgFACIAAABQAGABADADQACAEAAAFQAAAHgGAFQgGAFgKAAQgGAAgEgCgAgOAGQAAABgBAAQAAABAAAAQAAABAAABQAAAAAAABQAAAEACACQADACAFAAIACAAIADgBIACgCIAAgDQAAgBAAAAQAAgBAAgBQgBAAAAAAQAAgBAAAAQgBgCgEgBIgDgCIgEgBIgDADgAgLgRIgCACIAAACIAAADIAEADIAEABIAEABIABgDIABgEQAAgBAAgBQAAAAgBgBQAAAAAAgBQAAAAAAgBQgCgBgEAAIgDAAIgCABgAAwAbIAAgTIgUAAIAAgJIAUAAIAAgUIAKAAIAAAUIATAAIAAAJIgTAAIAAATgAhMAbIAAgJIALAAIAAgcIgLAAIAAgJIAEgBIAFgBIACgCIABgEIANAAIAAAtIALAAIAAAJg");
+	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
+	// Layer 1
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#FFFFFF").s().p("AhMBNQgfggAAgtQAAgsAfgfQAgggAsAAQAtAAAgAgQAfAfAAAsQAAAtgfAgQggAfgtAAQgsAAgggfg");
+	this.shape_1.setTransform(0,0.1);
+	this.timeline.addTween(cjs.Tween.get(this.shape_1).wait(1));
+}).prototype = getMCSymbolPrototype(lib.age, new cjs.Rectangle(-10.8,-10.7,21.6,21.6), null);
+(lib.b03 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// hitbox
+	this.hitbox = new lib.hitbox();
+	this.hitbox.parent = this;
+	this.hitbox.setTransform(193.5,-27.7,1,1.05);
+	this.timeline.addTween(cjs.Tween.get(this.hitbox).wait(1));
+	// b03n
+	this.b03n = new lib.b03n();
+	this.b03n.parent = this;
+	this.timeline.addTween(cjs.Tween.get(this.b03n).wait(1));
+	// b03_g.png
+	this.b03g = new lib.b03g();
+	this.b03g.parent = this;
+	this.b03g.alpha = 0;
+	this.timeline.addTween(cjs.Tween.get(this.b03g).wait(1));
+	// b03_m.png
+	this.instance = new lib.b03_m();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b03, new cjs.Rectangle(-300,-101.2,600,201.2), null);
+(lib.b02 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// hitbox
+	this.hitbox = new lib.hitbox();
+	this.hitbox.parent = this;
+	this.hitbox.setTransform(0,-23.5,1.19,1);
+	this.timeline.addTween(cjs.Tween.get(this.hitbox).wait(1));
+	// b02n
+	this.b02n = new lib.b02n();
+	this.b02n.parent = this;
+	this.timeline.addTween(cjs.Tween.get(this.b02n).wait(1));
+	// b02_g.png
+	this.b02g = new lib.b02g();
+	this.b02g.parent = this;
+	this.b02g.alpha = 0;
+	this.timeline.addTween(cjs.Tween.get(this.b02g).wait(1));
+	// b02_m.png
+	this.instance = new lib.b02_m();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b02, new cjs.Rectangle(-300,-100,600,200), null);
+(lib.b01 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// hitbox
+	this.hitbox = new lib.hitbox();
+	this.hitbox.parent = this;
+	this.hitbox.setTransform(-173.9,-25.4);
+	this.timeline.addTween(cjs.Tween.get(this.hitbox).wait(1));
+	// b01n
+	this.b01n = new lib.b01n();
+	this.b01n.parent = this;
+	this.timeline.addTween(cjs.Tween.get(this.b01n).wait(1));
+	// b01_g.png
+	this.b01g = new lib.b01g();
+	this.b01g.parent = this;
+	this.b01g.alpha = 0;
+	this.timeline.addTween(cjs.Tween.get(this.b01g).wait(1));
+	// b01_m.png
+	this.instance = new lib.b01_m();
+	this.instance.parent = this;
+	this.instance.setTransform(-300,-100);
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+}).prototype = getMCSymbolPrototype(lib.b01, new cjs.Rectangle(-300,-100,600,200), null);
+// stage content:
+(lib.MKT21176_ag898_roa_300x300_b01 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+	// timeline functions:
+	this.frame_0 = function() {
+		var _this = this;
+		this.mOver = false;
+		//создаем архив и по порядку 1, 2, 3.. итд записываем положение Х координаты
+		//которое было первоначально выбрано по дизайну
+		prevPoz = new Array();
+		//prevPoz[1] = stage.canvas.width/2 - _this.text01.x;
+		//prevPoz[2] = stage.canvas.width/2 - _this.mc01.x;
+		//этот listener заработает, если окно меняет размер
+		//window.addEventListener("resize", resize);
+		function resize() {
+			//определяем длину окна
+			stage.canvas.width = window.innerWidth;		
+			canvas.style.width = dom_overlay_container.style.width = anim_container.style.width = window.innerWidth + "px";
+			//принудительно выставляем высоту всех блоков на странице, высота не меняется, тянется по горизонтали, высота берется из значений проекта
+			canvas.style.height = dom_overlay_container.style.height = anim_container.style.height = lib.properties.height + "px";
+			//тут определяем на сколько надо увеличить объекты
+			//расчет ведется только для тех, кто покрывает все 100% баннера
+			//вроде btnLink кнопки, подложки
+			var scaleBtnLink = window.innerWidth / _this.btnLink.nominalBounds.width;
+			var scaleFon01 = window.innerWidth / _this.fon01.nominalBounds.width;
+			//тут меняем размер
+			_this.btnLink.scaleX = scaleBtnLink;
+			_this.btnLink.x = stage.canvas.width/2;
+			//_this.fon02.scaleX = scaleFon02;
+			//_this.fon02.x = stage.canvas.width/2;
+			//тут выставляем положение объектов. фон всегда по центру
+			//_this.text01.x = stage.canvas.width/2;
+			//_this.mc01.x = stage.canvas.width/2;
+			_this.bgFon.x = stage.canvas.width/2;
+			_this.b01.x = stage.canvas.width/2;
+			_this.b02.x = stage.canvas.width/2;
+			_this.b03.x = stage.canvas.width/2;
+			_this.age.x = stage.canvas.width - 15;
+			_this.fon01.x = stage.canvas.width/2;
+			_this.fon01.scaleX = scaleFon01;
+			//_this.imgRight.x = stage.canvas.width;
+			/*
+			//тут уже те объекты, что не строго по центру и заносились в массив
+			if(stage.canvas.width < 800){
+				_this.text01.x = stage.canvas.width/2 - prevPoz[1];
+				_this.mc01.x = stage.canvas.width/2 - prevPoz[2];
+			}
+			else{
+				_this.text01.x = stage.canvas.width/2;
+				_this.mc01.x = stage.canvas.width/2;
+			}
+			*/
+			//следующая функция будет перерисовывать все объекты на баннере
+			//если ее не вызывать, то нагрузка будет меньше, но при увеличении будет альясинг и кривота
+			//особенно актуально для мобилок
+			//чтобы вектор рендерился вектором
+			RescaleCanvasSharp();
+		}
+		//вызываем функцию до изменения размеров окна
+		//resize();
+		function RescaleCanvasSharp() {
+			//if (window.devicePixelRatio) {
+				// grab the width and height from canvas
+				var width = canvas.getAttribute('width');
+				var height = canvas.getAttribute('height');		
+				//console.log("canvas.width:" + canvas.width + " " + "canvas.height:" + canvas.height);
+				//console.log("window.devicePixelRatio:" + window.devicePixelRatio);
+				// reset the canvas width and height with window.devicePixelRatio applied
+				//canvas.setAttribute('width', Math.round(width * window.devicePixelRatio));
+				//canvas.setAttribute('height', Math.round(height * window.devicePixelRatio));
+				canvas.width = Math.round(width * window.devicePixelRatio);
+				canvas.height = Math.round(lib.properties.height * window.devicePixelRatio);		
+				//console.log("Newcanvas.width:" + canvas.width + " " + "Newcanvas.height:" + canvas.height);	
+				//в примере вот этим постфактум меняли размер, если сейчас включить - будет глючить при изменении размера
+				//чтобы не глючило  - я вынес в начало, задал жесткие размеры - и все работает, хз почему
+				// force the canvas back to the original size using css
+				//canvas.style.width = width + "px";
+				//canvas.style.height = height + "px";
+				//console.log("canvas.style.width:" + canvas.style.width + " " + "canvas.style.height:" + canvas.style.height);
+				//canvas.style.height = 100 * window.devicePixelRatio + "px";
+				//перерендериваем весь Stage
+				// set CreateJS to render scaled
+				stage.scaleX = stage.scaleY = window.devicePixelRatio;
+			//}
+		}
+		stage.addEventListener("tick", fl_StopAll);
+		function fl_StopAll()
+		{
+			//console.log("fl_StopAll");
+			//сюда добавляем все мувклипы для первоначального стопа
+			//_this.text01.stop();
+			_this.b01.b01g.alpha = 100;
+			_this.b01.b01g.visible = false;
+			_this.b02.b02g.alpha = 100;
+			_this.b02.b02g.visible = false;
+			_this.b03.b03g.alpha = 100;
+			_this.b03.b03g.visible = false;
+			//эта строка всегда в конце, все мувиклипы выше
+			stage.removeEventListener("tick", fl_StopAll);	
+		}
+		var frequency = 3;
+		stage.enableMouseOver(frequency);
+		stage.addEventListener("mouseover", fl_MouseOverHandler);
+		function fl_MouseOverHandler()
+		{
+			//console.log("mouseover");
+			_this.mOver = true;
+			//_this.text01.play();
+			_this.b01.b01n.visible = false;
+			_this.b02.b02n.visible = false;
+			_this.b03.b03n.visible = false;
+		}
+		stage.addEventListener("mouseout", fl_MouseOutHandler);
+		function fl_MouseOutHandler()
+		{
+			//console.log("mouseout");	
+			_this.mOver = false;
+			_this.b01.b01n.visible = true;
+			_this.b02.b02n.visible = true;
+			_this.b03.b03n.visible = true;
+			//_this.text01.stop();
+		}
+		this.addEventListener("tick", fl_EnterFrame01);
+		function fl_EnterFrame01()
+		{
+			//alert("asa");
+			if(_this.mOver){
+				var pt1 = _this.b01.hitbox.globalToLocal(stage.mouseX, stage.mouseY);
+				if (_this.b01.hitbox.hitTest(pt1.x, pt1.y)) {
+					//alert("Hit");
+					if(!_this.b01.b01g.visible){
+						_this.b01.b01g.visible = true;
+						_this.b02.b02g.visible = false;
+						_this.b03.b03g.visible = false;
+					}
+				}
+				else{
+					if(_this.b01.b01g.visible){
+						_this.b01.b01g.visible = false;
+						_this.b02.b02g.visible = false;
+						_this.b03.b03g.visible = false;
+					}
+				}
+				var pt2 = _this.b02.hitbox.globalToLocal(stage.mouseX, stage.mouseY);
+				if (_this.b02.hitbox.hitTest(pt2.x, pt2.y)) {
+					//alert("Hit");
+					if(!_this.b02.b02g.visible){				
+						_this.b01.b01g.visible = false;
+						_this.b02.b02g.visible = true;
+						_this.b03.b03g.visible = false;
+					}
+				}
+				else{
+					if(_this.b02.b02g.visible){
+						_this.b01.b01g.visible = false;
+						_this.b02.b02g.visible = false;
+						_this.b03.b03g.visible = false;
+					}
+				}
+				var pt3 = _this.b03.hitbox.globalToLocal(stage.mouseX, stage.mouseY);
+				if (_this.b03.hitbox.hitTest(pt3.x, pt3.y)) {
+					//alert("Hit");
+					if(!_this.b03.b03g.visible){				
+						_this.b01.b01g.visible = false;
+						_this.b02.b02g.visible = false;
+						_this.b03.b03g.visible = true;
+					}
+				}
+				else{
+					if(_this.b03.b03g.visible){
+						_this.b01.b01g.visible = false;
+						_this.b02.b02g.visible = false;
+						_this.b03.b03g.visible = false;
+					}
+				}
+			}	
+		}
+		stage.addEventListener("click", fl_ClickToGoToWebPage);
+		function fl_ClickToGoToWebPage() {	
+			window.open(clickTag, "_blank");	
+			//window.open("http://www.mail.ru", "_blank");	
+		}
+	}
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
+	// btnLink
+	this.btnLink = new lib.btnLink();
+	this.btnLink.parent = this;
+	this.btnLink.setTransform(150,150,1.5,1.5);
+	this.btnLink.alpha = 0.012;
+	new cjs.ButtonHelper(this.btnLink, 0, 1, 1);
+	this.timeline.addTween(cjs.Tween.get(this.btnLink).wait(1));
+	// Layer 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#FFFFFF").s().p("AAAAWIgVAiIgYgTIAagdIglgJIAJgcIAjAOIgCgnIAdAAIgCAnIAjgOIAJAcIglAJIAaAdIgYATg");
+	this.shape.setTransform(194.5,32.2);
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#FFFFFF").s().p("AhqA0IAAgYIgDABIgEACIgFAAQgFAAgFgCQgFgCgDgEQgEgEgBgFQgDgGAAgHQAAgGADgGQABgFAEgEQADgEAFgCQAFgCAFAAIAFAAIAEABIADACIAAgZIAPAAIAAAZIADgCIAEgBIAFAAQAFAAAFACQAFACADAEQADAEACAFQADAGAAAGQAAAHgDAGQgCAFgDAEQgDAEgFACQgFACgFAAIgFAAIgEgCIgDgBIAAAYgAhVgOIgDACIgDACIAAAXIADACIADACIAEAAQAFAAAEgEQAEgEAAgIQAAgHgEgEQgEgEgFAAIgEAAgAh9gKQgEAEAAAHQAAAIAEAEQAEAEAFAAIAEAAIADgCIADgCIAAgXIgDgCIgDgCIgEAAQgFAAgEAEgAD5AsIAAgNIgjAAIAAANIgPAAIAAgbIAEAAIADgDIACgDIACgEIAEgjIAqAAIAAAtIAHAAIAAAbgADgAHIgBAEIgCADIgCADIAWAAIAAgfIgPAAgAH3AdQgFgCgFgFQgEgEgCgFQgCgGAAgGQAAgFACgGQACgFAEgFQAFgEAFgCQAFgCAGAAQAGAAAEABQAFACAEADQADADADAFQACAEABAEIgPAAIgDgEIgEgDQgCgBgEAAQgGAAgEAEQgFAFAAAGQAAAHAFAFQAEAEAGAAQAEAAACgBIAEgDIADgEIAPAAQgBAEgCAEIgGAHQgEAEgFABQgEACgGAAQgGAAgFgCgAGjAfIgCAAIgBAAIAAgNIACAAQAEAAACgCQACgCAAgFIAEglIAsAAIAAA7IgPAAIAAgtIgQAAIgCAZQgBAKgFAFQgGAFgIAAIgCAAgAF0AdQgFgCgEgFQgEgEgDgFQgCgGAAgGQAAgFACgGQADgFAEgFQAEgEAFgCQAGgCAGAAQAGAAAFACQAFACAEAEQAEAEACAGQACAFAAAGIAAACIAAACIAAACIgqAAQABAEAEADQADADAGAAIAFAAIADgCIADgCIAPAAQgBADgCADIgGAGIgIAFQgEABgFAAQgGAAgGgCgAF2gLQgDAEgBAEIAcAAQgBgEgEgEQgDgDgGAAQgGAAgEADgAAFAdQgFgCgEgEQgFgEgDgFQgEgFgBgFIAQAAIACAEIAEAEIAGADQAEACAEAAQAEAAAEgCQAEgBADgDIAFgGIADgHIgdAAIAAgOIAdAAIgDgIIgFgGIgHgEQgEgCgEAAQgEAAgEACIgGADIgEAEIgBAEIgQAAQABgFADgFQADgFAFgEQAEgEAGgCQAGgDAHAAQAIAAAHAEQAHADAGAGQAFAFADAIQADAHAAAJQAAAJgDAGQgDAIgFAFQgGAGgHADQgHADgIAAQgHAAgHgCgAjBAdQgFgCgEgFQgEgEgCgFQgDgGAAgGQAAgFADgGQACgFAEgFQAEgEAFgCQAGgCAGAAQAGAAAFACQAGACAEAEQAEAFACAFQADAGAAAFQAAAGgDAGQgCAFgEAEQgEAFgGACQgFACgGAAQgGAAgGgCgAjAgKQgEAFAAAGQAAAHAEAFQAFAEAGAAQAGAAAFgEQAEgFAAgHQAAgGgEgFQgFgEgGAAQgGAAgFAEgAkgAaQgFgFgCgJIAOAAIABADIADADQADABADAAQAEAAADgCQAAAAABgBQAAgBAAAAQAAgBABAAQAAgBAAAAQAAgBAAAAQgBgBAAgBQAAAAAAgBQgBAAAAgBQgCgBgFAAIgGAAIAAgLIAGAAQAEAAACgCQAAAAABgBQAAAAAAAAQAAgBABgBQAAAAAAgBQAAgBAAAAQgBgBAAAAQAAgBAAAAQgBgBAAAAQgCgCgEAAIgFABIgDACIgBADIgOAAQABgIAGgFQAGgFAKAAQAFAAAEABQAEACADACIAEAGIACAHIgBAFIgDAEIgDABIAEAEIADAEQABACAAADIgBAHIgFAGIgHAEQgEABgGAAQgLAAgGgFgAmiAbQgFgFAAgHQAAgFABgEQACgDAEgDQAEgCAHgBQAHgCAKAAQAAgEgCgDQgDgDgEAAIgFABIgDACIgCAEIgOAAQAAgFACgDQACgEADgDQADgCAFgCQAEgBAGAAQAFAAAEABIAIAFQADADABAFQACAEAAAFIAAAkIgLAAIgCgGIgFADIgFACIgHABQgKAAgFgEgAmOAFIgHACIgDADIAAADQAAABAAAAQAAABAAABQAAAAABABQAAAAABABQACACADAAQAGAAAEgEQADgDAAgGIAAgCIgKAAgAFOAfIgTgbIAAAbIgPAAIAAgbIgSAbIgRAAIAWgfIgUgcIARAAIAQAZIAAgZIAPAAIAAAZIARgZIARAAIgUAcIAWAfgACxAfIAAgYIgYAAIAAAYIgPAAIAAg7IAPAAIAAAWIAYAAIAAgWIAPAAIAAA7gABtAfIAAglIgaAlIgOAAIAAg7IAPAAIAAAlIAZglIAPAAIAAA7gAlAAfIAAglIgZAlIgOAAIAAg7IAPAAIAAAlIAZglIAOAAIAAA7gAnqAfIAAhRIAeAAQAGAAAFACQAFACAEAEQAEAEACAFQACAFAAAFQAAAGgCAFQgCAFgEAEQgEADgFABQgFADgGAAIgOAAIAAAbgAnagKIAOAAIAFgBIAEgDIADgEIABgFIgBgEIgDgEIgEgDIgFgBIgOAAgAoJgXIgIALIgIgGIAJgKIgNgEIADgJIAMAEIAAgOIAKAAIgBAOIANgEIADAJIgNAEIAJAKIgIAGgABagjIgGgDIgEgGIgCgGIALAAIACADIACADIADABIAEgBIACgDIACgDIALAAIgCAGIgEAGIgGADIgHABIgGgBgAlTgjIgFgDIgEgGIgCgGIALAAIABADIACADIAEABIADgBIADgDIABgDIALAAIgCAGIgEAGIgFADIgHABIgHgBg");
+	this.shape_1.setTransform(59.1,292.6);
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f("rgba(0,0,0,0.4)").s().p("A+xFeIAAq7MA9jAAAIAAK7g");
+	this.shape_2.setTransform(154,324.6);
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_2},{t:this.shape_1},{t:this.shape}]}).wait(1));
+	// age
+	this.age = new lib.age();
+	this.age.parent = this;
+	this.age.setTransform(286.2,13.8);
+	this.timeline.addTween(cjs.Tween.get(this.age).wait(1));
+	// b03
+	this.b03 = new lib.b03();
+	this.b03.parent = this;
+	this.b03.setTransform(51,110);
+	this.timeline.addTween(cjs.Tween.get(this.b03).wait(1));
+	// b02
+	this.b02 = new lib.b02();
+	this.b02.parent = this;
+	this.b02.setTransform(150,200);
+	this.timeline.addTween(cjs.Tween.get(this.b02).wait(1));
+	// b01
+	this.b01 = new lib.b01();
+	this.b01.parent = this;
+	this.b01.setTransform(240,100);
+	this.timeline.addTween(cjs.Tween.get(this.b01).wait(1));
+	// bgFon
+	this.bgFon = new lib.bgFon();
+	this.bgFon.parent = this;
+	this.bgFon.setTransform(150,150,1,1,0,0,0,-150,50);
+	this.timeline.addTween(cjs.Tween.get(this.bgFon).wait(1));
+	// back
+	this.fon01 = new lib.fon03();
+	this.fon01.parent = this;
+	this.fon01.setTransform(150,200);
+	this.timeline.addTween(cjs.Tween.get(this.fon01).wait(1));
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-100,150,800,359.6);
+// library properties:
+lib.properties = {
+	width: 300,
+	height: 300,
+	fps: 40,
+	color: "#A6A29B",
+	opacity: 1.00,
+	webfonts: {},
+	manifest: [
+		{src:"images/b01_g.png", id:"b01_g"},
+		{src:"images/b01_m.png", id:"b01_m"},
+		{src:"images/b01_n.png", id:"b01_n"},
+		{src:"images/b02_g.png", id:"b02_g"},
+		{src:"images/b02_m.png", id:"b02_m"},
+		{src:"images/b02_n.png", id:"b02_n"},
+		{src:"images/b03_g.png", id:"b03_g"},
+		{src:"images/b03_m.png", id:"b03_m"},
+		{src:"images/b03_n.png", id:"b03_n"},
+		{src:"images/bg.jpg", id:"bg"}
+	],
+	preloads: []
+};
+})(lib = lib||{}, images = images||{}, createjs = createjs||{}, ss = ss||{}, AdobeAn = AdobeAn||{});
+var lib, images, createjs, ss, AdobeAn;
+</script>
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	images = images||{};
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt) {	
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.MKT21176_ag898_roa_300x300_b01();
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.enableMouseOver();	
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+	fnStartAnimation();
+}
+</script>
+<!-- write your code here -->
+</head>
+<body onload="init();" style="margin:0px;">
+	<div id="animation_container" style="background-color:rgba(166, 162, 155, 1.00); width:300px; height:300px">
+		<canvas id="canvas" width="300" height="300" style="position: absolute; display: block; background-color:rgba(166, 162, 155, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:300px; height:300px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+</body>
+</html>

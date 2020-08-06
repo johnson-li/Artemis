@@ -1,0 +1,2 @@
+301 http://www.jd.com/ https://corporate.jd.com/home
+301 https://ir.jd.com/phoenix.zhtml?c=253315&p=iframe-alerts https://ir.jd.com/shareholder-services/email-alerts?c=253315&p=iframe-alerts
