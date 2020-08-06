@@ -48,8 +48,8 @@ def create_instance(zone, name):
     subnet = "regions/%s/subnetworks/default2" % zone[:-2]
     startup_script = open(os.path.join(os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
     if os.path.isfile(os.path.expanduser('~/.ssh/id_rsa.pub')):
-        startup_script = '%s\necho %s >> /home/johnsonli1993/.ssh/authorized_keys' \
-                         % (startup_script, open(os.path.expanduser('~/.ssh/id_rsa.pub')).read())
+        pub = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read().strip()
+        startup_script += f"\necho '{pub}' >> /home/johnsonli1993/.ssh/authorized_keys"
     config = {
         'description': '',
         'name': name,

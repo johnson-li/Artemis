@@ -29,7 +29,7 @@ class GceUtilMul(object):
 
     def create_instances(self, single=False):
         existing_instance = self.get_instances()
-        print(f'Existing instances: {existing_instance}')
+        logger.info(f'Existing instances: {existing_instance}')
         with Pool(self.concurrency) as pool:
             lis = []
             for zone in self.zones:
