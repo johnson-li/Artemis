@@ -34,7 +34,10 @@ def prepare_data():
     copyfile('%s/ngtcp2/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data2/server' % DIR_PATH)
     copyfile('%s/ngtcp2-old/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data2/client_transport' % DIR_PATH)
     copyfile('%s/ngtcp2-old/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data2/server_transport' % DIR_PATH)
-    copyfile('%s/ngtcp2/examples/balancer2' % os.path.dirname(PROJECT_PATH), '%s/data2/balancer2' % DIR_PATH)
+    copyfile('%s/ngtcp2-old/examples/balancer2' % os.path.dirname(PROJECT_PATH), '%s/data2/balancer2' % DIR_PATH)
+    copyfile('%s/ngtcp2-old/lib/.libs/libngtcp2.so.0' % os.path.dirname(PROJECT_PATH), '%s/data2/libngtcp2.so.0' % DIR_PATH)
+    copyfile('%s/openssl/libssl.so.1.1' % os.path.dirname(PROJECT_PATH), '%s/data2/libssl.so.1.1' % DIR_PATH)
+    copyfile('%s/openssl/libcrypto.so.1.1' % os.path.dirname(PROJECT_PATH), '%s/data2/libcrypto.so.1.1' % DIR_PATH)
     zip_data()
 
 
@@ -171,7 +174,7 @@ def prepare_instances():
 
 
 def init_database(instances):
-    subprocess.call(['%s/data/exp2/init_db.sh' % DIR_PATH])
+    subprocess.call(['%s/data2/init_db.sh' % DIR_PATH])
 
 
 def main():
