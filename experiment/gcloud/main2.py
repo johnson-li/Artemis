@@ -35,7 +35,8 @@ def prepare_data():
     copyfile('%s/ngtcp2-old/examples/client' % os.path.dirname(PROJECT_PATH), '%s/data2/client_transport' % DIR_PATH)
     copyfile('%s/ngtcp2-old/examples/server' % os.path.dirname(PROJECT_PATH), '%s/data2/server_transport' % DIR_PATH)
     copyfile('%s/ngtcp2-old/examples/balancer2' % os.path.dirname(PROJECT_PATH), '%s/data2/balancer2' % DIR_PATH)
-    copyfile('%s/ngtcp2-old/lib/.libs/libngtcp2.so.0' % os.path.dirname(PROJECT_PATH), '%s/data2/libngtcp2.so.0' % DIR_PATH)
+    copyfile('%s/ngtcp2-old/lib/.libs/libngtcp2.so.0' % os.path.dirname(PROJECT_PATH),
+             '%s/data2/libngtcp2.so.0' % DIR_PATH)
     copyfile('%s/openssl/libssl.so.1.1' % os.path.dirname(PROJECT_PATH), '%s/data2/libssl.so.1.1' % DIR_PATH)
     copyfile('%s/openssl/libcrypto.so.1.1' % os.path.dirname(PROJECT_PATH), '%s/data2/libcrypto.so.1.1' % DIR_PATH)
     zip_data()
@@ -167,7 +168,7 @@ def prepare_instances():
         json.dump(lis, f, ensure_ascii=False)
 
     logger.info('Initiate instances')
-    gce_util_mul.init_instances(execute_init_script=True)
+    gce_util_mul.init_instances(execute_init_script=True, second_zip=True)
     logger.info('Initiate experiments')
     # gce_util_mul.init_experiment()
     return instances
@@ -177,12 +178,16 @@ def init_database(instances):
     subprocess.call(['%s/data2/init_db.sh' % DIR_PATH])
 
 
+def conduct_experiment(instances):
+    gce_util_mul.conduct_experiment(instances)
+
+
 def main():
     ts_start = time.time()
     prepare_data()
     instances = prepare_instances()
     init_database(instances)
-    # conduct_experiment(instances)
+    conduct_experiment(instances)
     print(f"Starting servers takes {time.time() - ts_start:.2f} seconds")
 
 

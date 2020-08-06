@@ -69,10 +69,11 @@ class GceUtilMul(object):
             res = list(filter(lambda x: x is not None, result))
             return res
 
-    def init_instances(self, execute_init_script=True):
+    def init_instances(self, execute_init_script=True, second_zip=False):
         with Pool(self.concurrency) as pool:
             instances = self.get_instances()
-            result = pool.starmap(gce_utils.init_instance, [(instance, execute_init_script) for instance in instances])
+            result = pool.starmap(gce_utils.init_instance,
+                                  [(instance, execute_init_script, second_zip) for instance in instances])
             return result
 
     def init_experiment(self):

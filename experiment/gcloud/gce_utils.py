@@ -124,23 +124,23 @@ def execute_ssh_sync(client, command, target_ip=None):
 ##
 # Transport data and install software
 #
-def init_instance(instance, execute_init_script=True):
+def init_instance(instance, execute_init_script=True, second_zip=False):
+    zip_file = 'data.zip' if second_zip else 'data2.zip'
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
     client.connect(hostname=ip, username=SERVER_USER, port=22, pkey=key, allow_agent=False, look_for_keys=False)
-    # TODO: calculate the md5 of local data.zip and remote data.zip. Re-upload data.zip if the md5 is not matched
-    stdin, stdout, stderr = client.exec_command("md5sum data.zip | cut -d ' ' -f1")
+    stdin, stdout, stderr = client.exec_command(f"md5sum {zip_file} | cut -d ' ' -f1")
     remote_md5 = stdout.read().decode()
-    s = os.popen("md5sum %s/data.zip | cut -d ' ' -f1" % DIR_PATH)
+    s = os.popen(f"md5sum {DIR_PATH}/{zip_file} | cut -d ' ' -f1")
     local_md5 = s.read()
     if remote_md5 != local_md5:
         sftp = paramiko.SFTPClient.from_transport(client.get_transport())
-        sftp.put('%s/data.zip' % DIR_PATH, 'data.zip')
+        sftp.put(f'{DIR_PATH}/{zip_file}', zip_file)
         execute_ssh_sync(client, 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -yqq unzip; '
                                  '[ -e data ] && rm -r data; '
-                                 'unzip data.zip;'
+                                 f'unzip {zip_file};'
                                  'cp -r data/websites ./', ip)
     f = open('machine.json', encoding='utf-8')
     lis = json.loads(f.read())
