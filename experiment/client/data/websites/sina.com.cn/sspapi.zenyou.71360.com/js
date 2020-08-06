@@ -1,0 +1,67 @@
+
+document.write( "<script src = '//img.zenyou.71360.com/ssp/upload/workingprebid.js' async></script>" );
+document.write( "<div id = 'zhendao23264653721592977593' style='position:relative;pointer-events: none;'></div>" );
+		
+	var pbjs = pbjs || {};
+	pbjs.que = pbjs.que || [];
+	window.zhendaoads =window.zhendaoads || {}
+	var bidTimeOut = 2000;
+
+	pbjs.que.push(function() {
+		var adUnits = [ {
+			code : 'zhendao23264653721592977593',
+			sizes : [ [1000,90 ] ],
+			bids : [ {
+				bidder : 'zhendao',
+				params : {
+					placementId : '537',
+					bidfloor : 1000,
+					pos:4,
+					
+					supporttype:"jpg,png,gif,swf,flv,dynamic",
+					supplierid :2
+					
+				}
+			},
+			]
+		}];
+		var sel = {"zhendao23264653721592977593":{"width":1000,"height":90,"position":5,
+		"borderlr":0,"bordertop":0,"positiontype":0,
+		"positionfollow":0,"opentype":0,"noshowtype":2}}
+
+		pbjs.addAdUnits(adUnits);
+		pbjs.requestBids({
+			timeout: bidTimeOut,
+			// This callback gets triggered when all bids for this
+			// ad unit come back. 
+			bidsBackHandler : function(bidResponses) {
+				var targetingParams = pbjs.getAdserverTargeting();
+				for ( var i in bidResponses) {
+					if (bidResponses[i]) {
+						var data = bidResponses[i]["bids"][0]["adTag"];
+						var ad_id = bidResponses[i]["bids"][0]["ad_id"];
+						
+						if(typeof(data) != "undefined"){
+							var span ='<span id="closed" style="position: absolute;right:0;bottom:0;font-size:10px;background-color:rgba(0,0,0,0.5);color:white;padding:0px 3px;line-height:18px;">广告</span>';
+							var clear = '<div style="clear:both;"></div>'
+							data=span+data+clear;
+							if(window.zhendaoads[ad_id] != true){
+								window.zhendaoads[ad_id] = true;
+								document.getElementById(i).innerHTML=data;
+								
+							}
+						}
+					}
+				}
+			var a = document.getElementById("zhendao23264653721592977593").getElementsByTagName("a");
+	var b = document.getElementById("zhendao23264653721592977593").getElementsByTagName("iframe");
+    	if(a.length==0 && b.length==0 ){
+    	var st ="position:relative;pointer-events: none;";
+				 document.getElementById("zhendao23264653721592977593").setAttribute('style',st);document.getElementById("zhendao23264653721592977593").innerHTML=" <span id='closed' style='position: absolute;right:0;bottom:0;font-size:10px;background-color:rgba(0,0,0,0.5);color:white;padding:0px 3px; line-height: 18px;'>广告</span><a href='http://www.71360.com' target='_blank' title=''><img src='//img.zenyou.71360.com/ssp/upload/2_1555586602_796434g' style='display: block;pointer-events: all;' alt='' border='0'></a> <div style='clear:both;'></div>";
+    	}
+			}
+		});
+	});
+	
+	
+

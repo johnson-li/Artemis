@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        function getCookie(name){
+            var pattern = RegExp(name + "=.[^;]*")
+            matched = document.cookie.match(pattern)
+            if(matched){
+                var cookie = matched[0].split('=')
+                return cookie[1];
+            }
+            return false;
+        }
+        function getSiteId() {
+            var requestURL = window.location.search;
+            if(requestURL) {
+                var queryString = requestURL.substring(requestURL.indexOf("?") + 1, requestURL.length);
+            } else {
+                return -1;
+            }
+            var params = queryString.split("&");
+            var site_id = -1;
+            for(var i = 0; i < params.length; i++){
+                var name  = params[i].substring(0,params[i].indexOf("="));
+                var value = params[i].substring(params[i].indexOf("=") + 1, params[i].length);
+                if(name == 'site_id') {
+                    site_id = parseInt(value);
+                    break;
+                }
+            }
+            return site_id;
+        }
+        site_id = getSiteId();
+        if(site_id>0) {
+            var cookie = getCookie('ARSC2_' + site_id);
+			var cookieE = getCookie('APEC2' + site_id);
+            if((cookie != false && cookie != '') || cookieE != '') {
+                window.top.postMessage('true', '*');
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

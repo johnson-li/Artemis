@@ -1,0 +1,42 @@
+<img src="https://rs.mail.ru/d26608439.gif?rnd=156399827&ts=1592977694" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/><script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var gptadslots = [];
+  var googletag = googletag || { cmd: [] };
+
+  googletag.cmd.push(function () {
+    gptadslots.push(googletag.defineSlot('/205338224/Mail.ru_tgb_native', 'fluid', 'div-gpt-ad-8326818-1')
+      .addService(googletag.pubads()));
+
+    googletag.pubads().enableSingleRequest();
+
+    googletag.pubads().set('page_url', 'https://mail.ru');
+
+    googletag.enableServices();
+  });
+</script>
+
+<div id='div-gpt-ad-8326818-1'>
+  <script>
+    googletag.cmd.push(function () { googletag.display('div-gpt-ad-8326818-1'); });
+
+    setTimeout(function () {
+      if (document.querySelector('iframe[id^="google_ads_iframe"]')) {
+        document.querySelector('iframe[id^="google_ads_iframe"]').style.height = '90px';
+      }
+      startInterval();
+    }, 1000)
+
+    function startInterval() {
+      setInterval(function () {
+        if (document.querySelector('iframe[id^="google_ads_iframe"]')) {
+          document.querySelector('iframe[id^="google_ads_iframe"]').style.display = 'flex';
+
+          setTimeout(function () {
+            document.querySelector('iframe[id^="google_ads_iframe"]').style.display = 'block';
+          }, 0);
+        }
+      }, 500)
+    }
+
+  </script>
+</div>

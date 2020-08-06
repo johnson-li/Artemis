@@ -1,0 +1,5 @@
+https://www.paypalobjects.com/pa/mi/miconfig.js
+https://www.paypal.com/smartchat/open/eligibility?intent=SALESCHAT&page=/us/home
+https://www.paypalobjects.com/pa/mi/3p/eloqua.js
+https://www.paypalobjects.com/pa/mi/3p/gtag/gtag.js
+https://www.paypalobjects.com/pa/mi/3p/gtag/analytics.js

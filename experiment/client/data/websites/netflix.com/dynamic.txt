@@ -1,0 +1,7 @@
+https://www.netflix.com/personalization/cl2/freeform/WebsiteDetect?source=wwwhead&fetchType=js&modalView=nmLanding
+https://www.netflix.com/personalization/cl2/freeform/WebsiteScreen?source=wwwhead&fetchType=js&winw=800&winh=600&screenw=800&screenh=600&ratio=1
+https://ae.nflximg.net/monet/scripts/adtech_iframe_target_05.html?data={"membership_status":"ANONYMOUS","country":"US","region_code":"CA","fbaId":"2b190f21-5a59-423c-940b-386a85e0d62b","is_member":"ANONYMOUS","wasFormerMember":false,"referrer":"nmLanding"}
+https://codex.nflxext.com/^3.0.0/truthBundle/webui/0.0.1-shakti-css-v05c75608/css/css/less|pages|signup|simplicity|simplicity.less/1/tDvL3ruH8CIK/none/true/none
+https://www.netflix.com/personalization/log
+https://www.netflix.com/personalization/cl2/freeform/DebugEvent?source=www&action=cssSimplicityPrefetch&statusCode=200&startTime=1592977671871&endTime=1592977672132
+https://ae.nflximg.net/monet/scripts/netflix_tag_05.html?data={"membership_status":"ANONYMOUS","country":"US","region_code":"CA","fbaId":"2b190f21-5a59-423c-940b-386a85e0d62b","is_member":"ANONYMOUS","wasFormerMember":false,"referrer":"nmLanding"}

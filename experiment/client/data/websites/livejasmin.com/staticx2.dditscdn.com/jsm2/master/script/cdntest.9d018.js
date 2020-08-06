@@ -1,0 +1,1 @@
+function cdnTest(){return true;}
