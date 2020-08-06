@@ -81,7 +81,7 @@ def prepare_instances():
     logging.info('existing instances: %s' % [i['name'] for i in instances])
 
     if not instances_already_created(zones, instances):
-        gce_util_mul.create_instances()
+        gce_util_mul.create_instances(single=True)
         gce_util_mul.wait_for_instances_to_start()
 
     for i in range(len(zones)):
@@ -101,18 +101,20 @@ def prepare_instances():
     command = 'gcloud compute health-checks create tcp health-check --port 110'
     command += ' > /dev/null 2>&1'
     os.system(command)
-    command = 'gcloud compute backend-services create load-balancer --global --protocol TCP --health-checks health-check --timeout 5m --port-name tcp110'
+    command = 'gcloud compute backend-services create load-balancer --global --protocol TCP ' \
+              '--health-checks health-check --timeout 5m --port-name tcp110'
     command += ' > /dev/null 2>&1'
     os.system(command)
 
     for i in range(len(zones)):
-        command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group ' + zones[i][
-                                                                                                           :-2] + ' --instance-group-zone ' + \
+        command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group ' + \
+                  zones[i][:-2] + ' --instance-group-zone ' + \
                   zones[i] + ' --balancing-mode UTILIZATION --max-utilization 0.8'
         command += ' > /dev/null 2>&1'
         os.system(command)
 
-    command = 'gcloud compute target-tcp-proxies create load-balancer-target-proxy --backend-service load-balancer --proxy-header NONE'
+    command = 'gcloud compute target-tcp-proxies create load-balancer-target-proxy ' \
+              '--backend-service load-balancer --proxy-header NONE'
     command += ' > /dev/null 2>&1'
     os.system(command)
     command = 'gcloud compute addresses create load-balancer-static-ipv4 --ip-version=IPV4 --global'
@@ -127,10 +129,12 @@ def prepare_instances():
         if ad[i] == 'load-balancer-static-ipv4':
             lb_ip = ad[i + 1]
 
-    command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global --target-tcp-proxy load-balancer-target-proxy --address ' + lb_ip + ' --ports 110'
+    command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global ' \
+              '--target-tcp-proxy load-balancer-target-proxy --address ' + lb_ip + ' --ports 110'
     command += ' > /dev/null 2>&1'
     os.system(command)
-    command = 'gcloud compute firewall-rules create allow-load-balancer-and-health --source-ranges 0.0.0.0/0 --allow tcp:110'
+    command = 'gcloud compute firewall-rules create allow-load-balancer-and-health ' \
+              '--source-ranges 0.0.0.0/0 --allow tcp:110'
     command += ' > /dev/null 2>&1'
     os.system(command)
 
@@ -164,7 +168,7 @@ def prepare_instances():
 
 
 def init_database(instances):
-    subprocess.call(['%s/data/init_db.sh' % DIR_PATH])
+    subprocess.call(['%s/data/exp2/init_db.sh' % DIR_PATH])
 
 
 def main():
