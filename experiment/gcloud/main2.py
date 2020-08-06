@@ -150,15 +150,16 @@ def prepare_instances():
         lis[name] = {'external_ip1': ex_ip1, 'external_ip2': ex_ip2, 'internal_ip1': in_ip1, 'internal_ip2': in_ip2,
                      'mac1': mac1, 'mac2': mac2, 'zone': zone}
 
-    s = os.popen('sudo mysql -e "show master status\G" | grep Position')
-    position = s.read()
+    s = os.popen('sudo mysql -e "show master status" -E| grep Position')
+    position = s.read().strip()
     pos = position.split()
     lis['position'] = pos[1]
-    s = os.popen('sudo mysql -e "show master status\G" | grep File')
-    f = s.read()
+    s = os.popen('sudo mysql -e "show master status" -E| grep File')
+    f = s.read().strip()
     fl = f.split()
     lis['file'] = fl[1]
 
+    logger.info('Dump server info to machine.json')
     with open('machine.json', 'w', encoding='utf-8') as f:
         json.dump(lis, f, ensure_ascii=False)
 
