@@ -50,7 +50,7 @@ def get_mac(instance):
     success = False
     while not success:
         try:
-            client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False,
+            client.connect(hostname=ip, username='johnsonli1993', port=22, pkey=key, allow_agent=False,
                            look_for_keys=False)
             success = True
         except Exception as _:

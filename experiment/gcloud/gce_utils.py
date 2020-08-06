@@ -4,6 +4,7 @@ import json
 import googleapiclient.discovery
 import paramiko
 from google.oauth2 import service_account
+from experiment.gcloud.config import SERVER_USER
 
 from experiment.gcloud.config import *
 from experiment.gcloud.logging import logging
@@ -128,7 +129,7 @@ def init_instance(instance, execute_init_script=True):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
-    client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
+    client.connect(hostname=ip, username=SERVER_USER, port=22, pkey=key, allow_agent=False, look_for_keys=False)
     # TODO: calculate the md5 of local data.zip and remote data.zip. Re-upload data.zip if the md5 is not matched
     stdin, stdout, stderr = client.exec_command("md5sum data.zip | cut -d ' ' -f1")
     remote_md5 = stdout.read().decode()
@@ -188,6 +189,6 @@ def conduct_experiment(instance):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
-    client.connect(hostname=ip, username='wch19990119', port=22, pkey=key, allow_agent=False, look_for_keys=False)
+    client.connect(hostname=ip, username=SERVER_USER, port=22, pkey=key, allow_agent=False, look_for_keys=False)
     execute_ssh_sync(client, 'chmod +x data/start_experiment.sh && ./data/start_experiment.sh', ip)
 
