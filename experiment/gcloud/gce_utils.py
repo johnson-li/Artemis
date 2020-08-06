@@ -125,7 +125,7 @@ def execute_ssh_sync(client, command, target_ip=None):
 # Transport data and install software
 #
 def init_instance(instance, execute_init_script=True, second_zip=False):
-    zip_file = 'data.zip' if second_zip else 'data2.zip'
+    zip_file = 'data2.zip' if second_zip else 'data.zip'
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)

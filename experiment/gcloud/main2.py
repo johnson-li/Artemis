@@ -186,9 +186,11 @@ def main():
     ts_start = time.time()
     prepare_data()
     instances = prepare_instances()
+    logger.info('Initiate database')
     init_database(instances)
+    logger.info('Conduct experiment')
     conduct_experiment(instances)
-    print(f"Starting servers takes {time.time() - ts_start:.2f} seconds")
+    logger.info(f"Starting servers takes {time.time() - ts_start:.2f} seconds")
 
 
 if __name__ == '__main__':

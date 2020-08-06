@@ -3,3 +3,7 @@ client
 server
 client_transport
 server_transport
+libcrypto.so.1.1
+libngtcp2.so.0
+libssl.so.1.1
+
