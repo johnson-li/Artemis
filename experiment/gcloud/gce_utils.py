@@ -148,7 +148,7 @@ def init_instance(instance, execute_init_script=True, second_zip=False):
     lis['hostname'] = name
     execute_ssh_sync(client, "echo '{}' > machine.json".format(json.dumps(lis)), ip)
     if execute_init_script:
-        execute_ssh_sync(client, 'chmod +x data/init_wrapper.sh && ./data/init_wrapper.sh', ip)
+        execute_ssh_sync(client, f'chmod +x {data}/init_wrapper.sh && ./{data}/init_wrapper.sh', ip)
     client.close()
 
 
@@ -174,11 +174,12 @@ def instances_already_created(zones: list, instances):
     return len(left) == 0 and len(to_be_deleted) == 0
 
 
-def conduct_experiment(instance):
+def conduct_experiment(instance, second_zip=False):
+    data = 'data2' if second_zip else 'data'
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ip = get_external_ip(instance)
     key = paramiko.RSAKey.from_private_key_file(os.path.expanduser('~/.ssh/id_rsa'))
     client.connect(hostname=ip, username=SERVER_USER, port=22, pkey=key, allow_agent=False, look_for_keys=False)
-    execute_ssh_sync(client, 'chmod +x data/start_experiment.sh && ./data/start_experiment.sh', ip)
+    execute_ssh_sync(client, f'chmod +x {data}/start_experiment.sh && ./{data}/start_experiment.sh', ip)
 

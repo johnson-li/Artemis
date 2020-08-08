@@ -82,7 +82,7 @@ def instances_deleted(zone):
     return not instances
 
 
-def conduct_experiments(zone, instances):
-    return [conduct_experiment(instance) for instance
+def conduct_experiments(zone, instances, second_zip=False):
+    return [conduct_experiment(instance, second_zip) for instance
             in get_instances(zone, instances=instances, hestia_only=True)]
 

@@ -18,6 +18,7 @@ logger = logging.getLogger('main')
 ZONE_NUMBERS = len(ZONES)
 zones = ZONES[:ZONE_NUMBERS]
 gce_util_mul = GceUtilMul(concurrency=CONCURRENCY, zones=zones)
+INIT_GCLOUD = False
 
 
 def zip_data():
@@ -88,60 +89,61 @@ def prepare_instances():
         gce_util_mul.create_instances(single=True)
         gce_util_mul.wait_for_instances_to_start()
 
-    logger.info('Configure Google load balancing')
-    for i in range(len(zones)):
-        command = 'gcloud compute instance-groups unmanaged create ' + zones[i][:-2] + ' --zone ' + zones[i]
-        command += ' > /dev/null 2>&1'
-        os.system(command)
-        command = 'gcloud compute instance-groups set-named-ports ' + zones[i][
-                                                                      :-2] + ' --named-ports tcp110:110 --zone ' + \
-                  zones[i]
-        command += ' > /dev/null 2>&1'
-        os.system(command)
-        command = 'gcloud compute instance-groups unmanaged add-instances ' + zones[i][:-2] + ' --instances hestia-' + \
-                  zones[i] + '-router --zone ' + zones[i]
-        command += ' > /dev/null 2>&1'
-        os.system(command)
+    if INIT_GCLOUD:
+        logger.info('Configure Google load balancing')
+        for i in range(len(zones)):
+            command = 'gcloud compute instance-groups unmanaged create ' + zones[i][:-2] + ' --zone ' + zones[i]
+            command += ' > /dev/null 2>&1'
+            os.system(command)
+            command = 'gcloud compute instance-groups set-named-ports ' + zones[i][
+                                                                          :-2] + ' --named-ports tcp110:110 --zone ' + \
+                      zones[i]
+            command += ' > /dev/null 2>&1'
+            os.system(command)
+            command = 'gcloud compute instance-groups unmanaged add-instances ' + zones[i][:-2] + ' --instances hestia-' + \
+                      zones[i] + '-router --zone ' + zones[i]
+            command += ' > /dev/null 2>&1'
+            os.system(command)
 
-    command = 'gcloud compute health-checks create tcp health-check --port 110'
-    command += ' > /dev/null 2>&1'
-    os.system(command)
-    command = 'gcloud compute backend-services create load-balancer --global --protocol TCP ' \
-              '--health-checks health-check --timeout 5m --port-name tcp110'
-    command += ' > /dev/null 2>&1'
-    os.system(command)
-
-    for i in range(len(zones)):
-        command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group ' + \
-                  zones[i][:-2] + ' --instance-group-zone ' + \
-                  zones[i] + ' --balancing-mode UTILIZATION --max-utilization 0.8'
+        command = 'gcloud compute health-checks create tcp health-check --port 110'
+        command += ' > /dev/null 2>&1'
+        os.system(command)
+        command = 'gcloud compute backend-services create load-balancer --global --protocol TCP ' \
+                  '--health-checks health-check --timeout 5m --port-name tcp110'
         command += ' > /dev/null 2>&1'
         os.system(command)
 
-    command = 'gcloud compute target-tcp-proxies create load-balancer-target-proxy ' \
-              '--backend-service load-balancer --proxy-header NONE'
-    command += ' > /dev/null 2>&1'
-    os.system(command)
-    command = 'gcloud compute addresses create load-balancer-static-ipv4 --ip-version=IPV4 --global'
-    command += ' > /dev/null 2>&1'
-    os.system(command)
+        for i in range(len(zones)):
+            command = 'gcloud compute backend-services add-backend load-balancer --global --instance-group ' + \
+                      zones[i][:-2] + ' --instance-group-zone ' + \
+                      zones[i] + ' --balancing-mode UTILIZATION --max-utilization 0.8'
+            command += ' > /dev/null 2>&1'
+            os.system(command)
 
-    s = os.popen('gcloud compute addresses list')
-    ad_list = s.read()
-    ad = ad_list.split()
-    lb_ip = ''
-    for i in range(len(ad)):
-        if ad[i] == 'load-balancer-static-ipv4':
-            lb_ip = ad[i + 1]
+        command = 'gcloud compute target-tcp-proxies create load-balancer-target-proxy ' \
+                  '--backend-service load-balancer --proxy-header NONE'
+        command += ' > /dev/null 2>&1'
+        os.system(command)
+        command = 'gcloud compute addresses create load-balancer-static-ipv4 --ip-version=IPV4 --global'
+        command += ' > /dev/null 2>&1'
+        os.system(command)
 
-    command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global ' \
-              '--target-tcp-proxy load-balancer-target-proxy --address ' + lb_ip + ' --ports 110'
-    command += ' > /dev/null 2>&1'
-    os.system(command)
-    command = 'gcloud compute firewall-rules create allow-load-balancer-and-health ' \
-              '--source-ranges 0.0.0.0/0 --allow tcp:110'
-    command += ' > /dev/null 2>&1'
-    os.system(command)
+        s = os.popen('gcloud compute addresses list')
+        ad_list = s.read()
+        ad = ad_list.split()
+        lb_ip = ''
+        for i in range(len(ad)):
+            if ad[i] == 'load-balancer-static-ipv4':
+                lb_ip = ad[i + 1]
+
+        command = 'gcloud beta compute forwarding-rules create load-balancer-ipv4-forwarding-rule --global ' \
+                  '--target-tcp-proxy load-balancer-target-proxy --address ' + lb_ip + ' --ports 110'
+        command += ' > /dev/null 2>&1'
+        os.system(command)
+        command = 'gcloud compute firewall-rules create allow-load-balancer-and-health ' \
+                  '--source-ranges 0.0.0.0/0 --allow tcp:110'
+        command += ' > /dev/null 2>&1'
+        os.system(command)
 
     logger.info('Initiate database')
     instances = get_instances()
@@ -179,7 +181,7 @@ def init_database(instances):
 
 
 def conduct_experiment(instances):
-    gce_util_mul.conduct_experiment(instances)
+    gce_util_mul.conduct_experiment(instances, second_zip=True)
 
 
 def main():
