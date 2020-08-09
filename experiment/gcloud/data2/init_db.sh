@@ -1,13 +1,7 @@
 #!/bin/bash
 
 date >~/init_db.sh.start_ts
-
-test_server_ip="35.238.34.228"
 hostname=$(hostname)
-if [[ $hostname == *server ]]; then
-  date >~/init_db.sh.end_ts
-  exit 0
-fi
 
 if [[ $hostname == 'workstation' ]]; then
   sudo mysql -e "create database if not exists serviceid_db" >/dev/null
@@ -19,7 +13,6 @@ if [[ $hostname == 'workstation' ]]; then
   #auth='--login-path=local'
   #echo johnson | unbuffer -p mysql_config_editor set --login-path=local --host=localhost --user=johnson --password --warn=false > /dev/null
 else
-  echo 123
   echo root | unbuffer -p mysql_config_editor set --login-path=local --host=localhost --user=root --password --warn=false >/dev/null
   mysql --login-path=local -e "create database if not exists serviceid_db" >/dev/null
   mysql --login-path=local -e "create user if not exists 'johnson' identified by 'johnson'" >/dev/null
