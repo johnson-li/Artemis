@@ -20,8 +20,7 @@ then
     auth='-ujohnson -pjohnson'
     #auth='--login-path=local'
     #echo johnson | unbuffer -p mysql_config_editor set --login-path=local --host=localhost --user=johnson --password --warn=false > /dev/null
-elif [[ $hostname == *router  ]]
-then
+else
     echo root | unbuffer -p mysql_config_editor set --login-path=local --host=localhost --user=root --password --warn=false > /dev/null
     mysql --login-path=local -e "create database if not exists serviceid_db" > /dev/null
     mysql --login-path=local -e "create user if not exists 'johnson' identified by 'johnson'" > /dev/null

@@ -6,8 +6,8 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 iname="$(ip -o link show | sed -rn '/^[0-9]+: en/{s/.: ([^:]*):.*/\1/p}')"
 
 id johnson > /dev/null 2>&1 || sudo useradd -m johnson && echo "johnson:johnson" | sudo chpasswd && sudo adduser johnson sudo > /dev/null
-sudo DEBIAN_FRONTEND=noninteractive apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades -qq net-tools openssh-server git vim tmux openvswitch-switch iputils-ping libev-dev mysql-server libmysqlclient20=5.7.21-1ubuntu1 libmysqlclient-dev=5.7.21-1ubuntu1 jq expect python-openvswitch python-netifaces
+sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades -qq apache2 net-tools openssh-server git vim tmux openvswitch-switch iputils-ping libev-dev mysql-server libmysqlclient20=5.7.21-1ubuntu1 libmysqlclient-dev=5.7.21-1ubuntu1 jq expect python-openvswitch python-netifaces
 sudo DEBIAN_FRONTEND=noninteractive apt-get --fix-broken install -y -qq
 sudo pip3 install mysqlclient > /dev/null 2>&1
 echo 'sudo ALL=(ALL) NOPASSWD:ALL' | sudo tee -a /etc/sudoers > /dev/null
@@ -16,40 +16,36 @@ sudo su johnson -c 'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVcYOl/Q/TkpxdA4
 sudo su johnson -c "echo 'export PATH=$PATH:/sbin' >> /home/johnson/.bashrc"
 echo "export interface=$iname" | sudo tee -a /etc/environment > /dev/null
 
-hostname=`hostname`
-if [[ $hostname == *router ]]
+hostname=$(hostname)
+server_id=$(python3 -c 'import json; machines=json.load(open("machine.json")); split_ip=machines[machines["hostname"]]["internal_ip1"].split("."); print(split_ip[3])')
+
+grep -q "mysqld" /etc/mysql/my.cnf
+if [ $? -ne 0 ]
 then
-    server_id=`python3 -c 'import json; machines=json.load(open("machine.json")); split_ip=machines[machines["hostname"]]["internal_ip1"].split("."); print(split_ip[3])'`
-
-    grep -q "mysqld" /etc/mysql/my.cnf
-    if [ $? -ne 0 ]
-    then
-        sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=\c" >> /etc/mysql/my.cnf'
-        sudo sh -c "echo $server_id >> /etc/mysql/my.cnf"
-    else
-        sudo sed -i "/server-id=/c\server-id=${server_id}" /etc/mysql/my.cnf
-    fi
-
-    position=`python3 -c 'import json; machines=json.load(open("machine.json"));pos=machines["position"]; print(pos)'`
-    fl=`python3 -c 'import json; machines=json.load(open("machine.json"));f=machines["file"]; print(f)'`
-    fl="'"$fl"'"
-
-    sudo service mysql restart
-    export MYSQL_PWD=root
-    mysql -uroot -e "stop slave;"
-    mysql -uroot -e "change master to \
-	    master_host='35.238.99.53', \
-    	master_user='slave', \
-	    master_password='123456', \
-    	master_log_file=$fl, \
-	    master_log_pos=$position;"
-    mysql -uroot -e "start slave;"
+    sudo sh -c 'echo "\n[mysqld]\nlog-bin=mysql-bin\nserver-id=\c" >> /etc/mysql/my.cnf'
+    sudo sh -c "echo $server_id >> /etc/mysql/my.cnf"
+else
+    sudo sed -i "/server-id=/c\server-id=${server_id}" /etc/mysql/my.cnf
 fi
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get install apache2 -y
+position=$(python3 -c 'import json; machines=json.load(open("machine.json"));pos=machines["position"]; print(pos)')
+fl=$(python3 -c 'import json; machines=json.load(open("machine.json"));f=machines["file"]; print(f)')
+fl="'"$fl"'"
+
+sudo service mysql restart
+export MYSQL_PWD=root
+mysql -uroot -e "stop slave;"
+mysql -uroot -e "change master to \
+  master_host='35.228.34.228', \
+  master_user='slave', \
+  master_password='123456', \
+  master_log_file=$fl, \
+  master_log_pos=$position;"
+mysql -uroot -e "start slave;"
+
 sudo sed -i '/Listen 80/c\Listen 110' /etc/apache2/ports.conf
 sudo service apache2 restart
-echo "$hostname" | sudo tee /var/www/html/index.html
+echo "$hostname" | sudo tee /var/www/html/index.html > /dev/null
 
 date > ~/init.sh.end_ts
 
