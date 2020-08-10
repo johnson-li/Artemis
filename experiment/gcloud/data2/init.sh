@@ -7,6 +7,7 @@ iname="$(ip -o link show | sed -rn '/^[0-9]+: en/{s/.: ([^:]*):.*/\1/p}')"
 
 id johnson >/dev/null 2>&1 || sudo useradd -m johnson && echo "johnson:johnson" | sudo chpasswd && sudo adduser johnson sudo >/dev/null
 sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq
+sudo mv /var/lib/dpkg/info/install-info.postinst /var/lib/dpkg/info/install-info.postinst.bad  # fix for apt install info error
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades -qq apache2 net-tools openssh-server git vim tmux openvswitch-switch iputils-ping libev-dev mysql-server libmysqlclient20=5.7.21-1ubuntu1 libmysqlclient-dev=5.7.21-1ubuntu1 jq expect python-openvswitch python-netifaces
 sudo DEBIAN_FRONTEND=noninteractive apt-get --fix-broken install -y -qq
 sudo pip3 install mysqlclient >/dev/null 2>&1
