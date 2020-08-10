@@ -32,7 +32,7 @@ sudo ovs-ofctl del-flows bridge
 # Setup NICs
 sudo ifconfig bridge "$ip_secondary/24" up
 sudo ifconfig server 12.12.12.12/32 up
-sudo ifconfig router 12.12.12.12/32 up
+sudo ifconfig router "$ip_primary"/32 up
 
 # Create flows
 sudo ovs-ofctl add-flow bridge in_port=local,actions="$iface_secondary"

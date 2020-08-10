@@ -9,6 +9,6 @@ done
 
 tmux send-key -t main:0 '~/data2/start_balancer.sh' Enter
 tmux send-key -t main:1 '~/data2/start_server.sh' Enter
-tmux send-key -t main:2 'mysql -u johnson -p johnson serviceid_db' Enter
+tmux send-key -t main:2 'mysql -ujohnson -pjohnson serviceid_db' Enter
 
 date > ~/start_experiment.sh.end_ts
