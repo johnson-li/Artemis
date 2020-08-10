@@ -18,9 +18,7 @@ all_hosts=$(python3 -c 'import json; machines=json.load(open("machine.json")); m
 
 # Setup GRE tunnels
 sudo ovs-vsctl add-br bridge
-# var=$(ifconfig bridge | grep ether)
-# vars=("$var")
-# mac_bridge=${vars[1]}
+var=$(ifconfig router | grep ether); mac_router=$(echo "$var"| cut -d' ' -f2)
 # server_ip=$(python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["server"]]["internal_ip1"])')
 
 # Create ports
@@ -44,7 +42,7 @@ sudo ovs-ofctl add-flow bridge in_port=router,actions="${iface_secondary}"
 sudo arp -s "$ip_primary" 00:00:00:00:00:00 -i router
 sudo arp -s "$ip_primary" 00:00:00:00:00:00 -i server
 sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
-sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i server
+sudo arp -s "$ip_secondary" mac_router -i server
 sudo arp -s 12.12.12.12 -i router
 sudo arp -s 12.12.12.12 -i server
 
