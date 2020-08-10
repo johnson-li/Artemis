@@ -62,6 +62,8 @@ while IFS=',' read -ra ADDR; do
       sudo ifconfig "${local_port_name}" 12.12.12.12/32 up
       sudo ovs-ofctl add-flow bridge in_port="${local_port_name}",actions="${remote_port_name}"
       sudo ovs-ofctl add-flow bridge in_port="${remote_port_name}",actions="${local_port_name}"
+      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i server
+      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
       sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i "$local_port_name"
     fi
   done
