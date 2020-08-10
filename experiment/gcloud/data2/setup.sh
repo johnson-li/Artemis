@@ -43,6 +43,7 @@ sudo ovs-ofctl add-flow bridge in_port=router,actions="${iface_secondary}"
 # Setup ARP
 sudo arp -s "$ip_primary" 00:00:00:00:00:00 -i router
 sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
+sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i server
 sudo arp -s 12.12.12.12 -i router
 sudo arp -s 12.12.12.12 -i server
 
