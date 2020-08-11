@@ -18,7 +18,6 @@ all_hosts=$(python3 -c 'import json; machines=json.load(open("machine.json")); m
 
 # Setup GRE tunnels
 sudo ovs-vsctl add-br bridge
-var=$(ifconfig router | grep ether); mac_router=$(echo "$var"| cut -d' ' -f2)
 # server_ip=$(python3 -c 'import os; import json; machines=json.load(open("machine.json")); print(machines[os.environ["server"]]["internal_ip1"])')
 
 # Create ports
@@ -28,23 +27,22 @@ sudo ovs-vsctl add-port bridge router -- set interface router type=internal
 sudo ovs-ofctl del-flows bridge
 
 # Setup NICs
-sudo ifconfig bridge "$ip_secondary/24" up
+sudo ifconfig bridge 12.12.12.12/32 up
 sudo ifconfig server 12.12.12.12/32 up
 sudo ifconfig router "$ip_primary"/32 up
+var=$(ifconfig router | grep ether); mac_router=$(echo $var| cut -d' ' -f2)
 
 # Create flows
 sudo ovs-ofctl add-flow bridge in_port=local,actions="$iface_secondary"
-sudo ovs-ofctl add-flow bridge in_port="$iface_secondary",actions=local
-sudo ovs-ofctl add-flow bridge in_port=server,actions=router
+sudo ovs-ofctl add-flow bridge in_port="$iface_secondary",actions=mod_nw_dst:12.12.12.12,local
+sudo ovs-ofctl add-flow bridge in_port=server,actions=mod_dl_dst:"$mac_router",router
 sudo ovs-ofctl add-flow bridge in_port=router,actions="${iface_secondary}"
 
 # Setup ARP
 sudo arp -s "$ip_primary" 00:00:00:00:00:00 -i router
-sudo arp -s "$ip_primary" 00:00:00:00:00:00 -i server
 sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
-sudo arp -s "$ip_secondary" mac_router -i server
-sudo arp -s 12.12.12.12 -i router
-sudo arp -s 12.12.12.12 -i server
+sudo arp -s 12.12.12.12 00:00:00:00:00:00 -i router
+sudo arp -s 12.12.12.12 00:00:00:00:00:00 -i server
 
 # Setup remote routers
 while IFS=',' read -ra ADDR; do
@@ -62,9 +60,8 @@ while IFS=',' read -ra ADDR; do
       sudo ifconfig "${local_port_name}" 12.12.12.12/32 up
       sudo ovs-ofctl add-flow bridge in_port="${local_port_name}",actions="${remote_port_name}"
       sudo ovs-ofctl add-flow bridge in_port="${remote_port_name}",actions="${local_port_name}"
-      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i server
-      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
-      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i "$local_port_name"
+#      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
+#      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i "$local_port_name"
     fi
   done
 done <<<"$all_hosts"
