@@ -168,6 +168,7 @@ def instances_already_created(zones: list, instances):
     left = zones.copy()
     for zone in set([get_instance_zone(i) for i in instances]):
         if zone in left:
+            return True
             left.remove(zone)
         else:
             to_be_deleted.append(zone)

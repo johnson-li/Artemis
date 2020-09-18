@@ -2,7 +2,7 @@
 
 BASEDIR=$(dirname "$0")
 
-mysql_ip=35.238.99.53
+mysql_ip=35.228.34.228
 target=35.227.98.160
 root=/tmp/hestia/data
 date > ${root}/start.sh.start_ts
@@ -20,20 +20,19 @@ latency_min=1000000
 while read line
 do
     dc=$(echo $line| cut -d' ' -f1)
-    dc_ip=$(echo $line| cut -d' ' -f2)
-    server_ip=$(echo $line| cut -d' ' -f3)
-    latency=$(ping -i.2 -c5 ${dc_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+    server_ip=$(echo $line| cut -d' ' -f2)
+    latency=$(ping -i.2 -c5 ${server_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
     cmp=$(awk 'BEGIN{ print "'$latency'"<"'$latency_min'"  }')
+    server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
     if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
         latency_min=$latency
         target_server=$server_ip
         echo "min latency: $latency, from server: $server_ip, in region: $server_region"
     fi
     target_server=$server_ip
-    server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
 
     sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
-    echo "sql: " $sql
+    echo mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
     mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 done < ${root}/datacenters.txt
 
@@ -44,7 +43,7 @@ target_anycast=`python3 -c 'import os; import json; machines=json.load(open("/tm
 echo "target: " $target
 
 sleep 10
-for i in `seq 3`
+for i in `seq 5`
 do
     # Conduct experiment with Hestia
     sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target} 4433 2> ${root}/client_sid.log &

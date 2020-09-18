@@ -23,7 +23,7 @@ REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap
 #           'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2']
 # not used 'us-west-1', 'us-west-2', 'ap-east-1', 'eu-west-3', 'sa-east-1'
 
-REGIONS = REGIONS[1:4]
+REGIONS = REGIONS[0:2]
 
 REGION = 'eu-north-1'
 REFRESH = False
@@ -31,17 +31,17 @@ REGION_NUMBER = len(REGIONS)
 CONCURRENCY = 2
 
 
-def start_instance(instance_id, region=REGION):
+def start_instance(instance_id, region):
     client = boto3.client('ec2', region_name=region)
     return client.start_instances(InstanceIds=[instance_id], DryRun=False)
 
 
-def stop_instance(instance_id, region=REGION):
+def stop_instance(instance_id, region):
     client = boto3.client('ec2', region_name=region)
     return client.stop_instances(InstanceIds=[instance_id], DryRun=False)
 
 
-def list_instances(region=REGION):
+def list_instances(region):
     ec2 = boto3.resource('ec2', region_name=region)
     instances = ec2.instances.filter()
     res = []
@@ -52,7 +52,7 @@ def list_instances(region=REGION):
     return res
 
 
-def wait_for_instance_initiation(region=REGION):
+def wait_for_instance_initiation(region):
     ec2 = boto3.resource('ec2', region_name=region)
     finish = False
     while not finish:
@@ -65,7 +65,7 @@ def wait_for_instance_initiation(region=REGION):
                 break
 
 
-def get_image_id(region=REGION):
+def get_image_id(region):
     client = boto3.client('ec2', region_name=region)
     images = client.describe_images(Filters=[
         {
@@ -82,34 +82,22 @@ def get_image_id(region=REGION):
     return images[0][0]
 
 
-def get_key_pair_name(region=REGION):
+def get_key_pair_name(region):
     client = boto3.client('ec2', region_name=region)
     key_pairs = client.describe_key_pairs()['KeyPairs']
-    # key = 'mbp'
-    key = 'gcp2'
-    for key_pair in key_pairs:
-        if key_pair['KeyName'] == key:
-            return key
-    if key == 'mbp':
-        pub = open(os.path.expanduser('~/.ssh/id_rsa.pub')).read()
-        client.import_key_pair(KeyName=key, PublicKeyMaterial=pub)
-    elif key == 'gcp':
-        client.import_key_pair(KeyName=key,
-                               PublicKeyMaterial='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMHPauPPpAF98nrPnB7b5ACx0W+lbY0bLmXo1bmCHLFYBCCaZsLjt3OzvJp9y+ED8X5vYa8Y+SL+SOIFp91wEIMoFQ+AhmcwvW5chlk+enAKvoDLUr+llpz+Z20JLIsMqh/MdyFpmaDYJOuOgbpsy5zdLhncJgEW20vp1mVC3ndPaImoOv9ov/QsYT78xxSH5dRmYlBguW9J2x8TbiwKxeFIur0OXu6uTzDowZYkXt0LzjQbFQAZoahNJN1t3NcKxjle+ZPoxr0Uc8Z68tBvfStJwd6Zm5WPJ/lmV5HEGnYqT8fpBPlvyxhJ210ZinamkPr1a3sLsh3r8Galm2IR3h wch19990119')
-    elif key == 'gcp2':
-        client.import_key_pair(KeyName=key,
-                               PublicKeyMaterial='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6njJSQxc4eunXIOEyfHlNTpeJFQGrtg1jvJ8BsFPX+qUsCEruqNZ1sG0/sL/cFqBcOyuF5debcjFJj3RHffZZoZVky/hC517EKhC5u0oCbz2LRTWMaOo9K6bo65GXbXTqaO/U8r5y16EJfOaRrWaA2eVo2xDy5Y6VQj8jwcvxLkmb8fpxosTKKNYqRvXlRy+hv3DV3+E4buoyDv2QLIWsHBjZIYGhXdWIASsNKCDri8YNWGwhECLLHoqSKAPhxyNGOt03RKH1HPD7sTPKZ6SrKTLyKMBcrYAqvrz2VysdKNjOZamRs9PYjKDbcjcbAdMbjITuWUR1lLmN5wTp/vmf wch19990119@test')
+    key = 'gcp3'
+    client.import_key_pair(KeyName=key, PublicKeyMaterial=open('/home/johnsonli1993/.ssh/id_rsa.pub').read().strip())
     return key
 
 
-def get_instance_type(region=REGION):
+def get_instance_type(region):
     client = boto3.client('ec2', region_name=region)
     types = client.describe_instance_type_offerings()['InstanceTypeOfferings']
     types = [i['InstanceType'] for i in types]
     return 't3.micro' if 't3.micro' in types else 't2.micro'
 
 
-def create_instance(image_id=None, instance_type=None, number=1, region=REGION):
+def create_instance(region, image_id=None, instance_type=None, number=1):
     ec2 = boto3.resource('ec2', region_name=region)
     if not image_id:
         image_id = get_image_id(region=region)
@@ -127,7 +115,7 @@ def create_instance(image_id=None, instance_type=None, number=1, region=REGION):
     return instances
 
 
-def init_security_groups(region=REGION):
+def init_security_groups(region):
     client = boto3.client('ec2', region_name=region)
     security_groups = client.describe_security_groups()['SecurityGroups']
     for security_group in security_groups:
@@ -163,7 +151,7 @@ def conduct_experiment():
     pass
 
 
-def remove_instance(instance_id, region=REGION):
+def remove_instance(instance_id, region):
     client = boto3.client('ec2', region_name=region)
     return client.terminate_instances(InstanceIds=[instance_id], DryRun=False)
 
