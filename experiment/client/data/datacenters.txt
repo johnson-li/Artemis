@@ -1,10 +1,2 @@
-europe-north1-c 35.228.62.197
-us-west1-c 35.227.159.144
-australia-southeast1-c 35.189.32.0
-europe-west1-c 34.77.104.213
-northamerica-northeast1-c 35.203.125.130
 asia-northeast1-c 34.84.7.85
-us-east1-c 34.75.232.251
-us-central1-c 34.122.146.224
 asia-southeast1-c 34.87.46.250
-southamerica-east1-c 35.199.99.27

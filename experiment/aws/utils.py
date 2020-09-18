@@ -23,7 +23,7 @@ REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap
 #           'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2']
 # not used 'us-west-1', 'us-west-2', 'ap-east-1', 'eu-west-3', 'sa-east-1'
 
-REGIONS = REGIONS[0:2]
+REGIONS = REGIONS[0:4]
 
 REGION = 'eu-north-1'
 REFRESH = False
@@ -86,6 +86,9 @@ def get_key_pair_name(region):
     client = boto3.client('ec2', region_name=region)
     key_pairs = client.describe_key_pairs()['KeyPairs']
     key = 'gcp3'
+    for key_pair in key_pairs:
+        if key_pair['KeyName'] == key:
+            return key
     client.import_key_pair(KeyName=key, PublicKeyMaterial=open('/home/johnsonli1993/.ssh/id_rsa.pub').read().strip())
     return key
 
