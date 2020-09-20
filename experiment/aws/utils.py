@@ -15,19 +15,17 @@ REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap
            'ap-northeast-3', 'ap-northeast-2', 'ap-northeast-1', 'ap-southeast-2', 'ap-southeast-1',
            'ap-northeast-1', 'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2', 'eu-west-3',
            'me-south-1', 'sa-east-1']
-REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap-northeast-2', 'ap-northeast-1', 'ap-southeast-2', 'ap-southeast-1',
-           'ap-northeast-1', 'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2', 'eu-west-3',
-           'sa-east-1']
+REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap-south-1',
+           'ap-northeast-2', 'ap-northeast-1', 'ap-southeast-2', 'ap-southeast-1',
+           'ap-northeast-1', 'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2', 'eu-west-3']
+#REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'us-west-1', 'us-west-2', 'ap-northeast-2', 'ap-northeast-1', 'ap-southeast-2', 'ap-southeast-1',
+#           'ap-northeast-1', 'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2', 'eu-west-3']
 #REGIONS = ['eu-north-1', 'us-east-2', 'us-east-1', 'ap-south-1',
 #           'ap-northeast-2', 'ap-northeast-1', 'ap-southeast-2', 'ap-southeast-1',
 #           'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2']
 # not used 'us-west-1', 'us-west-2', 'ap-east-1', 'eu-west-3', 'sa-east-1'
 
-REGIONS = REGIONS[0:4]
-
-REGION = 'eu-north-1'
 REFRESH = False
-REGION_NUMBER = len(REGIONS)
 CONCURRENCY = 2
 
 
@@ -46,7 +44,7 @@ def list_instances(region):
     instances = ec2.instances.filter()
     res = []
     for instance in instances:
-        if instance.state['Name'] == 'terminated':
+        if instance.state['Name'] in ['terminated', 'shutting-down']:
             continue
         res.append((instance.id, instance.state, instance.public_ip_address))
     return res
@@ -191,19 +189,18 @@ def export_json(ips):
 
 def list():
     pool = Pool(CONCURRENCY)
-    ans = pool.map(list_instances, REGIONS[:REGION_NUMBER])
+    ans = pool.map(list_instances, REGIONS)
     l = []
     for a in ans:
         l += a
     return l
 
 
-def start():
+def start(start=0, end=len(REGIONS)):
+    regions = REGIONS[start:end]
     pool = Pool(CONCURRENCY)
-    logger.info("Conduct experiment in %d regions: %s" % (REGION_NUMBER, REGIONS[:REGION_NUMBER]))
-    # for region in REGIONS[:REGION_NUMBER]:
-    #     run(region)
-    ans = pool.map(run, REGIONS[:REGION_NUMBER])
+    logger.info("Conduct experiment in %d regions: %s" % (len(regions), regions))
+    ans = pool.map(run, regions)
     ips = []
     for a in ans:
         ips += a
@@ -211,6 +208,6 @@ def start():
 
 
 def clean_up():
-    for region in REGIONS[:REGION_NUMBER]:
+    for region in REGIONS:
         for instance_id, _, _ in list_instances(region=region):
             remove_instance(instance_id, region=region)
