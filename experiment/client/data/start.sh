@@ -29,7 +29,6 @@ do
         target_server=$server_ip
         echo "min latency: $latency, from server: $server_ip, in region: $server_region"
     fi
-    target_server=$server_ip
 
     sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
     echo mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
@@ -54,8 +53,7 @@ do
     service_plt_time=`grep -a 'PLT: ' /tmp/hestia/data/client_sid.log| cut -d' ' -f2 | tail -n 1`
 
     #Conduct experiment with Anycast
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target_anycast} 4433 2> ${root}/client_anycast.log
-    sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target_anycast} 4433 2> ${root}/client_anycast.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target_anycast} 4434 2> ${root}/client_anycast.log &
     sleep 3 && sudo kill -9 $!
 
     anycast_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_anycast.log| cut -d' ' -f3 | tail -n 1`
@@ -64,8 +62,7 @@ do
 
     # Conduct experiment with DNS
 
-    echo sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target_server} 4433 2> ${root}/client_dns.log
-    sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target_server} 4433 2> ${root}/client_dns.log &
+    sudo LD_LIBRARY_PATH=${root} ${root}/client_transport ${target_server} 4434 2> ${root}/client_dns.log &
     sleep 3 && sudo kill -9 $!
 
     dns_transfer_time=`grep -a 'transfer time' /tmp/hestia/data/client_dns.log| cut -d' ' -f3 | tail -n 1`

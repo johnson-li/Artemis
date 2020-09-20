@@ -2,13 +2,13 @@
 
 # conda activate dev
 
-# python -m experiment.gcloud.main2
-# sleep 20
+python -m experiment.gcloud.main2
+sleep 60
 python -m experiment.gcloud.restart2
 
 echo The server is ready.
 
-for i in `seq 1`
+for i in `seq 4`
 do
     python -m experiment.client.machines.aws.start --range $(((i-1)*4)),$((i*4))
     sleep 10
