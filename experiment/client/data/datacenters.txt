@@ -1,2 +1,2 @@
-asia-northeast1-c 34.84.7.85
 asia-southeast1-c 34.87.46.250
+asia-northeast1-c 34.84.7.85
