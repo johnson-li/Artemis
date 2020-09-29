@@ -38,7 +38,7 @@ then
     export MYSQL_PWD=root
     mysql -uroot -e "stop slave;"
     mysql -uroot -e "change master to \
-	    master_host='35.238.99.53', \
+	    master_host='35.226.173.3', \
     	master_user='slave', \
 	    master_password='123456', \
     	master_log_file=$fl, \

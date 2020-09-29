@@ -1,3 +1,0 @@
-302 https://accounts.google.com/ServiceLogin?passive=true&go=true&service=blogger&continue=https://www.blogger.com/?bpli=1 https://www.blogger.com/?bpli=1
-302 https://www.blogger.com/?bpli=1 https://www.blogger.com/about?bpli=1
-301 https://www.blogger.com/about?bpli=1 https://www.blogger.com/about/?bpli=1

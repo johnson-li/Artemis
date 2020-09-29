@@ -1,1 +1,0 @@
-(function(n){var i=n["cca"],t=null;n.ccRefresh=n.ccRefresh||[];i.refresh=function(){var f=(new Date).getTime(),r,u,i;if(t.pageData.pvid=f,n.ccRefresh!==null)for(r=n.ccRefresh.sort(function(n,t){return n[0]<=t[0]?-1:1}),u=r.length,i=0;i<u;i++)r[i][1](t)};i.getSettings(function(n){t=n})})(window,document)

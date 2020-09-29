@@ -1,3 +1,0 @@
-https://connect.facebook.net/en_US/sdk.js
-https://www.instagram.com/qp/batch_fetch_web/
-https://connect.facebook.net/en_US/sdk.js?hash=b931625662a4d24031992c265d3a828e&ua=modern_es6

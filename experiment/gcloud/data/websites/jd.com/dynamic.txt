@@ -1,7 +1,0 @@
-https://corporate.jd.com/home/sliderPicList
-https://corporate.jd.com/home/newsAnnouncementsList
-https://wlssl.jd.com/joya.js
-https://use.typekit.net/af/7d485b/00000000000000003b9ad1b1/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3
-https://use.typekit.net/af/347aea/00000000000000003b9ad1b2/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3
-https://use.typekit.net/af/c9cde8/00000000000000003b9ad1b9/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3
-https://use.typekit.net/af/4ba64f/00000000000000003b9ad1ba/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3

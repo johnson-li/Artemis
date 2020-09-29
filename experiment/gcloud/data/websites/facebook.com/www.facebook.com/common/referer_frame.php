@@ -1,1 +1,0 @@
-<!DOCTYPE html><html><script nonce="RfCmunSW">document.domain = 'facebook.com';</script></html>

@@ -188,3 +188,8 @@ ansible/provision.retry
 
 machine.json
 .machine.json.swp
+
+# some data
+experiment/gcloud/data/websites
+expeirment/gcloud/data/tcp
+expeirment/gcloud/data/.ssh

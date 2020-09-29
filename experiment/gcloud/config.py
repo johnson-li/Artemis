@@ -1,8 +1,8 @@
 from os.path import expanduser
 
 HOME = expanduser("~")
-PROJECT_ID = 'fresh-aura-277120'
-PROJECT_EMAIL = '36043806123-compute@developer.gserviceaccount.com'
+PROJECT_ID = 'winter-agency-288206'
+PROJECT_EMAIL = '825891253369-compute@developer.gserviceaccount.com'
 SERVICE_ACCOUNT_FILE = "%s/keys/key.json" % HOME
 ZONES = ['us-east1-c', 'europe-west3-c', 'asia-east2-c', 'asia-southeast1-c', 'southamerica-east1-c']
 ZONES = ['europe-west1-c', 'europe-west2-c', 'europe-west3-c', 'europe-west4-c', 'europe-west6-c']

@@ -1,6 +1,0 @@
-302 https://sb.scorecardresearch.com/p?c1=2&c2=7241469&c5=2023538075&c7=https://www.yahoo.com/&c14=-1&gdpr=0&gdpr_consent=&cs_ucfr=1&c8=Yahoo&c9=&ns_c=UTF-8&ns__t=1592977550557 https://sb.scorecardresearch.com/p2?c1=2&c2=7241469&c5=2023538075&c7=https%3A%2F%2Fwww.yahoo.com%2F&c14=-1&gdpr=0&gdpr_consent=&cs_ucfr=1&c8=Yahoo&c9=&ns_c=UTF-8&ns__t=1592977550557&cs_ak_ss=1
-302 https://cms.analytics.yahoo.com/cms?partner_id=AOL&orig=ono&redir=true https://pixel.advertising.com/ups/55357/sync?_origin=0&redir=true&uid=y-IbuinqB1lxZhy_iVFEc1fDqKqDqPgTp_
-302 https://cms.analytics.yahoo.com/cms?partner_id=ADOBE&orig=ono https://dpm.demdex.net/ibs:dpid=30646?dpuuid=y-x799zNV1lxaSW8wVLMqooyb.I1PZoZQkETM-&redir=https%3A%2F%2Fcms.analytics.yahoo.com%2Fcms%2F%3Fpartner_id%3DADOBE%26_origin%3Dfalse%26_redirect%3Dfalse%26_hosted_id%3D%24%7BDD_UUID%7D
-302 https://cms.analytics.yahoo.com/cms?partner_id=BLKAI&orig=ono https://tags.bluekai.com/site/19505?id=kRqL.w3_4yhCzaWTjKjgw9p0FW24PIVoQDekQg--
-302 https://cms.analytics.yahoo.com/cms?partner_id=NEUAR&orig=ono https://aa.agkn.com/adscores/g.pixel?sid=9202214988&yho=.JfOFrF4HYQCHN9DMZBTeIVKdJtUftpTvIsJYw--
-302 https://cms.analytics.yahoo.com/cms?partner_id=AUDPR&orig=ono https://audex.userreport.com/sync/put/yho?yhoid=y-GUIHJmJ1lxbVAzkTqL_jG6sIyeb6Qb37mUU-

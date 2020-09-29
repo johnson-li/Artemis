@@ -1,4 +1,0 @@
-https://securemvt.apple.com/m2/apple/mbox/json?mbox=target-global-mbox&mboxSession=da7bba725e2144c09e12003da1f3d515&mboxPC=&mboxPage=0a19f0434acf4cdc987b4ad3109164a0&mboxRid=45d7b943fb3b4670abc01eec4113940b&mboxVersion=1.5.0&mboxCount=1&mboxTime=1592977906823&mboxHost=www.apple.com&mboxURL=https://www.apple.com/&mboxReferrer=&browserHeight=600&browserWidth=800&browserTimeOffset=0&screenHeight=600&screenWidth=800&colorDepth=24&devicePixelRatio=1&screenOrientation=landscape&webGLRenderer=Google SwiftShader
-https://www.apple.com/us/shop/bag/status?apikey=SFX9YPYY9PPXCU9KH
-https://www.apple.com/ac/localeswitcher/2/en_US/content/localeswitcher.json
-https://www.apple.com/search-services/suggestions/defaultlinks/?src=globalnav&locale=en_US

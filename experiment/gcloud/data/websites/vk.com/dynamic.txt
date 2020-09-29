@@ -1,8 +1,0 @@
-https://vk.com/js/cmodules/web/abc_light.73b2288a2c4fbe0ed174.js?13a991be641368b25a90d5ba6481cb52
-https://vk.com/images/dropdown_arrow.png
-https://vk.com/js/cmodules/web/tooltips.68c1ca108657d5529e50.js?cad201a9d0c50f675b6fc3a2422f745e
-https://vk.com/css/al/tooltips.css?23238851764
-https://connect.facebook.net/en_US/sdk.js
-https://top-fwz1.mail.ru/js/code.js
-https://connect.facebook.net/en_US/sdk.js?hash=b931625662a4d24031992c265d3a828e&ua=modern_es6
-https://top-fwz1.mail.ru/counter?js=13;id=2579437;u=https://vk.com/;st=1592977583666;pid=0;userid=0;title=Welcome! | VK;s=800*600;vp=800*600;touch=0;hds=1;flash=;sid=ba5eca015d2618b3;ver=60.3.0;tz=0/UTC;ni=10//4g/0/0/;lvid=1592977584111:1592977584116:1:607b728cb4392c71c3ac34555b0a5ef5;_=0.6666457706840456
