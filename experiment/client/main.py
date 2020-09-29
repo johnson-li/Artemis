@@ -28,7 +28,7 @@ def zip_data():
     copyfile('%s/machine.json' % PROJECT_PATH, '%s/data/machine.json' % DIR_PATH)
     # copyfile('%s/ngtcp2/examples/client' % WORKSPACE_PATH, '%s/data/client' % DIR_PATH)
     copyfile('%s/ngtcp2-old/examples/client' % WORKSPACE_PATH, '%s/data/client_transport' % DIR_PATH)
-#    copyfile('%s/ngtcp2/lib/.libs/libngtcp2.so.0' % WORKSPACE_PATH, '%s/data/libngtcp2.so.0' % DIR_PATH)
+    copyfile('%s/ngtcp2/lib/.libs/libngtcp2.so.0' % WORKSPACE_PATH, '%s/data/libngtcp2.so.0' % DIR_PATH)
     copyfile('%s/openssl/libssl.so.1.1' % WORKSPACE_PATH, '%s/data/libssl.so.1.1' % DIR_PATH)
     copyfile('%s/openssl/libcrypto.so.1.1' % WORKSPACE_PATH, '%s/data/libcrypto.so.1.1' % DIR_PATH)
     copyfile('%s/ngtcp2/index.csv' % WORKSPACE_PATH, '%s/data/index.csv' % DIR_PATH)
@@ -62,7 +62,7 @@ def conduct_experiment(hostname, username, password, region):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname, username=username, password=password,
-                   pkey=paramiko.RSAKey.from_private_key_file("/home/wch19990119/.ssh/id_rsa"))
+                   pkey=paramiko.RSAKey.from_private_key_file("/home/johnsonli1993/.ssh/id_rsa"))
     execute_ssh_sync(client, 'mkdir -p %s' % REMOTE_PROJECT_PATH)
     remote_md5 = 'a'
     local_md5 = 'b'
@@ -93,8 +93,7 @@ def conduct_experiment(hostname, username, password, region):
 def get_datacenters():
     data = json.load(open(os.path.join(DIR_PATH, "../../machine.json")))
     prefix = set([d[:-7] for d in data.keys() if d.startswith('hestia')])
-    ans = ['%s %s %s' % (p[7:], data['%s-router' % p]['external_ip1'], data['%s-server' % p]['external_ip1'])
-           for p in prefix]
+    ans = ['%s %s' % (p[7:], data['%s-server' % p]['external_ip1']) for p in prefix]
     # ans = ['%s %s' % (i[7:-7], data[i]['external_ip1'])
     #        for i in data.keys() if i.endswith('router')]
     with open(os.path.join(DATA_PATH, 'datacenters.txt'), 'w') as f:

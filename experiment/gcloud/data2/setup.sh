@@ -22,27 +22,14 @@ sudo ovs-vsctl add-br bridge
 
 # Create ports
 sudo ovs-vsctl add-port bridge $iface_secondary
-sudo ovs-vsctl add-port bridge server -- set interface server type=internal
-sudo ovs-vsctl add-port bridge router -- set interface router type=internal
 sudo ovs-ofctl del-flows bridge
 
 # Setup NICs
 sudo ifconfig bridge 12.12.12.12/32 up
-sudo ifconfig server 12.12.12.12/32 up
-sudo ifconfig router "$ip_primary"/32 up
-var=$(ifconfig router | grep ether); mac_router=$(echo $var| cut -d' ' -f2)
 
 # Create flows
 sudo ovs-ofctl add-flow bridge in_port=local,actions="$iface_secondary"
-sudo ovs-ofctl add-flow bridge in_port="$iface_secondary",actions=mod_nw_dst:12.12.12.12,local
-sudo ovs-ofctl add-flow bridge in_port=server,actions=mod_dl_dst:"$mac_router",router
-sudo ovs-ofctl add-flow bridge in_port=router,actions="${iface_secondary}"
-
-# Setup ARP
-sudo arp -s "$ip_primary" 00:00:00:00:00:00 -i router
-sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
-sudo arp -s 12.12.12.12 00:00:00:00:00:00 -i router
-sudo arp -s 12.12.12.12 00:00:00:00:00:00 -i server
+sudo ovs-ofctl add-flow bridge in_port="$iface_secondary",actions=local,mod_dl_dst:01:01:01:01:01:01
 
 # Setup remote routers
 while IFS=',' read -ra ADDR; do
@@ -59,8 +46,7 @@ while IFS=',' read -ra ADDR; do
       sudo ovs-vsctl add-port bridge "${remote_port_name}" -- set interface "${remote_port_name}" type=vxlan options:remote_ip="${remote_ip}"
       sudo ifconfig "${local_port_name}" 12.12.12.12/32 up
       sudo ovs-ofctl add-flow bridge in_port="${local_port_name}",actions="${remote_port_name}"
-      sudo ovs-ofctl add-flow bridge in_port="${remote_port_name}",actions="${local_port_name}"
-#      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i router
+      sudo ovs-ofctl add-flow bridge in_port="${remote_port_name}",actions="${local_port_name}",mod_dl_dst:02:02:02:02:02:02
 #      sudo arp -s "$ip_secondary" 00:00:00:00:00:00 -i "$local_port_name"
     fi
   done
