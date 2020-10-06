@@ -80,7 +80,7 @@ def create_hosts():
         if 'client' in instance_name:
             try:
                 ex_ip1, ex_ip2 = get_ip(i)
-                lis.append ({'hostname': ex_ip1, 'username': 'wch19990119'})
+                lis.append ({'hostname': ex_ip1, 'username': 'aerberzhou'})
             except:
                 print('some lost in hosts.json, pls check!')
                 pass

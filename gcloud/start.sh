@@ -19,4 +19,4 @@ gcloud compute instances start instance-17 --zone asia-northeast2-a
 gcloud compute instances start instance-18 --zone asia-south1-c
 gcloud compute instances start instance-19 --zone asia-southeast1-b
 gcloud compute instances start instance-20 --zone australia-southeast1-b
-gcloud compute instances list >/home/wch19990119/list.txt
+gcloud compute instances list >/home/aerberzhou/list.txt

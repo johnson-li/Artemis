@@ -1,6 +1,6 @@
 # How to do the measurements
 
-work_path: /home/ubuntu/wch19990119/Hestia
+work_path: /home/ubuntu/aerberzhou/Hestia
 
 ## step1  启动server机器
 vim experiment/gcloud/main.py # (修改机器数量)
