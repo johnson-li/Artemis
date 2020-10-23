@@ -45,7 +45,7 @@ def create_instance(zone, name):
     client = get_gce_client()
     image_response = client.images().getFromFamily(project='gce-uefi-images', family='ubuntu-1804-lts').execute()
     source_disk_image = image_response['selfLink']
-    machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
+    machine_type = "zones/%s/machineTypes/e2-medium" % zone
     subnet = "regions/%s/subnetworks/default2" % zone[:-2]
     startup_script = open(os.path.join(os.path.dirname(__file__), 'startup-script.sh'), 'r').read()
     if os.path.isfile(os.path.expanduser('~/.ssh/id_rsa.pub')):

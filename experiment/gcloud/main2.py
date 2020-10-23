@@ -15,10 +15,9 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 PROJECT_PATH = os.path.dirname(os.path.dirname(DIR_PATH))
 CONCURRENCY = 10
 logger = logging.getLogger('main')
-ZONE_NUMBERS = len(ZONES)
-zones = ZONES[:ZONE_NUMBERS]
+zones = ZONES
 gce_util_mul = GceUtilMul(concurrency=CONCURRENCY, zones=zones)
-INIT_GCLOUD = True
+INIT_GCLOUD = 0
 
 
 def zip_data():
@@ -85,6 +84,7 @@ def prepare_instances():
     logging.info('existing instances: %s' % [i['name'] for i in instances])
 
     if not instances_already_created(zones, instances):
+    # if True:
         gce_util_mul.create_instances(single=True)
         gce_util_mul.wait_for_instances_to_start()
 
