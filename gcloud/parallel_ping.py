@@ -52,7 +52,7 @@ if __name__ == '__main__':
     f.truncate()
 
     #key = paramiko.RSAKey.from_private_key_file('C:/Users/ws/.ssh/google_compute_engine')
-    key = paramiko.RSAKey.from_private_key_file('/home/wch19990119/google_compute_engine')
+    key = paramiko.RSAKey.from_private_key_file('/home/aerberzhou/google_compute_engine')
     
     command = []
     for i in range(20):

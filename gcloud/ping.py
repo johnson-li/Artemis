@@ -26,7 +26,7 @@ f = open("output.txt", "w")
 f.truncate()
 
 #key = paramiko.RSAKey.from_private_key_file('C:/Users/ws/.ssh/google_compute_engine')
-key = paramiko.RSAKey.from_private_key_file('/home/wch19990119/google_compute_engine')
+key = paramiko.RSAKey.from_private_key_file('/home/aerberzhou/google_compute_engine')
 for i in range(0,len(list)):
     ssh = paramiko.SSHClient()
     know_host = paramiko.AutoAddPolicy()
