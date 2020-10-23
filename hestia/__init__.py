@@ -9,3 +9,6 @@ ANSIBLE_PATH = PROJECT_PATH + '/ansible'
 SERVER_PATH = PROJECT_PATH + '/udp-server'
 SCRIPT_PATH = PROJECT_PATH + '/scripts'
 MATLAB_PATH = PROJECT_PATH + '/matlab'
+
+WEBRTC_PATH = os.path.expanduser('~/Workspace/webrtc')
+RESULTS_PATH = WEBRTC_PATH + '/results'
