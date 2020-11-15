@@ -27,7 +27,8 @@ do
     if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
         latency_min=$latency
         target_server=$server_ip
-        echo "min latency: $latency, from server: $server_ip, in region: $server_region"
+        target_server_region=$server_region
+        echo "min latency: $latency, from server: $server_ip, in region: $target_server_region"
     fi
 
     sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
@@ -119,7 +120,7 @@ do
         row=-1
     fi
 
-    sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, dns_handshake_time, anycast_transfer_time, anycast_handshake_time, service_plt_time, dns_plt_time, anycast_plt_time, bind_server_ip, website, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${server_region}', ${transfer_time}, ${handshake_time}, ${dns_query_time}, ${dns_transfer_time},
+    sql="insert into transfer_time (client_ip, router_ip, server_ip, hostname, client_region, router_region, server_region, service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, dns_handshake_time, anycast_transfer_time, anycast_handshake_time, service_plt_time, dns_plt_time, anycast_plt_time, bind_server_ip, website, timestamp) values('${client_ip}', '${target}', '${target_server}', '${hostname}', '${region}', '${router_region}', '${target_server_region}', ${transfer_time}, ${handshake_time}, ${dns_query_time}, ${dns_transfer_time},
     ${dns_handshake_time}, ${anycast_transfer_time}, ${anycast_handshake_time}, ${service_plt_time}, ${dns_plt_time}, ${anycast_plt_time},'${bind_server_ip}', '${row}', ${timestamp});"
     echo "sql: " $sql
     mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
