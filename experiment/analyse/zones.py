@@ -34,10 +34,22 @@ def shorten(a):
 
 
 def handle_region(name, last=False):
+    latencies = {}
     db = MySQLdb.connect("127.0.0.1", "johnson", "johnson", "serviceid_db")
+    db.query('select * from measurements order by ts')
+    client_ip_mapping = {}
+    r = db.store_result()
+    while True:
+        a = r.fetch_row()
+        if not a:
+            break
+        a = a[0]
+        _, server_region, client_ip, latency, _ = a
+        latencies.setdefault(client_ip, {})[server_region] = latency
     db.query('select * from transfer_time')
     r = db.store_result()
     data = {}
+    anycast_targets = {}
     while True:
         a = r.fetch_row()
         if not a:
@@ -47,6 +59,8 @@ def handle_region(name, last=False):
         service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, \
         dns_handshake_time, anycast_transfer_time, anycast_handshake_time, service_plt_time, dns_plt_time, \
         anycast_plt_time, bind_server_ip, website, timestamp = [decode(i) for i in a]
+        client_ip_mapping[client_ip] = client_region
+        anycast_targets[client_region] = '-'.join([''.join((t[:2], t[-2:])) for t in router_region[7:].split('-')[:2]])
         data.setdefault(client_ip, {'hostname': hostname, 'client_region': client_region, 'records': []})
         data[client_ip]['records'].append({'router_ip': router_ip, 'server_ip': server_ip,
                                            'router_region': router_region, 'server_region': server_region,
@@ -57,6 +71,12 @@ def handle_region(name, last=False):
                                            'sid_plt': service_plt_time, 'dns_plt': dns_plt_time,
                                            'any_plt': anycast_plt_time, 'bind_server_ip': bind_server_ip,
                                            'website': website, 'timestamp': timestamp})
+    latencies = {client_ip_mapping[k]: v for k, v in latencies.items()}
+    anycast_additional_latency = {k: (latencies[k][anycast_targets[k]] -
+                                      np.min(list(latencies[k].values()))) / 1
+                                  for k in latencies.keys()}
+    print(anycast_additional_latency)
+    print(f'Anycast additional latency: {np.mean(list(anycast_additional_latency.values()))}')
     statics = np.median
     statics2 = np.mean
     client_ips = []
@@ -144,14 +164,15 @@ def handle_region(name, last=False):
                                                                   hatch='////', edgecolor='#888888'),
                                                    ])
     fig.tight_layout()
-    plt.savefig(os.path.join(DATA_PATH, f'{name}.pdf'),
-                format='pdf', dpi=1000, bbox_inches='tight')
-    plt.show()
+    # plt.savefig(os.path.join(DATA_PATH, f'{name}.pdf'),
+    #             format='pdf', dpi=1000, bbox_inches='tight')
+    # plt.show()
 
 
 def main():
     files = (('dump_global_large.sql', 'global_large'), ('dump_global_small.sql', 'global_small'),
              ('dump_regional_europe.sql', 'regional_europe'), ('dump_regional_us.sql', 'regional_us'))
+    files = [files[2]]
     for file_name, name in files:
         os.system(f'mysql -pjohnson serviceid_db < {os.path.join(DATA_PATH, file_name)}')
         handle_region(name, name == 'regional_us')
