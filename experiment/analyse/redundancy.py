@@ -1,4 +1,5 @@
 from experiment.analyse.zones import handle_region
+import json
 import matplotlib.patches as mpatches
 import MySQLdb
 import matplotlib.pyplot as plt
@@ -12,6 +13,14 @@ DATA_PATH = os.path.join(PROJECT_PATH, f'resources/exp3')
 CLIENT_REGIONS = ['ap-northeast-1', 'ap-northeast-2', 'ap-south-1', 'ap-southeast-1',
                   'ap-southeast-2', 'ca-central-1', 'eu-central-1', 'eu-north-1', 'eu-west-1', 'eu-west-2', 'eu-west-3',
                   'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
+SERVER_IP_MAP = {}
+
+
+def init():
+    data = json.load(open(os.path.join(DATA_PATH, "machine.json")))
+    for k, v in data.items():
+        if k.startswith('hestia'):
+            SERVER_IP_MAP[v['external_ip1']] = '-'.join([''.join((t[:2], t[-2:])) for t in k[7:].split('-')[:2]])
 
 
 def handle_region(name, last=False):
@@ -41,6 +50,7 @@ def handle_region(name, last=False):
         service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, \
         dns_handshake_time, anycast_transfer_time, anycast_handshake_time, service_plt_time, dns_plt_time, \
         anycast_plt_time, bind_server_ip, website, timestamp = [decode(i) for i in a]
+        server_region = SERVER_IP_MAP[server_ip]
         client_ip_mapping[client_ip] = client_region
         anycast_targets[client_region] = '-'.join([''.join((t[:2], t[-2:])) for t in router_region[7:].split('-')[:2]])
         sid_targets[client_region] = server_region
@@ -168,6 +178,7 @@ def handle_region(name, last=False):
 
 
 def main():
+    init()
     files = (('res1/mysql.dump', 'dup 1'), ('res2/mysql.dump', 'dup 2'),
              ('res3/mysql.dump', 'dup 3'), ('res4/mysql.dump', 'dup 4'))
     for file_name, name in files:
