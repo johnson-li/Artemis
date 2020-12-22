@@ -34,6 +34,7 @@ if [[ $hostname == 'workstation' ]]; then
         id int NOT NULL AUTO_INCREMENT,
         dc varchar(32),
         client varchar(32),
+        host varchar(32),
         latency FLOAT,
         ts BIGINT,
         primary key (id)

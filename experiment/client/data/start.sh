@@ -10,6 +10,7 @@ date > ${root}/start.sh.start_ts
 # Useful values
 timestamp=$(($(date +%s%N)/1000000))
 client_ip=$(curl -s https://api.ipify.org)
+hostname=`hostname`
 
 # Install softwares
 sudo apt update > /dev/null 2>&1
@@ -21,18 +22,31 @@ while read line
 do
     dc=$(echo $line| cut -d' ' -f1)
     server_ip=$(echo $line| cut -d' ' -f2)
-    latency=$(ping -i.2 -c5 ${server_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
-    cmp=$(awk 'BEGIN{ print "'$latency'"<"'$latency_min'"  }')
+    latency=$(mysql -ujohnson -pjohnson serviceid_db -sNe "select latency from measurements where host='${hostname}' limit 1;")
     server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
-    if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
-        latency_min=$latency
-        target_server=$server_ip
-        echo "min latency: $latency, from server: $server_ip, in region: $server_region"
+    echo asdfasdf
+    echo $latency
+    if [ -z "$latency"  ]
+    then
+        echo 'Use new measurement result'
+        latency=$(ping -i.2 -c5 ${server_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+        cmp=$(awk 'BEGIN{ print "'$latency'"<"'$latency_min'"  }')
+        if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
+            latency_min=$latency
+            target_server=$server_ip
+            echo "min latency: $latency, from server: $server_ip, in region: $server_region"
+        fi
+        sql="insert into measurements (dc, client, host, latency, ts) values ('${server_region}', '${client_ip}', '${hostname}', ${latency}, ${timestamp})"
+        echo mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
+        mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
+    else
+        echo 'Use cached measurement result'
+        if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
+            latency_min=$latency
+            target_server=$server_ip
+            echo "min latency: $latency, from server: $server_ip, in region: $server_region"
+        fi
     fi
-
-    sql="insert into measurements (dc, client, latency, ts) values ('${server_region}', '${client_ip}', ${latency}, ${timestamp})"
-    echo mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
-    mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 done < ${root}/datacenters.txt
 
 # Anycast probing
@@ -70,7 +84,6 @@ do
     dns_plt_time=`grep -a 'PLT: ' /tmp/hestia/data/client_dns.log| cut -d' ' -f2 | tail -n 1`
 
     dns_query_time=`dig a.xuebing.li|grep 'Query time'|cut -d' ' -f4 | tail -n 1`
-    hostname=`hostname`
     bind_server_ip=`grep -a 'bind fd2_ with' /tmp/hestia/data/client_sid.log| cut -d' ' -f4 | tail -n 1`
 
 
