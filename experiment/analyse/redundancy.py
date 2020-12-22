@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 from hestia import PROJECT_PATH
-from experiment.analyse.zones import decode,shorten
+from experiment.analyse.zones import decode, shorten
 
 FONT_SIZE = 16
-DATA_PATH = os.path.join(PROJECT_PATH, f'resources/exp3')
+DATA_PATH = os.path.join(PROJECT_PATH, f'resources/exp4')
 CLIENT_REGIONS = ['ap-northeast-1', 'ap-northeast-2', 'ap-south-1', 'ap-southeast-1',
                   'ap-southeast-2', 'ca-central-1', 'eu-central-1', 'eu-north-1', 'eu-west-1', 'eu-west-2', 'eu-west-3',
                   'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
@@ -24,6 +24,7 @@ def init():
 
 
 def handle_region(name, last=False):
+    print(f'Regions: {name}')
     latencies = {}
     db = MySQLdb.connect("127.0.0.1", "johnson", "johnson", "serviceid_db")
     db.query('select * from measurements order by ts')
@@ -50,7 +51,7 @@ def handle_region(name, last=False):
         service_id_transfer_time, service_id_handshake_time, dns_query_time, dns_transfer_time, \
         dns_handshake_time, anycast_transfer_time, anycast_handshake_time, service_plt_time, dns_plt_time, \
         anycast_plt_time, bind_server_ip, website, timestamp = [decode(i) for i in a]
-        server_region = SERVER_IP_MAP[server_ip]
+        server_region = SERVER_IP_MAP[bind_server_ip]
         client_ip_mapping[client_ip] = client_region
         anycast_targets[client_region] = '-'.join([''.join((t[:2], t[-2:])) for t in router_region[7:].split('-')[:2]])
         sid_targets[client_region] = server_region
@@ -68,7 +69,7 @@ def handle_region(name, last=False):
     rank = {}
     rank_r = [0] * len(latencies)
     rank_s = [0] * len(latencies)
-    print(sid_targets)
+    print(f'SID targets: {sid_targets}')
     for k, v in latencies.items():
         keys = list(v.keys())
         values = [v[kk] for kk in keys]
@@ -78,6 +79,8 @@ def handle_region(name, last=False):
         i = rank[k].index(anycast_targets[k])
         rank_r[i] += 1
         i = rank[k].index(sid_targets[k])
+        if i != 0:
+            print(f'target: {sid_targets[k]}, ranks: {rank[k]}')
         rank_s[i] += 1
     print(f'rank_r = {rank_r}')
     print(f'rank_s = {rank_s}')
@@ -179,8 +182,8 @@ def handle_region(name, last=False):
 
 def main():
     init()
-    files = (('res1/mysql.dump', 'dup 1'), ('res2/mysql.dump', 'dup 2'),
-             ('res3/mysql.dump', 'dup 3'), ('res4/mysql.dump', 'dup 4'))
+    files = (('res2/mysql.dump', 'dup 2'), ('res3/mysql.dump', 'dup 3'),
+             ('res4/mysql.dump', 'dup 4'),)
     for file_name, name in files:
         os.system(f'mysql -pjohnson -ujohnson serviceid_db < {os.path.join(DATA_PATH, file_name)}')
         handle_region(name, name == 'dup 4')

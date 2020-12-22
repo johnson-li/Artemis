@@ -172,9 +172,9 @@ def handle_region(name, last=False):
 def main():
     files = (('dump_global_large.sql', 'global_large'), ('dump_global_small.sql', 'global_small'),
              ('dump_regional_europe.sql', 'regional_europe'), ('dump_regional_us.sql', 'regional_us'))
-    files = [files[2]]
+    # files = [files[1]]
     for file_name, name in files:
-        os.system(f'mysql -pjohnson serviceid_db < {os.path.join(DATA_PATH, file_name)}')
+        os.system(f'mysql -uroot serviceid_db < {os.path.join(DATA_PATH, file_name)}')
         handle_region(name, name == 'regional_us')
 
 
