@@ -9,7 +9,7 @@ from hestia import PROJECT_PATH
 from experiment.analyse.zones import decode, shorten
 
 FONT_SIZE = 16
-DATA_PATH = os.path.join(PROJECT_PATH, f'resources/exp4')
+DATA_PATH = os.path.join(PROJECT_PATH, f'resources/exp5')
 CLIENT_REGIONS = ['ap-northeast-1', 'ap-northeast-2', 'ap-south-1', 'ap-southeast-1',
                   'ap-southeast-2', 'ca-central-1', 'eu-central-1', 'eu-north-1', 'eu-west-1', 'eu-west-2', 'eu-west-3',
                   'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
@@ -18,6 +18,8 @@ SERVER_IP_MAP = {}
 
 def init():
     data = json.load(open(os.path.join(DATA_PATH, "machine.json")))
+    data = json.load(open(os.path.join(DATA_PATH, "machine2.json")))
+    data = json.load(open(os.path.join(DATA_PATH, "machine3.json")))
     for k, v in data.items():
         if k.startswith('hestia'):
             SERVER_IP_MAP[v['external_ip1']] = '-'.join([''.join((t[:2], t[-2:])) for t in k[7:].split('-')[:2]])
@@ -35,7 +37,7 @@ def handle_region(name, last=False):
         if not a:
             break
         a = a[0]
-        _, server_region, client_ip, latency, _ = a
+        _, server_region, client_ip, _, latency, _ = a
         latencies.setdefault(client_ip, {})[server_region] = latency
     db.query('select * from transfer_time')
     r = db.store_result()
@@ -65,7 +67,7 @@ def handle_region(name, last=False):
                                            'sid_plt': service_plt_time, 'dns_plt': dns_plt_time,
                                            'any_plt': anycast_plt_time, 'bind_server_ip': bind_server_ip,
                                            'website': website, 'timestamp': timestamp})
-    latencies = {client_ip_mapping[k]: v for k, v in latencies.items()}
+    latencies = {client_ip_mapping[k]: v for k, v in latencies.items() if k in client_ip_mapping}
     rank = {}
     rank_r = [0] * len(latencies)
     rank_s = [0] * len(latencies)
@@ -139,8 +141,8 @@ def handle_region(name, last=False):
     anycast_additional_tf = (any_tf_list[subopt_idx] - dns_tf_list0[subopt_idx]) / dns_tf_list0[subopt_idx] * 100
     # print(f'Anycast additional handshake latency: {np.mean(anycast_additional_hs)}%')
     # print(f'Anycast additional transport latency: {np.mean(anycast_additional_tf)}%')
-    # print(f'Artemis handshake latency: {np.mean(sid_hs_list)}')
-    # print(f'Artemis transport latency: {np.mean(sid_tf_list)}')
+    print(f'Artemis handshake latency: {np.mean(sid_hs_list)}')
+    print(f'Artemis transport latency: {np.mean(sid_tf_list)}')
     # print(f'DNS handshake latency: {np.mean(dns_hs_list)}')
     # print(f'DNS transport latency: {np.mean(dns_tf_list)}')
     # print(f'Anycast handshake latency: {np.mean(any_hs_list)}')
@@ -182,11 +184,13 @@ def handle_region(name, last=False):
 
 def main():
     init()
-    files = (('res2/mysql.dump', 'dup 2'), ('res3/mysql.dump', 'dup 3'),
-             ('res4/mysql.dump', 'dup 4'),)
+    files = (('res1/mysql.dump', '0 h'), ('res2/mysql.dump', '1 h'), ('res3/mysql.dump', '2 h'),
+             ('res4/mysql.dump', '3 h'))
+    files = (('res5/mysql.dump', '9 h'), )
+    files = (('res6/mysql.dump', '18 h'), )
     for file_name, name in files:
         os.system(f'mysql -pjohnson -ujohnson serviceid_db < {os.path.join(DATA_PATH, file_name)}')
-        handle_region(name, name == 'dup 4')
+        handle_region(name)
 
 
 if __name__ == '__main__':
