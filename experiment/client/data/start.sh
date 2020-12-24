@@ -22,31 +22,25 @@ while read line
 do
     dc=$(echo $line| cut -d' ' -f1)
     server_ip=$(echo $line| cut -d' ' -f2)
-    latency=$(mysql -ujohnson -pjohnson serviceid_db -sNe "select latency from measurements where host='${hostname}' limit 1;")
     server_region=`python3 -c "import os; print('-'.join([''.join((t[:2], t[-2:])) for t in '${dc}'.split('-')[:2]]))"`
+    latency=$(mysql -h${mysql_ip} -ujohnson -pjohnson serviceid_db -sNe "select latency from measurements where host='${region}' and dc='${server_region}' order by ts limit 1;")
     echo asdfasdf
     echo $latency
     if [ -z "$latency"  ]
     then
         echo 'Use new measurement result'
         latency=$(ping -i.2 -c5 ${server_ip} | tail -1| awk '{print $4}' | cut -d '/' -f 2)
-        cmp=$(awk 'BEGIN{ print "'$latency'"<"'$latency_min'"  }')
-        if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
-            latency_min=$latency
-            target_server=$server_ip
-            echo "min latency: $latency, from server: $server_ip, in region: $server_region"
-        fi
-        sql="insert into measurements (dc, client, host, latency, ts) values ('${server_region}', '${client_ip}', '${hostname}', ${latency}, ${timestamp})"
-        echo mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
-        mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
     else
         echo 'Use cached measurement result'
-        if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
-            latency_min=$latency
-            target_server=$server_ip
-            echo "min latency: $latency, from server: $server_ip, in region: $server_region"
-        fi
     fi
+    if [[ $(bc <<< "$latency < $latency_min") -eq 1 ]];then
+        latency_min=$latency
+        target_server=$server_ip
+        echo "min latency: $latency, from server: $server_ip, in region: $server_region"
+    fi
+    sql="insert into measurements (dc, client, host, latency, ts) values ('${server_region}', '${client_ip}', '${region}', ${latency}, ${timestamp})"
+    echo mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
+    mysql -h${mysql_ip} -ujohnson -pjohnson -Dserviceid_db -e "${sql}"
 done < ${root}/datacenters.txt
 
 # Anycast probing

@@ -2,9 +2,9 @@
 
 # conda activate dev
 
-python -m experiment.gcloud.main2
-sleep 60
-python -m experiment.gcloud.restart2
+# python -m experiment.gcloud.main2
+# sleep 60
+# python -m experiment.gcloud.restart2
 
 echo The server is ready.
 
