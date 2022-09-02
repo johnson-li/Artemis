@@ -128,7 +128,7 @@ def latency():
             "set(gca,'FontSize',20)",
             "pbaspect([2 1 1])",
             "axis([1 100 0 600])",
-            "legend('handshake latency', 'transport latency', 'location', 'northwest');",
+            "legend('Handshake latency', 'Transmission latency', 'location', 'northwest');",
             "print('figures/direct-latency','-depsc');",
             # =====cpu=====
             "cpu_cli = %s;" % client_cpus[1:],
@@ -139,7 +139,7 @@ def latency():
             "set(gca,'FontSize',20)",
             "pbaspect([2 1 1])",
             "axis([1 100 0 13])",
-            "legend('client', 'server', 'location', 'northwest');",
+            "legend('Client', 'Server', 'location', 'northwest');",
             "print('figures/direct-cpu','-depsc');",
             # =====memory=====
             "mem_cli = %s;" % client_mems[1:],
@@ -151,7 +151,7 @@ def latency():
             "pbaspect([2 1 1])",
             "axis([1 100 25 42])",
             "set(gca,'FontSize',20)",
-            "legend('client', 'server', 'location', 'northwest');",
+            "legend('Client', 'Server', 'location', 'northwest');",
             "print('figures/direct-memory','-depsc');",
 
             # =====latencies=====
@@ -163,7 +163,7 @@ def latency():
             "set(gca,'FontSize',20)",
             "pbaspect([2 1 1])",
             "axis([1 100 0 600])",
-            "legend('handshake latency', 'transport latency', 'location', 'northwest');",
+            "legend('Handshake latency', 'Transmission latency', 'location', 'northwest');",
             "print('figures/art1-latency','-depsc');",
             # =====cpu=====
             "cpu_cli = %s;" % client_cpus1[1:],
@@ -174,7 +174,7 @@ def latency():
             "set(gca,'FontSize',20)",
             "pbaspect([2 1 1])",
             "axis([1 100 0 13])",
-            "legend('client', 'server', 'location', 'northwest');",
+            "legend('Client', 'Server', 'location', 'northwest');",
             "print('figures/art1-cpu','-depsc');",
             # =====memory=====
             "mem_cli = %s;" % client_mems1[1:],
@@ -186,7 +186,7 @@ def latency():
             "pbaspect([2 1 1])",
             "axis([1 100 25 50])",
             "set(gca,'FontSize',20)",
-            "legend('client', 'server', 'Service Dispatcher', 'location', 'northwest');",
+            "legend('Client', 'Server', 'Service Dispatcher', 'location', 'northwest');",
             "print('figures/art1-memory','-depsc');",
         ]
         f.writelines([l + '\n' for l in lines])

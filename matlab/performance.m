@@ -27,7 +27,7 @@ bar([4.4748*0.83+30.8457*0.17+14.3975 34.77*0.177+13.4777*0.823 16.86; 14.40 14.
 legend('DNS', 'Artemis', 'Anycast', 'location', 'northwest')
 set(gca,'FontSize',24)
 ylabel('Latency (ms)')
-set(gca, 'XtickLabel', {'\begin{tabular}{c} Connection \\ setup latency \end{tabular}'; 'RTT'; '\begin{tabular}{c} Query \\ latency \end{tabular}'}, 'TickLabelInterpreter', 'latex')
+set(gca, 'XtickLabel', {'\begin{tabular}{c} Connection \\ setup latency \end{tabular}'; 'Transmission \\ latency'; '\begin{tabular}{c} Query \\ latency \end{tabular}'}, 'TickLabelInterpreter', 'latex')
 pbaspect([2 1 1])
 % set(gca,'XTickLabelRotation',45)
 ylim([0 43])

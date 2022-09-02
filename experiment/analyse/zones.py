@@ -137,35 +137,31 @@ def handle_region(name, last=False):
 
     fig, ax = plt.subplots(figsize=(8, 3))
     width = 0.25
-    ax.bar(x - width, sid_tf_list, width, label='Hestia', color='#f2cfa3')
+    ax.bar(x - width, sid_tf_list, width, label='Artemis', color='#f2cfa3')
     ax.bar(x - width, sid_hs_list, width,
-           label='Hestia', color='#f2cfa3', hatch='////', edgecolor='#a27f53', linewidth=.8)
+           label='Artemis', color='#f2cfa3', hatch='////', edgecolor='#a27f53', linewidth=.8)
     ax.bar(x, dns_tf_list, width, label='DNS', color='#e75d56')
     ax.bar(x, dns_hs_list, width,
            label='DNS', color='#e75d56', hatch='////', edgecolor='#970906', linewidth=.8)
-    ax.bar(x, dns_query_list, width, label='DNS', color='#bc5090')
     ax.bar(x + width, any_tf_list, width, label='Anycast', color='#aee1f4')
     ax.bar(x + width, any_hs_list, width,
            label='Anycast', color='#aee1f4', hatch='////', edgecolor='#5e91a4', linewidth=.8)
     ax.tick_params(axis='both', which='major', labelsize=FONT_SIZE - 2)
     plt.gca().set_ylim(bottom=0)
     plt.xticks(range(len(client_ips)), range(1, len(client_ips) + 1))
-    plt.xlabel('AWS clients', fontsize=FONT_SIZE)
-    plt.ylabel('Latency (ms)', fontsize=FONT_SIZE)
-    plt.ylim(0, 250)
+    plt.xlabel(f'{name.replace("_", " ").capitalize()}: AWS clients', fontsize=FONT_SIZE)
+    plt.ylabel('Query latency (ms)', fontsize=FONT_SIZE)
+    # plt.ylim(0, 250)
     if last:
-        ax.legend(fontsize=FONT_SIZE - 6, handles=[mpatches.Patch(color='#f2cfa3', label='Hestia'),
+        ax.legend(fontsize=FONT_SIZE - 6, handles=[mpatches.Patch(color='#f2cfa3', label='Artemis'),
                                                    mpatches.Patch(color='#e75d56', label='DNS'),
                                                    mpatches.Patch(color='#aee1f4', label='Anycast'),
-                                                   mpatches.Patch(color='#bc5090', label='DNS query latency'),
-                                                   mpatches.Patch(facecolor='#ffffff', label='Transport latency',
-                                                                  edgecolor='#888888'),
-                                                   mpatches.Patch(facecolor='#ffffff', label='Handshake latency',
+                                                   mpatches.Patch(facecolor='#ffffff', label='Connection setup latency',
                                                                   hatch='////', edgecolor='#888888'),
                                                    ])
     fig.tight_layout()
-    # plt.savefig(os.path.join(DATA_PATH, f'{name}.pdf'),
-    #             format='pdf', dpi=1000, bbox_inches='tight')
+    plt.savefig(os.path.join(DATA_PATH, f'{name}.pdf'),
+                format='pdf', dpi=1000, bbox_inches='tight')
     # plt.show()
 
 
@@ -174,7 +170,7 @@ def main():
              ('dump_regional_europe.sql', 'regional_europe'), ('dump_regional_us.sql', 'regional_us'))
     # files = [files[1]]
     for file_name, name in files:
-        os.system(f'mysql -uroot serviceid_db < {os.path.join(DATA_PATH, file_name)}')
+        os.system(f'sudo mysql serviceid_db < {os.path.join(DATA_PATH, file_name)}')
         handle_region(name, name == 'regional_us')
 
 
