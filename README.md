@@ -41,3 +41,13 @@ Steps
 
 ## Refresh planetlab hosts
 1. `python3 -m hestia.tools.available_plt_hosts`
+
+## Cite the project 
+```
+@article{artemis,
+  author  = {Xuebing Li and Yang Chen and Mengying Zhou and Tiancheng Guo and Chenhao Wang and Yu Xiao and Junjie Wan and Xin Wang},
+  title   = {Artemis: A Latency-Oriented Naming and Routing System},
+  journal = {IEEE Transactions on Parallel and Distributed Systems},
+  year    = {2022},
+}
+```
