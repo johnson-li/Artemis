@@ -42,6 +42,9 @@ Steps
 ## Refresh planetlab hosts
 1. `python3 -m hestia.tools.available_plt_hosts`
 
+## QUIC implementation
+A customized QUIC implementation is required to run this project. Please refer to https://github.com/johnson-li/ngtcp2. 
+
 ## Cite the project 
 ```
 @article{artemis,
