@@ -1,4 +1,4 @@
-Hestia
+Artemis
 ===
 Use AWS API to setup the experiment environment.
 
