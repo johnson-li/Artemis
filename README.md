@@ -2,8 +2,7 @@ Artemis: A Latency-Oriented Naming and Routing System
 ===
 [Artemis](https://ieeexplore.ieee.org/document/9894091) is a novel naming and routing system. It supports DNS-like name resolution but is of lower latency. It provides a global service discovery solution.
 
-Authors: [Xuebing Li](https://github.com/johnson-li)
-, [Yang Chen](https://github.com/chenyang03), [Mengying Zhou](https://github.com/mengyingzhou), [Tiancheng Guo](https://github.com/skyerguo), Chenhao Wang, Yu Xiao, Junjie Wan, and Xin Wang
+Authors: [Xuebing Li](https://github.com/johnson-li), [Yang Chen](https://github.com/chenyang03), [Mengying Zhou](https://github.com/mengyingzhou), [Tiancheng Guo](https://github.com/skyerguo), Chenhao Wang, Yu Xiao, Junjie Wan, and Xin Wang
 
 ## Abstract
 
